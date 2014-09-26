@@ -6,9 +6,6 @@
    <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.cli.feature_1.2.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.cli.feature" version="1.2.0.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/net.chemclipse.thirdpartylibraries.log4j.feature_1.2.15.qualifier.jar" id="net.chemclipse.thirdpartylibraries.log4j.feature" version="1.2.15.qualifier">
-      <category name="net.chemclipse.thirdpartylibraries"/>
-   </feature>
    <feature url="features/net.chemclipse.thirdpartylibraries.swtchart.feature_0.9.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.swtchart.feature" version="0.9.0.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
