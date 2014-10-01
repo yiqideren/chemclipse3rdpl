@@ -24,6 +24,33 @@
    <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.math.feature_3.3.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.math.feature" version="3.3.0.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature_1.0.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature" version="1.0.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.poi.feature_3.7.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.poi.feature" version="3.7.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.io.feature_2.4.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.io.feature" version="2.4.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.ejml.feature_0.24.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.ejml.feature" version="0.24.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.jmzml.feature_1.6.7.qualifier.jar" id="net.chemclipse.thirdpartylibraries.jmzml.feature" version="1.6.7.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.jpa.feature_1.99.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.jpa.feature" version="1.99.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.netcdf.feature_4.3.19.qualifier.jar" id="net.chemclipse.thirdpartylibraries.netcdf.feature" version="4.3.19.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.proteomecommons.feature_6.2.1.qualifier.jar" id="net.chemclipse.thirdpartylibraries.proteomecommons.feature" version="6.2.1.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
+   <feature url="features/net.chemclipse.thirdpartylibraries.xxindex.feature_0.11.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.xxindex.feature" version="0.11.0.qualifier">
+      <category name="net.chemclipse.thirdpartylibraries"/>
+   </feature>
    <category-def name="net.chemclipse.thirdpartylibraries" label="Third Party Libraries">
       <description>
          Several third party libraries, distributed under different open source licenses.
