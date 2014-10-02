@@ -67,16 +67,6 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>Apache Commons IO 2.4.0 (http://commons.apache.org/proper/commons-io)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
-      <comments>Apache Commons POI 3.7.0 (http://poi.apache.org)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
       <comments>Apache Geronimo Stax 1.0.0 (http://geronimo.apache.org)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
@@ -146,12 +136,6 @@
     <!-- ConcurrentLinkedHashMap -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.concurrentlinkedhashmap</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature</module>
-    <!-- Apache Commons IO -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.apache.commons.io</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.apache.commons.io.feature</module>
-    <!-- CommonsPOI -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.apache.commons.poi</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.apache.commons.poi.feature</module>
     <!-- ApacheGeronimoStax -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.apache.geronimo.stax</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature</module>

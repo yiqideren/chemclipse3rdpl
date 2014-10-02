@@ -46,10 +46,6 @@ limitations under the License.
       <discovery label="XXindex" url="http://code.google.com/p/pride-toolsuite/wiki/XXIndex"/>
    </url>
 
-   <requires>
-      <import feature="net.chemclipse.thirdpartylibraries.apache.commons.io.feature" version="2.4.0.qualifier"/>
-   </requires>
-
    <plugin
          id="net.chemclipse.thirdpartylibraries.xxindex"
          download-size="0"

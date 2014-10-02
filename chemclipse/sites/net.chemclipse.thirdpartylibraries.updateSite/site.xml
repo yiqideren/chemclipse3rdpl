@@ -27,12 +27,6 @@
    <feature url="features/net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature_1.0.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature" version="1.0.0.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.poi.feature_3.7.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.poi.feature" version="3.7.0.qualifier">
-      <category name="net.chemclipse.thirdpartylibraries"/>
-   </feature>
-   <feature url="features/net.chemclipse.thirdpartylibraries.apache.commons.io.feature_2.4.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.apache.commons.io.feature" version="2.4.0.qualifier">
-      <category name="net.chemclipse.thirdpartylibraries"/>
-   </feature>
    <feature url="features/net.chemclipse.thirdpartylibraries.ejml.feature_0.24.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.ejml.feature" version="0.24.0.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
