@@ -32,11 +32,6 @@
 	  Plug-ins that are part of compilation.
     -->
     <license>
-      <comments>Apache Commons CLI 1.2 (http://commons.apache.org/cli)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
       <comments>SWTChart 0.9.0 (http://www.swtchart.org)</comments>
       <name>EPL v1.0</name>
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
@@ -115,9 +110,6 @@
 	MODULES
   -->
   <modules>
-    <!-- CommonsCLI -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.apache.commons.cli</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.apache.commons.cli.feature</module>
     <!-- SWTChart -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.swtchart</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.swtchart.feature</module>
