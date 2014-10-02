@@ -62,11 +62,6 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>Apache Geronimo Stax 1.0.0 (http://geronimo.apache.org)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
       <comments>EJML 0.24.0 (https://code.google.com/p/efficient-java-matrix-library)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
@@ -128,9 +123,6 @@
     <!-- ConcurrentLinkedHashMap -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.concurrentlinkedhashmap</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature</module>
-    <!-- ApacheGeronimoStax -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.apache.geronimo.stax</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.apache.geronimo.stax.feature</module>
     <!-- EJML -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.ejml</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.ejml.feature</module>
