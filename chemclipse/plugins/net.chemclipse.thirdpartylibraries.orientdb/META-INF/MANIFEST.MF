@@ -1,6 +1,5 @@
 Manifest-Version: 1.0
 Eclipse-BuddyPolicy: registered
-Eclipse-RegisterBuddy: net.chemclipse.thirdpartylibraries.jpa
 Bundle-ManifestVersion: 2
 Bundle-Name: Orientdb
 Bundle-SymbolicName: net.chemclipse.thirdpartylibraries.orientdb

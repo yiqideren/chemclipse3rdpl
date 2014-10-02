@@ -92,11 +92,6 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>JPA 1.99.0.v200906021518 (http://www.eclipse.org/eclipselink/jpa.php)</comments>
-      <name>EPL v1.0</name>
-      <url>http://www.eclipse.org/legal/epl-v10.html</url>
-    </license>
-    <license>
       <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
       <name>MIT</name>
       <url>http://opensource.org/licenses/MIT</url> 
@@ -166,9 +161,6 @@
     <!-- jmzML -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.jmzml</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.jmzml.feature</module>
-    <!-- JPA -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.jpa</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.jpa.feature</module>
     <!-- NetCDF -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.netcdf</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.netcdf.feature</module>

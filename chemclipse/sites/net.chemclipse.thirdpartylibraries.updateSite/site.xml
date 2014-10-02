@@ -39,9 +39,6 @@
    <feature url="features/net.chemclipse.thirdpartylibraries.jmzml.feature_1.6.7.qualifier.jar" id="net.chemclipse.thirdpartylibraries.jmzml.feature" version="1.6.7.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/net.chemclipse.thirdpartylibraries.jpa.feature_1.99.0.qualifier.jar" id="net.chemclipse.thirdpartylibraries.jpa.feature" version="1.99.0.qualifier">
-      <category name="net.chemclipse.thirdpartylibraries"/>
-   </feature>
    <feature url="features/net.chemclipse.thirdpartylibraries.netcdf.feature_4.3.19.qualifier.jar" id="net.chemclipse.thirdpartylibraries.netcdf.feature" version="4.3.19.qualifier">
       <category name="net.chemclipse.thirdpartylibraries"/>
    </feature>
