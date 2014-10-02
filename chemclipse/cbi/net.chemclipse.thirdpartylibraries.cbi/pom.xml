@@ -67,22 +67,12 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>jmzML 1.6.7 (https://code.google.com/p/jmzml)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
       <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
       <name>MIT</name>
       <url>http://opensource.org/licenses/MIT</url> 
     </license>
     <license>
       <comments>ProteomeCommons 6.21 (http://proteomecommons.org/current/531)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    <license>
-      <comments>XXindex 0.11.0 (http://code.google.com/p/pride-toolsuite/wiki/XXIndex)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
@@ -126,15 +116,9 @@
     <!-- EJML -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.ejml</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.ejml.feature</module>
-    <!-- jmzML -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.jmzml</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.jmzml.feature</module>
     <!-- NetCDF -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.netcdf</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.netcdf.feature</module>
-    <!-- XXindex -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.xxindex</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.xxindex.feature</module>
     <!-- Update Site (Selected third party libraries) -->
     <module>../../sites/net.chemclipse.thirdpartylibraries.updateSite</module>
   </modules>
