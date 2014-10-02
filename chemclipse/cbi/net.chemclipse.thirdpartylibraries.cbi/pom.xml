@@ -164,9 +164,6 @@
     <!-- NetCDF -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.netcdf</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.netcdf.feature</module>
-    <!-- ProteomeCommons -->
-    <module>../../plugins/net.chemclipse.thirdpartylibraries.proteomecommons</module>
-    <module>../../features/net.chemclipse.thirdpartylibraries.proteomecommons.feature</module>
     <!-- XXindex -->
     <module>../../plugins/net.chemclipse.thirdpartylibraries.xxindex</module>
     <module>../../features/net.chemclipse.thirdpartylibraries.xxindex.feature</module>
