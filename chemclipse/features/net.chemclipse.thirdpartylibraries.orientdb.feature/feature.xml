@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.chemclipse.thirdpartylibraries.orientdb.feature"
-      label="Feature"
+      label="OrientDB"
       version="1.7.2.qualifier"
       provider-name="ChemClipse">
 

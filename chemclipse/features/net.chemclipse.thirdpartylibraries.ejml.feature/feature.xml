@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.chemclipse.thirdpartylibraries.ejml.feature"
-      label="Feature"
+      label="EJML"
       version="0.24.0.qualifier"
       provider-name="ChemClipse">
 
