@@ -19,7 +19,7 @@ v2.0
    </copyright>
 
    <license url="http://www.chemclipse.net">
-      Copyright (c) 2014 Dr. Philip Wenig.
+      Copyright (c) 2014, 2015 Dr. Philip Wenig.
  
 This feature encapsulates the following libraries:
 ConcurrentLinkedHashMap https://code.google.com/p/concurrentlinkedhashmap 1.4.0
