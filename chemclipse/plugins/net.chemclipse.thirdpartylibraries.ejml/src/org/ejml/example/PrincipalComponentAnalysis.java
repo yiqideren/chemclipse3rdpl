@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2013, Peter Abeles. All Rights Reserved.
+ * Copyright (c) 2009-2014, Peter Abeles. All Rights Reserved.
  * 
  * This file is part of Efficient Java Matrix Library (EJML).
  * 
@@ -19,23 +19,23 @@ package org.ejml.example;
 
 import org.ejml.data.DenseMatrix64F;
 import org.ejml.factory.DecompositionFactory;
-import org.ejml.factory.SingularValueDecomposition;
+import org.ejml.interfaces.decomposition.SingularValueDecomposition;
 import org.ejml.ops.CommonOps;
 import org.ejml.ops.NormOps;
 import org.ejml.ops.SingularOps;
 
 /**
  * <p>
- * The following is a simple example of how to perform basic principle component analysis in EJML.
+ * The following is a simple example of how to perform basic principal component analysis in EJML.
  * </p>
- * 
+ *
  * <p>
  * Principal Component Analysis (PCA) is typically used to develop a linear model for a set of data (e.g. face images) which can then be used to test for membership. PCA works by converting the set of data to a new basis that is a subspace of the original set. The subspace is selected to maximize information.
  * </p>
  * <p>
- * PCA is typically derived as an eigenvalue problem. However in this implementation {@link org.ejml.factory.SingularValueDecomposition SVD} is used instead because it will produce a more numerically stable solution. Computation using EVD requires explicitly computing the variance of each sample set. The variance is computed by squaring the residual, which can cause loss of precision.
+ * PCA is typically derived as an eigenvalue problem. However in this implementation {@link org.ejml.interfaces.decomposition.SingularValueDecomposition SVD} is used instead because it will produce a more numerically stable solution. Computation using EVD requires explicitly computing the variance of each sample set. The variance is computed by squaring the residual, which can cause loss of precision.
  * </p>
- * 
+ *
  * <p>
  * Usage:<br>
  * 1) call setup()<br>
@@ -43,14 +43,14 @@ import org.ejml.ops.SingularOps;
  * 3) After all the samples have been added call computeBasis()<br>
  * 4) Call sampleToEigenSpace() , eigenToSampleSpace() , errorMembership() , response()
  * </p>
- * 
+ *
  * @author Peter Abeles
  */
-public class PrincipleComponentAnalysis {
+public class PrincipalComponentAnalysis {
 
-	// principle component subspace is stored in the rows
+	// principal component subspace is stored in the rows
 	private DenseMatrix64F V_t;
-	// how many principle components are used
+	// how many principal components are used
 	private int numComponents;
 	// where the data is stored
 	private DenseMatrix64F A = new DenseMatrix64F(1, 1);
@@ -58,13 +58,13 @@ public class PrincipleComponentAnalysis {
 	// mean values of each element across all the samples
 	double mean[];
 
-	public PrincipleComponentAnalysis() {
+	public PrincipalComponentAnalysis() {
 
 	}
 
 	/**
 	 * Must be called before any other functions. Declares and sets up internal data structures.
-	 * 
+	 *
 	 * @param numSamples
 	 *            Number of samples that will be processed.
 	 * @param sampleSize
@@ -81,7 +81,7 @@ public class PrincipleComponentAnalysis {
 	/**
 	 * Adds a new sample of the raw data to internal data structure for later processing. All the samples
 	 * must be added before computeBasis is called.
-	 * 
+	 *
 	 * @param sampleData
 	 *            Sample from original raw data.
 	 */
@@ -98,8 +98,8 @@ public class PrincipleComponentAnalysis {
 	}
 
 	/**
-	 * Computes a basis (the principle components) from the most dominant eigenvectors.
-	 * 
+	 * Computes a basis (the principal components) from the most dominant eigenvectors.
+	 *
 	 * @param numComponents
 	 *            Number of vectors it will use to describe the data. Typically much
 	 *            smaller than the number of elements in the input vector.
@@ -142,7 +142,7 @@ public class PrincipleComponentAnalysis {
 
 	/**
 	 * Returns a vector from the PCA's basis.
-	 * 
+	 *
 	 * @param which
 	 *            Which component's vector is to be returned.
 	 * @return Vector from the PCA basis.
@@ -158,7 +158,7 @@ public class PrincipleComponentAnalysis {
 
 	/**
 	 * Converts a vector from sample space into eigen space.
-	 * 
+	 *
 	 * @param sampleData
 	 *            Sample space data.
 	 * @return Eigen space projection.
@@ -170,14 +170,14 @@ public class PrincipleComponentAnalysis {
 		DenseMatrix64F mean = DenseMatrix64F.wrap(A.getNumCols(), 1, this.mean);
 		DenseMatrix64F s = new DenseMatrix64F(A.getNumCols(), 1, true, sampleData);
 		DenseMatrix64F r = new DenseMatrix64F(numComponents, 1);
-		CommonOps.sub(s, mean, s);
+		CommonOps.subtract(s, mean, s);
 		CommonOps.mult(V_t, s, r);
 		return r.data;
 	}
 
 	/**
 	 * Converts a vector from eigen space into sample space.
-	 * 
+	 *
 	 * @param eigenData
 	 *            Eigen space data.
 	 * @return Sample space projection.
@@ -221,7 +221,7 @@ public class PrincipleComponentAnalysis {
 	/**
 	 * Computes the dot product of each basis vector against the sample. Can be used as a measure
 	 * for membership in the training sample set. High values correspond to a better fit.
-	 * 
+	 *
 	 * @param sample
 	 *            Sample of original data.
 	 * @return Higher value indicates it is more likely to be a member of input dataset.

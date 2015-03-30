@@ -47,7 +47,7 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>Apache Commons Math 3.3 (http://commons.apache.org/math)</comments>
+      <comments>Apache Commons Math 3.4.1 (http://commons.apache.org/math)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
@@ -62,7 +62,7 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>EJML 0.24.0 (https://code.google.com/p/efficient-java-matrix-library)</comments>
+      <comments>EJML 0.26.0 (https://code.google.com/p/efficient-java-matrix-library)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
