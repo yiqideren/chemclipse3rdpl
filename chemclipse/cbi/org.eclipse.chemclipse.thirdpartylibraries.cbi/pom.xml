@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!--
+	PARENT
+  -->
+  <parent>
+    <groupId>org.eclipse.chemclipse</groupId>
+    <artifactId>master</artifactId>
+    <version>BUILD-VERSION</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <!--
+	ARTIFACT
+  -->
+  <groupId>org.eclipse.chemclipse</groupId>
+  <artifactId>parent</artifactId>
+  <packaging>pom</packaging>
+  <!--
+	DESCRIPTION
+  --> 
+  <name>ChemClipse Third-Party Libraries</name>
+  <description>
+	This bundle offers several third party libraries.
+  </description>
+  <url>http://sourceforge.net/projects/chemclipse3rdpl</url>
+  <!--
+	LICENSES
+  -->  
+  <licenses>
+    <!--
+	  Plug-ins that are part of compilation.
+    -->
+    <license>
+      <comments>SWTChart 0.9.0 (http://www.swtchart.org)</comments>
+      <name>EPL v1.0</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+    <license>
+      <comments>SWTXYGraph 2.0.1 (http://code.google.com/p/swt-xy-graph)</comments>
+      <name>EPL v1.0</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+    <license>
+      <comments>OrientDB 2.0.5 (http://www.orientechnologies.com)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>Apache Commons Math 3.4.1 (http://commons.apache.org/math)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>JNA 4.0.0 (https://github.com/twall/jna)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>ConcurrentLinkedHashMap 1.4.0 (https://code.google.com/p/concurrentlinkedhashmap)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>EJML 0.26.0 (https://code.google.com/p/efficient-java-matrix-library)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
+      <name>MIT</name>
+      <url>http://opensource.org/licenses/MIT</url> 
+    </license>
+    <license>
+      <comments>ProteomeCommons 6.21 (http://proteomecommons.org/current/531)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses> 
+  <!--
+	DEVELOPERS
+  -->
+  <developers>
+    <developer>
+      <id>eselmeister</id>
+      <name>Philip Wenig</name>
+      <email>philip.wenig [at] openchrom.net</email>
+      <timezone>+1</timezone>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <!--
+	MODULES
+  -->
+  <modules>
+    <!-- SWTChart -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.swtchart</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.swtchart.feature</module>
+    <!-- SWTXYGraph -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature</module>
+    <!-- OrientDB -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.orientdb</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature</module>
+    <!-- CommonsMath -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature</module>
+    <!-- JNA -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.jna</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.jna.feature</module>   
+    <!-- ConcurrentLinkedHashMap -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature</module>
+    <!-- EJML -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.ejml</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature</module>
+    <!-- NetCDF -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.netcdf</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.netcdf.feature</module>
+    <!-- Update Site (Selected third party libraries) -->
+    <module>../../sites/org.eclipse.chemclipse.thirdpartylibraries.updateSite</module>
+  </modules>
+</project>
