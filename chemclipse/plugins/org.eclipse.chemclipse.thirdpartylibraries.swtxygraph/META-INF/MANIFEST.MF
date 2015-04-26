@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Eclipse-BuddyPolicy: registered
 Bundle-ManifestVersion: 2
 Bundle-Name: Swtxygraph
-Bundle-SymbolicName: net.chemclipse.thirdpartylibraries.swtxygraph
+Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.swtxygraph
 Bundle-Version: 2.0.1.qualifier
-Bundle-Activator: net.chemclipse.thirdpartylibraries.swtxygraph.Activator
+Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.Activator
 Bundle-Vendor: ChemClipse
 Require-Bundle: org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

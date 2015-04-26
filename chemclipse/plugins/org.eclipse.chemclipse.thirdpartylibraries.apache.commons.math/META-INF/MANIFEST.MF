@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Common Math
-Bundle-SymbolicName: net.chemclipse.thirdpartylibraries.apache.commons.math
+Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math
 Bundle-Version: 3.4.1.qualifier
-Bundle-Activator: net.chemclipse.thirdpartylibraries.apache.commons.math.Activator
+Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

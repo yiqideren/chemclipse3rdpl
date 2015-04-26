@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Eclipse-BuddyPolicy: registered
 Bundle-ManifestVersion: 2
 Bundle-Name: Netcdf
-Bundle-SymbolicName: net.chemclipse.thirdpartylibraries.netcdf
+Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.netcdf
 Bundle-Version: 4.3.19.qualifier
-Bundle-Activator: net.chemclipse.thirdpartylibraries.netcdf.Activator
+Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.netcdf.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
