@@ -18,7 +18,7 @@
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature_2.0.5.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature" version="2.0.5.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature_3.4.1.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature" version="3.4.1.qualifier">
+   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature_3.5.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature" version="3.5.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature_0.27.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.ejml.feature" version="0.27.0.qualifier">
