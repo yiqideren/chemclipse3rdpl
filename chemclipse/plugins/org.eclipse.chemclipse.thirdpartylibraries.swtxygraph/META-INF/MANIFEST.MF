@@ -3,15 +3,16 @@ Eclipse-BuddyPolicy: registered
 Bundle-ManifestVersion: 2
 Bundle-Name: Swtxygraph
 Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.swtxygraph
-Bundle-Version: 2.0.1.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.Activator
 Bundle-Vendor: ChemClipse
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.swt;bundle-version="3.103.2",
+ org.eclipse.draw2d;bundle-version="3.9.101",
+ org.eclipse.jface;bundle-version="3.10.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: libraries/org.csstudio.swt.widgets_2.0.1.201207141617.jar,
- libraries/org.csstudio.swt.xygraph_2.0.1.201207141617.jar,
- .
+Bundle-ClassPath: .
 Export-Package: org.csstudio.swt.widgets.datadefinition,
  org.csstudio.swt.widgets.figureparts,
  org.csstudio.swt.widgets.figures,

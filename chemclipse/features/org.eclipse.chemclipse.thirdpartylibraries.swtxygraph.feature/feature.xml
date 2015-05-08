@@ -2,24 +2,24 @@
 <feature
       id="org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature"
       label="SWTXYGraph"
-      version="2.0.1.qualifier"
+      version="2.1.0.qualifier"
       provider-name="ChemClipse">
 
    <description url="http://www.chemclipse.net">
       This feature encapsulates the following libraries:
-SWTXYGraph https://code.google.com/p/swt-xy-graph 2.0.1 EPLv1.0
+SWTXYGraph https://code.google.com/p/swt-xy-graph 2.1.0 EPLv1.0
    </description>
 
    <copyright url="https://code.google.com/p/swt-xy-graph">
       This feature encapsulates the following libraries:
-SWTXYGraph https://code.google.com/p/swt-xy-graph 2.0.1 EPLv1.0
+SWTXYGraph https://code.google.com/p/swt-xy-graph 2.1.0 EPLv1.0
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
       Copyright (c) 2012, 2015 Philip (eselmeister) Wenig.
 
 This feature encapsulates the following libraries:
-SWT XY Graph 2.0.1
+SWT XY Graph 2.1.0
 https://code.google.com/p/swt-xy-graph
 EPLv1.0
 
@@ -29,7 +29,7 @@ v1.0
 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </license>
-   
+
    <url>
       <discovery label="SWT XY Graph" url="https://code.google.com/p/swt-xy-graph"/>
    </url>
