@@ -2,16 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ejml
 Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.ejml
-Bundle-Version: 0.26.0.qualifier
+Bundle-Version: 0.27.0.qualifier
 Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.ejml.Activator
 Bundle-Vendor: ChemClipse
 Require-Bundle: org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- libraries/EJML-core-0.26.jar,
- libraries/EJML-equation-0.26.jar,
- libraries/EJML-experimental-0.26.jar
+Bundle-ClassPath: .
 Export-Package: org.ejml,
  org.ejml.alg.block,
  org.ejml.alg.block.decomposition.bidiagonal,

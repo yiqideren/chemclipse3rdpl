@@ -21,7 +21,7 @@
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature_3.4.1.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature" version="3.4.1.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature_0.26.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.ejml.feature" version="0.26.0.qualifier">
+   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature_0.27.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.ejml.feature" version="0.27.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.netcdf.feature_4.3.19.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.netcdf.feature" version="4.3.19.qualifier">

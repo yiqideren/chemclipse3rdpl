@@ -54,8 +54,8 @@ public final class GraphicsUtil {
 				graphics.popState();
 			}
 		} catch(Exception e) {// If rotate is not supported by the graphics.
-		// final Dimension titleSize = FigureUtilities.getTextExtents(text,
-		// graphics.getFont());
+			// final Dimension titleSize = FigureUtilities.getTextExtents(text,
+			// graphics.getFont());
 			// final int w = titleSize.height;
 			// final int h = titleSize.width + 1;
 			Image image = null;

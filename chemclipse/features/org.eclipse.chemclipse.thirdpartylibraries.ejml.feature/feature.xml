@@ -2,24 +2,24 @@
 <feature
       id="org.eclipse.chemclipse.thirdpartylibraries.ejml.feature"
       label="EJML"
-      version="0.26.0.qualifier"
+      version="0.27.0.qualifier"
       provider-name="ChemClipse">
 
    <description url="http://www.chemclipse.net">
       This feature encapsulates the following libraries:
-EJML https://code.google.com/p/efficient-java-matrix-library 0.24.0 Apache License
+EJML https://code.google.com/p/efficient-java-matrix-library 0.27.0 Apache License
 v2.0
    </description>
 
    <copyright url="http://www.chemclipse.net">
-      EJML https://code.google.com/p/efficient-java-matrix-library 0.24.0 Apache License
+      EJML https://code.google.com/p/efficient-java-matrix-library 0.27.0 Apache License
 v2.0
    </copyright>
 
    <license url="http://www.chemclipse.net">
       Copyright (c) 2013, 2015 Dr. Philip Wenig.
  
-EJML https://code.google.com/p/efficient-java-matrix-library 0.24.0 Apache License
+EJML https://code.google.com/p/efficient-java-matrix-library 0.27.0 Apache License
 v2.0
 
 Licensed to the Apache
