@@ -35,6 +35,7 @@ import org.apache.commons.math3.exception.OutOfRangeException;
  * <pre>
  * 
  * 
+ * 
  * RealVector result = v.mapAddToSelf(3.0).mapTanToSelf().mapSquareToSelf();
  * </pre>
  * <p>

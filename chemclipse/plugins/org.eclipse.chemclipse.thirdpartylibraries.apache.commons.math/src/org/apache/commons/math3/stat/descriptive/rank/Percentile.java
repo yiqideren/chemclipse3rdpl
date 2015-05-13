@@ -585,6 +585,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
 	 * </pre>
 	 * <p>
@@ -619,6 +620,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * </p>
 	 * 
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
@@ -665,6 +667,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * </p>
 	 * 
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(newKthSelector);

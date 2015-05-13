@@ -36,6 +36,7 @@ import org.apache.commons.math3.util.MathArrays;
  * <pre>
  * 
  * 
+ * 
  * double[] angles = new Rotation(matrix, 1.0e-10).getAngles(RotationOrder.XYZ);
  * </pre>
  * <p>
