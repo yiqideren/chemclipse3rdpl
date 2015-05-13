@@ -45,6 +45,8 @@ import org.apache.commons.math3.util.FastMath;
  * 
  * 
  * 
+ * 
+ * 
  * RealVector result = v.mapAddToSelf(3.4).mapToSelf(new Tan()).mapToSelf(new Power(2.3));
  * </pre>
  *
