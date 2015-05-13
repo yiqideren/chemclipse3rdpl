@@ -382,7 +382,7 @@ public class Combinations implements Iterable<int[]> {
 		 * Computes the value (in base 10) represented by the digit
 		 * (interpreted in base {@code n}) in the input array in reverse
 		 * order.
-		 * For example if {@code c} is {@code 3, 2, 1}}, and {@code n} is 3, the method will return 18.
+		 * For example if {@code c} is {@code 3, 2, 1} , and {@code n} is 3, the method will return 18.
 		 *
 		 * @param c
 		 *            Input array.

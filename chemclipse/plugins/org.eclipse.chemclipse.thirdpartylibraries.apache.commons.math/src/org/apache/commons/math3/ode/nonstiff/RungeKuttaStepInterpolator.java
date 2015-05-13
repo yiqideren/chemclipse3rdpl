@@ -91,8 +91,8 @@ abstract class RungeKuttaStepInterpolator extends AbstractStepInterpolator {
 	/**
 	 * Reinitialize the instance
 	 * <p>
-	 * Some Runge-Kutta integrators need fewer functions evaluations than their counterpart step interpolators. So the interpolator should perform the last evaluations they need by themselves. The {@link RungeKuttaIntegrator RungeKuttaIntegrator} and {@link EmbeddedRungeKuttaIntegrator EmbeddedRungeKuttaIntegrator} abstract classes call this method in order to let the step interpolator perform the evaluations it needs. These evaluations will be performed during the call to <code>doFinalize</code>
-	 * if any, i.e. only if the step handler either calls the {@link AbstractStepInterpolator#finalizeStep finalizeStep} method or the {@link AbstractStepInterpolator#getInterpolatedState
+	 * Some Runge-Kutta integrators need fewer functions evaluations than their counterpart step interpolators. So the interpolator should perform the last evaluations they need by themselves. The {@link RungeKuttaIntegrator RungeKuttaIntegrator} and {@link EmbeddedRungeKuttaIntegrator EmbeddedRungeKuttaIntegrator} abstract classes call this method in order to let the step interpolator perform the evaluations it needs. These evaluations will be performed during the call to
+	 * <code>doFinalize</code> if any, i.e. only if the step handler either calls the {@link AbstractStepInterpolator#finalizeStep finalizeStep} method or the {@link AbstractStepInterpolator#getInterpolatedState
 	 * getInterpolatedState} method (for an interpolator which needs a finalization) or if it clones the step interpolator.
 	 * </p>
 	 * 

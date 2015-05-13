@@ -1,5 +1,4 @@
 Manifest-Version: 1.0
-Eclipse-BuddyPolicy: registered
 Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart
 Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.swtchart

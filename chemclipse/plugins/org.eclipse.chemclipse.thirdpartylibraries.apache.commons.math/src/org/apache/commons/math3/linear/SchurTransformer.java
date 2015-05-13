@@ -417,7 +417,7 @@ class SchurTransformer {
 				}
 			} // (s != 0)
 		} // k loop
-		// clean up pollution due to round-off errors
+			// clean up pollution due to round-off errors
 		for(int i = im + 2; i <= iu; i++) {
 			matrixT[i][i - 2] = 0.0;
 			if(i > im + 2) {

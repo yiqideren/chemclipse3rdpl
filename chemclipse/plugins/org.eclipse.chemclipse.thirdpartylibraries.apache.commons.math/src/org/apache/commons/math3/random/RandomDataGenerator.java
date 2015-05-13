@@ -605,7 +605,7 @@ public class RandomDataGenerator implements RandomData, Serializable {
 	 *
 	 * This method calls {@link MathArrays#shuffle(int[],RandomGenerator)
 	 * MathArrays.shuffle} in order to create a random shuffle of the set
-	 * of natural numbers {@code 0, 1, ..., n - 1 }}.
+	 * of natural numbers {@code 0, 1, ..., n - 1 } .
 	 *
 	 * @throws NumberIsTooLargeException
 	 *             if {@code k > n}.
