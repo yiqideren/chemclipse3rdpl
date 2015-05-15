@@ -3,21 +3,18 @@ Eclipse-BuddyPolicy: registered
 Bundle-ManifestVersion: 2
 Bundle-Name: Orientdb
 Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.orientdb
-Bundle-Version: 2.0.5.qualifier
+Bundle-Version: 2.0.9.qualifier
 Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.orientdb.Activator
 Bundle-Vendor: ChemClipse
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.chemclipse.thirdpartylibraries.jna;bundle-version="4.0.0",
- org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap;bundle-version="1.4.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.eclipse.chemclipse.thirdpartylibraries.jna;bundle-version="4.1.0",
+ org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap;bundle-version="1.4.0",
+ org.eclipse.chemclipse.thirdpartylibraries.xerial;bundle-version="1.1.16",
+ org.eclipse.chemclipse.thirdpartylibraries.javassist;bundle-version="3.19.0",
+ javax.persistence;bundle-version="2.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- libraries/orientdb-core-2.0.5.jar,
- libraries/orientdb-etl-2.0.5.jar,
- libraries/orientdb-tools-2.0.5.jar,
- libraries/orientdb-object-2.0.5.jar,
- libraries/orientdb-client-2.0.5.jar,
- libraries/orientdb-enterprise-2.0.5.jar
+Bundle-ClassPath: .
 Export-Package: com.orientechnologies.common.collection,
  com.orientechnologies.common.comparator,
  com.orientechnologies.common.concur,
@@ -148,13 +145,6 @@ Export-Package: com.orientechnologies.common.collection,
  com.orientechnologies.orient.enterprise.channel,
  com.orientechnologies.orient.enterprise.channel.binary,
  com.orientechnologies.orient.enterprise.channel.text,
- com.orientechnologies.orient.etl,
- com.orientechnologies.orient.etl.block,
- com.orientechnologies.orient.etl.extractor,
- com.orientechnologies.orient.etl.listener,
- com.orientechnologies.orient.etl.loader,
- com.orientechnologies.orient.etl.source,
- com.orientechnologies.orient.etl.transformer,
  com.orientechnologies.orient.object.db,
  com.orientechnologies.orient.object.dictionary,
  com.orientechnologies.orient.object.enhancement,

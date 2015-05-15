@@ -9,13 +9,13 @@
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature_2.1.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature" version="2.1.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.jna.feature_4.0.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.jna.feature" version="4.0.0.qualifier">
+   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.jna.feature_4.1.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.jna.feature" version="4.1.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature_1.4.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature" version="1.4.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature_2.0.5.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature" version="2.0.5.qualifier">
+   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature_2.0.9.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature" version="2.0.9.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature_3.5.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature" version="3.5.0.qualifier">

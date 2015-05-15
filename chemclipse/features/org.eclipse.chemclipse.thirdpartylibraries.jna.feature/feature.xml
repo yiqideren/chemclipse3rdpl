@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.chemclipse.thirdpartylibraries.jna.feature"
       label="JNA"
-      version="4.0.0.qualifier"
+      version="4.1.0.qualifier"
       provider-name="ChemClipse">
 
    <description url="http://www.chemclipse.net">

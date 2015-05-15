@@ -2,18 +2,18 @@
 <feature
       id="org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature"
       label="OrientDB"
-      version="2.0.5.qualifier"
+      version="2.0.9.qualifier"
       provider-name="ChemClipse">
 
    <description url="http://www.chemclipse.net">
       This feature encapsulates the following libraries:
-OrientDB http://www.orientechnologies.com/orient-db.htm 1.7.2 Apache License
+OrientDB http://www.orientechnologies.com/orient-db.htm 2.0.9 Apache License
 v2.0
    </description>
 
    <copyright url="http://www.chemclipse.net">
       This feature encapsulates the following libraries:
-OrientDB http://www.orientechnologies.com/orient-db.htm 1.7.2
+OrientDB http://www.orientechnologies.com/orient-db.htm 2.0.9
 Apache License
 v2.0
    </copyright>
@@ -22,7 +22,7 @@ v2.0
       Copyright (c) 2011, 2015 Philip (eselmeister) Wenig.
  
 This feature encapsulates the following libraries:
-OrientDB http://www.orientechnologies.com/orient-db.htm 1.7.2
+OrientDB http://www.orientechnologies.com/orient-db.htm 2.0.9
 Apache License
 v2.0
 
@@ -52,6 +52,11 @@ governing permissions and limitations under the License.
       <discovery label="OrientDB" url="http://www.orientechnologies.com/orient-db.htm"/>
       <discovery label="ChemClipse ThirdPartyLibraries OrientDB" url="http://www.chemclipse.net"/>
    </url>
+
+   <requires>
+      <import feature="org.eclipse.chemclipse.thirdpartylibraries.xerial.feature" version="1.1.16.qualifier"/>
+      <import feature="org.eclipse.chemclipse.thirdpartylibraries.javassist.feature" version="3.19.0.qualifier"/>
+   </requires>
 
    <plugin
          id="org.eclipse.chemclipse.thirdpartylibraries.orientdb"

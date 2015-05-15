@@ -42,7 +42,7 @@
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
     </license>
     <license>
-      <comments>OrientDB 2.0.5 (http://www.orientechnologies.com)</comments>
+      <comments>OrientDB 2.0.9 (http://www.orientechnologies.com)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
@@ -62,7 +62,7 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
     <license>
-      <comments>EJML 0.27.0 (https://code.google.com/p/efficient-java-matrix-library)</comments>
+      <comments>EJML 0.27.0 (http://ejml.org)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
@@ -70,11 +70,6 @@
       <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
       <name>MIT</name>
       <url>http://opensource.org/licenses/MIT</url> 
-    </license>
-    <license>
-      <comments>ProteomeCommons 6.21 (http://proteomecommons.org/current/531)</comments>
-      <name>Apache License v2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
   </licenses> 
   <!--
