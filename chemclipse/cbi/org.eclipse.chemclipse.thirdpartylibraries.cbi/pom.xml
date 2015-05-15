@@ -65,8 +65,7 @@
       <comments>EJML 0.27.0 (http://ejml.org)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-    
+    </license> 
     <license>
       <comments>Javassist 3.19.0 (https://github.com/jboss-javassist/javassist/releases)</comments>
       <name>MPL v1.1</name>
@@ -81,8 +80,7 @@
       <comments>Xerial 1.1.16 (https://github.com/xerial)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>    
-    
+    </license>  
     <license>
       <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
       <name>MIT</name>
@@ -131,6 +129,15 @@
     <!-- NetCDF -->
     <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.netcdf</module>
     <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.netcdf.feature</module>
+    <!-- Javassist -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.javassist</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.javassist.feature</module>
+    <!-- JSR305 -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.jsr305</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.jsr305.feature</module>
+    <!-- Xerial -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.xerial</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.xerial.feature</module>            
     <!-- Update Site (Selected third party libraries) -->
     <module>../../sites/org.eclipse.chemclipse.thirdpartylibraries.updateSite</module>
   </modules>
