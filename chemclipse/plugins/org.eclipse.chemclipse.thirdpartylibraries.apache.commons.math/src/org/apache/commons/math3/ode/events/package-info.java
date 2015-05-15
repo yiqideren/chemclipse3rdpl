@@ -45,6 +45,8 @@
  * 
  * 
  * 
+ * 
+ * 
  * public double g(double t, double[] y) {
  * 
  * 	return y[0] - targetConcentration;
@@ -72,6 +74,8 @@
  * 
  * 
  * 
+ * 
+ * 
  * public double g(double t, double[] y) {
  * 
  * 	return (t - tManeuverStart) &amp; lowast(t - tManeuverStop);
@@ -89,6 +93,8 @@
  * The third case is useful mainly for monitoring purposes, a simple example is:
  * 
  * <pre>
+ * 
+ * 
  * 
  * 
  * 

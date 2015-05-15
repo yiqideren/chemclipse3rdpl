@@ -36,6 +36,9 @@ import java.io.ObjectOutputStream;
  * 
  * 
  * 
+ * 
+ * 
+ * 
  * Metaobject m = ((Metalevel)reflectiveObject)._getMetaobject();
  * </pre>
  *
@@ -209,6 +212,9 @@ public class Metaobject implements Serializable {
 	 * Note: this method is not invoked if the base-level method is invoked by a constructor in the super class. For example,
 	 *
 	 * <pre>
+	 * 
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
