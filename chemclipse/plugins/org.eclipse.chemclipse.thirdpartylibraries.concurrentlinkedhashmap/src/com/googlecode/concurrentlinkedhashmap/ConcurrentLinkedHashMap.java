@@ -1537,6 +1537,7 @@ public final class ConcurrentLinkedHashMap<K, V> extends AbstractMap<K, V> imple
 	 * 
 	 * <pre>
 	 * 
+	 * 
 	 * {
 	 * 	&#064;code
 	 * 	ConcurrentMap&lt;Vertex, Set&lt;Edge&gt;&gt; graph = new Builder&lt;Vertex, Set&lt;Edge&gt;&gt;().maximumWeightedCapacity(5000).weigher(Weighers.&lt;Edge&gt; set()).build();

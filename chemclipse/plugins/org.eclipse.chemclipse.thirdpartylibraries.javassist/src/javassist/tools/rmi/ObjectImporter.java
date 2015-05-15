@@ -83,6 +83,7 @@ public class ObjectImporter implements java.io.Serializable {
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * Viewer v = (Viewer)this.getClass().getClassLoader();
 	 * ObjectImporter oi = new ObjectImporter(v.getServer(), v.getPort());
 	 * </pre>

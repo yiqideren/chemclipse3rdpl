@@ -50,7 +50,6 @@ governing permissions and limitations under the License.
 
    <url>
       <discovery label="JNA" url="https://github.com/twall/jna"/>
-      <discovery label="ChemClipse Marketplace" url="http://www.chemclipse.net"/>
    </url>
 
    <plugin

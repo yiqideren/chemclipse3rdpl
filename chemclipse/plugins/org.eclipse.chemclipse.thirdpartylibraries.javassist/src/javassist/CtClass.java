@@ -403,6 +403,7 @@ public abstract class CtClass {
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * class List&lt;T&gt; {
 	 * 
 	 * 	T value;
@@ -447,6 +448,7 @@ public abstract class CtClass {
 	 * The generated class file is equivalent to the following:
 	 *
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * class List {

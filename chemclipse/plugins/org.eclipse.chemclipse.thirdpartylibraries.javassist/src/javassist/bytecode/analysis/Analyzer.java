@@ -42,6 +42,7 @@ import javassist.bytecode.Opcode;
  * <pre>
  * 
  * 
+ * 
  * // Method to analyze
  * public Object doSomething(int x) {
  * 

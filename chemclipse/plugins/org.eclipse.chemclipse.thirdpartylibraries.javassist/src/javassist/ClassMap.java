@@ -24,6 +24,7 @@ import javassist.bytecode.Descriptor;
  * <pre>
  * 
  * 
+ * 
  * class MyClassMap extends ClassMap {
  * 
  * 	public Object get(Object jvmClassName) {

@@ -5,5 +5,6 @@ Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.jsr305
 Bundle-Version: 1.3.9.qualifier
 Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.jsr305.Activator
 Require-Bundle: org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy

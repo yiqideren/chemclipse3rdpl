@@ -69,6 +69,7 @@ public class CodeConverter {
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * public static Point createPoint(int x, int y) {
 	 * 
 	 * 	if(aPoint == null)
@@ -156,6 +157,7 @@ public class CodeConverter {
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * Point p = new Point();
 	 * int newX = p.x + 3;
 	 * </pre>
@@ -164,6 +166,7 @@ public class CodeConverter {
 	 * can be translated into:
 	 *
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * Point p = new Point();
@@ -266,6 +269,7 @@ public class CodeConverter {
 	 * If we have the following class:
 	 * 
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * class POJO {
@@ -412,6 +416,7 @@ public class CodeConverter {
 	 * <pre>
 	 * 
 	 * 
+	 * 
 	 * Point p2 = p.move(x + y, 0);
 	 * </pre>
 	 *
@@ -466,6 +471,7 @@ public class CodeConverter {
 	 * The <code>CodeConverter</code> would translate bytecode equivalent to:
 	 *
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * Point p2 = p.move(x + y, 0);

@@ -32,6 +32,7 @@ import java.io.ObjectOutputStream;
  * <pre>
  * 
  * 
+ * 
  * ClassMetaobject cm = ((Metalevel)reflectiveObject)._getClass();
  * </pre>
  *

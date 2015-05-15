@@ -57,6 +57,7 @@ import javassist.bytecode.annotation.*;
  * <pre>
  * 
  * 
+ * 
  * AnnotationsAttribute attr = (AnnotationsAttribute)minfo.getAttribute(AnnotationsAttribute.visibleTag);
  * </pre>
  *
