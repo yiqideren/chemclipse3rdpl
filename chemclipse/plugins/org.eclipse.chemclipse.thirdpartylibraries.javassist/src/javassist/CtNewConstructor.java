@@ -254,6 +254,7 @@ public class CtNewConstructor {
 	 * 
 	 * 
 	 * 
+	 * 
 	 * public class Sample {
 	 * 
 	 * 	public Object m(Object[] args, String msg) {
@@ -268,6 +269,7 @@ public class CtNewConstructor {
 	 * This program produces the following class:
 	 *
 	 * <pre>
+	 * 
 	 * 
 	 * 
 	 * 

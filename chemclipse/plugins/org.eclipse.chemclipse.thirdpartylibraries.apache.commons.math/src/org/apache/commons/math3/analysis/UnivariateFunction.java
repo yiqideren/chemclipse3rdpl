@@ -31,6 +31,7 @@ package org.apache.commons.math3.analysis;
  * 
  * 
  * 
+ * 
  * private static class LocalException extends RuntimeException {
  * 
  * 	// The x value that caused the problem.

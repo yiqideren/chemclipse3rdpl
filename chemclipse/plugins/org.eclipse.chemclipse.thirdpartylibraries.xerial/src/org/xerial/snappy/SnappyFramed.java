@@ -75,6 +75,7 @@ final class SnappyFramed {
 	 * 
 	 * 
 	 * 
+	 * 
 	 * uint32_t mask_checksum(uint32_t x) {
 	 * 
 	 * 	return ((x &gt;&gt; 15) | (x &lt;&lt; 17)) + 0xa282ead8;
