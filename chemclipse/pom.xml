@@ -186,6 +186,8 @@
           <configuration>
             <compilerArguments>
               <encoding>${project.build.sourceEncoding}</encoding>
+	      <compilerArgument>-warn:none</compilerArgument>
+	      <compilerArgument>-err:none</compilerArgument>
             </compilerArguments>
           </configuration>
       </plugin>
