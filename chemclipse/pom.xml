@@ -184,10 +184,9 @@
         <artifactId>tycho-compiler-plugin</artifactId>
         <version>${tycho.version}</version>
           <configuration>
+	    <compilerArgument>-err:-forbidden</compilerArgument>
             <compilerArguments>
               <encoding>${project.build.sourceEncoding}</encoding>
-	      <compilerArgument>-warn:none</compilerArgument>
-	      <compilerArgument>-err:none</compilerArgument>
             </compilerArguments>
           </configuration>
       </plugin>
