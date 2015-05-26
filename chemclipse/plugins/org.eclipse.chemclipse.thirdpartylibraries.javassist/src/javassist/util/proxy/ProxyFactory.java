@@ -141,6 +141,7 @@ import javassist.bytecode.*;
  * 
  * 
  * 
+ * 
  * class EmptyHandler implements MethodHandler {
  * 
  * 	public Object invoke(Object self, Method m, Method proceed, Object[] args) throws Exception {

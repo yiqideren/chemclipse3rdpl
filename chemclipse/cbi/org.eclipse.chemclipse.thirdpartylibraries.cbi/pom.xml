@@ -81,11 +81,6 @@
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>  
-    <license>
-      <comments>NetCDF 4.3.19 (http://www.unidata.ucar.edu/software/netcdf-java)</comments>
-      <name>MIT</name>
-      <url>http://opensource.org/licenses/MIT</url> 
-    </license>
   </licenses> 
   <!--
 	DEVELOPERS
@@ -126,9 +121,6 @@
     <!-- EJML -->
     <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.ejml</module>
     <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature</module>
-    <!-- NetCDF -->
-    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.netcdf</module>
-    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.netcdf.feature</module>
     <!-- Javassist -->
     <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.javassist</module>
     <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.javassist.feature</module>

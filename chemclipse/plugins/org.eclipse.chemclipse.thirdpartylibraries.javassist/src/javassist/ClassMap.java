@@ -68,6 +68,7 @@ import javassist.bytecode.Descriptor;
  * 
  * 
  * 
+ * 
  * class MyClassMap extends ClassMap {
  * 
  * 	public Object get(Object jvmClassName) {
