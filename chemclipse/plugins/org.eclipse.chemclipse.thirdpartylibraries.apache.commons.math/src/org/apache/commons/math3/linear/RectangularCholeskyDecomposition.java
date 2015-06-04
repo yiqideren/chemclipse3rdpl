@@ -153,9 +153,8 @@ public class RectangularCholeskyDecomposition {
 	/**
 	 * Get the root of the covariance matrix.
 	 * The root is the rectangular matrix <code>B</code> such that
-	 * the covariance matrix is equal to <code>B.B<sup>T</sup></code>
+	 * the covariance matrix is equal to <code>B.B<sup>T</sup></code> matrix
 	 * 
-	 * @return root of the square matrix
 	 * @see #getRank()
 	 */
 	public RealMatrix getRootMatrix() {
@@ -168,8 +167,8 @@ public class RectangularCholeskyDecomposition {
 	 * The r is the number of independent rows in the symmetric positive semidefinite
 	 * matrix, it is also the number of columns of the rectangular
 	 * matrix of the decomposition.
+	 * matrix.
 	 * 
-	 * @return r of the square matrix.
 	 * @see #getRootMatrix()
 	 */
 	public int getRank() {

@@ -230,10 +230,8 @@ public class DiagonalMatrix extends AbstractRealMatrix implements Serializable {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws NumberIsTooLargeException
-	 *             if {@code row != column} and value is non-zero.
+	 * {@inheritDoc} NumberIsTooLargeException
+	 * if {@code row != column} and value is non-zero.
 	 */
 	@Override
 	public void setEntry(final int row, final int column, final double value) throws OutOfRangeException, NumberIsTooLargeException {
@@ -247,10 +245,8 @@ public class DiagonalMatrix extends AbstractRealMatrix implements Serializable {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws NumberIsTooLargeException
-	 *             if {@code row != column} and increment is non-zero.
+	 * {@inheritDoc} NumberIsTooLargeException
+	 * if {@code row != column} and increment is non-zero.
 	 */
 	@Override
 	public void addToEntry(final int row, final int column, final double increment) throws OutOfRangeException, NumberIsTooLargeException {
@@ -317,9 +313,9 @@ public class DiagonalMatrix extends AbstractRealMatrix implements Serializable {
 
 	/**
 	 * Ensure a value is zero.
+	 * value
+	 * value to check
 	 * 
-	 * @param value
-	 *            value to check
 	 * @exception NumberIsTooLargeException
 	 *                if value is not zero
 	 */

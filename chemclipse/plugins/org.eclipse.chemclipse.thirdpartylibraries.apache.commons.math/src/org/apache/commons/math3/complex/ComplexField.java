@@ -42,8 +42,7 @@ public class ComplexField implements Field<Complex>, Serializable {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static ComplexField getInstance() {
 
@@ -84,8 +83,7 @@ public class ComplexField implements Field<Complex>, Serializable {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

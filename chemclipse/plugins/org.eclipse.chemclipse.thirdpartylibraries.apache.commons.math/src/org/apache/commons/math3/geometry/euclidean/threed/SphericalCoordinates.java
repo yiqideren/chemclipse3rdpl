@@ -66,9 +66,8 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Build a spherical coordinates transformer from Cartesian coordinates.
-	 * 
-	 * @param v
-	 *            Cartesian coordinates
+	 * v
+	 * Cartesian coordinates
 	 */
 	public SphericalCoordinates(final Vector3D v) {
 
@@ -82,9 +81,9 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Build a spherical coordinates transformer from spherical coordinates.
+	 * r
+	 * radius
 	 * 
-	 * @param r
-	 *            radius
 	 * @param theta
 	 *            azimuthal angle in x-y plane
 	 * @param phi
@@ -106,8 +105,7 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Get the Cartesian coordinates.
-	 * 
-	 * @return Cartesian coordinates
+	 * coordinates
 	 */
 	public Vector3D getCartesian() {
 
@@ -116,8 +114,8 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Get the radius.
+	 * r
 	 * 
-	 * @return radius r
 	 * @see #getTheta()
 	 * @see #getPhi()
 	 */
@@ -128,8 +126,8 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Get the azimuthal angle in x-y plane.
+	 * &theta;
 	 * 
-	 * @return azimuthal angle in x-y plane &theta;
 	 * @see #getR()
 	 * @see #getPhi()
 	 */
@@ -140,8 +138,8 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Get the polar (co-latitude) angle.
+	 * &Phi;
 	 * 
-	 * @return polar (co-latitude) angle &Phi;
 	 * @see #getR()
 	 * @see #getTheta()
 	 */
@@ -153,10 +151,10 @@ public class SphericalCoordinates implements Serializable {
 	/**
 	 * Convert a gradient with respect to spherical coordinates into a gradient
 	 * with respect to Cartesian coordinates.
+	 * sGradient
+	 * gradient with respect to spherical coordinates
+	 * {df/dr, df/d&theta;, df/d&Phi;}
 	 * 
-	 * @param sGradient
-	 *            gradient with respect to spherical coordinates
-	 *            {df/dr, df/d&theta;, df/d&Phi;}
 	 * @return gradient with respect to Cartesian coordinates
 	 *         {df/dx, df/dy, df/dz}
 	 */
@@ -175,12 +173,12 @@ public class SphericalCoordinates implements Serializable {
 	 * <p>
 	 * As Hessian are always symmetric, we use only the lower left part of the provided spherical Hessian, so the upper part may not be initialized. However, we still do fill up the complete array we create, with guaranteed symmetry.
 	 * </p>
+	 * sHessian
+	 * Hessian with respect to spherical coordinates
+	 * {{d<sup>2</sup>f/dr<sup>2</sup>, d<sup>2</sup>f/drd&theta;, d<sup>2</sup>f/drd&Phi;},
+	 * {d<sup>2</sup>f/drd&theta;, d<sup>2</sup>f/d&theta;<sup>2</sup>, d<sup>2</sup>f/d&theta;d&Phi;},
+	 * {d<sup>2</sup>f/drd&Phi;, d<sup>2</sup>f/d&theta;d&Phi;, d<sup>2</sup>f/d&Phi;<sup>2</sup>}
 	 * 
-	 * @param sHessian
-	 *            Hessian with respect to spherical coordinates
-	 *            {{d<sup>2</sup>f/dr<sup>2</sup>, d<sup>2</sup>f/drd&theta;, d<sup>2</sup>f/drd&Phi;},
-	 *            {d<sup>2</sup>f/drd&theta;, d<sup>2</sup>f/d&theta;<sup>2</sup>, d<sup>2</sup>f/d&theta;d&Phi;},
-	 *            {d<sup>2</sup>f/drd&Phi;, d<sup>2</sup>f/d&theta;d&Phi;, d<sup>2</sup>f/d&Phi;<sup>2</sup>}
 	 * @param sGradient
 	 *            gradient with respect to spherical coordinates
 	 *            {df/dr, df/d&theta;, df/d&Phi;}
@@ -324,8 +322,7 @@ public class SphericalCoordinates implements Serializable {
 
 	/**
 	 * Replace the instance with a data transfer object for serialization.
-	 * 
-	 * @return data transfer object that will be serialized
+	 * serialized
 	 */
 	private Object writeReplace() {
 

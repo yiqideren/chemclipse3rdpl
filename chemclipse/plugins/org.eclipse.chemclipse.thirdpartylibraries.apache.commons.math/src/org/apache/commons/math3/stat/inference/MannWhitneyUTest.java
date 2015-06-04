@@ -81,9 +81,9 @@ public class MannWhitneyUTest {
 
 	/**
 	 * Concatenate the samples into one array.
+	 * x
+	 * first sample
 	 * 
-	 * @param x
-	 *            first sample
 	 * @param y
 	 *            second sample
 	 * @return concatenated array

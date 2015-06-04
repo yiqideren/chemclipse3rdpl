@@ -71,118 +71,19 @@ public final class CtMethod extends CtBehavior {
 	 *
 	 * <p>
 	 * For example, suppose that a method <code>at()</code> is as follows:
-	 *
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * public X at(int i) {
 	 * 
-	 * 	return (X)super.elementAt(i);
-	 * }
-	 * </pre>
+	 * return (X)super.elementAt(i); }
 	 *
 	 * <p>
 	 * (<code>X</code> is a class name.) If <code>map</code> substitutes <code>String</code> for <code>X</code>, then the created method is:
 	 *
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * public String at(int i) {
 	 * 
-	 * 	return (String)super.elementAt(i);
-	 * }
-	 * </pre>
-	 *
+	 * return (String)super.elementAt(i); }
+	 * 
 	 * <p>
 	 * By default, all the occurrences of the names of the class declaring <code>at()</code> and the superclass are replaced with the name of the class and the superclass that the created method is added to. This is done whichever <code>map</code> is null or not. To prevent this replacement, call <code>ClassMap.fix()</code> or <code>put()</code> to explicitly specify replacement.
 	 *

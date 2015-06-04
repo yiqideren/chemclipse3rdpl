@@ -830,8 +830,7 @@ public abstract class AbstractRealMatrix extends RealLinearOperator implements R
 
 	/**
 	 * Get a string representation for this matrix.
-	 * 
-	 * @return a string representation for this matrix
+	 * matrix
 	 */
 	@Override
 	public String toString() {

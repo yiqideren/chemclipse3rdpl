@@ -42,8 +42,7 @@ public class FractionField implements Field<Fraction>, Serializable {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static FractionField getInstance() {
 
@@ -84,8 +83,7 @@ public class FractionField implements Field<Fraction>, Serializable {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

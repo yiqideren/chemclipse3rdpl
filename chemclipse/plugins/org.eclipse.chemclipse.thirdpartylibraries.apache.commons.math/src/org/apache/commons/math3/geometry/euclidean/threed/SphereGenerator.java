@@ -102,9 +102,9 @@ public class SphereGenerator implements SupportBallGenerator<Euclidean3D, Vector
 
 	/**
 	 * Compute a dimension 4 minor, when 4<sup>th</sup> column is known to be filled with 1.0.
+	 * c1
+	 * first column
 	 * 
-	 * @param c1
-	 *            first column
 	 * @param c2
 	 *            second column
 	 * @param c3

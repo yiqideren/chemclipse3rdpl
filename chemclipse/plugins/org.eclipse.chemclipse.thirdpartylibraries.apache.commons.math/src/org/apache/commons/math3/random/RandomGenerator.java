@@ -27,9 +27,8 @@ public interface RandomGenerator {
 	 * <p>
 	 * Sequences of values generated starting with the same seeds should be identical.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the seed value
+	 * seed
+	 * the seed value
 	 */
 	void setSeed(int seed);
 
@@ -38,9 +37,8 @@ public interface RandomGenerator {
 	 * <p>
 	 * Sequences of values generated starting with the same seeds should be identical.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the seed value
+	 * seed
+	 * the seed value
 	 */
 	void setSeed(int[] seed);
 
@@ -49,9 +47,8 @@ public interface RandomGenerator {
 	 * <p>
 	 * Sequences of values generated starting with the same seeds should be identical.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the seed value
+	 * seed
+	 * the seed value
 	 */
 	void setSeed(long seed);
 

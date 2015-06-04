@@ -62,8 +62,7 @@ public class KthSelector implements Serializable {
 
 	/**
 	 * Get the pivotin strategy.
-	 * 
-	 * @return pivoting strategy
+	 * strategy
 	 */
 	public PivotingStrategyInterface getPivotingStrategy() {
 

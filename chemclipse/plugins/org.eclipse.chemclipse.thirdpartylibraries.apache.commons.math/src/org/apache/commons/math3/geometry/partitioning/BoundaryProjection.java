@@ -42,9 +42,9 @@ public class BoundaryProjection<S extends Space> {
 
 	/**
 	 * Constructor from raw elements.
+	 * original
+	 * original point
 	 * 
-	 * @param original
-	 *            original point
 	 * @param projected
 	 *            projected point
 	 * @param offset
@@ -59,8 +59,7 @@ public class BoundaryProjection<S extends Space> {
 
 	/**
 	 * Get the original point.
-	 * 
-	 * @return original point
+	 * point
 	 */
 	public Point<S> getOriginal() {
 
@@ -69,8 +68,7 @@ public class BoundaryProjection<S extends Space> {
 
 	/**
 	 * Projected point.
-	 * 
-	 * @return projected point, or null if there are no boundary
+	 * boundary
 	 */
 	public Point<S> getProjected() {
 
@@ -85,8 +83,7 @@ public class BoundaryProjection<S extends Space> {
 	 * <p>
 	 * If there are no boundary, the value is set to either {@code Double.POSITIVE_INFINITY} if the region is empty (i.e. all points are outside of the region) or {@code Double.NEGATIVE_INFINITY} if the region covers the whole space (i.e. all points are inside of the region).
 	 * </p>
-	 * 
-	 * @return offset of the point with respect to the boundary it is projected on
+	 * on
 	 */
 	public double getOffset() {
 

@@ -80,9 +80,8 @@ public class RRQRDecomposition extends QRDecomposition {
 
 	/**
 	 * Decompose matrix.
-	 * 
-	 * @param qrt
-	 *            transposed matrix
+	 * qrt
+	 * transposed matrix
 	 */
 	@Override
 	protected void decompose(double[][] qrt) {
@@ -96,9 +95,9 @@ public class RRQRDecomposition extends QRDecomposition {
 
 	/**
 	 * Perform Householder reflection for a minor A(minor, minor) of A.
+	 * minor
+	 * minor index
 	 * 
-	 * @param minor
-	 *            minor index
 	 * @param qrt
 	 *            transposed matrix
 	 */
@@ -158,9 +157,7 @@ public class RRQRDecomposition extends QRDecomposition {
 	 * This implementation looks at Frobenius norms of the sequence of bottom right submatrices. When a large fall in norm is seen, the rank is returned. The drop is computed as:
 	 * </p>
 	 * 
-	 * <pre>
 	 * (thisNorm / lastNorm) * rNorm &lt; dropThreshold
-	 * </pre>
 	 * <p>
 	 * where thisNorm is the Frobenius norm of the current submatrix, lastNorm is the Frobenius norm of the previous submatrix, rNorm is is the Frobenius norm of the complete matrix
 	 * </p>
@@ -193,8 +190,7 @@ public class RRQRDecomposition extends QRDecomposition {
 	 * <p>
 	 * Least Square sense means a solver can be computed for an overdetermined system, (i.e. a system with more equations than unknowns, which corresponds to a tall A matrix with more rows than columns). In any case, if the matrix is singular within the tolerance set at {@link RRQRDecomposition#RRQRDecomposition(RealMatrix, double) construction}, an error will be triggered when the {@link DecompositionSolver#solve(RealVector) solve} method will be called.
 	 * </p>
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	@Override
 	public DecompositionSolver getSolver() {

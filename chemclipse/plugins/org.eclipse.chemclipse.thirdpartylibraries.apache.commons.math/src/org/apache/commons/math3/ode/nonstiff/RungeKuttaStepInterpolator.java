@@ -58,17 +58,14 @@ abstract class RungeKuttaStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Copy constructor.
-	 * 
 	 * <p>
 	 * The copied interpolator should have been finalized before the copy, otherwise the copy will not be able to perform correctly any interpolation and will throw a {@link NullPointerException} later. Since we don't want this constructor to throw the exceptions finalization may involve and since we don't want this method to modify the state of the copied interpolator, finalization is <strong>not</strong> done automatically, it remains under user control.
 	 * </p>
-	 * 
 	 * <p>
 	 * The copy is a deep copy: its arrays are separated from the original arrays of the instance.
 	 * </p>
-	 * 
-	 * @param interpolator
-	 *            interpolator to copy from.
+	 * interpolator
+	 * interpolator to copy from.
 	 */
 	public RungeKuttaStepInterpolator(final RungeKuttaStepInterpolator interpolator) {
 
@@ -95,9 +92,9 @@ abstract class RungeKuttaStepInterpolator extends AbstractStepInterpolator {
 	 * <code>doFinalize</code> if any, i.e. only if the step handler either calls the {@link AbstractStepInterpolator#finalizeStep finalizeStep} method or the {@link AbstractStepInterpolator#getInterpolatedState
 	 * getInterpolatedState} method (for an interpolator which needs a finalization) or if it clones the step interpolator.
 	 * </p>
+	 * rkIntegrator
+	 * integrator being used
 	 * 
-	 * @param rkIntegrator
-	 *            integrator being used
 	 * @param y
 	 *            reference to the integrator array holding the state at
 	 *            the end of the step

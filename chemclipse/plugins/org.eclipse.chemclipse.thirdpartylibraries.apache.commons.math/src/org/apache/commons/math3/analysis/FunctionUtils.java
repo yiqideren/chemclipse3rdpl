@@ -381,11 +381,10 @@ public class FunctionUtils {
 	/**
 	 * Returns a MultivariateFunction h(x[]) defined by
 	 * 
-	 * <pre>
 	 * <code>
 	 * h(x[]) = combiner(...combiner(combiner(initialValue,f(x[0])),f(x[1]))...),f(x[x.length-1]))
 	 * </code>
-	 * </pre>
+	 * 
 	 *
 	 * @param combiner
 	 *            Combiner function.
@@ -414,11 +413,10 @@ public class FunctionUtils {
 	/**
 	 * Returns a MultivariateFunction h(x[]) defined by
 	 * 
-	 * <pre>
 	 * <code>
 	 * h(x[]) = combiner(...combiner(combiner(initialValue,x[0]),x[1])...),x[x.length-1])
 	 * </code>
-	 * </pre>
+	 * 
 	 *
 	 * @param combiner
 	 *            Combiner function.
@@ -511,9 +509,9 @@ public class FunctionUtils {
 
 	/**
 	 * Convert a {@link UnivariateDifferentiableFunction} into a {@link DifferentiableUnivariateFunction}.
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableUnivariateFunction} interface itself is deprecated
 	 */
@@ -548,9 +546,9 @@ public class FunctionUtils {
 	 * <p>
 	 * Note that the converted function is able to handle {@link DerivativeStructure} up to order one. If the function is called with higher order, a {@link NumberIsTooLargeException} will be thrown.
 	 * </p>
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableUnivariateFunction} interface itself is deprecated
 	 */
@@ -598,9 +596,9 @@ public class FunctionUtils {
 
 	/**
 	 * Convert a {@link MultivariateDifferentiableFunction} into a {@link DifferentiableMultivariateFunction}.
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableMultivariateFunction} interface itself is deprecated
 	 */
@@ -674,9 +672,9 @@ public class FunctionUtils {
 	 * <p>
 	 * Note that the converted function is able to handle {@link DerivativeStructure} elements that all have the same number of free parameters and order, and with order at most 1. If the function is called with inconsistent numbers of free parameters or higher order, a {@link DimensionMismatchException} or a {@link NumberIsTooLargeException} will be thrown.
 	 * </p>
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableMultivariateFunction} interface itself is deprecated
 	 */
@@ -742,9 +740,9 @@ public class FunctionUtils {
 
 	/**
 	 * Convert a {@link MultivariateDifferentiableVectorFunction} into a {@link DifferentiableMultivariateVectorFunction}.
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableMultivariateVectorFunction} interface itself is deprecated
 	 */
@@ -795,9 +793,9 @@ public class FunctionUtils {
 	 * <p>
 	 * Note that the converted function is able to handle {@link DerivativeStructure} elements that all have the same number of free parameters and order, and with order at most 1. If the function is called with inconsistent numbers of free parameters or higher order, a {@link DimensionMismatchException} or a {@link NumberIsTooLargeException} will be thrown.
 	 * </p>
+	 * f
+	 * function to convert
 	 * 
-	 * @param f
-	 *            function to convert
 	 * @return converted function
 	 * @deprecated this conversion method is temporary in version 3.1, as the {@link DifferentiableMultivariateFunction} interface itself is deprecated
 	 */

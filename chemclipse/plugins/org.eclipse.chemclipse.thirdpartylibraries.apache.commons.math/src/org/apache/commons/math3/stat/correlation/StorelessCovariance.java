@@ -105,9 +105,9 @@ public class StorelessCovariance extends Covariance {
 
 	/**
 	 * Gets the element at index (i, j) from the covariance matrix
+	 * i
+	 * the row index
 	 * 
-	 * @param i
-	 *            the row index
 	 * @param j
 	 *            the column index
 	 * @return the {@link StorelessBivariateCovariance} element at the given index
@@ -119,9 +119,9 @@ public class StorelessCovariance extends Covariance {
 
 	/**
 	 * Sets the covariance element at index (i, j) in the covariance matrix
+	 * i
+	 * the row index
 	 * 
-	 * @param i
-	 *            the row index
 	 * @param j
 	 *            the column index
 	 * @param cov
@@ -197,11 +197,9 @@ public class StorelessCovariance extends Covariance {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws NumberIsTooSmallException
-	 *             if the number of observations
-	 *             in a cell is &lt; 2
+	 * {@inheritDoc} NumberIsTooSmallException
+	 * if the number of observations
+	 * in a cell is &lt; 2
 	 */
 	@Override
 	public RealMatrix getCovarianceMatrix() throws NumberIsTooSmallException {

@@ -39,9 +39,9 @@ public class EquationsMapper implements Serializable {
 
 	/**
 	 * simple constructor.
+	 * firstIndex
+	 * index of the first equation element in complete state arrays
 	 * 
-	 * @param firstIndex
-	 *            index of the first equation element in complete state arrays
 	 * @param dimension
 	 *            dimension of the secondary state parameters
 	 */
@@ -53,8 +53,7 @@ public class EquationsMapper implements Serializable {
 
 	/**
 	 * Get the index of the first equation element in complete state arrays.
-	 * 
-	 * @return index of the first equation element in complete state arrays
+	 * arrays
 	 */
 	public int getFirstIndex() {
 
@@ -63,8 +62,7 @@ public class EquationsMapper implements Serializable {
 
 	/**
 	 * Get the dimension of the secondary state parameters.
-	 * 
-	 * @return dimension of the secondary state parameters
+	 * parameters
 	 */
 	public int getDimension() {
 
@@ -73,10 +71,10 @@ public class EquationsMapper implements Serializable {
 
 	/**
 	 * Extract equation data from a complete state or derivative array.
+	 * complete
+	 * complete state or derivative array from which
+	 * equation data should be retrieved
 	 * 
-	 * @param complete
-	 *            complete state or derivative array from which
-	 *            equation data should be retrieved
 	 * @param equationData
 	 *            placeholder where to put equation data
 	 * @throws DimensionMismatchException
@@ -93,9 +91,9 @@ public class EquationsMapper implements Serializable {
 
 	/**
 	 * Insert equation data into a complete state or derivative array.
+	 * equationData
+	 * equation data to be inserted into the complete array
 	 * 
-	 * @param equationData
-	 *            equation data to be inserted into the complete array
 	 * @param complete
 	 *            placeholder where to put equation data (only the
 	 *            part corresponding to the equation will be overwritten)

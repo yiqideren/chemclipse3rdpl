@@ -49,9 +49,8 @@ public class EulerIntegrator extends RungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build an Euler integrator with the given step.
-	 * 
-	 * @param step
-	 *            integration step
+	 * step
+	 * integration step
 	 */
 	public EulerIntegrator(final double step) {
 

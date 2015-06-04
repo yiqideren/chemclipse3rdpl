@@ -755,15 +755,11 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
 	 * <p>
 	 * As suggested in the P. Lascaux and R. Theodor book <i>Analyse num&eacute;rique matricielle appliqu&eacute;e &agrave; l'art de l'ing&eacute;nieur</i> (Masson, 1986), instead of representing the Householder transforms with u<sub>k</sub> unit vectors such that:
 	 * 
-	 * <pre>
 	 * H<sub>k</sub> = I - 2u<sub>k</sub>.u<sub>k</sub><sup>t</sup>
-	 * </pre>
 	 * 
 	 * we use <sub>k</sub> non-unit vectors such that:
 	 * 
-	 * <pre>
 	 * H<sub>k</sub> = I - beta<sub>k</sub>v<sub>k</sub>.v<sub>k</sub><sup>t</sup>
-	 * </pre>
 	 * 
 	 * where v<sub>k</sub> = a<sub>k</sub> - alpha<sub>k</sub> e<sub>k</sub>. The beta<sub>k</sub> coefficients are provided upon exit as recomputing them from the v<sub>k</sub> vectors would be costly.
 	 * </p>

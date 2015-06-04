@@ -33,9 +33,8 @@ public class DefaultFieldMatrixChangingVisitor<T extends FieldElement<T>> implem
 
 	/**
 	 * Build a new instance.
-	 * 
-	 * @param zero
-	 *            additive identity of the field
+	 * zero
+	 * additive identity of the field
 	 */
 	public DefaultFieldMatrixChangingVisitor(final T zero) {
 

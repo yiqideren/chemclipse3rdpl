@@ -49,11 +49,11 @@ public class BoundaryAttribute<S extends Space> {
 
 	/**
 	 * Simple constructor.
+	 * plusOutside
+	 * part of the node cut sub-hyperplane that
+	 * belongs to the boundary and has the outside of the region on
+	 * the plus side of its underlying hyperplane (may be null)
 	 * 
-	 * @param plusOutside
-	 *            part of the node cut sub-hyperplane that
-	 *            belongs to the boundary and has the outside of the region on
-	 *            the plus side of its underlying hyperplane (may be null)
 	 * @param plusInside
 	 *            part of the node cut sub-hyperplane that
 	 *            belongs to the boundary and has the inside of the region on the
@@ -69,11 +69,11 @@ public class BoundaryAttribute<S extends Space> {
 
 	/**
 	 * Simple constructor.
+	 * plusOutside
+	 * part of the node cut sub-hyperplane that
+	 * belongs to the boundary and has the outside of the region on
+	 * the plus side of its underlying hyperplane (may be null)
 	 * 
-	 * @param plusOutside
-	 *            part of the node cut sub-hyperplane that
-	 *            belongs to the boundary and has the outside of the region on
-	 *            the plus side of its underlying hyperplane (may be null)
 	 * @param plusInside
 	 *            part of the node cut sub-hyperplane that
 	 *            belongs to the boundary and has the inside of the region on the
@@ -94,10 +94,9 @@ public class BoundaryAttribute<S extends Space> {
 	 * Get the part of the node cut sub-hyperplane that belongs to the
 	 * boundary and has the outside of the region on the plus side of
 	 * its underlying hyperplane.
-	 * 
-	 * @return part of the node cut sub-hyperplane that belongs to the
-	 *         boundary and has the outside of the region on the plus side of
-	 *         its underlying hyperplane
+	 * the
+	 * boundary and has the outside of the region on the plus side of
+	 * its underlying hyperplane
 	 */
 	public SubHyperplane<S> getPlusOutside() {
 
@@ -108,10 +107,9 @@ public class BoundaryAttribute<S extends Space> {
 	 * Get the part of the node cut sub-hyperplane that belongs to the
 	 * boundary and has the inside of the region on the plus side of
 	 * its underlying hyperplane.
-	 * 
-	 * @return part of the node cut sub-hyperplane that belongs to the
-	 *         boundary and has the inside of the region on the plus side of
-	 *         its underlying hyperplane
+	 * the
+	 * boundary and has the inside of the region on the plus side of
+	 * its underlying hyperplane
 	 */
 	public SubHyperplane<S> getPlusInside() {
 
@@ -120,8 +118,7 @@ public class BoundaryAttribute<S extends Space> {
 
 	/**
 	 * Get the sub-hyperplanes that were used to split the boundary part.
-	 * 
-	 * @return sub-hyperplanes that were used to split the boundary part
+	 * part
 	 */
 	public NodesSet<S> getSplitters() {
 

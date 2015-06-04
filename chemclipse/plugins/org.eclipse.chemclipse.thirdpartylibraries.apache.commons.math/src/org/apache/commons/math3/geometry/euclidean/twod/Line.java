@@ -72,9 +72,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * The line is oriented from p1 to p2
 	 * </p>
+	 * p1
+	 * first point
 	 * 
-	 * @param p1
-	 *            first point
 	 * @param p2
 	 *            second point
 	 * @param tolerance
@@ -89,9 +89,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Build a line from a point and an angle.
+	 * p
+	 * point belonging to the line
 	 * 
-	 * @param p
-	 *            point belonging to the line
 	 * @param angle
 	 *            angle of the line with respect to abscissa axis
 	 * @param tolerance
@@ -106,9 +106,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Build a line from its internal characteristics.
+	 * angle
+	 * angle of the line with respect to abscissa axis
 	 * 
-	 * @param angle
-	 *            angle of the line with respect to abscissa axis
 	 * @param cos
 	 *            cosine of the angle
 	 * @param sin
@@ -134,9 +134,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * The line is oriented from p1 to p2
 	 * </p>
+	 * p1
+	 * first point
 	 * 
-	 * @param p1
-	 *            first point
 	 * @param p2
 	 *            second point
 	 * @deprecated as of 3.3, replaced with {@link #Line(Vector2D, Vector2D, double)}
@@ -149,9 +149,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Build a line from a point and an angle.
+	 * p
+	 * point belonging to the line
 	 * 
-	 * @param p
-	 *            point belonging to the line
 	 * @param angle
 	 *            angle of the line with respect to abscissa axis
 	 * @deprecated as of 3.3, replaced with {@link #Line(Vector2D, double, double)}
@@ -167,9 +167,8 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * The created instance is completely independent from the original instance, it is a deep copy.
 	 * </p>
-	 * 
-	 * @param line
-	 *            line to copy
+	 * line
+	 * line to copy
 	 */
 	public Line(final Line line) {
 
@@ -192,9 +191,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * The line is oriented from p1 to p2
 	 * </p>
+	 * p1
+	 * first point
 	 * 
-	 * @param p1
-	 *            first point
 	 * @param p2
 	 *            second point
 	 */
@@ -219,9 +218,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Reset the instance as if built from a line and an angle.
+	 * p
+	 * point belonging to the line
 	 * 
-	 * @param p
-	 *            point belonging to the line
 	 * @param alpha
 	 *            angle of the line with respect to abscissa axis
 	 */
@@ -269,8 +268,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * As long as neither the instance nor its reverse are modified (i.e. as long as none of the {@link #reset(Vector2D, Vector2D)}, {@link #reset(Vector2D, double)}, {@link #revertSelf()}, {@link #setAngle(double)} or {@link #setOriginOffset(double)} methods are called), then the line and its reverse remain linked together so that {@code line.getReverse().getReverse() == line}. When one of the line is modified, the link is deleted as both instance becomes independent.
 	 * </p>
-	 * 
-	 * @return a new line, with orientation opposite to the instance orientation
+	 * orientation
 	 */
 	public Line getReverse() {
 
@@ -283,9 +281,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Transform a space point into a sub-space point.
+	 * vector
+	 * n-dimension point of the space
 	 * 
-	 * @param vector
-	 *            n-dimension point of the space
 	 * @return (n-1)-dimension point of the sub-space corresponding to
 	 *         the specified space point
 	 */
@@ -296,9 +294,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Transform a sub-space point into a space point.
+	 * vector
+	 * (n-1)-dimension point of the sub-space
 	 * 
-	 * @param vector
-	 *            (n-1)-dimension point of the sub-space
 	 * @return n-dimension point of the space corresponding to the
 	 *         specified sub-space point
 	 */
@@ -323,9 +321,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Get the intersection point of the instance and another line.
+	 * other
+	 * other line
 	 * 
-	 * @param other
-	 *            other line
 	 * @return intersection point of the instance and the other line
 	 *         or null if there are no intersection points
 	 */
@@ -339,9 +337,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public Point<Euclidean2D> project(Point<Euclidean2D> point) {
 
@@ -349,9 +345,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public double getTolerance() {
 
@@ -366,8 +360,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance (really a {@link PolygonsSet PolygonsSet} instance)
+	 * instance)
 	 */
 	public PolygonsSet wholeSpace() {
 
@@ -382,9 +375,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	 * <p>
 	 * The offset is 0 if both lines are the same, it is positive if the line is on the right side of the instance and negative if it is on the left side, according to its natural orientation.
 	 * </p>
+	 * line
+	 * line to check
 	 * 
-	 * @param line
-	 *            line to check
 	 * @return offset of the line
 	 */
 	public double getOffset(final Line line) {
@@ -394,9 +387,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Get the offset (oriented distance) of a vector.
+	 * vector
+	 * vector to check
 	 * 
-	 * @param vector
-	 *            vector to check
 	 * @return offset of the vector
 	 */
 	public double getOffset(Vector<Euclidean2D> vector) {
@@ -420,9 +413,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Get one point from the plane.
+	 * abscissa
+	 * desired abscissa for the point
 	 * 
-	 * @param abscissa
-	 *            desired abscissa for the point
 	 * @param offset
 	 *            desired offset for the point
 	 * @return one point in the plane, with given abscissa and offset
@@ -437,9 +430,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Check if the line contains a point.
+	 * p
+	 * point to check
 	 * 
-	 * @param p
-	 *            point to check
 	 * @return true if p belongs to the line
 	 */
 	public boolean contains(final Vector2D p) {
@@ -465,9 +458,9 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Check the instance is parallel to another line.
+	 * line
+	 * other line to check
 	 * 
-	 * @param line
-	 *            other line to check
 	 * @return true if the instance is parallel to the other line
 	 *         (they can have either the same or opposite orientations)
 	 */
@@ -478,9 +471,8 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Translate the line to force it passing by a point.
-	 * 
-	 * @param p
-	 *            point by which the line should pass
+	 * p
+	 * point by which the line should pass
 	 */
 	public void translateToPoint(final Vector2D p) {
 
@@ -489,8 +481,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Get the angle of the line.
-	 * 
-	 * @return the angle of the line with respect to the abscissa axis
+	 * axis
 	 */
 	public double getAngle() {
 
@@ -499,9 +490,8 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Set the angle of the line.
-	 * 
-	 * @param angle
-	 *            new angle of the line with respect to the abscissa axis
+	 * angle
+	 * new angle of the line with respect to the abscissa axis
 	 */
 	public void setAngle(final double angle) {
 
@@ -513,8 +503,7 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Get the offset of the origin.
-	 * 
-	 * @return the offset of the origin
+	 * origin
 	 */
 	public double getOriginOffset() {
 
@@ -523,9 +512,8 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 
 	/**
 	 * Set the offset of the origin.
-	 * 
-	 * @param offset
-	 *            offset of the origin
+	 * offset
+	 * offset of the origin
 	 */
 	public void setOriginOffset(final double offset) {
 
@@ -536,12 +524,12 @@ public class Line implements Hyperplane<Euclidean2D>, Embedding<Euclidean2D, Euc
 	/**
 	 * Get a {@link org.apache.commons.math3.geometry.partitioning.Transform
 	 * Transform} embedding an affine transform.
+	 * transform
+	 * affine transform to embed (must be inversible
+	 * otherwise the {@link org.apache.commons.math3.geometry.partitioning.Transform#apply(Hyperplane)
+	 * apply(Hyperplane)} method would work only for some lines, and
+	 * fail for other ones)
 	 * 
-	 * @param transform
-	 *            affine transform to embed (must be inversible
-	 *            otherwise the {@link org.apache.commons.math3.geometry.partitioning.Transform#apply(Hyperplane)
-	 *            apply(Hyperplane)} method would work only for some lines, and
-	 *            fail for other ones)
 	 * @return a new transform that can be applied to either {@link Vector2D Vector2D}, {@link Line Line} or {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane
 	 *         SubHyperplane} instances
 	 * @exception MathIllegalArgumentException

@@ -39,9 +39,9 @@ public class WeightedObservedPoint implements Serializable {
 
 	/**
 	 * Simple constructor.
+	 * weight
+	 * weight of the measurement in the fitting process
 	 * 
-	 * @param weight
-	 *            weight of the measurement in the fitting process
 	 * @param x
 	 *            abscissa of the measurement
 	 * @param y
@@ -56,8 +56,7 @@ public class WeightedObservedPoint implements Serializable {
 
 	/**
 	 * Get the weight of the measurement in the fitting process.
-	 * 
-	 * @return weight of the measurement in the fitting process
+	 * process
 	 */
 	public double getWeight() {
 
@@ -66,8 +65,7 @@ public class WeightedObservedPoint implements Serializable {
 
 	/**
 	 * Get the abscissa of the point.
-	 * 
-	 * @return abscissa of the point
+	 * point
 	 */
 	public double getX() {
 
@@ -76,8 +74,7 @@ public class WeightedObservedPoint implements Serializable {
 
 	/**
 	 * Get the observed value of the function at x.
-	 * 
-	 * @return observed value of the function at x
+	 * x
 	 */
 	public double getY() {
 

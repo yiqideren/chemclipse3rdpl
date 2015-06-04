@@ -21,12 +21,9 @@ package org.apache.commons.math3.ode.nonstiff;
  * <p>
  * This method is an explicit Runge-Kutta method, its Butcher-array is the following one :
  * 
- * <pre>
- *    0  |  0    0
- *   1/2 | 1/2   0
- *       |----------
- *       |  0    1
- * </pre>
+ * 
+ * 0 | 0 0 1/2 | 1/2 0 |---------- | 0 1
+ * 
  * 
  * </p>
  *
@@ -50,9 +47,8 @@ public class MidpointIntegrator extends RungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build a midpoint integrator with the given step.
-	 * 
-	 * @param step
-	 *            integration step
+	 * step
+	 * integration step
 	 */
 	public MidpointIntegrator(final double step) {
 

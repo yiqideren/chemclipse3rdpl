@@ -28,9 +28,9 @@ import org.apache.commons.math3.linear.ArrayRealVector;
  * <p>
  * A linear objective function has one the form:
  * 
- * <pre>
+ * 
  * c<sub>1</sub>x<sub>1</sub> + ... c<sub>n</sub>x<sub>n</sub> + d
- * </pre>
+ * 
  * 
  * The c<sub>i</sub> and d are the coefficients of the equation, the x<sub>i</sub> are the coordinates of the current point.
  * </p>
@@ -73,8 +73,7 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Get the coefficients of the linear equation being optimized.
-	 * 
-	 * @return coefficients of the linear equation being optimized
+	 * optimized
 	 */
 	public RealVector getCoefficients() {
 
@@ -83,8 +82,7 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Get the constant of the linear equation being optimized.
-	 * 
-	 * @return constant of the linear equation being optimized
+	 * optimized
 	 */
 	public double getConstantTerm() {
 
@@ -93,9 +91,9 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Compute the value of the linear equation at the current point
+	 * point
+	 * point at which linear equation must be evaluated
 	 * 
-	 * @param point
-	 *            point at which linear equation must be evaluated
 	 * @return value of the linear equation at the current point
 	 */
 	public double getValue(final double[] point) {
@@ -105,9 +103,9 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Compute the value of the linear equation at the current point
+	 * point
+	 * point at which linear equation must be evaluated
 	 * 
-	 * @param point
-	 *            point at which linear equation must be evaluated
 	 * @return value of the linear equation at the current point
 	 */
 	public double getValue(final RealVector point) {
@@ -136,9 +134,9 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Serialize the instance.
+	 * oos
+	 * stream where object should be written
 	 * 
-	 * @param oos
-	 *            stream where object should be written
 	 * @throws IOException
 	 *             if object cannot be written to stream
 	 */
@@ -150,9 +148,9 @@ public class LinearObjectiveFunction implements Serializable {
 
 	/**
 	 * Deserialize the instance.
+	 * ois
+	 * stream from which the object should be read
 	 * 
-	 * @param ois
-	 *            stream from which the object should be read
 	 * @throws ClassNotFoundException
 	 *             if a class in the stream cannot be found
 	 * @throws IOException

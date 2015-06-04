@@ -31,11 +31,11 @@ import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer
  * An algorithm usually performs the fit by finding the parameter
  * values that minimizes the objective function
  * 
- * <pre>
+ * 
  * <code>
  *  &sum;y<sub>k</sub> - f(x<sub>k</sub>)<sup>2</sup>,
  * </code>
- * </pre>
+ * 
  * 
  * which is actually a least-squares problem.
  * This class contains boilerplate code for calling the {@link #fit(Collection)} method for obtaining the parameters.
@@ -67,9 +67,8 @@ public abstract class AbstractCurveFitter {
 	 * The default implementation uses a {@link LevenbergMarquardtOptimizer
 	 * Levenberg-Marquardt} optimizer.
 	 * </p>
-	 * 
-	 * @return the optimizer to use for fitting the curve to the
-	 *         given {@code points}.
+	 * the
+	 * given {@code points}.
 	 */
 	protected LeastSquaresOptimizer getOptimizer() {
 

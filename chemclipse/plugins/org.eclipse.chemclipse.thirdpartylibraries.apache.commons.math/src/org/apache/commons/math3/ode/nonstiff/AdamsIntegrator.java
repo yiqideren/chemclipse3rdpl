@@ -34,9 +34,9 @@ public abstract class AdamsIntegrator extends MultistepIntegrator {
 
 	/**
 	 * Build an Adams integrator with the given order and step control parameters.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param nSteps
 	 *            number of steps of the method excluding the one being computed
 	 * @param order
@@ -64,9 +64,9 @@ public abstract class AdamsIntegrator extends MultistepIntegrator {
 
 	/**
 	 * Build an Adams integrator with the given order and step control parameters.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param nSteps
 	 *            number of steps of the method excluding the one being computed
 	 * @param order
@@ -108,16 +108,14 @@ public abstract class AdamsIntegrator extends MultistepIntegrator {
 	 * <p>
 	 * The complete update of high order derivatives has a form similar to:
 	 * 
-	 * <pre>
 	 * r<sub>n+1</sub> = (s<sub>1</sub>(n) - s<sub>1</sub>(n+1)) P<sup>-1</sup> u + P<sup>-1</sup> A P r<sub>n</sub>
-	 * </pre>
 	 * 
 	 * this method computes the P<sup>-1</sup> A P r<sub>n</sub> part.
 	 * </p>
+	 * highOrder
+	 * high order scaled derivatives
+	 * (h<sup>2</sup>/2 y'', ... h<sup>k</sup>/k! y(k))
 	 * 
-	 * @param highOrder
-	 *            high order scaled derivatives
-	 *            (h<sup>2</sup>/2 y'', ... h<sup>k</sup>/k! y(k))
 	 * @return updated high order derivatives
 	 * @see #updateHighOrderDerivativesPhase2(double[], double[], Array2DRowRealMatrix)
 	 */
@@ -131,18 +129,16 @@ public abstract class AdamsIntegrator extends MultistepIntegrator {
 	 * <p>
 	 * The complete update of high order derivatives has a form similar to:
 	 * 
-	 * <pre>
 	 * r<sub>n+1</sub> = (s<sub>1</sub>(n) - s<sub>1</sub>(n+1)) P<sup>-1</sup> u + P<sup>-1</sup> A P r<sub>n</sub>
-	 * </pre>
 	 * 
 	 * this method computes the (s<sub>1</sub>(n) - s<sub>1</sub>(n+1)) P<sup>-1</sup> u part.
 	 * </p>
 	 * <p>
 	 * Phase 1 of the update must already have been performed.
 	 * </p>
+	 * start
+	 * first order scaled derivatives at step start
 	 * 
-	 * @param start
-	 *            first order scaled derivatives at step start
 	 * @param end
 	 *            first order scaled derivatives at step end
 	 * @param highOrder

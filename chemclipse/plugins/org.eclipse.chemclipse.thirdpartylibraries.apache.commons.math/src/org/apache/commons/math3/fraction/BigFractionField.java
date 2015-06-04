@@ -42,8 +42,7 @@ public class BigFractionField implements Field<BigFraction>, Serializable {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static BigFractionField getInstance() {
 
@@ -84,8 +83,7 @@ public class BigFractionField implements Field<BigFraction>, Serializable {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

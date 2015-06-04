@@ -59,9 +59,9 @@ public class MultivariateFunctionMappingAdapter implements MultivariateFunction 
 
 	/**
 	 * Simple constructor.
+	 * bounded
+	 * bounded function
 	 * 
-	 * @param bounded
-	 *            bounded function
 	 * @param lower
 	 *            lower bounds for each element of the input parameters array
 	 *            (some elements may be set to {@code Double.NEGATIVE_INFINITY} for
@@ -150,9 +150,9 @@ public class MultivariateFunctionMappingAdapter implements MultivariateFunction 
 	 * <p>
 	 * This method simply bounds the unbounded point using the mappings set up at construction and calls the underlying function using the bounded point.
 	 * </p>
+	 * point
+	 * unbounded value
 	 * 
-	 * @param point
-	 *            unbounded value
 	 * @return underlying function value
 	 * @see #unboundedToBounded(double[])
 	 */

@@ -234,9 +234,8 @@ public class RandomDataGenerator implements RandomData, Serializable {
 	 * Each byte of the binary digest is converted to 2 hex digits.</li>
 	 * </ol>
 	 * </p>
-	 * 
-	 * @throws NotStrictlyPositiveException
-	 *             if {@code len <= 0}
+	 * NotStrictlyPositiveException
+	 * if {@code len <= 0}
 	 */
 	public String nextSecureHexString(int len) throws NotStrictlyPositiveException {
 
@@ -324,9 +323,8 @@ public class RandomDataGenerator implements RandomData, Serializable {
 	 * Devroye, Luc. (1981).<i>The Computer Generation of Poisson Random Variables</i> <strong>Computing</strong> vol. 26 pp. 197-207.</li>
 	 * </ul>
 	 * </p>
-	 * 
-	 * @throws NotStrictlyPositiveException
-	 *             if {@code len <= 0}
+	 * NotStrictlyPositiveException
+	 * if {@code len <= 0}
 	 */
 	public long nextPoisson(double mean) throws NotStrictlyPositiveException {
 
@@ -550,9 +548,9 @@ public class RandomDataGenerator implements RandomData, Serializable {
 	 * <p>
 	 * <strong>Algorithm Description</strong>: scales the output of Random.nextDouble(), but rejects 0 values (i.e., will generate another random double if Random.nextDouble() returns 0). This is necessary to provide a symmetric output interval (both endpoints excluded).
 	 * </p>
+	 * NumberIsTooLargeException
+	 * if {@code lower >= upper}
 	 * 
-	 * @throws NumberIsTooLargeException
-	 *             if {@code lower >= upper}
 	 * @throws NotFiniteNumberException
 	 *             if one of the bounds is infinite
 	 * @throws NotANumberException

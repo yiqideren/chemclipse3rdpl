@@ -29,17 +29,9 @@ import javassist.bytecode.annotation.*;
  * <p>
  * For example,
  *
- * <pre>
- * import javassist.bytecode.annotation.Annotation;
- *    :
- * CtMethod m = ... ;
- * MethodInfo minfo = m.getMethodInfo();
- * AnnotationsAttribute attr = (AnnotationsAttribute)
- *         minfo.getAttribute(AnnotationsAttribute.invisibleTag);
- * Annotation an = attr.getAnnotation("Author");
- * String s = ((StringMemberValue)an.getMemberValue("name")).getValue();
- * System.out.println("@Author(name=" + s + ")");
- * </pre>
+ * 
+ * import javassist.bytecode.annotation.Annotation; : CtMethod m = ... ; MethodInfo minfo = m.getMethodInfo(); AnnotationsAttribute attr = (AnnotationsAttribute) minfo.getAttribute(AnnotationsAttribute.invisibleTag); Annotation an = attr.getAnnotation("Author"); String s = ((StringMemberValue)an.getMemberValue("name")).getValue(); System.out.println("@Author(name=" + s + ")");
+ * 
  *
  * <p>
  * This code snippet retrieves an annotation of the type <code>Author</code> from the <code>MethodInfo</code> object specified by <code>minfo</code>. Then, it prints the value of <code>name</code> in <code>Author</code>.
@@ -47,14 +39,15 @@ import javassist.bytecode.annotation.*;
  * <p>
  * If the annotation type <code>Author</code> is annotated by a meta annotation:
  *
- * <pre>
+ * 
  * &#64;Retention(RetentionPolicy.RUNTIME)
- * </pre>
+ * 
  *
  * <p>
  * Then <code>Author</code> is visible at runtime. Therefore, the third statement of the code snippet above must be changed into:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -103,7 +96,7 @@ import javassist.bytecode.annotation.*;
  * 
  * 
  * AnnotationsAttribute attr = (AnnotationsAttribute)minfo.getAttribute(AnnotationsAttribute.visibleTag);
- * </pre>
+ * 
  *
  * <p>
  * The attribute tag must be <code>visibleTag</code> instead of <code>invisibleTag</code>.
@@ -114,17 +107,9 @@ import javassist.bytecode.annotation.*;
  * <p>
  * If you want to record a new AnnotationAttribute object, execute the following snippet:
  *
- * <pre>
- * ClassFile cf = ... ;
- * ConstPool cp = cf.getConstPool();
- * AnnotationsAttribute attr
- *     = new AnnotationsAttribute(cp, AnnotationsAttribute.visibleTag);
- * Annotation a = new Annotation("Author", cp);
- * a.addMemberValue("name", new StringMemberValue("Chiba", cp));
- * attr.setAnnotation(a);
- * cf.addAttribute(attr);
- * cf.setVersionToJava5();
- * </pre>
+ * 
+ * ClassFile cf = ... ; ConstPool cp = cf.getConstPool(); AnnotationsAttribute attr = new AnnotationsAttribute(cp, AnnotationsAttribute.visibleTag); Annotation a = new Annotation("Author", cp); a.addMemberValue("name", new StringMemberValue("Chiba", cp)); attr.setAnnotation(a); cf.addAttribute(attr); cf.setVersionToJava5();
+ * 
  *
  * <p>
  * The last statement is necessary if the class file was produced by <code>javac</code> of JDK 1.4 or earlier. Otherwise, it is not necessary.
@@ -293,9 +278,9 @@ public class AnnotationsAttribute extends AttributeInfo {
 	/**
 	 * Changes the annotations. A call to this method is equivalent to:
 	 * 
-	 * <pre>
+	 * 
 	 * setAnnotations(new Annotation[]{annotation})
-	 * </pre>
+	 * 
 	 *
 	 * @param annotation
 	 *            the data structure representing

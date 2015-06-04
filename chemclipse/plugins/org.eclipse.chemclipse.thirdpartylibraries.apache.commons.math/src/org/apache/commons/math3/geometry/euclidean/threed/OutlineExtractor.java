@@ -48,9 +48,9 @@ public class OutlineExtractor {
 
 	/**
 	 * Build an extractor for a specific projection plane.
+	 * u
+	 * abscissa axis of the projection point
 	 * 
-	 * @param u
-	 *            abscissa axis of the projection point
 	 * @param v
 	 *            ordinate axis of the projection point
 	 */
@@ -63,9 +63,9 @@ public class OutlineExtractor {
 
 	/**
 	 * Extract the outline of a polyhedrons set.
+	 * polyhedronsSet
+	 * polyhedrons set whose outline must be extracted
 	 * 
-	 * @param polyhedronsSet
-	 *            polyhedrons set whose outline must be extracted
 	 * @return an outline, as an array of loops.
 	 */
 	public Vector2D[][] getOutline(final PolyhedronsSet polyhedronsSet) {
@@ -106,9 +106,9 @@ public class OutlineExtractor {
 	 * <p>
 	 * The neighbors are computed considering the array is a loop (i.e. point at index (n-1) is before point at index 0)
 	 * </p>
+	 * loop
+	 * points array
 	 * 
-	 * @param loop
-	 *            points array
 	 * @param n
 	 *            number of points to consider in the array
 	 * @param i

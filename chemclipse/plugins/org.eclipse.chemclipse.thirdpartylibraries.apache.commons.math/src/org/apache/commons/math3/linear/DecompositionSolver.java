@@ -57,8 +57,7 @@ public interface DecompositionSolver {
 
 	/**
 	 * Check if the decomposed matrix is non-singular.
-	 * 
-	 * @return true if the decomposed matrix is non-singular.
+	 * non-singular.
 	 */
 	boolean isNonSingular();
 

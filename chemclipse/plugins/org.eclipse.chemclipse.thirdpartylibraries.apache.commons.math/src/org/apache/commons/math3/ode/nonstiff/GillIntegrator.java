@@ -23,14 +23,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * This method is an explicit Runge-Kutta method, its Butcher-array is the following one :
  * 
- * <pre>
- *    0  |    0        0       0      0
- *   1/2 |   1/2       0       0      0
- *   1/2 | (q-1)/2  (2-q)/2    0      0
- *    1  |    0       -q/2  (2+q)/2   0
- *       |-------------------------------
- *       |   1/6    (2-q)/6 (2+q)/6  1/6
- * </pre>
+ * 
+ * 0 | 0 0 0 0 1/2 | 1/2 0 0 0 1/2 | (q-1)/2 (2-q)/2 0 0 1 | 0 -q/2 (2+q)/2 0 |------------------------------- | 1/6 (2-q)/6 (2+q)/6 1/6
+ * 
  * 
  * where q = sqrt(2)
  * </p>
@@ -54,9 +49,8 @@ public class GillIntegrator extends RungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build a fourth-order Gill integrator with the given step.
-	 * 
-	 * @param step
-	 *            integration step
+	 * step
+	 * integration step
 	 */
 	public GillIntegrator(final double step) {
 

@@ -685,9 +685,9 @@ public class Frequency implements Serializable {
 		 * Compare the two {@link Comparable Comparable} arguments.
 		 * This method is equivalent to:
 		 * 
-		 * <pre>
+		 * 
 		 * (({@link Comparable Comparable})o1).{@link Comparable#compareTo compareTo}(o2)
-		 * </pre>
+		 * 
 		 *
 		 * @param o1
 		 *            the first object

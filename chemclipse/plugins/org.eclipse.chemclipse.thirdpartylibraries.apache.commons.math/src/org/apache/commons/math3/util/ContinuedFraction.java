@@ -46,9 +46,9 @@ public abstract class ContinuedFraction {
 	/**
 	 * Access the n-th a coefficient of the continued fraction. Since a can be
 	 * a function of the evaluation point, x, that is passed in as well.
+	 * n
+	 * the coefficient index to retrieve.
 	 * 
-	 * @param n
-	 *            the coefficient index to retrieve.
 	 * @param x
 	 *            the evaluation point.
 	 * @return the n-th a coefficient.
@@ -58,9 +58,9 @@ public abstract class ContinuedFraction {
 	/**
 	 * Access the n-th b coefficient of the continued fraction. Since b can be
 	 * a function of the evaluation point, x, that is passed in as well.
+	 * n
+	 * the coefficient index to retrieve.
 	 * 
-	 * @param n
-	 *            the coefficient index to retrieve.
 	 * @param x
 	 *            the evaluation point.
 	 * @return the n-th b coefficient.
@@ -69,9 +69,9 @@ public abstract class ContinuedFraction {
 
 	/**
 	 * Evaluates the continued fraction at the value x.
+	 * x
+	 * the evaluation point.
 	 * 
-	 * @param x
-	 *            the evaluation point.
 	 * @return the value of the continued fraction evaluated at x.
 	 * @throws ConvergenceException
 	 *             if the algorithm fails to converge.
@@ -83,9 +83,9 @@ public abstract class ContinuedFraction {
 
 	/**
 	 * Evaluates the continued fraction at the value x.
+	 * x
+	 * the evaluation point.
 	 * 
-	 * @param x
-	 *            the evaluation point.
 	 * @param epsilon
 	 *            maximum error allowed.
 	 * @return the value of the continued fraction evaluated at x.
@@ -99,9 +99,9 @@ public abstract class ContinuedFraction {
 
 	/**
 	 * Evaluates the continued fraction at the value x.
+	 * x
+	 * the evaluation point.
 	 * 
-	 * @param x
-	 *            the evaluation point.
 	 * @param maxIterations
 	 *            maximum number of convergents
 	 * @return the value of the continued fraction evaluated at x.

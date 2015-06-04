@@ -49,8 +49,7 @@ public class GaussNewtonOptimizer extends AbstractLeastSquaresOptimizer {
 	 * Simple constructor with default settings.
 	 * The normal equations will be solved using LU decomposition and the
 	 * convergence check is set to a {@link SimpleVectorValueChecker} with default tolerances.
-	 * 
-	 * @deprecated See {@link SimpleVectorValueChecker#SimpleVectorValueChecker()}
+	 * SimpleVectorValueChecker#SimpleVectorValueChecker()}
 	 */
 	@Deprecated
 	public GaussNewtonOptimizer() {

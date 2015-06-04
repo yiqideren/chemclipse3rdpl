@@ -31,9 +31,9 @@ public class FractionConversionException extends ConvergenceException {
 	/**
 	 * Constructs an exception with specified formatted detail message.
 	 * Message formatting is delegated to {@link java.text.MessageFormat}.
+	 * value
+	 * double value to convert
 	 * 
-	 * @param value
-	 *            double value to convert
 	 * @param maxIterations
 	 *            maximal number of iterations allowed
 	 */
@@ -45,9 +45,9 @@ public class FractionConversionException extends ConvergenceException {
 	/**
 	 * Constructs an exception with specified formatted detail message.
 	 * Message formatting is delegated to {@link java.text.MessageFormat}.
+	 * value
+	 * double value to convert
 	 * 
-	 * @param value
-	 *            double value to convert
 	 * @param p
 	 *            current numerator
 	 * @param q

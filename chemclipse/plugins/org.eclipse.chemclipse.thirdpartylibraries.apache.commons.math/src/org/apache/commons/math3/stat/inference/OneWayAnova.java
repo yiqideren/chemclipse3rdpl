@@ -41,11 +41,11 @@ import org.apache.commons.math3.util.MathUtils;
  * This implementation is based on a description at http://faculty.vassar.edu/lowry/ch13pt1.html
  * </p>
  * 
- * <pre>
+ * 
  * Abbreviations: bg = between groups,
- *                wg = within groups,
- *                ss = sum squared deviations
- * </pre>
+ * wg = within groups,
+ * ss = sum squared deviations
+ * 
  *
  * @since 1.2
  */
@@ -71,16 +71,11 @@ public class OneWayAnova {
 	 * <p>
 	 * This implementation computes the F statistic using the definitional formula
 	 * 
-	 * <pre>
 	 * F = msbg / mswg
-	 * </pre>
 	 * 
 	 * where
 	 * 
-	 * <pre>
-	 *  msbg = between group mean square
-	 *  mswg = within group mean square
-	 * </pre>
+	 * msbg = between group mean square mswg = within group mean square
 	 * 
 	 * are as defined <a href="http://faculty.vassar.edu/lowry/ch13pt1.html"> here</a>
 	 * </p>
@@ -114,9 +109,7 @@ public class OneWayAnova {
 	 * This implementation uses the {@link org.apache.commons.math3.distribution.FDistribution
 	 * commons-math F Distribution implementation} to estimate the exact p-value, using the formula
 	 * 
-	 * <pre>
 	 * p = 1 - cumulativeProbability(F)
-	 * </pre>
 	 * 
 	 * where <code>F</code> is the F value and <code>cumulativeProbability</code> is the commons-math implementation of the F distribution.
 	 * </p>
@@ -157,9 +150,7 @@ public class OneWayAnova {
 	 * This implementation uses the {@link org.apache.commons.math3.distribution.FDistribution
 	 * commons-math F Distribution implementation} to estimate the exact p-value, using the formula
 	 * 
-	 * <pre>
 	 * p = 1 - cumulativeProbability(F)
-	 * </pre>
 	 * 
 	 * where <code>F</code> is the F value and <code>cumulativeProbability</code> is the commons-math implementation of the F distribution.
 	 * </p>
@@ -235,9 +226,7 @@ public class OneWayAnova {
 	 * This implementation uses the {@link org.apache.commons.math3.distribution.FDistribution
 	 * commons-math F Distribution implementation} to estimate the exact p-value, using the formula
 	 * 
-	 * <pre>
 	 * p = 1 - cumulativeProbability(F)
-	 * </pre>
 	 * 
 	 * where <code>F</code> is the F value and <code>cumulativeProbability</code> is the commons-math implementation of the F distribution.
 	 * </p>

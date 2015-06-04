@@ -21,14 +21,9 @@ package org.apache.commons.math3.ode.nonstiff;
  * <p>
  * This method is an explicit Runge-Kutta method, its Butcher-array is the following one :
  * 
- * <pre>
- *    0  |  0    0    0    0
- *   1/3 | 1/3   0    0    0
- *   2/3 |-1/3   1    0    0
- *    1  |  1   -1    1    0
- *       |--------------------
- *       | 1/8  3/8  3/8  1/8
- * </pre>
+ * 
+ * 0 | 0 0 0 0 1/3 | 1/3 0 0 0 2/3 |-1/3 1 0 0 1 | 1 -1 1 0 |-------------------- | 1/8 3/8 3/8 1/8
+ * 
  * 
  * </p>
  *
@@ -51,9 +46,8 @@ public class ThreeEighthesIntegrator extends RungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build a 3/8 integrator with the given step.
-	 * 
-	 * @param step
-	 *            integration step
+	 * step
+	 * integration step
 	 */
 	public ThreeEighthesIntegrator(final double step) {
 

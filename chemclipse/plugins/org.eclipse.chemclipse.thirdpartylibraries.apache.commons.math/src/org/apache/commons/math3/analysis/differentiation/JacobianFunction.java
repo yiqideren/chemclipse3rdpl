@@ -31,9 +31,8 @@ public class JacobianFunction implements MultivariateMatrixFunction {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param f
-	 *            underlying vector-valued function
+	 * f
+	 * underlying vector-valued function
 	 */
 	public JacobianFunction(final MultivariateDifferentiableVectorFunction f) {
 

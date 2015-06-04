@@ -793,9 +793,9 @@ public class SimpleRegression implements Serializable, UpdatingMultipleLinearReg
 	/**
 	 * Performs a regression on data present in buffers including only regressors
 	 * indexed in variablesToInclude and outputs a RegressionResults object
+	 * variablesToInclude
+	 * an array of indices of regressors to include
 	 * 
-	 * @param variablesToInclude
-	 *            an array of indices of regressors to include
 	 * @return RegressionResults acts as a container of regression output
 	 * @throws MathIllegalArgumentException
 	 *             if the variablesToInclude array is null or zero length

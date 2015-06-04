@@ -71,9 +71,8 @@ public class RealVectorFormat {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	public RealVectorFormat(final NumberFormat format) {
 
@@ -82,9 +81,9 @@ public class RealVectorFormat {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -98,9 +97,9 @@ public class RealVectorFormat {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -124,8 +123,7 @@ public class RealVectorFormat {
 	 * <p>
 	 * This is the same set as the {@link NumberFormat} set.
 	 * </p>
-	 * 
-	 * @return available real vector format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -134,8 +132,7 @@ public class RealVectorFormat {
 
 	/**
 	 * Get the format prefix.
-	 * 
-	 * @return format prefix.
+	 * prefix.
 	 */
 	public String getPrefix() {
 
@@ -144,8 +141,7 @@ public class RealVectorFormat {
 
 	/**
 	 * Get the format suffix.
-	 * 
-	 * @return format suffix.
+	 * suffix.
 	 */
 	public String getSuffix() {
 
@@ -154,8 +150,7 @@ public class RealVectorFormat {
 
 	/**
 	 * Get the format separator between components.
-	 * 
-	 * @return format separator.
+	 * separator.
 	 */
 	public String getSeparator() {
 
@@ -164,8 +159,7 @@ public class RealVectorFormat {
 
 	/**
 	 * Get the components format.
-	 * 
-	 * @return components format.
+	 * format.
 	 */
 	public NumberFormat getFormat() {
 
@@ -174,8 +168,7 @@ public class RealVectorFormat {
 
 	/**
 	 * Returns the default real vector format for the current locale.
-	 * 
-	 * @return the default real vector format.
+	 * format.
 	 */
 	public static RealVectorFormat getInstance() {
 
@@ -184,9 +177,9 @@ public class RealVectorFormat {
 
 	/**
 	 * Returns the default real vector format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the real vector format specific to the given locale.
 	 */
 	public static RealVectorFormat getInstance(final Locale locale) {
@@ -208,9 +201,9 @@ public class RealVectorFormat {
 
 	/**
 	 * Formats a {@link RealVector} object to produce a string.
+	 * vector
+	 * the object to format.
 	 * 
-	 * @param vector
-	 *            the object to format.
 	 * @param toAppendTo
 	 *            where the text is to be appended
 	 * @param pos

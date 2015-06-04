@@ -109,8 +109,7 @@ public class CorrelatedRandomVectorGenerator implements RandomVectorGenerator {
 
 	/**
 	 * Get the underlying normalized components generator.
-	 * 
-	 * @return underlying uncorrelated components generator
+	 * generator
 	 */
 	public NormalizedRandomGenerator getGenerator() {
 
@@ -121,8 +120,8 @@ public class CorrelatedRandomVectorGenerator implements RandomVectorGenerator {
 	 * Get the rank of the covariance matrix.
 	 * The rank is the number of independent rows in the covariance
 	 * matrix, it is also the number of columns of the root matrix.
+	 * matrix.
 	 * 
-	 * @return rank of the square matrix.
 	 * @see #getRootMatrix()
 	 */
 	public int getRank() {
@@ -133,9 +132,8 @@ public class CorrelatedRandomVectorGenerator implements RandomVectorGenerator {
 	/**
 	 * Get the root of the covariance matrix.
 	 * The root is the rectangular matrix <code>B</code> such that
-	 * the covariance matrix is equal to <code>B.B<sup>T</sup></code>
+	 * the covariance matrix is equal to <code>B.B<sup>T</sup></code> matrix
 	 * 
-	 * @return root of the square matrix
 	 * @see #getRank()
 	 */
 	public RealMatrix getRootMatrix() {
@@ -145,9 +143,8 @@ public class CorrelatedRandomVectorGenerator implements RandomVectorGenerator {
 
 	/**
 	 * Generate a correlated random vector.
-	 * 
-	 * @return a random vector as an array of double. The returned array
-	 *         is created at each call, the caller can do what it wants with it.
+	 * array
+	 * is created at each call, the caller can do what it wants with it.
 	 */
 	public double[] nextVector() {
 

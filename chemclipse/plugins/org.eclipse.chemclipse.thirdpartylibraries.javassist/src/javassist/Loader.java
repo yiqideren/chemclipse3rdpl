@@ -30,21 +30,15 @@ import java.security.ProtectionDomain;
  * <p>
  * Suppose that an instance of <code>MyTranslator</code> implementing the interface <code>Translator</code> is responsible for modifying class files. The startup program of an application using <code>MyTranslator</code> should be something like this:
  *
- * <pre>
+ * 
  * import javassist.*;
  * 
  * public class Main {
  * 
- * 	public static void main(String[] args) throws Throwable {
+ * public static void main(String[] args) throws Throwable {
  * 
- * 		MyTranslator myTrans = new MyTranslator();
- * 		ClassPool cp = ClassPool.getDefault();
- * 		Loader cl = new Loader(cp);
- * 		cl.addTranslator(cp, myTrans);
- * 		cl.run(&quot;MyApp&quot;, args);
- * 	}
- * }
- * </pre>
+ * MyTranslator myTrans = new MyTranslator(); ClassPool cp = ClassPool.getDefault(); Loader cl = new Loader(cp); cl.addTranslator(cp, myTrans); cl.run(&quot;MyApp&quot;, args); } }
+ * 
  *
  * <p>
  * Class <code>MyApp</code> is the main program of the application.
@@ -52,9 +46,9 @@ import java.security.ProtectionDomain;
  * <p>
  * This program should be executed as follows:
  *
- * <pre>
+ * 
  * % java Main <i>arg1</i> <i>arg2</i>...
- * </pre>
+ * 
  *
  * <p>
  * It modifies the class <code>MyApp</code> with a <code>MyTranslator</code> object before the JVM loads it. Then it calls <code>main()</code> in <code>MyApp</code> with arguments <i>arg1</i>, <i>arg2</i>, ...
@@ -62,9 +56,9 @@ import java.security.ProtectionDomain;
  * <p>
  * This program execution is equivalent to:
  *
- * <pre>
+ * 
  * % java MyApp <i>arg1</i> <i>arg2</i>...
- * </pre>
+ * 
  *
  * <p>
  * except that classes are translated by <code>MyTranslator</code> at load time.
@@ -72,13 +66,9 @@ import java.security.ProtectionDomain;
  * <p>
  * If only a particular class must be modified when it is loaded, the startup program can be simpler; <code>MyTranslator</code> is unnecessary. For example, if only a class <code>test.Rectangle</code> is modified, the <code>main()</code> method above will be the following:
  *
- * <pre>
- * ClassPool cp = ClassPool.getDefault();
- * Loader cl = new Loader(cp);
- * CtClass ct = cp.get(&quot;test.Rectangle&quot;);
- * ct.setSuperclass(cp.get(&quot;test.Point&quot;));
- * cl.run(&quot;MyApp&quot;, args);
- * </pre>
+ * 
+ * ClassPool cp = ClassPool.getDefault(); Loader cl = new Loader(cp); CtClass ct = cp.get(&quot;test.Rectangle&quot;); ct.setSuperclass(cp.get(&quot;test.Point&quot;)); cl.run(&quot;MyApp&quot;, args);
+ * 
  *
  * <p>
  * This program changes the super class of the <code>test.Rectangle</code> class.

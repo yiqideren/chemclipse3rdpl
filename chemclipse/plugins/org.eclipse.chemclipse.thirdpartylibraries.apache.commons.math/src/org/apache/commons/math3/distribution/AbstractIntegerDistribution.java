@@ -37,15 +37,13 @@ public abstract class AbstractIntegerDistribution implements IntegerDistribution
 	private static final long serialVersionUID = -1146319659338487221L;
 	/**
 	 * RandomData instance used to generate samples from the distribution.
-	 * 
-	 * @deprecated As of 3.1, to be removed in 4.0. Please use the {@link #random} instance variable instead.
+	 * instead.
 	 */
 	@Deprecated
 	protected final RandomDataImpl randomData = new RandomDataImpl();
 	/**
 	 * RNG instance used to generate samples from the distribution.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	protected final RandomGenerator random;
 

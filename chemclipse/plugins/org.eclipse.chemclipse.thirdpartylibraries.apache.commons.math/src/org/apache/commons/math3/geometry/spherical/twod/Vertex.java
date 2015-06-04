@@ -37,9 +37,8 @@ public class Vertex {
 
 	/**
 	 * Build a non-processed vertex not owned by any node yet.
-	 * 
-	 * @param location
-	 *            vertex location
+	 * location
+	 * vertex location
 	 */
 	Vertex(final S2Point location) {
 
@@ -51,8 +50,7 @@ public class Vertex {
 
 	/**
 	 * Get Vertex location.
-	 * 
-	 * @return vertex location
+	 * location
 	 */
 	public S2Point getLocation() {
 
@@ -61,9 +59,8 @@ public class Vertex {
 
 	/**
 	 * Bind a circle considered to contain this vertex.
-	 * 
-	 * @param circle
-	 *            circle to bind with this vertex
+	 * circle
+	 * circle to bind with this vertex
 	 */
 	void bindWith(final Circle circle) {
 
@@ -75,9 +72,9 @@ public class Vertex {
 	 * <p>
 	 * When two vertices are both bound to the same circle, this means they are already handled by node associated with this circle, so there is no need to create a cut hyperplane for them.
 	 * </p>
+	 * vertex
+	 * other vertex to check instance against
 	 * 
-	 * @param vertex
-	 *            other vertex to check instance against
 	 * @return circle bound with both the instance and another vertex, or null if the
 	 *         two vertices do not share a circle yet
 	 */
@@ -98,9 +95,8 @@ public class Vertex {
 	 * <p>
 	 * The circle supporting the incoming edge is automatically bound with the instance.
 	 * </p>
-	 * 
-	 * @param incoming
-	 *            incoming edge
+	 * incoming
+	 * incoming edge
 	 */
 	void setIncoming(final Edge incoming) {
 
@@ -110,8 +106,7 @@ public class Vertex {
 
 	/**
 	 * Get incoming edge.
-	 * 
-	 * @return incoming edge
+	 * edge
 	 */
 	public Edge getIncoming() {
 
@@ -123,9 +118,8 @@ public class Vertex {
 	 * <p>
 	 * The circle supporting the outgoing edge is automatically bound with the instance.
 	 * </p>
-	 * 
-	 * @param outgoing
-	 *            outgoing edge
+	 * outgoing
+	 * outgoing edge
 	 */
 	void setOutgoing(final Edge outgoing) {
 
@@ -135,8 +129,7 @@ public class Vertex {
 
 	/**
 	 * Get outgoing edge.
-	 * 
-	 * @return outgoing edge
+	 * edge
 	 */
 	public Edge getOutgoing() {
 

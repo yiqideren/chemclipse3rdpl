@@ -122,9 +122,8 @@ public class ConstantRealDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Override with no-op (there is no generator).
-	 * 
-	 * @param seed
-	 *            (ignored)
+	 * seed
+	 * (ignored)
 	 */
 	@Override
 	public void reseedRandomGenerator(long seed) {

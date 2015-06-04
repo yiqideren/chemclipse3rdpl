@@ -23,7 +23,8 @@ import javassist.ClassPool;
  * <p>
  * To run a program, say <code>MyApp</code>, including a reflective class, you must write a start-up program as follows:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -73,21 +74,17 @@ import javassist.ClassPool;
  * 
  * public class Main {
  * 
- * 	public static void main(String[] args) throws Throwable {
+ * public static void main(String[] args) throws Throwable {
  * 
- * 		javassist.tools.reflect.Loader cl = (javassist.tools.reflect.Loader)Main.class.getClassLoader();
- * 		cl.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;);
- * 		cl.run(&quot;MyApp&quot;, args);
- * 	}
- * }
- * </pre>
+ * javassist.tools.reflect.Loader cl = (javassist.tools.reflect.Loader)Main.class.getClassLoader(); cl.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;); cl.run(&quot;MyApp&quot;, args); } }
+ * 
  *
  * <p>
  * Then run this program as follows:
  *
- * <pre>
+ * 
  * % java javassist.tools.reflect.Loader Main arg1, ...
- * </pre>
+ * 
  *
  * <p>
  * This command runs <code>Main.main()</code> with <code>arg1</code>, ... and <code>Main.main()</code> runs <code>MyApp.main()</code> with <code>arg1</code>, ... The <code>Person</code> class is modified to be a reflective class. Method calls on a <code>Person</code> object are intercepted by an instance of <code>MyMetaobject</code>.
@@ -95,7 +92,8 @@ import javassist.ClassPool;
  * <p>
  * Also, you can run <code>MyApp</code> in a slightly different way:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -145,21 +143,17 @@ import javassist.ClassPool;
  * 
  * public class Main2 {
  * 
- * 	public static void main(String[] args) throws Throwable {
+ * public static void main(String[] args) throws Throwable {
  * 
- * 		javassist.tools.reflect.Loader cl = new javassist.tools.reflect.Loader();
- * 		cl.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;);
- * 		cl.run(&quot;MyApp&quot;, args);
- * 	}
- * }
- * </pre>
+ * javassist.tools.reflect.Loader cl = new javassist.tools.reflect.Loader(); cl.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;); cl.run(&quot;MyApp&quot;, args); } }
+ * 
  *
  * <p>
  * This program is run as follows:
  *
- * <pre>
+ * 
  * % java Main2 arg1, ...
- * </pre>
+ * 
  *
  * <p>
  * The difference from the former one is that the class <code>Main</code> is loaded by <code>javassist.tools.reflect.Loader</code> whereas the class <code>Main2</code> is not. Thus, <code>Main</code> belongs to the same name space (security domain) as <code>MyApp</code> whereas <code>Main2</code> does not; <code>Main2</code> belongs to the same name space as <code>javassist.tools.reflect.Loader</code>. For more details, see the notes in the manual page of <code>javassist.Loader</code>.
@@ -167,7 +161,8 @@ import javassist.ClassPool;
  * <p>
  * The class <code>Main2</code> is equivalent to this class:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -217,15 +212,10 @@ import javassist.ClassPool;
  * 
  * public class Main3 {
  * 
- * 	public static void main(String[] args) throws Throwable {
+ * public static void main(String[] args) throws Throwable {
  * 
- * 		Reflection reflection = new Reflection();
- * 		javassist.Loader cl = new javassist.Loader(ClassPool.getDefault(reflection));
- * 		reflection.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;);
- * 		cl.run(&quot;MyApp&quot;, args);
- * 	}
- * }
- * </pre>
+ * Reflection reflection = new Reflection(); javassist.Loader cl = new javassist.Loader(ClassPool.getDefault(reflection)); reflection.makeReflective(&quot;Person&quot;, &quot;MyMetaobject&quot;, &quot;javassist.tools.reflect.ClassMetaobject&quot;); cl.run(&quot;MyApp&quot;, args); } }
+ * 
  *
  * <p>
  * <b>Note:</b>

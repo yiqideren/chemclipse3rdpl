@@ -51,9 +51,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a plane normal to a given direction and containing the origin.
+	 * normal
+	 * normal direction to the plane
 	 * 
-	 * @param normal
-	 *            normal direction to the plane
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @exception MathArithmeticException
@@ -70,9 +70,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a plane from a point and a normal.
+	 * p
+	 * point belonging to the plane
 	 * 
-	 * @param p
-	 *            point belonging to the plane
 	 * @param normal
 	 *            normal direction to the plane
 	 * @param tolerance
@@ -94,9 +94,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The plane is oriented in the direction of {@code (p2-p1) ^ (p3-p1)}
 	 * </p>
+	 * p1
+	 * first point belonging to the plane
 	 * 
-	 * @param p1
-	 *            first point belonging to the plane
 	 * @param p2
 	 *            second point belonging to the plane
 	 * @param p3
@@ -114,9 +114,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a plane normal to a given direction and containing the origin.
+	 * normal
+	 * normal direction to the plane
 	 * 
-	 * @param normal
-	 *            normal direction to the plane
 	 * @exception MathArithmeticException
 	 *                if the normal norm is too small
 	 * @deprecated as of 3.3, replaced with {@link #Plane(Vector3D, double)}
@@ -129,9 +129,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a plane from a point and a normal.
+	 * p
+	 * point belonging to the plane
 	 * 
-	 * @param p
-	 *            point belonging to the plane
 	 * @param normal
 	 *            normal direction to the plane
 	 * @exception MathArithmeticException
@@ -149,9 +149,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The plane is oriented in the direction of {@code (p2-p1) ^ (p3-p1)}
 	 * </p>
+	 * p1
+	 * first point belonging to the plane
 	 * 
-	 * @param p1
-	 *            first point belonging to the plane
 	 * @param p2
 	 *            second point belonging to the plane
 	 * @param p3
@@ -171,9 +171,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The instance created is completely independant of the original one. A deep copy is used, none of the underlying object are shared.
 	 * </p>
-	 * 
-	 * @param plane
-	 *            plane to copy
+	 * plane
+	 * plane to copy
 	 */
 	public Plane(final Plane plane) {
 
@@ -190,8 +189,7 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The instance created is completely independant of the original one. A deep copy is used, none of the underlying objects are shared (except for immutable objects).
 	 * </p>
-	 * 
-	 * @return a new hyperplane, copy of the instance
+	 * instance
 	 */
 	public Plane copySelf() {
 
@@ -200,9 +198,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Reset the instance as if built from a point and a normal.
+	 * p
+	 * point belonging to the plane
 	 * 
-	 * @param p
-	 *            point belonging to the plane
 	 * @param normal
 	 *            normal direction to the plane
 	 * @exception MathArithmeticException
@@ -220,9 +218,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The updated instance is completely independant of the original one. A deep reset is used none of the underlying object is shared.
 	 * </p>
-	 * 
-	 * @param original
-	 *            plane to reset from
+	 * original
+	 * plane to reset from
 	 */
 	public void reset(final Plane original) {
 
@@ -235,9 +232,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Set the normal vactor.
+	 * normal
+	 * normal direction to the plane (will be copied)
 	 * 
-	 * @param normal
-	 *            normal direction to the plane (will be copied)
 	 * @exception MathArithmeticException
 	 *                if the normal norm is too small
 	 */
@@ -265,9 +262,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The point returned is the orthogonal projection of the 3D-space origin in the plane.
 	 * </p>
-	 * 
-	 * @return the origin point of the plane frame (point closest to the
-	 *         3D-space origin)
+	 * the
+	 * 3D-space origin)
 	 */
 	public Vector3D getOrigin() {
 
@@ -279,8 +275,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The frame defined by ({@link #getU getU}, {@link #getV getV}, {@link #getNormal getNormal}) is a rigth-handed orthonormalized frame).
 	 * </p>
+	 * vector
 	 * 
-	 * @return normalized normal vector
 	 * @see #getU
 	 * @see #getV
 	 */
@@ -294,8 +290,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The frame defined by ({@link #getU getU}, {@link #getV getV}, {@link #getNormal getNormal}) is a rigth-handed orthonormalized frame).
 	 * </p>
+	 * vector
 	 * 
-	 * @return normalized first canonical vector
 	 * @see #getV
 	 * @see #getNormal
 	 */
@@ -309,8 +305,8 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The frame defined by ({@link #getU getU}, {@link #getV getV}, {@link #getNormal getNormal}) is a rigth-handed orthonormalized frame).
 	 * </p>
+	 * vector
 	 * 
-	 * @return normalized second canonical vector
 	 * @see #getU
 	 * @see #getNormal
 	 */
@@ -320,9 +316,7 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public Point<Euclidean3D> project(Point<Euclidean3D> point) {
 
@@ -330,9 +324,7 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public double getTolerance() {
 
@@ -359,9 +351,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Transform a space point into a sub-space point.
+	 * vector
+	 * n-dimension point of the space
 	 * 
-	 * @param vector
-	 *            n-dimension point of the space
 	 * @return (n-1)-dimension point of the sub-space corresponding to
 	 *         the specified space point
 	 */
@@ -372,9 +364,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Transform a sub-space point into a space point.
+	 * vector
+	 * (n-1)-dimension point of the sub-space
 	 * 
-	 * @param vector
-	 *            (n-1)-dimension point of the sub-space
 	 * @return n-dimension point of the space corresponding to the
 	 *         specified sub-space point
 	 */
@@ -385,10 +377,10 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Transform a 3D space point into an in-plane point.
+	 * point
+	 * point of the space (must be a {@link Vector3D
+	 * Vector3D} instance)
 	 * 
-	 * @param point
-	 *            point of the space (must be a {@link Vector3D
-	 *            Vector3D} instance)
 	 * @return in-plane point (really a {@link org.apache.commons.math3.geometry.euclidean.twod.Vector2D Vector2D} instance)
 	 * @see #toSpace
 	 */
@@ -400,9 +392,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Transform an in-plane point into a 3D space point.
+	 * point
+	 * in-plane point (must be a {@link org.apache.commons.math3.geometry.euclidean.twod.Vector2D Vector2D} instance)
 	 * 
-	 * @param point
-	 *            in-plane point (must be a {@link org.apache.commons.math3.geometry.euclidean.twod.Vector2D Vector2D} instance)
 	 * @return 3D space point (really a {@link Vector3D Vector3D} instance)
 	 * @see #toSubSpace
 	 */
@@ -414,10 +406,10 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Get one point from the 3D-space.
+	 * inPlane
+	 * desired in-plane coordinates for the point in the
+	 * plane
 	 * 
-	 * @param inPlane
-	 *            desired in-plane coordinates for the point in the
-	 *            plane
 	 * @param offset
 	 *            desired offset for the point
 	 * @return one point in the 3D-space, with given coordinates and offset
@@ -433,9 +425,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * Planes are considered similar if they contain the same points. This does not mean they are equal since they can have opposite normals.
 	 * </p>
+	 * plane
+	 * plane to which the instance is compared
 	 * 
-	 * @param plane
-	 *            plane to which the instance is compared
 	 * @return true if the planes are similar
 	 */
 	public boolean isSimilarTo(final Plane plane) {
@@ -449,9 +441,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The instance is not modified, a new instance is created.
 	 * </p>
+	 * center
+	 * rotation center
 	 * 
-	 * @param center
-	 *            rotation center
 	 * @param rotation
 	 *            vectorial rotation operator
 	 * @return a new plane
@@ -471,9 +463,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The instance is not modified, a new instance is created.
 	 * </p>
+	 * translation
+	 * translation to apply
 	 * 
-	 * @param translation
-	 *            translation to apply
 	 * @return a new plane
 	 */
 	public Plane translate(final Vector3D translation) {
@@ -487,9 +479,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Get the intersection of a line with the instance.
+	 * line
+	 * line intersecting the instance
 	 * 
-	 * @param line
-	 *            line intersecting the instance
 	 * @return intersection point between between the line and the
 	 *         instance (null if the line is parallel to the instance)
 	 */
@@ -507,9 +499,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build the line shared by the instance and another plane.
+	 * other
+	 * other plane
 	 * 
-	 * @param other
-	 *            other plane
 	 * @return line at the intersection of the instance and the
 	 *         other plane (really a {@link Line Line} instance)
 	 */
@@ -525,9 +517,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Get the intersection point of three planes.
+	 * plane1
+	 * first plane1
 	 * 
-	 * @param plane1
-	 *            first plane1
 	 * @param plane2
 	 *            second plane2
 	 * @param plane3
@@ -564,8 +556,7 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a region covering the whole hyperplane.
-	 * 
-	 * @return a region covering the whole hyperplane
+	 * hyperplane
 	 */
 	public SubPlane wholeHyperplane() {
 
@@ -574,8 +565,7 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance (really a {@link PolyhedronsSet PolyhedronsSet} instance)
+	 * instance)
 	 */
 	public PolyhedronsSet wholeSpace() {
 
@@ -584,9 +574,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Check if the instance contains a point.
+	 * p
+	 * point to check
 	 * 
-	 * @param p
-	 *            point to check
 	 * @return true if p belongs to the plane
 	 */
 	public boolean contains(final Vector3D p) {
@@ -602,9 +592,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The offset is 0 if both planes are the same, it is positive if the plane is on the plus side of the instance and negative if it is on the minus side, according to its natural orientation.
 	 * </p>
+	 * plane
+	 * plane to check
 	 * 
-	 * @param plane
-	 *            plane to check
 	 * @return offset of the plane
 	 */
 	public double getOffset(final Plane plane) {
@@ -614,9 +604,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Get the offset (oriented distance) of a vector.
+	 * vector
+	 * vector to check
 	 * 
-	 * @param vector
-	 *            vector to check
 	 * @return offset of the vector
 	 */
 	public double getOffset(Vector<Euclidean3D> vector) {
@@ -629,9 +619,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 	 * <p>
 	 * The offset is 0 if the point is on the underlying hyperplane, it is positive if the point is on one particular side of the hyperplane, and it is negative if the point is on the other side, according to the hyperplane natural orientation.
 	 * </p>
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return offset of the point
 	 */
 	public double getOffset(final Point<Euclidean3D> point) {
@@ -641,9 +631,9 @@ public class Plane implements Hyperplane<Euclidean3D>, Embedding<Euclidean3D, Eu
 
 	/**
 	 * Check if the instance has the same orientation as another hyperplane.
+	 * other
+	 * other hyperplane to check against the instance
 	 * 
-	 * @param other
-	 *            other hyperplane to check against the instance
 	 * @return true if the instance and the other hyperplane have
 	 *         the same orientation
 	 */

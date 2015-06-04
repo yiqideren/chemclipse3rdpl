@@ -220,8 +220,7 @@ public class BracketFinder {
 
 	/**
 	 * Get function value at {@link #getLo()}.
-	 * 
-	 * @return function value at {@link #getLo()}
+	 * #getLo()}
 	 */
 	public double getFLo() {
 
@@ -239,8 +238,7 @@ public class BracketFinder {
 
 	/**
 	 * Get function value at {@link #getHi()}.
-	 * 
-	 * @return function value at {@link #getHi()}
+	 * #getHi()}
 	 */
 	public double getFHi() {
 
@@ -258,8 +256,7 @@ public class BracketFinder {
 
 	/**
 	 * Get function value at {@link #getMid()}.
-	 * 
-	 * @return function value at {@link #getMid()}
+	 * #getMid()}
 	 */
 	public double getFMid() {
 

@@ -30,15 +30,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * These methods are explicit Runge-Kutta methods, their Butcher arrays are as follows :
  * 
- * <pre>
- *    0  |
- *   c2  | a21
- *   c3  | a31  a32
- *   ... |        ...
- *   cs  | as1  as2  ...  ass-1
- *       |--------------------------
- *       |  b1   b2  ...   bs-1  bs
- * </pre>
+ * 
+ * 0 | c2 | a21 c3 | a31 a32 ... | ... cs | as1 as2 ... ass-1 |-------------------------- | b1 b2 ... bs-1 bs
+ * 
  * 
  * </p>
  *
@@ -65,9 +59,9 @@ public abstract class RungeKuttaIntegrator extends AbstractIntegrator {
 	 * Simple constructor.
 	 * Build a Runge-Kutta integrator with the given
 	 * step. The default step handler does nothing.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param c
 	 *            time steps from Butcher array (without the first zero)
 	 * @param a
@@ -185,9 +179,9 @@ public abstract class RungeKuttaIntegrator extends AbstractIntegrator {
 	 * <p>
 	 * As this method does not use any of the state-dependent features of the integrator, it should be reasonably thread-safe <em>if and only if</em> the provided differential equations are themselves thread-safe.
 	 * </p>
+	 * equations
+	 * differential equations to integrate
 	 * 
-	 * @param equations
-	 *            differential equations to integrate
 	 * @param t0
 	 *            initial time
 	 * @param y0

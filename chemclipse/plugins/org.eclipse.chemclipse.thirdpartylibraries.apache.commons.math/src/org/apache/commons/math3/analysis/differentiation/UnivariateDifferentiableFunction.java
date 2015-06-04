@@ -34,9 +34,9 @@ public interface UnivariateDifferentiableFunction extends UnivariateFunction {
 	 * <p>
 	 * {@link UnivariateDifferentiableFunction} classes compute both the value and the first derivative of the function.
 	 * </p>
+	 * t
+	 * function input value
 	 * 
-	 * @param t
-	 *            function input value
 	 * @return function result
 	 * @exception DimensionMismatchException
 	 *                if t is inconsistent with the

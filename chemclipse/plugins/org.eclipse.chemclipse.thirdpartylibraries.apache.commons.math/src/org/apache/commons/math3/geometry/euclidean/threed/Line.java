@@ -47,9 +47,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Build a line from two points.
+	 * p1
+	 * first point belonging to the line (this can be any point)
 	 * 
-	 * @param p1
-	 *            first point belonging to the line (this can be any point)
 	 * @param p2
 	 *            second point belonging to the line (this can be any point, different from p1)
 	 * @param tolerance
@@ -69,9 +69,8 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 	 * <p>
 	 * The created instance is completely independent from the original instance, it is a deep copy.
 	 * </p>
-	 * 
-	 * @param line
-	 *            line to copy
+	 * line
+	 * line to copy
 	 */
 	public Line(final Line line) {
 
@@ -82,9 +81,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Build a line from two points.
+	 * p1
+	 * first point belonging to the line (this can be any point)
 	 * 
-	 * @param p1
-	 *            first point belonging to the line (this can be any point)
 	 * @param p2
 	 *            second point belonging to the line (this can be any point, different from p1)
 	 * @exception MathIllegalArgumentException
@@ -99,9 +98,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Reset the instance as if built from two points.
+	 * p1
+	 * first point belonging to the line (this can be any point)
 	 * 
-	 * @param p1
-	 *            first point belonging to the line (this can be any point)
 	 * @param p2
 	 *            second point belonging to the line (this can be any point, different from p1)
 	 * @exception MathIllegalArgumentException
@@ -120,8 +119,8 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get the tolerance below which points are considered identical.
+	 * identical
 	 * 
-	 * @return tolerance below which points are considered identical
 	 * @since 3.3
 	 */
 	public double getTolerance() {
@@ -131,8 +130,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get a line with reversed direction.
-	 * 
-	 * @return a new instance, with reversed direction
+	 * direction
 	 */
 	public Line revert() {
 
@@ -143,8 +141,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get the normalized direction vector.
-	 * 
-	 * @return normalized direction vector
+	 * vector
 	 */
 	public Vector3D getDirection() {
 
@@ -153,8 +150,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get the line point closest to the origin.
-	 * 
-	 * @return line point closest to the origin
+	 * origin
 	 */
 	public Vector3D getOrigin() {
 
@@ -166,9 +162,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 	 * <p>
 	 * The abscissa is 0 if the projection of the point and the projection of the frame origin on the line are the same point.
 	 * </p>
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return abscissa of the point
 	 */
 	public double getAbscissa(final Vector3D point) {
@@ -178,9 +174,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get one point from the line.
+	 * abscissa
+	 * desired abscissa for the point
 	 * 
-	 * @param abscissa
-	 *            desired abscissa for the point
 	 * @return one point belonging to the line, at specified abscissa
 	 */
 	public Vector3D pointAt(final double abscissa) {
@@ -190,9 +186,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Transform a space point into a sub-space point.
+	 * vector
+	 * n-dimension point of the space
 	 * 
-	 * @param vector
-	 *            n-dimension point of the space
 	 * @return (n-1)-dimension point of the sub-space corresponding to
 	 *         the specified space point
 	 */
@@ -203,9 +199,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Transform a sub-space point into a space point.
+	 * vector
+	 * (n-1)-dimension point of the sub-space
 	 * 
-	 * @param vector
-	 *            (n-1)-dimension point of the sub-space
 	 * @return n-dimension point of the space corresponding to the
 	 *         specified sub-space point
 	 */
@@ -215,9 +211,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see #getAbscissa(Vector3D)
+	 * {@inheritDoc} #getAbscissa(Vector3D)
 	 */
 	public Vector1D toSubSpace(final Point<Euclidean3D> point) {
 
@@ -225,9 +219,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see #pointAt(double)
+	 * {@inheritDoc} #pointAt(double)
 	 */
 	public Vector3D toSpace(final Point<Euclidean1D> point) {
 
@@ -239,9 +231,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 	 * <p>
 	 * Lines are considered similar if they contain the same points. This does not mean they are equal since they can have opposite directions.
 	 * </p>
+	 * line
+	 * line to which instance should be compared
 	 * 
-	 * @param line
-	 *            line to which instance should be compared
 	 * @return true if the lines are similar
 	 */
 	public boolean isSimilarTo(final Line line) {
@@ -252,9 +244,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Check if the instance contains a point.
+	 * p
+	 * point to check
 	 * 
-	 * @param p
-	 *            point to check
 	 * @return true if p belongs to the line
 	 */
 	public boolean contains(final Vector3D p) {
@@ -264,9 +256,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Compute the distance between the instance and a point.
+	 * p
+	 * to check
 	 * 
-	 * @param p
-	 *            to check
 	 * @return distance between the instance and the point
 	 */
 	public double distance(final Vector3D p) {
@@ -278,9 +270,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Compute the shortest distance between the instance and another line.
+	 * line
+	 * line to check against the instance
 	 * 
-	 * @param line
-	 *            line to check against the instance
 	 * @return shortest distance between the instance and the line
 	 */
 	public double distance(final Line line) {
@@ -298,9 +290,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Compute the point of the instance closest to another line.
+	 * line
+	 * line to check against the instance
 	 * 
-	 * @param line
-	 *            line to check against the instance
 	 * @return point of the instance closest to another line
 	 */
 	public Vector3D closestPoint(final Line line) {
@@ -319,9 +311,9 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Get the intersection point of the instance and another line.
+	 * line
+	 * other line
 	 * 
-	 * @param line
-	 *            other line
 	 * @return intersection point of the instance and the other line
 	 *         or null if there are no intersection points
 	 */
@@ -333,8 +325,7 @@ public class Line implements Embedding<Euclidean3D, Euclidean1D> {
 
 	/**
 	 * Build a sub-line covering the whole line.
-	 * 
-	 * @return a sub-line covering the whole line
+	 * line
 	 */
 	public SubLine wholeLine() {
 

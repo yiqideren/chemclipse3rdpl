@@ -103,10 +103,10 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Simple constructor.
+	 * y
+	 * reference to the integrator array holding the state at
+	 * the end of the step
 	 * 
-	 * @param y
-	 *            reference to the integrator array holding the state at
-	 *            the end of the step
 	 * @param forward
 	 *            integration direction indicator
 	 * @param primaryMapper
@@ -133,17 +133,14 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Copy constructor.
-	 * 
 	 * <p>
 	 * The copied interpolator should have been finalized before the copy, otherwise the copy will not be able to perform correctly any derivative computation and will throw a {@link NullPointerException} later. Since we don't want this constructor to throw the exceptions finalization may involve and since we don't want this method to modify the state of the copied interpolator, finalization is <strong>not</strong> done automatically, it remains under user control.
 	 * </p>
-	 * 
 	 * <p>
 	 * The copy is a deep copy: its arrays are separated from the original arrays of the instance.
 	 * </p>
-	 * 
-	 * @param interpolator
-	 *            interpolator to copy from.
+	 * interpolator
+	 * interpolator to copy from.
 	 */
 	protected AbstractStepInterpolator(final AbstractStepInterpolator interpolator) {
 
@@ -180,9 +177,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Allocate the various interpolated states arrays.
-	 * 
-	 * @param dimension
-	 *            total dimension (negative if arrays should be set to null)
+	 * dimension
+	 * total dimension (negative if arrays should be set to null)
 	 */
 	private void allocateInterpolatedArrays(final int dimension) {
 
@@ -214,9 +210,9 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Reinitialize the instance
+	 * y
+	 * reference to the integrator array holding the state at the end of the step
 	 * 
-	 * @param y
-	 *            reference to the integrator array holding the state at the end of the step
 	 * @param isForward
 	 *            integration direction indicator
 	 * @param primary
@@ -253,9 +249,7 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	/**
 	 * Really copy the finalized instance.
 	 * <p>
-	 * This method is called by {@link #copy()} after the step has been finalized. It must perform a deep copy to have an new instance completely independent for the original instance.
-	 * 
-	 * @return a copy of the finalized instance
+	 * This method is called by {@link #copy()} after the step has been finalized. It must perform a deep copy to have an new instance completely independent for the original instance. instance
 	 */
 	protected abstract StepInterpolator doCopy();
 
@@ -273,9 +267,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Store the current step time.
-	 * 
-	 * @param t
-	 *            current time
+	 * t
+	 * current time
 	 */
 	public void storeTime(final double t) {
 
@@ -292,9 +285,9 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	 * <p>
 	 * This method can be used to restrict a step and make it appear as if the original step was smaller. Calling this method <em>only</em> changes the value returned by {@link #getPreviousTime()}, it does not change any other property
 	 * </p>
+	 * softPreviousTime
+	 * start of the restricted step
 	 * 
-	 * @param softPreviousTime
-	 *            start of the restricted step
 	 * @since 2.2
 	 */
 	public void setSoftPreviousTime(final double softPreviousTime) {
@@ -307,9 +300,9 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	 * <p>
 	 * This method can be used to restrict a step and make it appear as if the original step was smaller. Calling this method <em>only</em> changes the value returned by {@link #getCurrentTime()}, it does not change any other property
 	 * </p>
+	 * softCurrentTime
+	 * end of the restricted step
 	 * 
-	 * @param softCurrentTime
-	 *            end of the restricted step
 	 * @since 2.2
 	 */
 	public void setSoftCurrentTime(final double softCurrentTime) {
@@ -319,8 +312,7 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Get the previous global grid point time.
-	 * 
-	 * @return previous global grid point time
+	 * time
 	 */
 	public double getGlobalPreviousTime() {
 
@@ -329,8 +321,7 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Get the current global grid point time.
-	 * 
-	 * @return current global grid point time
+	 * time
 	 */
 	public double getGlobalCurrentTime() {
 
@@ -339,8 +330,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Get the previous soft grid point time.
+	 * time
 	 * 
-	 * @return previous soft grid point time
 	 * @see #setSoftPreviousTime(double)
 	 */
 	public double getPreviousTime() {
@@ -350,8 +341,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Get the current soft grid point time.
+	 * time
 	 * 
-	 * @return current soft grid point time
 	 * @see #setSoftCurrentTime(double)
 	 */
 	public double getCurrentTime() {
@@ -382,10 +373,10 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	 * Compute the state and derivatives at the interpolated time.
 	 * This is the main processing method that should be implemented by
 	 * the derived classes to perform the interpolation.
+	 * theta
+	 * normalized interpolation abscissa within the step
+	 * (theta is zero at the previous time step and one at the current time step)
 	 * 
-	 * @param theta
-	 *            normalized interpolation abscissa within the step
-	 *            (theta is zero at the previous time step and one at the current time step)
 	 * @param oneMinusThetaH
 	 *            time gap between the interpolated time and
 	 *            the current time
@@ -396,9 +387,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Lazy evaluation of complete interpolated state.
-	 * 
-	 * @exception MaxCountExceededException
-	 *                if the number of functions evaluations is exceeded
+	 * MaxCountExceededException
+	 * if the number of functions evaluations is exceeded
 	 */
 	private void evaluateCompleteInterpolatedState() throws MaxCountExceededException {
 
@@ -445,27 +435,22 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 
 	/**
 	 * Finalize the step.
-	 * 
 	 * <p>
 	 * Some embedded Runge-Kutta integrators need fewer functions evaluations than their counterpart step interpolators. These interpolators should perform the last evaluations they need by themselves only if they need them. This method triggers these extra evaluations. It can be called directly by the user step handler and it is called automatically if {@link #setInterpolatedTime} is called.
 	 * </p>
-	 * 
 	 * <p>
 	 * Once this method has been called, <strong>no</strong> other evaluation will be performed on this step. If there is a need to have some side effects between the step handler and the differential equations (for example update some data in the equations once the step has been done), it is advised to call this method explicitly from the step handler before these side effects are set up. If the step handler induces no side effect, then this method can safely be ignored, it will be called
 	 * transparently as needed.
 	 * </p>
-	 * 
 	 * <p>
 	 * <strong>Warning</strong>: since the step interpolator provided to the step handler as a parameter of the {@link StepHandler#handleStep handleStep} is valid only for the duration of the {@link StepHandler#handleStep handleStep} call, one cannot simply store a reference and reuse it later. One should first finalize the instance, then copy this finalized instance into a new object that can be kept.
 	 * </p>
-	 * 
 	 * <p>
 	 * This method calls the protected <code>doFinalize</code> method if it has never been called during this step and set a flag indicating that it has been called once. It is the <code>
 	 * doFinalize</code> method which should perform the evaluations. This wrapping prevents from calling <code>doFinalize</code> several times and hence evaluating the differential equations too often. Therefore, subclasses are not allowed not reimplement it, they should rather reimplement <code>doFinalize</code>.
 	 * </p>
-	 * 
-	 * @exception MaxCountExceededException
-	 *                if the number of functions evaluations is exceeded
+	 * MaxCountExceededException
+	 * if the number of functions evaluations is exceeded
 	 */
 	public final void finalizeStep() throws MaxCountExceededException {
 
@@ -478,9 +463,8 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	/**
 	 * Really finalize the step.
 	 * The default implementation of this method does nothing.
-	 * 
-	 * @exception MaxCountExceededException
-	 *                if the number of functions evaluations is exceeded
+	 * MaxCountExceededException
+	 * if the number of functions evaluations is exceeded
 	 */
 	protected void doFinalize() throws MaxCountExceededException {
 
@@ -496,9 +480,9 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	 * Save the base state of the instance.
 	 * This method performs step finalization if it has not been done
 	 * before.
+	 * out
+	 * stream where to save the state
 	 * 
-	 * @param out
-	 *            stream where to save the state
 	 * @exception IOException
 	 *                in case of write error
 	 */
@@ -544,9 +528,9 @@ public abstract class AbstractStepInterpolator implements StepInterpolator {
 	 * time nor state. It is up to the derived class to reset it
 	 * properly calling the {@link #setInterpolatedTime} method later,
 	 * once all rest of the object state has been set up properly.
+	 * in
+	 * stream where to read the state from
 	 * 
-	 * @param in
-	 *            stream where to read the state from
 	 * @return interpolated time to be set later by the caller
 	 * @exception IOException
 	 *                in case of read error

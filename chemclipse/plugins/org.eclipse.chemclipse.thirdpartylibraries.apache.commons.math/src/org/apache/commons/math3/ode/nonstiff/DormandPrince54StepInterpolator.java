@@ -86,11 +86,10 @@ class DormandPrince54StepInterpolator extends RungeKuttaStepInterpolator {
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param interpolator
-	 *            interpolator to copy from. The copy is a deep
-	 *            copy: its arrays are separated from the original arrays of the
-	 *            instance
+	 * interpolator
+	 * interpolator to copy from. The copy is a deep
+	 * copy: its arrays are separated from the original arrays of the
+	 * instance
 	 */
 	public DormandPrince54StepInterpolator(final DormandPrince54StepInterpolator interpolator) {
 

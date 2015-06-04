@@ -52,9 +52,8 @@ public class FirstOrderConverter implements FirstOrderDifferentialEquations {
 	/**
 	 * Simple constructor.
 	 * Build a converter around a second order equations set.
-	 * 
-	 * @param equations
-	 *            second order equations set to convert
+	 * equations
+	 * second order equations set to convert
 	 */
 	public FirstOrderConverter(final SecondOrderDifferentialEquations equations) {
 
@@ -70,8 +69,7 @@ public class FirstOrderConverter implements FirstOrderDifferentialEquations {
 	 * <p>
 	 * The dimension of the first order problem is twice the dimension of the underlying second order problem.
 	 * </p>
-	 * 
-	 * @return dimension of the problem
+	 * problem
 	 */
 	public int getDimension() {
 
@@ -80,9 +78,9 @@ public class FirstOrderConverter implements FirstOrderDifferentialEquations {
 
 	/**
 	 * Get the current time derivative of the state vector.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 * @param yDot

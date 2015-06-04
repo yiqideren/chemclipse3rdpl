@@ -43,10 +43,10 @@
  * <p>
  * Numbers are represented in the following form:
  * 
- * <pre>
- * n  =  sign &times; mant &times; (radix)<sup>exp</sup>;
+ * 
+ * n = sign &times; mant &times; (radix)<sup>exp</sup>;
  * </p>
- * </pre>
+ * 
  * where sign is &plusmn;1, mantissa represents a fractional number between
  * zero and one. mant[0] is the least significant digit.
  * exp is in the range of -32767 to 32768</p>

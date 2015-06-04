@@ -23,10 +23,9 @@ import java.net.URL;
  * <p>
  * Try adding a <code>ClassClassPath</code> when a program is running with a user-defined class loader and any class files are not found with the default <code>ClassPool</code>. For example,
  *
- * <pre>
- * ClassPool cp = ClassPool.getDefault();
- * cp.insertClassPath(new ClassClassPath(this.getClass()));
- * </pre>
+ * 
+ * ClassPool cp = ClassPool.getDefault(); cp.insertClassPath(new ClassClassPath(this.getClass()));
+ * 
  *
  * This code snippet permanently adds a <code>ClassClassPath</code> to the default <code>ClassPool</code>. Note that the default <code>ClassPool</code> is a singleton. The added <code>ClassClassPath</code> uses a class object representing the class including the code snippet above.
  *

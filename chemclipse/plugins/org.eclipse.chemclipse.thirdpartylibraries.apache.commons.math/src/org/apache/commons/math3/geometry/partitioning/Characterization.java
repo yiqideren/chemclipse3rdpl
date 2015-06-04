@@ -44,9 +44,9 @@ class Characterization<S extends Space> {
 	 * <p>
 	 * Characterization consists in splitting the specified sub-hyperplane into several parts lying in inside and outside cells of the tree. The principle is to compute characterization twice for each cut sub-hyperplane in the tree, once on the plus node and once on the minus node. The parts that have the same flag (inside/inside or outside/outside) do not belong to the boundary while parts that have different flags (inside/outside or outside/inside) do belong to the boundary.
 	 * </p>
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param sub
 	 *            sub-hyperplane to characterize
 	 */
@@ -64,9 +64,9 @@ class Characterization<S extends Space> {
 	 * <p>
 	 * The filtering consist in splitting the specified sub-hyperplane into several parts lying in inside and outside cells of the tree. The principle is to call this method twice for each cut sub-hyperplane in the tree, once on the plus node and once on the minus node. The parts that have the same flag (inside/inside or outside/outside) do not belong to the boundary while parts that have different flags (inside/outside or outside/inside) do belong to the boundary.
 	 * </p>
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param sub
 	 *            sub-hyperplane to characterize
 	 * @param splitters
@@ -107,9 +107,9 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Add a part of the cut sub-hyperplane known to touch an outside cell.
+	 * sub
+	 * part of the cut sub-hyperplane known to touch an outside cell
 	 * 
-	 * @param sub
-	 *            part of the cut sub-hyperplane known to touch an outside cell
 	 * @param splitters
 	 *            sub-hyperplanes that did split the current one
 	 */
@@ -125,9 +125,9 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Add a part of the cut sub-hyperplane known to touch an inside cell.
+	 * sub
+	 * part of the cut sub-hyperplane known to touch an inside cell
 	 * 
-	 * @param sub
-	 *            part of the cut sub-hyperplane known to touch an inside cell
 	 * @param splitters
 	 *            sub-hyperplanes that did split the current one
 	 */
@@ -143,8 +143,7 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Check if the cut sub-hyperplane touches outside cells.
-	 * 
-	 * @return true if the cut sub-hyperplane touches outside cells
+	 * cells
 	 */
 	public boolean touchOutside() {
 
@@ -153,9 +152,8 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Get all the parts of the cut sub-hyperplane known to touch outside cells.
-	 * 
-	 * @return parts of the cut sub-hyperplane known to touch outside cells
-	 *         (may be null or empty)
+	 * cells
+	 * (may be null or empty)
 	 */
 	public SubHyperplane<S> outsideTouching() {
 
@@ -167,8 +165,7 @@ class Characterization<S extends Space> {
 	 * <p>
 	 * Splitting nodes are internal nodes (i.e. they have a non-null cut sub-hyperplane).
 	 * </p>
-	 * 
-	 * @return nodes that were used to split the outside touching part
+	 * part
 	 */
 	public NodesSet<S> getOutsideSplitters() {
 
@@ -177,8 +174,7 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Check if the cut sub-hyperplane touches inside cells.
-	 * 
-	 * @return true if the cut sub-hyperplane touches inside cells
+	 * cells
 	 */
 	public boolean touchInside() {
 
@@ -187,9 +183,8 @@ class Characterization<S extends Space> {
 
 	/**
 	 * Get all the parts of the cut sub-hyperplane known to touch inside cells.
-	 * 
-	 * @return parts of the cut sub-hyperplane known to touch inside cells
-	 *         (may be null or empty)
+	 * cells
+	 * (may be null or empty)
 	 */
 	public SubHyperplane<S> insideTouching() {
 
@@ -201,8 +196,7 @@ class Characterization<S extends Space> {
 	 * <p>
 	 * Splitting nodes are internal nodes (i.e. they have a non-null cut sub-hyperplane).
 	 * </p>
-	 * 
-	 * @return nodes that were used to split the inside touching part
+	 * part
 	 */
 	public NodesSet<S> getInsideSplitters() {
 

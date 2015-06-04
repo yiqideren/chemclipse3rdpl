@@ -37,26 +37,22 @@ public abstract class AbstractLinearOptimizer implements LinearOptimizer {
 	public static final int DEFAULT_MAX_ITERATIONS = 100;
 	/**
 	 * Linear objective function.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	private LinearObjectiveFunction function;
 	/**
 	 * Linear constraints.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	private Collection<LinearConstraint> linearConstraints;
 	/**
 	 * Type of optimization goal: either {@link GoalType#MAXIMIZE} or {@link GoalType#MINIMIZE}.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	private GoalType goal;
 	/**
 	 * Whether to restrict the variables to non-negative values.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	private boolean nonNegative;
 	/** Maximal number of iterations allowed. */
@@ -127,9 +123,8 @@ public abstract class AbstractLinearOptimizer implements LinearOptimizer {
 
 	/**
 	 * Increment the iterations counter by 1.
-	 * 
-	 * @exception MaxCountExceededException
-	 *                if the maximal number of iterations is exceeded
+	 * MaxCountExceededException
+	 * if the maximal number of iterations is exceeded
 	 */
 	protected void incrementIterationsCounter() throws MaxCountExceededException {
 
@@ -153,8 +148,8 @@ public abstract class AbstractLinearOptimizer implements LinearOptimizer {
 
 	/**
 	 * Perform the bulk of optimization algorithm.
+	 * function
 	 * 
-	 * @return the point/value pair giving the optimal value for objective function
 	 * @exception MathIllegalStateException
 	 *                if no solution fulfilling the constraints
 	 *                can be found in the allowed number of iterations

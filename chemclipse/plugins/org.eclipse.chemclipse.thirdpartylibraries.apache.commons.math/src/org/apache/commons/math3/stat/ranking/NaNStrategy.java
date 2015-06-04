@@ -37,8 +37,7 @@ public enum NaNStrategy {
 	FIXED,
 	/**
 	 * NaNs result in an exception
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	FAILED
 }

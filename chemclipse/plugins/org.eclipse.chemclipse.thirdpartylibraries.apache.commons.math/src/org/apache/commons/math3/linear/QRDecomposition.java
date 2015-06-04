@@ -103,9 +103,9 @@ public class QRDecomposition {
 
 	/**
 	 * Decompose matrix.
+	 * matrix
+	 * transposed matrix
 	 * 
-	 * @param matrix
-	 *            transposed matrix
 	 * @since 3.2
 	 */
 	protected void decompose(double[][] matrix) {
@@ -117,9 +117,9 @@ public class QRDecomposition {
 
 	/**
 	 * Perform Householder reflection for a minor A(minor, minor) of A.
+	 * minor
+	 * minor index
 	 * 
-	 * @param minor
-	 *            minor index
 	 * @param matrix
 	 *            transposed matrix
 	 * @since 3.2
@@ -182,8 +182,7 @@ public class QRDecomposition {
 	 * <p>
 	 * R is an upper-triangular matrix
 	 * </p>
-	 * 
-	 * @return the R matrix
+	 * matrix
 	 */
 	public RealMatrix getR() {
 
@@ -210,8 +209,7 @@ public class QRDecomposition {
 	 * <p>
 	 * Q is an orthogonal matrix
 	 * </p>
-	 * 
-	 * @return the Q matrix
+	 * matrix
 	 */
 	public RealMatrix getQ() {
 
@@ -226,8 +224,7 @@ public class QRDecomposition {
 	 * <p>
 	 * Q is an orthogonal matrix
 	 * </p>
-	 * 
-	 * @return the transpose of the Q matrix, Q<sup>T</sup>
+	 * Q<sup>T</sup>
 	 */
 	public RealMatrix getQT() {
 
@@ -271,8 +268,7 @@ public class QRDecomposition {
 	 * <p>
 	 * H is a lower trapezoidal matrix whose columns represent each successive Householder reflector vector. This matrix is used to compute Q.
 	 * </p>
-	 * 
-	 * @return a matrix containing the Householder reflector vectors
+	 * vectors
 	 */
 	public RealMatrix getH() {
 
@@ -296,8 +292,7 @@ public class QRDecomposition {
 	 * <p>
 	 * Least Square sense means a solver can be computed for an overdetermined system, (i.e. a system with more equations than unknowns, which corresponds to a tall A matrix with more rows than columns). In any case, if the matrix is singular within the tolerance set at {@link QRDecomposition#QRDecomposition(RealMatrix, double) construction}, an error will be triggered when the {@link DecompositionSolver#solve(RealVector) solve} method will be called.
 	 * </p>
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	public DecompositionSolver getSolver() {
 

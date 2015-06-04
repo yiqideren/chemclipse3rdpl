@@ -41,9 +41,9 @@ public class SubLine {
 
 	/**
 	 * Simple constructor.
+	 * line
+	 * underlying line
 	 * 
-	 * @param line
-	 *            underlying line
 	 * @param remainingRegion
 	 *            remaining region of the line
 	 */
@@ -55,9 +55,9 @@ public class SubLine {
 
 	/**
 	 * Create a sub-line from two endpoints.
+	 * start
+	 * start point
 	 * 
-	 * @param start
-	 *            start point
 	 * @param end
 	 *            end point
 	 * @param tolerance
@@ -73,9 +73,9 @@ public class SubLine {
 
 	/**
 	 * Create a sub-line from two endpoints.
+	 * start
+	 * start point
 	 * 
-	 * @param start
-	 *            start point
 	 * @param end
 	 *            end point
 	 * @exception MathIllegalArgumentException
@@ -89,9 +89,9 @@ public class SubLine {
 
 	/**
 	 * Create a sub-line from a segment.
+	 * segment
+	 * single segment forming the sub-line
 	 * 
-	 * @param segment
-	 *            single segment forming the sub-line
 	 * @exception MathIllegalArgumentException
 	 *                if the segment endpoints are equal
 	 */
@@ -106,8 +106,7 @@ public class SubLine {
 	 * A subline may be any arbitrary number of disjoints segments, so the endpoints are provided as a list of endpoint pairs. Each element of the list represents one segment, and each segment contains a start point at index 0 and an end point at index 1. If the sub-line is unbounded in the negative infinity direction, the start point of the first segment will have infinite coordinates. If the sub-line is unbounded in the positive infinity direction, the end point of the last segment will have
 	 * infinite coordinates. So a sub-line covering the whole line will contain just one row and both elements of this row will have infinite coordinates. If the sub-line is empty, the returned list will contain 0 segments.
 	 * </p>
-	 * 
-	 * @return list of segments endpoints
+	 * endpoints
 	 */
 	public List<Segment> getSegments() {
 
@@ -127,9 +126,9 @@ public class SubLine {
 	 * This method is related to the {@link Line#intersection(Line)
 	 * intersection} method in the {@link Line Line} class, but in addition to compute the point along infinite lines, it also checks the point lies on both sub-line ranges.
 	 * </p>
+	 * subLine
+	 * other sub-line which may intersect instance
 	 * 
-	 * @param subLine
-	 *            other sub-line which may intersect instance
 	 * @param includeEndPoints
 	 *            if true, endpoints are considered to belong to
 	 *            instance (i.e. they are closed sets) and may be returned, otherwise endpoints
@@ -157,9 +156,9 @@ public class SubLine {
 
 	/**
 	 * Build an interval set from two points.
+	 * start
+	 * start point
 	 * 
-	 * @param start
-	 *            start point
 	 * @param end
 	 *            end point
 	 * @return an interval set

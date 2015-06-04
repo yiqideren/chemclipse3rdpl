@@ -26,9 +26,9 @@ public class Desc {
 	 * <p>
 	 * If true, it is loaded by:
 	 * 
-	 * <pre>
+	 * 
 	 * Thread.currentThread().getContextClassLoader().loadClass()
-	 * </pre>
+	 * 
 	 * <p>
 	 * If false, it is loaded by <code>Class.forName()</code>. The default value is false.
 	 */

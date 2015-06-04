@@ -153,9 +153,7 @@ public class Sum extends AbstractStorelessUnivariateStatistic implements Seriali
 	 * <p>
 	 * Uses the formula,
 	 * 
-	 * <pre>
-	 *    weighted sum = &Sigma;(values[i] * weights[i])
-	 * </pre>
+	 * weighted sum = &Sigma;(values[i] * weights[i])
 	 * 
 	 * </p>
 	 *
@@ -200,9 +198,7 @@ public class Sum extends AbstractStorelessUnivariateStatistic implements Seriali
 	 * <p>
 	 * Uses the formula,
 	 * 
-	 * <pre>
-	 *    weighted sum = &Sigma;(values[i] * weights[i])
-	 * </pre>
+	 * weighted sum = &Sigma;(values[i] * weights[i])
 	 * 
 	 * </p>
 	 *

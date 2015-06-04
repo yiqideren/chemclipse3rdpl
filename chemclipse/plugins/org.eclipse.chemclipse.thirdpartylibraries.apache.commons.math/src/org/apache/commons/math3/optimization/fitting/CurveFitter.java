@@ -49,8 +49,7 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Optimizer to use for the fitting.
-	 * 
-	 * @deprecated as of 3.1 replaced by {@link #optimizer}
+	 * #optimizer}
 	 */
 	@Deprecated
 	private final DifferentiableMultivariateVectorOptimizer oldOptimizer;
@@ -61,9 +60,9 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Simple constructor.
+	 * optimizer
+	 * optimizer to use for the fitting
 	 * 
-	 * @param optimizer
-	 *            optimizer to use for the fitting
 	 * @deprecated as of 3.1 replaced by {@link #CurveFitter(MultivariateDifferentiableVectorOptimizer)}
 	 */
 	@Deprecated
@@ -76,9 +75,9 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Simple constructor.
+	 * optimizer
+	 * optimizer to use for the fitting
 	 * 
-	 * @param optimizer
-	 *            optimizer to use for the fitting
 	 * @since 3.1
 	 */
 	public CurveFitter(final MultivariateDifferentiableVectorOptimizer optimizer) {
@@ -93,9 +92,9 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 	 * <p>
 	 * Calling this method is equivalent to call {@code addObservedPoint(1.0, x, y)}.
 	 * </p>
+	 * x
+	 * abscissa of the point
 	 * 
-	 * @param x
-	 *            abscissa of the point
 	 * @param y
 	 *            observed value of the point at x, after fitting we should
 	 *            have f(x) as close as possible to this value
@@ -110,9 +109,9 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Add an observed weighted (x,y) point to the sample.
+	 * weight
+	 * weight of the observed point in the fit
 	 * 
-	 * @param weight
-	 *            weight of the observed point in the fit
 	 * @param x
 	 *            abscissa of the point
 	 * @param y
@@ -129,9 +128,9 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Add an observed weighted (x,y) point to the sample.
+	 * observed
+	 * observed point to add
 	 * 
-	 * @param observed
-	 *            observed point to add
 	 * @see #addObservedPoint(double, double)
 	 * @see #addObservedPoint(double, double, double)
 	 * @see #getObservations()
@@ -143,8 +142,8 @@ public class CurveFitter<T extends ParametricUnivariateFunction> {
 
 	/**
 	 * Get the observed points.
+	 * points
 	 * 
-	 * @return observed points
 	 * @see #addObservedPoint(double, double)
 	 * @see #addObservedPoint(double, double, double)
 	 * @see #addObservedPoint(WeightedObservedPoint)

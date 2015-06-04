@@ -55,8 +55,7 @@ public class SolutionCallback implements OptimizationData {
 
 	/**
 	 * Returns if the found solution is optimal.
-	 * 
-	 * @return {@code true} if the solution is optimal, {@code false} otherwise
+	 * otherwise
 	 */
 	public boolean isSolutionOptimal() {
 

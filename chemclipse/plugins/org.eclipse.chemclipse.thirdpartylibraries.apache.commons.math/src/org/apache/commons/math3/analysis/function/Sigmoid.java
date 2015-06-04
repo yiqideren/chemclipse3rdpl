@@ -66,9 +66,7 @@ public class Sigmoid implements UnivariateDifferentiableFunction, Differentiable
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated as of 3.1, replaced by {@link #value(DerivativeStructure)}
+	 * {@inheritDoc} #value(DerivativeStructure)}
 	 */
 	@Deprecated
 	public UnivariateFunction derivative() {
@@ -174,9 +172,7 @@ public class Sigmoid implements UnivariateDifferentiableFunction, Differentiable
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public DerivativeStructure value(final DerivativeStructure t) throws DimensionMismatchException {
 

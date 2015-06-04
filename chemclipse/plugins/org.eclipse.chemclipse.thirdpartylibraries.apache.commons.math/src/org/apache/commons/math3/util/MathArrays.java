@@ -57,8 +57,7 @@ public class MathArrays {
 
 	/**
 	 * Real-valued function that operate on an array or a part of it.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public interface Function {
 
@@ -947,9 +946,9 @@ public class MathArrays {
 	 * <p>
 	 * This method computes a<sub>1</sub>&times;b<sub>1</sub> + a<sub>2</sub>&times;b<sub>2</sub> to high accuracy. It does so by using specific multiplication and addition algorithms to preserve accuracy and reduce cancellation effects. It is based on the 2005 paper <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.1547"> Accurate Sum and Dot Product</a> by Takeshi Ogita, Siegfried M. Rump, and Shin'ichi Oishi published in SIAM J. Sci. Comput.
 	 * </p>
+	 * a1
+	 * first factor of the first term
 	 * 
-	 * @param a1
-	 *            first factor of the first term
 	 * @param b1
 	 *            second factor of the first term
 	 * @param a2
@@ -1014,9 +1013,9 @@ public class MathArrays {
 	 * This method computes a<sub>1</sub>&times;b<sub>1</sub> + a<sub>2</sub>&times;b<sub>2</sub> + a<sub>3</sub>&times;b<sub>3</sub> to high accuracy. It does so by using specific multiplication and addition algorithms to preserve accuracy and reduce cancellation effects. It is based on the 2005 paper <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.1547"> Accurate Sum and Dot Product</a> by Takeshi Ogita, Siegfried M. Rump, and Shin'ichi Oishi published in SIAM J. Sci.
 	 * Comput.
 	 * </p>
+	 * a1
+	 * first factor of the first term
 	 * 
-	 * @param a1
-	 *            first factor of the first term
 	 * @param b1
 	 *            second factor of the first term
 	 * @param a2
@@ -1099,9 +1098,9 @@ public class MathArrays {
 	 * This method computes a<sub>1</sub>&times;b<sub>1</sub> + a<sub>2</sub>&times;b<sub>2</sub> + a<sub>3</sub>&times;b<sub>3</sub> + a<sub>4</sub>&times;b<sub>4</sub> to high accuracy. It does so by using specific multiplication and addition algorithms to preserve accuracy and reduce cancellation effects. It is based on the 2005 paper <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.1547"> Accurate Sum and Dot Product</a> by Takeshi Ogita, Siegfried M. Rump, and Shin'ichi
 	 * Oishi published in SIAM J. Sci. Comput.
 	 * </p>
+	 * a1
+	 * first factor of the first term
 	 * 
-	 * @param a1
-	 *            first factor of the first term
 	 * @param b1
 	 *            second factor of the first term
 	 * @param a2
@@ -1311,9 +1310,7 @@ public class MathArrays {
 	 * Normalizes an array to make it sum to a specified value.
 	 * Returns the result of the transformation
 	 * 
-	 * <pre>
-	 *    x |-> x * normalizedSum / sum
-	 * </pre>
+	 * x |-> x * normalizedSum / sum
 	 * 
 	 * applied to each non-NaN element x of the input array, where sum is the
 	 * sum of the non-NaN entries in the input array.

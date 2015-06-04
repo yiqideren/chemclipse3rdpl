@@ -111,9 +111,9 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Add a {@link Collection} of chromosomes to this {@link Population}.
+	 * chromosomeColl
+	 * a {@link Collection} of chromosomes
 	 * 
-	 * @param chromosomeColl
-	 *            a {@link Collection} of chromosomes
 	 * @throws NumberIsTooLargeException
 	 *             if the population would exceed the population limit when
 	 *             adding this chromosome
@@ -129,8 +129,7 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Returns an unmodifiable list of the chromosomes in this population.
-	 * 
-	 * @return the unmodifiable list of chromosomes
+	 * chromosomes
 	 */
 	public List<Chromosome> getChromosomes() {
 
@@ -139,8 +138,8 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Access the list of chromosomes.
+	 * chromosomes
 	 * 
-	 * @return the list of chromosomes
 	 * @since 3.1
 	 */
 	protected List<Chromosome> getChromosomeList() {
@@ -167,8 +166,7 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Access the fittest chromosome in this population.
-	 * 
-	 * @return the fittest chromosome.
+	 * chromosome.
 	 */
 	public Chromosome getFittestChromosome() {
 
@@ -185,8 +183,7 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Access the maximum population size.
-	 * 
-	 * @return the maximum population size.
+	 * size.
 	 */
 	public int getPopulationLimit() {
 
@@ -195,9 +192,9 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Sets the maximal population size.
+	 * populationLimit
+	 * maximal population size.
 	 * 
-	 * @param populationLimit
-	 *            maximal population size.
 	 * @throws NotPositiveException
 	 *             if the population limit is not a positive number (&lt; 1)
 	 * @throws NumberIsTooSmallException
@@ -217,8 +214,7 @@ public abstract class ListPopulation implements Population {
 
 	/**
 	 * Access the current population size.
-	 * 
-	 * @return the current population size.
+	 * size.
 	 */
 	public int getPopulationSize() {
 

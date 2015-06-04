@@ -56,9 +56,9 @@ class NestedLoops {
 	 * <p>
 	 * Build an empty tree of nested loops. This instance will become the root node of a complete tree, it is not associated with any loop by itself, the outermost loops are in the root tree child nodes.
 	 * </p>
+	 * tolerance
+	 * tolerance below which points are considered identical
 	 * 
-	 * @param tolerance
-	 *            tolerance below which points are considered identical
 	 * @since 3.3
 	 */
 	public NestedLoops(final double tolerance) {
@@ -72,9 +72,9 @@ class NestedLoops {
 	 * <p>
 	 * Build a tree node with neither parent nor children
 	 * </p>
+	 * loop
+	 * boundary loop (will be reversed in place if needed)
 	 * 
-	 * @param loop
-	 *            boundary loop (will be reversed in place if needed)
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @exception MathIllegalArgumentException
@@ -111,9 +111,9 @@ class NestedLoops {
 
 	/**
 	 * Add a loop in a tree.
+	 * bLoop
+	 * boundary loop (will be reversed in place if needed)
 	 * 
-	 * @param bLoop
-	 *            boundary loop (will be reversed in place if needed)
 	 * @exception MathIllegalArgumentException
 	 *                if an outline has crossing
 	 *                boundary loops or open boundary loops
@@ -125,9 +125,9 @@ class NestedLoops {
 
 	/**
 	 * Add a loop in a tree.
+	 * node
+	 * boundary loop (will be reversed in place if needed)
 	 * 
-	 * @param node
-	 *            boundary loop (will be reversed in place if needed)
 	 * @exception MathIllegalArgumentException
 	 *                if an outline has boundary
 	 *                loops that cross each other
@@ -174,10 +174,9 @@ class NestedLoops {
 
 	/**
 	 * Set the loop orientation.
-	 * 
-	 * @param clockwise
-	 *            if true, the loop should be set to clockwise
-	 *            orientation
+	 * clockwise
+	 * if true, the loop should be set to clockwise
+	 * orientation
 	 */
 	private void setClockWise(final boolean clockwise) {
 

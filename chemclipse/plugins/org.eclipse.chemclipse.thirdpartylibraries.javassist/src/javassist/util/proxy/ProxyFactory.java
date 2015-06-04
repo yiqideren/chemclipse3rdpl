@@ -40,29 +40,17 @@ import javassist.bytecode.*;
  * <p>
  * For example, if the following code is executed,
  * 
- * <pre>
- * ProxyFactory f = new ProxyFactory();
- * f.setSuperclass(Foo.class);
- * f.setFilter(new MethodFilter() {
  * 
- * 	public boolean isHandled(Method m) {
+ * ProxyFactory f = new ProxyFactory(); f.setSuperclass(Foo.class); f.setFilter(new MethodFilter() {
  * 
- * 		// ignore finalize()
- * 		return !m.getName().equals(&quot;finalize&quot;);
- * 	}
- * });
- * Class c = f.createClass();
- * MethodHandler mi = new MethodHandler() {
+ * public boolean isHandled(Method m) {
  * 
- * 	public Object invoke(Object self, Method m, Method proceed, Object[] args) throws Throwable {
+ * // ignore finalize() return !m.getName().equals(&quot;finalize&quot;); } }); Class c = f.createClass(); MethodHandler mi = new MethodHandler() {
  * 
- * 		System.out.println(&quot;Name: &quot; + m.getName());
- * 		return proceed.invoke(self, args); // execute the original method.
- * 	}
- * };
- * Foo foo = (Foo)c.newInstance();
- * ((Proxy)foo).setHandler(mi);
- * </pre>
+ * public Object invoke(Object self, Method m, Method proceed, Object[] args) throws Throwable {
+ * 
+ * System.out.println(&quot;Name: &quot; + m.getName()); return proceed.invoke(self, args); // execute the original method. } }; Foo foo = (Foo)c.newInstance(); ((Proxy)foo).setHandler(mi);
+ * 
  *
  * <p>
  * Here, <code>Method</code> is <code>java.lang.reflect.Method</code>.
@@ -71,30 +59,29 @@ import javassist.bytecode.*;
  * <p>
  * Then, the following method call will be forwarded to MethodHandler <code>mi</code> and prints a message before executing the originally called method <code>bar()</code> in <code>Foo</code>.
  *
- * <pre>
+ * 
  * foo.bar();
- * </pre>
+ * 
  *
  * <p>
  * The last three lines of the code shown above can be replaced with a call to the helper method <code>create</code>, which generates a proxy class, instantiates it, and sets the method handler of the instance:
  *
- * <pre>
- *     :
- * Foo foo = (Foo)f.create(new Class[0], new Object[0], mi);
- * </pre>
+ * 
+ * : Foo foo = (Foo)f.create(new Class[0], new Object[0], mi);
+ * 
  *
  * <p>
  * To change the method handler during runtime, execute the following code:
  *
- * <pre>
- * MethodHandler mi = ... ;    // alternative handler
- * ((Proxy)foo).setHandler(mi);
- * </pre>
+ * 
+ * MethodHandler mi = ... ; // alternative handler ((Proxy)foo).setHandler(mi);
+ * 
  *
  * <p>
  * If setHandler is never called for a proxy instance then it will employ the default handler which proceeds by invoking the original method. The behaviour of the default handler is identical to the following handler:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -144,12 +131,10 @@ import javassist.bytecode.*;
  * 
  * class EmptyHandler implements MethodHandler {
  * 
- * 	public Object invoke(Object self, Method m, Method proceed, Object[] args) throws Exception {
+ * public Object invoke(Object self, Method m, Method proceed, Object[] args) throws Exception {
  * 
- * 		return proceed.invoke(self, args);
- * 	}
- * }
- * </pre>
+ * return proceed.invoke(self, args); } }
+ * 
  *
  * <p>
  * A proxy factory caches and reuses proxy classes by default. It is possible to reset this default globally by setting static field {@link ProxyFactory#useCache} to false. Caching may also be configured for a specific factory by calling instance method {@link ProxyFactory#setUseCache(boolean)}. It is strongly recommended that new clients of class ProxyFactory enable caching. Failure to do so may lead to exhaustion of the heap memory area used to store classes.
@@ -620,15 +605,13 @@ public class ProxyFactory {
 	 * <p>
 	 * Example:
 	 * 
-	 * <pre>
+	 * 
 	 * ProxyFactory.classLoaderProvider = new ProxyFactory.ClassLoaderProvider() {
 	 * 
-	 * 	public ClassLoader get(ProxyFactory pf) {
+	 * public ClassLoader get(ProxyFactory pf) {
 	 * 
-	 * 		return Thread.currentThread().getContextClassLoader();
-	 * 	}
-	 * };
-	 * </pre>
+	 * return Thread.currentThread().getContextClassLoader(); } };
+	 * 
 	 *
 	 * @since 3.4
 	 */

@@ -57,9 +57,9 @@ public class ComplexFormat {
 	/**
 	 * Create an instance with a custom number format for both real and
 	 * imaginary parts.
+	 * format
+	 * the custom format for both real and imaginary parts.
 	 * 
-	 * @param format
-	 *            the custom format for both real and imaginary parts.
 	 * @throws NullArgumentException
 	 *             if {@code realFormat} is {@code null}.
 	 */
@@ -76,9 +76,9 @@ public class ComplexFormat {
 	/**
 	 * Create an instance with a custom number format for the real part and a
 	 * custom number format for the imaginary part.
+	 * realFormat
+	 * the custom format for the real part.
 	 * 
-	 * @param realFormat
-	 *            the custom format for the real part.
 	 * @param imaginaryFormat
 	 *            the custom format for the imaginary part.
 	 * @throws NullArgumentException
@@ -102,9 +102,9 @@ public class ComplexFormat {
 	/**
 	 * Create an instance with a custom imaginary character, and the default
 	 * number format for both real and imaginary parts.
+	 * imaginaryCharacter
+	 * The custom imaginary character.
 	 * 
-	 * @param imaginaryCharacter
-	 *            The custom imaginary character.
 	 * @throws NullArgumentException
 	 *             if {@code imaginaryCharacter} is {@code null}.
 	 * @throws NoDataException
@@ -119,9 +119,9 @@ public class ComplexFormat {
 	/**
 	 * Create an instance with a custom imaginary character, and a custom number
 	 * format for both real and imaginary parts.
+	 * imaginaryCharacter
+	 * The custom imaginary character.
 	 * 
-	 * @param imaginaryCharacter
-	 *            The custom imaginary character.
 	 * @param format
 	 *            the custom format for both real and imaginary parts.
 	 * @throws NullArgumentException
@@ -182,8 +182,7 @@ public class ComplexFormat {
 	 * <p>
 	 * This is the same set as the {@link NumberFormat} set.
 	 * </p>
-	 * 
-	 * @return available complex format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -305,8 +304,7 @@ public class ComplexFormat {
 
 	/**
 	 * Access the imaginaryCharacter.
-	 * 
-	 * @return the imaginaryCharacter.
+	 * imaginaryCharacter.
 	 */
 	public String getImaginaryCharacter() {
 
@@ -315,8 +313,7 @@ public class ComplexFormat {
 
 	/**
 	 * Access the imaginaryFormat.
-	 * 
-	 * @return the imaginaryFormat.
+	 * imaginaryFormat.
 	 */
 	public NumberFormat getImaginaryFormat() {
 
@@ -325,8 +322,7 @@ public class ComplexFormat {
 
 	/**
 	 * Returns the default complex format for the current locale.
-	 * 
-	 * @return the default complex format.
+	 * format.
 	 */
 	public static ComplexFormat getInstance() {
 
@@ -335,9 +331,9 @@ public class ComplexFormat {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the complex format specific to the given locale.
 	 */
 	public static ComplexFormat getInstance(Locale locale) {
@@ -348,9 +344,9 @@ public class ComplexFormat {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @param imaginaryCharacter
 	 *            Imaginary character.
 	 * @return the complex format specific to the given locale.
@@ -368,8 +364,7 @@ public class ComplexFormat {
 
 	/**
 	 * Access the realFormat.
-	 * 
-	 * @return the realFormat.
+	 * realFormat.
 	 */
 	public NumberFormat getRealFormat() {
 

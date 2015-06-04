@@ -1317,9 +1317,9 @@ class ConcurrentHashMapV8<K, V> extends AbstractMap<K, V> implements ConcurrentM
 	/**
 	 * Saves the state of the {@code ConcurrentHashMapV8} instance to a
 	 * stream (i.e., serializes it).
+	 * s
+	 * the stream
 	 * 
-	 * @param s
-	 *            the stream
 	 * @throws java.io.IOException
 	 *             if an I/O error occurs
 	 * @serialData
@@ -1362,9 +1362,9 @@ class ConcurrentHashMapV8<K, V> extends AbstractMap<K, V> implements ConcurrentM
 
 	/**
 	 * Reconstitutes the instance from a stream (that is, deserializes it).
+	 * s
+	 * the stream
 	 * 
-	 * @param s
-	 *            the stream
 	 * @throws ClassNotFoundException
 	 *             if the class of a serialized object
 	 *             could not be found

@@ -29,23 +29,21 @@ public interface Point<S extends Space> extends Serializable {
 
 	/**
 	 * Get the space to which the point belongs.
-	 * 
-	 * @return containing space
+	 * space
 	 */
 	Space getSpace();
 
 	/**
 	 * Returns true if any coordinate of this point is NaN; false otherwise
-	 * 
-	 * @return true if any coordinate of this point is NaN; false otherwise
+	 * otherwise
 	 */
 	boolean isNaN();
 
 	/**
 	 * Compute the distance between the instance and another point.
+	 * p
+	 * second point
 	 * 
-	 * @param p
-	 *            second point
 	 * @return the distance between the instance and p
 	 */
 	double distance(Point<S> p);

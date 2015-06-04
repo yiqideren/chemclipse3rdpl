@@ -53,9 +53,9 @@ public class EventFilter implements EventHandler {
 
 	/**
 	 * Wrap an {@link EventHandler event handler}.
+	 * rawHandler
+	 * event handler to wrap
 	 * 
-	 * @param rawHandler
-	 *            event handler to wrap
 	 * @param filter
 	 *            filter to use
 	 */

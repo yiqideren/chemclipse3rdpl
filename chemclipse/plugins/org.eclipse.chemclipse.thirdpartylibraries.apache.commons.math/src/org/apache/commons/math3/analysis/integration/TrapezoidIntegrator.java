@@ -42,9 +42,9 @@ public class TrapezoidIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a trapezoid integrator with given accuracies and iterations counts.
+	 * relativeAccuracy
+	 * relative accuracy of the result
 	 * 
-	 * @param relativeAccuracy
-	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
 	 *            absolute accuracy of the result
 	 * @param minimalIterationCount
@@ -72,9 +72,9 @@ public class TrapezoidIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a trapezoid integrator with given iteration counts.
+	 * minimalIterationCount
+	 * minimum number of iterations
 	 * 
-	 * @param minimalIterationCount
-	 *            minimum number of iterations
 	 * @param maximalIterationCount
 	 *            maximum number of iterations
 	 *            (must be less than or equal to {@link #TRAPEZOID_MAX_ITERATIONS_COUNT}

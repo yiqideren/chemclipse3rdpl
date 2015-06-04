@@ -208,9 +208,9 @@ public class BesselJ implements UnivariateFunction {
 	 * <p>
 	 * Before using the output vector, the user should check that nVals = nb, i.e., all orders have been calculated to the desired accuracy. See BesselResult class javadoc for details on return values.
 	 * </p>
+	 * x
+	 * non-negative real argument for which J's are to be calculated
 	 * 
-	 * @param x
-	 *            non-negative real argument for which J's are to be calculated
 	 * @param alpha
 	 *            fractional part of order for which J's or exponentially
 	 *            scaled J's (\(J\cdot e^{x}\)) are to be calculated. 0 <= alpha < 1.0.

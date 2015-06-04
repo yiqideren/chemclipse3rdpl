@@ -100,9 +100,9 @@ public class PSquarePercentile extends AbstractStorelessUnivariateStatistic impl
 
 	/**
 	 * Constructs a PSquarePercentile with the specific percentile value.
+	 * p
+	 * the percentile
 	 * 
-	 * @param p
-	 *            the percentile
 	 * @throws OutOfRangeException
 	 *             if p is not greater than 0 and less
 	 *             than or equal to 100

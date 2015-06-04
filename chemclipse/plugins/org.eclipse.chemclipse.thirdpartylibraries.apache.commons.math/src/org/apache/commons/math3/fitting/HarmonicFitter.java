@@ -39,9 +39,8 @@ public class HarmonicFitter extends CurveFitter<HarmonicOscillator.Parametric> {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param optimizer
-	 *            Optimizer to use for the fitting.
+	 * optimizer
+	 * Optimizer to use for the fitting.
 	 */
 	public HarmonicFitter(final MultivariateVectorOptimizer optimizer) {
 
@@ -97,20 +96,14 @@ public class HarmonicFitter extends CurveFitter<HarmonicOscillator.Parametric> {
 	 * <p>
 	 * From the analytical expression, we can compute two primitives :
 	 * 
-	 * <pre>
-	 *     If2  (t) = &int; f<sup>2</sup>  = a<sup>2</sup> &times; [t + S (t)] / 2
-	 *     If'2 (t) = &int; f'<sup>2</sup> = a<sup>2</sup> &omega;<sup>2</sup> &times; [t - S (t)] / 2
-	 *     where S (t) = sin (2 (&omega; t + &phi;)) / (2 &omega;)
-	 * </pre>
+	 * If2 (t) = &int; f<sup>2</sup> = a<sup>2</sup> &times; [t + S (t)] / 2 If'2 (t) = &int; f'<sup>2</sup> = a<sup>2</sup> &omega;<sup>2</sup> &times; [t - S (t)] / 2 where S (t) = sin (2 (&omega; t + &phi;)) / (2 &omega;)
 	 * 
 	 * </p>
 	 *
 	 * <p>
 	 * We can remove S between these expressions :
 	 * 
-	 * <pre>
-	 *     If'2 (t) = a<sup>2</sup> &omega;<sup>2</sup> t - &omega;<sup>2</sup> If2 (t)
-	 * </pre>
+	 * If'2 (t) = a<sup>2</sup> &omega;<sup>2</sup> t - &omega;<sup>2</sup> If2 (t)
 	 * 
 	 * </p>
 	 *
@@ -121,9 +114,7 @@ public class HarmonicFitter extends CurveFitter<HarmonicOscillator.Parametric> {
 	 * <p>
 	 * From the primitive, we can deduce the same form for definite integrals between t<sub>1</sub> and t<sub>i</sub> for each t<sub>i</sub> :
 	 * 
-	 * <pre>
-	 *   If2 (t<sub>i</sub>) - If2 (t<sub>1</sub>) = A &times; (t<sub>i</sub> - t<sub>1</sub>) + B &times; (If2 (t<sub>i</sub>) - If2 (t<sub>1</sub>))
-	 * </pre>
+	 * If2 (t<sub>i</sub>) - If2 (t<sub>1</sub>) = A &times; (t<sub>i</sub> - t<sub>1</sub>) + B &times; (If2 (t<sub>i</sub>) - If2 (t<sub>1</sub>))
 	 * 
 	 * </p>
 	 *
@@ -135,16 +126,13 @@ public class HarmonicFitter extends CurveFitter<HarmonicOscillator.Parametric> {
 	 * For a bilinear expression z (x<sub>i</sub>, y<sub>i</sub>) = A &times; x<sub>i</sub> + B &times; y<sub>i</sub>, the coefficients A and B that minimize a least square criterion &sum; (z<sub>i</sub> - z (x<sub>i</sub>, y<sub>i</sub>))<sup>2</sup> are given by these expressions:
 	 * </p>
 	 * 
-	 * <pre>
 	 *
-	 *         &sum;y<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
-	 *     A = ------------------------
-	 *         &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
-	 * 
-	 *         &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub>
-	 *     B = ------------------------
-	 *         &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
-	 * </pre>
+	 * &sum;y<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
+	 * A = ------------------------
+	 * &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
+	 * &sum;x<sub>i</sub>z<sub>i</sub>
+	 * B = ------------------------
+	 * &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
 	 * 
 	 * </p>
 	 *
@@ -153,39 +141,32 @@ public class HarmonicFitter extends CurveFitter<HarmonicOscillator.Parametric> {
 	 * In fact, we can assume both a and &omega; are positive and compute them directly, knowing that A = a<sup>2</sup> &omega;<sup>2</sup> and that B = - &omega;<sup>2</sup>. The complete algorithm is therefore:
 	 * </p>
 	 * 
-	 * <pre>
 	 *
 	 * for each t<sub>i</sub> from t<sub>1</sub> to t<sub>n-1</sub>, compute:
-	 *   f  (t<sub>i</sub>)
-	 *   f' (t<sub>i</sub>) = (f (t<sub>i+1</sub>) - f(t<sub>i-1</sub>)) / (t<sub>i+1</sub> - t<sub>i-1</sub>)
-	 *   x<sub>i</sub> = t<sub>i</sub> - t<sub>1</sub>
-	 *   y<sub>i</sub> = &int; f<sup>2</sup> from t<sub>1</sub> to t<sub>i</sub>
-	 *   z<sub>i</sub> = &int; f'<sup>2</sup> from t<sub>1</sub> to t<sub>i</sub>
-	 *   update the sums &sum;x<sub>i</sub>x<sub>i</sub>, &sum;y<sub>i</sub>y<sub>i</sub>, &sum;x<sub>i</sub>y<sub>i</sub>, &sum;x<sub>i</sub>z<sub>i</sub> and &sum;y<sub>i</sub>z<sub>i</sub>
+	 * f (t<sub>i</sub>)
+	 * f' (t<sub>i</sub>) = (f (t<sub>i+1</sub>) - f(t<sub>i-1</sub>)) / (t<sub>i+1</sub> - t<sub>i-1</sub>)
+	 * x<sub>i</sub> = t<sub>i</sub> - t<sub>1</sub>
+	 * y<sub>i</sub> = &int; f<sup>2</sup> from t<sub>1</sub> to t<sub>i</sub>
+	 * z<sub>i</sub> = &int; f'<sup>2</sup> from t<sub>1</sub> to t<sub>i</sub>
+	 * update the sums &sum;x<sub>i</sub>x<sub>i</sub>, &sum;y<sub>i</sub>y<sub>i</sub>, &sum;x<sub>i</sub>y<sub>i</sub>, &sum;x<sub>i</sub>z<sub>i</sub> and &sum;y<sub>i</sub>z<sub>i</sub>
 	 * end for
+	 * |--------------------------
+	 * \ | &sum;y<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
+	 * a = \ | ------------------------
+	 * \| &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
 	 * 
-	 *            |--------------------------
-	 *         \  | &sum;y<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
-	 * a     =  \ | ------------------------
-	 *           \| &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
-	 * 
-	 * 
-	 *            |--------------------------
-	 *         \  | &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
-	 * &omega;     =  \ | ------------------------
-	 *           \| &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
+	 * |--------------------------
+	 * \ | &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>z<sub>i</sub> - &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>z<sub>i</sub>
+	 * &omega; = \ | ------------------------
+	 * \| &sum;x<sub>i</sub>x<sub>i</sub> &sum;y<sub>i</sub>y<sub>i</sub> - &sum;x<sub>i</sub>y<sub>i</sub> &sum;x<sub>i</sub>y<sub>i</sub>
 	 *
-	 * </pre>
 	 * 
 	 * </p>
 	 *
 	 * <p>
 	 * Once we know &omega;, we can compute:
 	 * 
-	 * <pre>
-	 *    fc = &omega; f (t) cos (&omega; t) - f' (t) sin (&omega; t)
-	 *    fs = &omega; f (t) sin (&omega; t) + f' (t) cos (&omega; t)
-	 * </pre>
+	 * fc = &omega; f (t) cos (&omega; t) - f' (t) sin (&omega; t) fs = &omega; f (t) sin (&omega; t) + f' (t) cos (&omega; t)
 	 * 
 	 * </p>
 	 *

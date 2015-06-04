@@ -31,9 +31,9 @@ import org.apache.commons.math3.stat.descriptive.moment.SecondMoment;
  * <p>
  * The regression coefficients, <code>b</code>, satisfy the normal equations:
  * 
- * <pre>
+ * 
  * <code> X<sup>T</sup> X b = X<sup>T</sup> y </code>
- * </pre>
+ * 
  * 
  * </p>
  *
@@ -41,14 +41,14 @@ import org.apache.commons.math3.stat.descriptive.moment.SecondMoment;
  * To solve the normal equations, this implementation uses QR decomposition of the <code>X</code> matrix. (See {@link QRDecomposition} for details on the decomposition algorithm.) The <code>X</code> matrix, also known as the <i>design matrix,</i> has rows corresponding to sample observations and columns corresponding to independent variables. When the model is estimated using an intercept term (i.e. when {@link #isNoIntercept() isNoIntercept} is false as it is by default), the <code>X</code>
  * matrix includes an initial column identically equal to 1. We solve the normal equations as follows:
  * 
- * <pre>
+ * 
  * <code> X<sup>T</sup>X b = X<sup>T</sup> y
  * (QR)<sup>T</sup> (QR) b = (QR)<sup>T</sup>y
  * R<sup>T</sup> (Q<sup>T</sup>Q) R b = R<sup>T</sup> Q<sup>T</sup> y
  * R<sup>T</sup> R b = R<sup>T</sup> Q<sup>T</sup> y
  * (R<sup>T</sup>)<sup>-1</sup> R<sup>T</sup> R b = (R<sup>T</sup>)<sup>-1</sup> R<sup>T</sup> Q<sup>T</sup> y
  * R b = Q<sup>T</sup> y </code>
- * </pre>
+ * 
  * 
  * </p>
  *
@@ -90,9 +90,9 @@ public class OLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	 * Loads model x and y sample data, overriding any previous sample.
 	 *
 	 * Computes and caches QR decomposition of the X matrix.
+	 * y
+	 * the [n,1] array representing the y sample
 	 * 
-	 * @param y
-	 *            the [n,1] array representing the y sample
 	 * @param x
 	 *            the [n,k] array representing the x sample
 	 * @throws MathIllegalArgumentException
@@ -209,9 +209,7 @@ public class OLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	/**
 	 * Returns the R-Squared statistic, defined by the formula
 	 * 
-	 * <pre>
 	 * R<sup>2</sup> = 1 - SSR / SSTO
-	 * </pre>
 	 * 
 	 * where SSR is the {@link #calculateResidualSumOfSquares() sum of squared residuals} and SSTO is the {@link #calculateTotalSumOfSquares() total sum of squares}
 	 *
@@ -235,9 +233,7 @@ public class OLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	 * <p>
 	 * Returns the adjusted R-squared statistic, defined by the formula
 	 * 
-	 * <pre>
 	 * R<sup>2</sup><sub>adj</sub> = 1 - [SSR (n - 1)] / [SSTO (n - p)]
-	 * </pre>
 	 * 
 	 * where SSR is the {@link #calculateResidualSumOfSquares() sum of squared residuals}, SSTO is the {@link #calculateTotalSumOfSquares() total sum of squares}, n is the number of observations and p is the number of parameters estimated (including the intercept).
 	 * </p>
@@ -245,9 +241,7 @@ public class OLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	 * <p>
 	 * If the regression is estimated without an intercept term, what is returned is
 	 * 
-	 * <pre>
 	 * <code> 1 - (1 - {@link #calculateRSquared()}) * (n / (n - p)) </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *

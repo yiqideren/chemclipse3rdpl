@@ -45,9 +45,9 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Build a convex region from a collection of bounding hyperplanes.
+	 * hyperplanes
+	 * collection of bounding hyperplanes
 	 * 
-	 * @param hyperplanes
-	 *            collection of bounding hyperplanes
 	 * @return a new convex region, or null if the collection is empty
 	 */
 	public Region<S> buildConvex(final Hyperplane<S>... hyperplanes) {
@@ -73,10 +73,10 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Compute the union of two regions.
+	 * region1
+	 * first region (will be unusable after the operation as
+	 * parts of it will be reused in the new region)
 	 * 
-	 * @param region1
-	 *            first region (will be unusable after the operation as
-	 *            parts of it will be reused in the new region)
 	 * @param region2
 	 *            second region (will be unusable after the operation as
 	 *            parts of it will be reused in the new region)
@@ -91,10 +91,10 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Compute the intersection of two regions.
+	 * region1
+	 * first region (will be unusable after the operation as
+	 * parts of it will be reused in the new region)
 	 * 
-	 * @param region1
-	 *            first region (will be unusable after the operation as
-	 *            parts of it will be reused in the new region)
 	 * @param region2
 	 *            second region (will be unusable after the operation as
 	 *            parts of it will be reused in the new region)
@@ -109,10 +109,10 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Compute the symmetric difference (exclusive or) of two regions.
+	 * region1
+	 * first region (will be unusable after the operation as
+	 * parts of it will be reused in the new region)
 	 * 
-	 * @param region1
-	 *            first region (will be unusable after the operation as
-	 *            parts of it will be reused in the new region)
 	 * @param region2
 	 *            second region (will be unusable after the operation as
 	 *            parts of it will be reused in the new region)
@@ -127,10 +127,10 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Compute the difference of two regions.
+	 * region1
+	 * first region (will be unusable after the operation as
+	 * parts of it will be reused in the new region)
 	 * 
-	 * @param region1
-	 *            first region (will be unusable after the operation as
-	 *            parts of it will be reused in the new region)
 	 * @param region2
 	 *            second region (will be unusable after the operation as
 	 *            parts of it will be reused in the new region)
@@ -145,18 +145,18 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Get the complement of the region (exchanged interior/exterior).
+	 * region
+	 * region to complement, it will not modified, a new
+	 * region independent region will be built
 	 * 
-	 * @param region
-	 *            region to complement, it will not modified, a new
-	 *            region independent region will be built
 	 * @return a new region, complement of the specified one
 	 */
 	/**
 	 * Get the complement of the region (exchanged interior/exterior).
+	 * region
+	 * region to complement, it will not modified, a new
+	 * region independent region will be built
 	 * 
-	 * @param region
-	 *            region to complement, it will not modified, a new
-	 *            region independent region will be built
 	 * @return a new region, complement of the specified one
 	 */
 	public Region<S> getComplement(final Region<S> region) {
@@ -166,9 +166,9 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Recursively build the complement of a BSP tree.
+	 * node
+	 * current node of the original tree
 	 * 
-	 * @param node
-	 *            current node of the original tree
 	 * @return new tree, complement of the node
 	 */
 	private BSPTree<S> recurseComplement(final BSPTree<S> node) {
@@ -195,9 +195,9 @@ public class RegionFactory<S extends Space> {
 
 	/**
 	 * Recursively build the complement of a BSP tree.
+	 * node
+	 * current node of the original tree
 	 * 
-	 * @param node
-	 *            current node of the original tree
 	 * @param map
 	 *            transformed nodes map
 	 * @return new tree, complement of the node

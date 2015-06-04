@@ -134,8 +134,8 @@ public class BigFraction extends Number implements FieldElement<BigFraction>, Co
 	 * <p>
 	 * Since this conversion is exact and since double numbers are sometimes approximated, the fraction created may seem strange in some cases. For example, calling <code>new BigFraction(1.0 / 3.0)</code> does <em>not</em> create the fraction 1/3, but the fraction 6004799503160661 / 18014398509481984 because the double number passed to the constructor is not exactly 1/3 (this number cannot be stored exactly in IEEE754).
 	 * </p>
+	 * int)
 	 * 
-	 * @see #BigFraction(double, double, int)
 	 * @param value
 	 *            the double value to convert to a fraction.
 	 * @exception MathIllegalArgumentException

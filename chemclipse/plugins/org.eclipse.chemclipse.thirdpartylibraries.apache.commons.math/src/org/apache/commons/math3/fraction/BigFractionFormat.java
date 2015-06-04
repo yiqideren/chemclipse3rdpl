@@ -49,9 +49,8 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * both the numerator and denominator.
-	 * 
-	 * @param format
-	 *            the custom format for both the numerator and denominator.
+	 * format
+	 * the custom format for both the numerator and denominator.
 	 */
 	public BigFractionFormat(final NumberFormat format) {
 
@@ -61,9 +60,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * the numerator and a custom number format for the denominator.
+	 * numeratorFormat
+	 * the custom format for the numerator.
 	 * 
-	 * @param numeratorFormat
-	 *            the custom format for the numerator.
 	 * @param denominatorFormat
 	 *            the custom format for the denominator.
 	 */
@@ -75,8 +74,7 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 	/**
 	 * Get the set of locales for which complex formats are available. This
 	 * is the same set as the {@link NumberFormat} set.
-	 * 
-	 * @return available complex format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -98,8 +96,7 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Returns the default complex format for the current locale.
-	 * 
-	 * @return the default complex format.
+	 * format.
 	 */
 	public static BigFractionFormat getImproperInstance() {
 
@@ -108,9 +105,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the complex format specific to the given locale.
 	 */
 	public static BigFractionFormat getImproperInstance(final Locale locale) {
@@ -120,8 +117,7 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Returns the default complex format for the current locale.
-	 * 
-	 * @return the default complex format.
+	 * format.
 	 */
 	public static BigFractionFormat getProperInstance() {
 
@@ -130,9 +126,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the complex format specific to the given locale.
 	 */
 	public static BigFractionFormat getProperInstance(final Locale locale) {
@@ -197,9 +193,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Parses a string to produce a {@link BigFraction} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @return the parsed {@link BigFraction} object.
 	 * @exception MathParseException
 	 *                if the beginning of the specified string
@@ -219,9 +215,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 	/**
 	 * Parses a string to produce a {@link BigFraction} object.
 	 * This method expects the string to be formatted as an improper BigFraction.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter.
 	 * @return the parsed {@link BigFraction} object.
@@ -276,9 +272,9 @@ public class BigFractionFormat extends AbstractFormat implements Serializable {
 
 	/**
 	 * Parses a string to produce a <code>BigInteger</code>.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter.
 	 * @return a parsed <code>BigInteger</code> or null if string does not

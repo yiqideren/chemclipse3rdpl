@@ -44,9 +44,8 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param original
-	 *            original point
+	 * original
+	 * original point
 	 */
 	public BoundaryProjector(final Point<S> original) {
 
@@ -119,8 +118,7 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Get the projection.
-	 * 
-	 * @return projection
+	 * projection
 	 */
 	public BoundaryProjection<S> getProjection() {
 
@@ -131,9 +129,9 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Extract the regions of the boundary on an internal node.
+	 * node
+	 * internal node
 	 * 
-	 * @param node
-	 *            internal node
 	 * @return regions in the node sub-hyperplane
 	 */
 	private List<Region<T>> boundaryRegions(final BSPTree<S> node) {
@@ -148,9 +146,9 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Add a boundary region to a list.
+	 * sub
+	 * sub-hyperplane defining the region
 	 * 
-	 * @param sub
-	 *            sub-hyperplane defining the region
 	 * @param list
 	 *            to fill up
 	 */
@@ -168,9 +166,9 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Check if a projected point lies on a boundary part.
+	 * point
+	 * projected point to check
 	 * 
-	 * @param point
-	 *            projected point to check
 	 * @param hyperplane
 	 *            hyperplane into which the point was projected
 	 * @param part
@@ -187,9 +185,9 @@ class BoundaryProjector<S extends Space, T extends Space> implements BSPTreeVisi
 
 	/**
 	 * Get the projection to the closest boundary singular point.
+	 * point
+	 * projected point to check
 	 * 
-	 * @param point
-	 *            projected point to check
 	 * @param hyperplane
 	 *            hyperplane into which the point was projected
 	 * @param part

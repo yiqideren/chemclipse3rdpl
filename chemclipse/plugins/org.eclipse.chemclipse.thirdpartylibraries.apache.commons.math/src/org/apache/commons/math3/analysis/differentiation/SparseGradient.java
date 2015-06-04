@@ -47,9 +47,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Internal constructor.
+	 * value
+	 * value of the function
 	 * 
-	 * @param value
-	 *            value of the function
 	 * @param derivatives
 	 *            derivatives map, a deep copy will be performed,
 	 *            so the map given here will remain safe from changes in the new instance,
@@ -66,9 +66,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Internal constructor.
+	 * value
+	 * value of the function
 	 * 
-	 * @param value
-	 *            value of the function
 	 * @param scale
 	 *            scaling factor to apply to all derivatives
 	 * @param derivatives
@@ -89,9 +89,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Factory method creating a constant.
+	 * value
+	 * value of the constant
 	 * 
-	 * @param value
-	 *            value of the constant
 	 * @return a new instance
 	 */
 	public static SparseGradient createConstant(final double value) {
@@ -101,9 +101,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Factory method creating an independent variable.
+	 * idx
+	 * index of the variable
 	 * 
-	 * @param idx
-	 *            index of the variable
 	 * @param value
 	 *            value of the variable
 	 * @return a new instance
@@ -115,8 +115,7 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Find the number of variables.
-	 * 
-	 * @return number of variables
+	 * variables
 	 */
 	public int numVars() {
 
@@ -138,8 +137,7 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Get the value of the function.
-	 * 
-	 * @return value of the function.
+	 * function.
 	 */
 	public double getValue() {
 
@@ -176,9 +174,8 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 	 * <p>
 	 * The instance is changed here, in order to not change the instance the {@link #add(SparseGradient)} method should be used.
 	 * </p>
-	 * 
-	 * @param a
-	 *            instance to add
+	 * a
+	 * instance to add
 	 */
 	public void addInPlace(final SparseGradient a) {
 
@@ -251,9 +248,8 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 	 * <p>
 	 * The instance is changed here, in order to not change the instance the {@link #add(SparseGradient)} method should be used.
 	 * </p>
-	 * 
-	 * @param a
-	 *            instance to multiply
+	 * a
+	 * instance to multiply
 	 */
 	public void multiplyInPlace(final SparseGradient a) {
 
@@ -537,10 +533,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 	}
 
 	/**
-	 * Compute a<sup>x</sup> where a is a double and x a {@link SparseGradient}
+	 * Compute a<sup>x</sup> where a is a double and x a {@link SparseGradient} a
+	 * number to exponentiate
 	 * 
-	 * @param a
-	 *            number to exponentiate
 	 * @param x
 	 *            power to apply
 	 * @return a<sup>x</sup>
@@ -582,8 +577,7 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Base 10 logarithm.
-	 * 
-	 * @return base 10 logarithm of the instance
+	 * instance
 	 */
 	public SparseGradient log10() {
 
@@ -654,9 +648,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Two arguments arc tangent operation.
+	 * y
+	 * first argument of the arc tangent
 	 * 
-	 * @param y
-	 *            first argument of the arc tangent
 	 * @param x
 	 *            second argument of the arc tangent
 	 * @return atan2(y, x)
@@ -705,8 +699,7 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Convert radians to degrees, with error of less than 0.5 ULP
-	 * 
-	 * @return instance converted into degrees
+	 * degrees
 	 */
 	public SparseGradient toDegrees() {
 
@@ -715,8 +708,7 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Convert degrees to radians, with error of less than 0.5 ULP
-	 * 
-	 * @return instance converted into radians
+	 * radians
 	 */
 	public SparseGradient toRadians() {
 
@@ -725,9 +717,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Evaluate Taylor expansion of a sparse gradient.
+	 * delta
+	 * parameters offsets (&Delta;x, &Delta;y, ...)
 	 * 
-	 * @param delta
-	 *            parameters offsets (&Delta;x, &Delta;y, ...)
 	 * @return value of the Taylor expansion at x + &Delta;x, y + &Delta;y, ...
 	 */
 	public double taylor(final double... delta) {
@@ -741,9 +733,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Compute composition of the instance by a univariate function.
+	 * f0
+	 * value of the function at (i.e. f({@link #getValue()}))
 	 * 
-	 * @param f0
-	 *            value of the function at (i.e. f({@link #getValue()}))
 	 * @param f1
 	 *            first derivative of the function at
 	 *            the current point (i.e. f'({@link #getValue()}))
@@ -857,9 +849,9 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 	 * <p>
 	 * Sparse gradients are considered equal if they have the same value and the same derivatives.
 	 * </p>
+	 * other
+	 * Object to test for equality to this
 	 * 
-	 * @param other
-	 *            Object to test for equality to this
 	 * @return true if two sparse gradients are equal
 	 */
 	@Override
@@ -891,8 +883,8 @@ public class SparseGradient implements RealFieldElement<SparseGradient>, Seriali
 
 	/**
 	 * Get a hashCode for the derivative structure.
+	 * object
 	 * 
-	 * @return a hash code value for this object
 	 * @since 3.2
 	 */
 	@Override

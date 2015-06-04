@@ -53,9 +53,8 @@ public class Vector1DFormat extends VectorFormat<Euclidean1D> {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	public Vector1DFormat(final NumberFormat format) {
 
@@ -64,9 +63,9 @@ public class Vector1DFormat extends VectorFormat<Euclidean1D> {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 */
@@ -78,9 +77,9 @@ public class Vector1DFormat extends VectorFormat<Euclidean1D> {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param format
@@ -93,8 +92,7 @@ public class Vector1DFormat extends VectorFormat<Euclidean1D> {
 
 	/**
 	 * Returns the default 1D vector format for the current locale.
-	 * 
-	 * @return the default 1D vector format.
+	 * format.
 	 */
 	public static Vector1DFormat getInstance() {
 
@@ -103,9 +101,9 @@ public class Vector1DFormat extends VectorFormat<Euclidean1D> {
 
 	/**
 	 * Returns the default 1D vector format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the 1D vector format specific to the given locale.
 	 */
 	public static Vector1DFormat getInstance(final Locale locale) {

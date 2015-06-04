@@ -44,9 +44,9 @@ public abstract class AbstractStorelessUnivariateStatistic extends AbstractUniva
 	 * <p>
 	 * If the array is null, a MathIllegalArgumentException is thrown.
 	 * </p>
+	 * values
+	 * input array
 	 * 
-	 * @param values
-	 *            input array
 	 * @return the value of the statistic applied to the input array
 	 * @throws MathIllegalArgumentException
 	 *             if values is null
@@ -73,9 +73,9 @@ public abstract class AbstractStorelessUnivariateStatistic extends AbstractUniva
 	 * <p>
 	 * If the array is null or the index parameters are not valid, an MathIllegalArgumentException is thrown.
 	 * </p>
+	 * values
+	 * the input array
 	 * 
-	 * @param values
-	 *            the input array
 	 * @param begin
 	 *            the index of the first element to include
 	 * @param length
@@ -166,10 +166,9 @@ public abstract class AbstractStorelessUnivariateStatistic extends AbstractUniva
 
 	/**
 	 * Returns true iff <code>object</code> is an <code>AbstractStorelessUnivariateStatistic</code> returning the same
-	 * values as this for <code>getResult()</code> and <code>getN()</code>
+	 * values as this for <code>getResult()</code> and <code>getN()</code> object
+	 * object to test equality against.
 	 * 
-	 * @param object
-	 *            object to test equality against.
 	 * @return true if object returns the same value as this
 	 */
 	@Override

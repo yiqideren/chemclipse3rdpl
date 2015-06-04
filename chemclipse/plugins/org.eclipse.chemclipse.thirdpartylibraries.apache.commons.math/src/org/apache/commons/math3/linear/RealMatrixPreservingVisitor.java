@@ -27,9 +27,9 @@ public interface RealMatrixPreservingVisitor {
 	 * <p>
 	 * This method is called once before any entry of the matrix is visited.
 	 * </p>
+	 * rows
+	 * number of rows of the matrix
 	 * 
-	 * @param rows
-	 *            number of rows of the matrix
 	 * @param columns
 	 *            number of columns of the matrix
 	 * @param startRow
@@ -45,9 +45,9 @@ public interface RealMatrixPreservingVisitor {
 
 	/**
 	 * Visit one matrix entry.
+	 * row
+	 * row index of the entry
 	 * 
-	 * @param row
-	 *            row index of the entry
 	 * @param column
 	 *            column index of the entry
 	 * @param value
@@ -60,8 +60,7 @@ public interface RealMatrixPreservingVisitor {
 	 * <p>
 	 * This method is called once after all entries of the matrix have been visited.
 	 * </p>
-	 * 
-	 * @return the value that the <code>walkInXxxOrder</code> must return
+	 * return
 	 */
 	double end();
 }

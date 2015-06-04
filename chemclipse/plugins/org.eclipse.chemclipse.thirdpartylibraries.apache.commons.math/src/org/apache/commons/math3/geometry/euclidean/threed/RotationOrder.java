@@ -111,9 +111,9 @@ public final class RotationOrder {
 	 * Private constructor.
 	 * This is a utility class that cannot be instantiated by the user,
 	 * so its only constructor is private.
+	 * name
+	 * name of the rotation order
 	 * 
-	 * @param name
-	 *            name of the rotation order
 	 * @param a1
 	 *            axis of the first rotation
 	 * @param a2
@@ -131,8 +131,7 @@ public final class RotationOrder {
 
 	/**
 	 * Get a string representation of the instance.
-	 * 
-	 * @return a string representation of the instance (in fact, its name)
+	 * name)
 	 */
 	@Override
 	public String toString() {
@@ -142,8 +141,7 @@ public final class RotationOrder {
 
 	/**
 	 * Get the axis of the first rotation.
-	 * 
-	 * @return axis of the first rotation
+	 * rotation
 	 */
 	public Vector3D getA1() {
 
@@ -152,8 +150,7 @@ public final class RotationOrder {
 
 	/**
 	 * Get the axis of the second rotation.
-	 * 
-	 * @return axis of the second rotation
+	 * rotation
 	 */
 	public Vector3D getA2() {
 
@@ -162,8 +159,7 @@ public final class RotationOrder {
 
 	/**
 	 * Get the axis of the second rotation.
-	 * 
-	 * @return axis of the second rotation
+	 * rotation
 	 */
 	public Vector3D getA3() {
 

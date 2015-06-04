@@ -30,9 +30,9 @@ public class MedianOf3PivotingStrategy implements PivotingStrategyInterface, Ser
 
 	/**
 	 * {@inheritDoc} This in specific makes use of median of 3 pivoting.
+	 * the
+	 * first, middle and the last indices of the array slice
 	 * 
-	 * @return The index corresponding to a pivot chosen between the
-	 *         first, middle and the last indices of the array slice
 	 * @throws MathIllegalArgumentException
 	 *             when indices exceeds range
 	 */

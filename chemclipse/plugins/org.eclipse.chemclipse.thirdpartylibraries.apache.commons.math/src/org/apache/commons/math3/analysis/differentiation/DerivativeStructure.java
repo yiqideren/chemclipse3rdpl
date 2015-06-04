@@ -67,9 +67,8 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Build an instance with all values and derivatives set to 0.
-	 * 
-	 * @param compiler
-	 *            compiler to use for computation
+	 * compiler
+	 * compiler to use for computation
 	 */
 	private DerivativeStructure(final DSCompiler compiler) {
 
@@ -79,9 +78,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Build an instance with all values and derivatives set to 0.
+	 * parameters
+	 * number of free parameters
 	 * 
-	 * @param parameters
-	 *            number of free parameters
 	 * @param order
 	 *            derivation order
 	 * @throws NumberIsTooLargeException
@@ -94,9 +93,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Build an instance representing a constant value.
+	 * parameters
+	 * number of free parameters
 	 * 
-	 * @param parameters
-	 *            number of free parameters
 	 * @param order
 	 *            derivation order
 	 * @param value
@@ -116,9 +115,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	 * <p>
 	 * Instances built using this constructor are considered to be the free variables with respect to which differentials are computed. As such, their differential with respect to themselves is +1.
 	 * </p>
+	 * parameters
+	 * number of free parameters
 	 * 
-	 * @param parameters
-	 *            number of free parameters
 	 * @param order
 	 *            derivation order
 	 * @param index
@@ -144,9 +143,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	/**
 	 * Linear combination constructor.
 	 * The derivative structure built will be a1 * ds1 + a2 * ds2
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param ds1
 	 *            first base (unscaled) derivative structure
 	 * @param a2
@@ -166,9 +165,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	/**
 	 * Linear combination constructor.
 	 * The derivative structure built will be a1 * ds1 + a2 * ds2 + a3 * ds3
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param ds1
 	 *            first base (unscaled) derivative structure
 	 * @param a2
@@ -193,9 +192,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	/**
 	 * Linear combination constructor.
 	 * The derivative structure built will be a1 * ds1 + a2 * ds2 + a3 * ds3 + a4 * ds4
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param ds1
 	 *            first base (unscaled) derivative structure
 	 * @param a2
@@ -224,9 +223,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Build an instance from all its derivatives.
+	 * parameters
+	 * number of free parameters
 	 * 
-	 * @param parameters
-	 *            number of free parameters
 	 * @param order
 	 *            derivation order
 	 * @param derivatives
@@ -248,9 +247,8 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param ds
-	 *            instance to copy
+	 * ds
+	 * instance to copy
 	 */
 	private DerivativeStructure(final DerivativeStructure ds) {
 
@@ -260,8 +258,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get the number of free parameters.
-	 * 
-	 * @return number of free parameters
+	 * parameters
 	 */
 	public int getFreeParameters() {
 
@@ -270,8 +267,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get the derivation order.
-	 * 
-	 * @return derivation order
+	 * order
 	 */
 	public int getOrder() {
 
@@ -283,9 +279,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	 * <p>
 	 * This method is a convenience factory method, it simply calls {@code new DerivativeStructure(getFreeParameters(), getOrder(), c)}
 	 * </p>
+	 * c
+	 * value of the constant
 	 * 
-	 * @param c
-	 *            value of the constant
 	 * @return a constant compatible with instance order and number of parameters
 	 * @see #DerivativeStructure(int, int, double)
 	 * @since 3.3
@@ -296,9 +292,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public double getReal() {
 
@@ -307,8 +301,8 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get the value part of the derivative structure.
+	 * structure
 	 * 
-	 * @return value part of the derivative structure
 	 * @see #getPartialDerivative(int...)
 	 */
 	public double getValue() {
@@ -318,10 +312,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get a partial derivative.
+	 * orders
+	 * derivation orders with respect to each variable (if all orders are 0,
+	 * the value is returned)
 	 * 
-	 * @param orders
-	 *            derivation orders with respect to each variable (if all orders are 0,
-	 *            the value is returned)
 	 * @return partial derivative
 	 * @see #getValue()
 	 * @exception DimensionMismatchException
@@ -338,8 +332,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get all partial derivatives.
-	 * 
-	 * @return a fresh copy of partial derivatives, in an array sorted according to {@link DSCompiler#getPartialDerivativeIndex(int...)}
+	 * DSCompiler#getPartialDerivativeIndex(int...)}
 	 */
 	public double[] getAllDerivatives() {
 
@@ -347,9 +340,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure add(final double a) {
 
@@ -359,11 +350,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 */
 	public DerivativeStructure add(final DerivativeStructure a) throws DimensionMismatchException {
 
@@ -374,9 +363,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure subtract(final double a) {
 
@@ -384,11 +371,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 */
 	public DerivativeStructure subtract(final DerivativeStructure a) throws DimensionMismatchException {
 
@@ -405,9 +390,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure multiply(final double a) {
 
@@ -419,11 +402,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 */
 	public DerivativeStructure multiply(final DerivativeStructure a) throws DimensionMismatchException {
 
@@ -434,9 +415,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure divide(final double a) {
 
@@ -448,11 +427,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 */
 	public DerivativeStructure divide(final DerivativeStructure a) throws DimensionMismatchException {
 
@@ -471,11 +448,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure remainder(final DerivativeStructure a) throws DimensionMismatchException {
@@ -497,9 +473,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure abs() {
 
@@ -512,9 +486,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure ceil() {
 
@@ -522,9 +494,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure floor() {
 
@@ -532,9 +502,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure rint() {
 
@@ -548,9 +516,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure signum() {
 
@@ -558,9 +524,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure copySign(final DerivativeStructure sign) {
 
@@ -573,9 +537,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure copySign(final double sign) {
 
@@ -592,8 +554,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	 * <p>
 	 * For double numbers of the form 2<sup>x</sup>, the unbiased exponent is exactly x.
 	 * </p>
-	 * 
-	 * @return exponent for instance in IEEE754 representation, without bias
+	 * bias
 	 */
 	public int getExponent() {
 
@@ -601,9 +562,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure scalb(final int n) {
 
@@ -615,11 +574,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure hypot(final DerivativeStructure y) throws DimensionMismatchException {
@@ -678,11 +636,11 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Compute composition of the instance by a univariate function.
+	 * f
+	 * array of value and derivatives of the function at
+	 * the current point (i.e. [f({@link #getValue()}),
+	 * f'({@link #getValue()}), f''({@link #getValue()})...]).
 	 * 
-	 * @param f
-	 *            array of value and derivatives of the function at
-	 *            the current point (i.e. [f({@link #getValue()}),
-	 *            f'({@link #getValue()}), f''({@link #getValue()})...]).
 	 * @return f(this)
 	 * @exception DimensionMismatchException
 	 *                if the number of derivatives
@@ -707,9 +665,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure sqrt() {
 
@@ -717,9 +673,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure cbrt() {
 
@@ -727,9 +681,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure rootN(final int n) {
 
@@ -764,10 +716,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * Compute a<sup>x</sup> where a is a double and x a {@link DerivativeStructure}
+	 * Compute a<sup>x</sup> where a is a double and x a {@link DerivativeStructure} a
+	 * number to exponentiate
 	 * 
-	 * @param a
-	 *            number to exponentiate
 	 * @param x
 	 *            power to apply
 	 * @return a<sup>x</sup>
@@ -781,9 +732,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure pow(final double p) {
 
@@ -793,9 +742,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure pow(final int n) {
 
@@ -805,11 +752,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure pow(final DerivativeStructure e) throws DimensionMismatchException {
@@ -821,9 +767,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure exp() {
 
@@ -833,9 +777,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure expm1() {
 
@@ -845,9 +787,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure log() {
 
@@ -857,9 +797,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure log1p() {
 
@@ -870,8 +808,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Base 10 logarithm.
-	 * 
-	 * @return base 10 logarithm of the instance
+	 * instance
 	 */
 	public DerivativeStructure log10() {
 
@@ -881,9 +818,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure cos() {
 
@@ -893,9 +828,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure sin() {
 
@@ -905,9 +838,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure tan() {
 
@@ -917,9 +848,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure acos() {
 
@@ -929,9 +858,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure asin() {
 
@@ -941,9 +868,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure atan() {
 
@@ -953,9 +878,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure atan2(final DerivativeStructure x) throws DimensionMismatchException {
 
@@ -967,9 +890,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Two arguments arc tangent operation.
+	 * y
+	 * first argument of the arc tangent
 	 * 
-	 * @param y
-	 *            first argument of the arc tangent
 	 * @param x
 	 *            second argument of the arc tangent
 	 * @return atan2(y, x)
@@ -984,9 +907,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure cosh() {
 
@@ -996,9 +917,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure sinh() {
 
@@ -1008,9 +927,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure tanh() {
 
@@ -1020,9 +937,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure acosh() {
 
@@ -1032,9 +947,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure asinh() {
 
@@ -1044,9 +957,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public DerivativeStructure atanh() {
 
@@ -1057,8 +968,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Convert radians to degrees, with error of less than 0.5 ULP
-	 * 
-	 * @return instance converted into degrees
+	 * degrees
 	 */
 	public DerivativeStructure toDegrees() {
 
@@ -1071,8 +981,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Convert degrees to radians, with error of less than 0.5 ULP
-	 * 
-	 * @return instance converted into radians
+	 * radians
 	 */
 	public DerivativeStructure toRadians() {
 
@@ -1085,9 +994,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Evaluate Taylor expansion a derivative structure.
+	 * delta
+	 * parameters offsets (&Delta;x, &Delta;y, ...)
 	 * 
-	 * @param delta
-	 *            parameters offsets (&Delta;x, &Delta;y, ...)
 	 * @return value of the Taylor expansion at x + &Delta;x, y + &Delta;y, ...
 	 * @throws MathArithmeticException
 	 *             if factorials becomes too large
@@ -1098,11 +1007,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final DerivativeStructure[] a, final DerivativeStructure[] b) throws DimensionMismatchException {
@@ -1129,11 +1037,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final double[] a, final DerivativeStructure[] b) throws DimensionMismatchException {
@@ -1156,11 +1063,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final DerivativeStructure a1, final DerivativeStructure b1, final DerivativeStructure a2, final DerivativeStructure b2) throws DimensionMismatchException {
@@ -1176,11 +1082,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final double a1, final DerivativeStructure b1, final double a2, final DerivativeStructure b2) throws DimensionMismatchException {
@@ -1196,11 +1101,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final DerivativeStructure a1, final DerivativeStructure b1, final DerivativeStructure a2, final DerivativeStructure b2, final DerivativeStructure a3, final DerivativeStructure b3) throws DimensionMismatchException {
@@ -1216,11 +1120,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final double a1, final DerivativeStructure b1, final double a2, final DerivativeStructure b2, final double a3, final DerivativeStructure b3) throws DimensionMismatchException {
@@ -1236,11 +1139,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final DerivativeStructure a1, final DerivativeStructure b1, final DerivativeStructure a2, final DerivativeStructure b2, final DerivativeStructure a3, final DerivativeStructure b3, final DerivativeStructure a4, final DerivativeStructure b4) throws DimensionMismatchException {
@@ -1256,11 +1158,10 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} DimensionMismatchException
+	 * if number of free parameters
+	 * or orders do not match
 	 * 
-	 * @exception DimensionMismatchException
-	 *                if number of free parameters
-	 *                or orders do not match
 	 * @since 3.2
 	 */
 	public DerivativeStructure linearCombination(final double a1, final DerivativeStructure b1, final double a2, final DerivativeStructure b2, final double a3, final DerivativeStructure b3, final double a4, final DerivativeStructure b4) throws DimensionMismatchException {
@@ -1280,9 +1181,9 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 	 * <p>
 	 * Derivative structures are considered equal if they have the same number of free parameters, the same derivation order, and the same derivatives.
 	 * </p>
+	 * other
+	 * Object to test for equality to this
 	 * 
-	 * @param other
-	 *            Object to test for equality to this
 	 * @return true if two derivative structures are equal
 	 * @since 3.2
 	 */
@@ -1301,8 +1202,8 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Get a hashCode for the derivative structure.
+	 * object
 	 * 
-	 * @return a hash code value for this object
 	 * @since 3.2
 	 */
 	@Override
@@ -1313,8 +1214,7 @@ public class DerivativeStructure implements RealFieldElement<DerivativeStructure
 
 	/**
 	 * Replace the instance with a data transfer object for serialization.
-	 * 
-	 * @return data transfer object that will be serialized
+	 * serialized
 	 */
 	private Object writeReplace() {
 

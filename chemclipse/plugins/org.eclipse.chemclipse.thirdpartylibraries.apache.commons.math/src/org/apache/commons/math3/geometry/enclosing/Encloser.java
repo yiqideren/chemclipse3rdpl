@@ -31,9 +31,9 @@ public interface Encloser<S extends Space, P extends Point<S>> {
 
 	/**
 	 * Find a ball enclosing a list of points.
+	 * points
+	 * points to enclose
 	 * 
-	 * @param points
-	 *            points to enclose
 	 * @return enclosing ball
 	 */
 	EnclosingBall<S, P> enclose(Iterable<P> points);

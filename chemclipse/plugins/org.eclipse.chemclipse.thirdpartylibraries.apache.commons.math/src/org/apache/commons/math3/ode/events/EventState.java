@@ -75,9 +75,9 @@ public class EventState {
 
 	/**
 	 * Simple constructor.
+	 * handler
+	 * event handler
 	 * 
-	 * @param handler
-	 *            event handler
 	 * @param maxCheckInterval
 	 *            maximal time interval between switching
 	 *            function checks (this interval prevents missing sign changes in
@@ -111,8 +111,7 @@ public class EventState {
 
 	/**
 	 * Get the underlying event handler.
-	 * 
-	 * @return underlying event handler
+	 * handler
 	 */
 	public EventHandler getEventHandler() {
 
@@ -121,9 +120,8 @@ public class EventState {
 
 	/**
 	 * Set the equation.
-	 * 
-	 * @param expandable
-	 *            equation being integrated
+	 * expandable
+	 * equation being integrated
 	 */
 	public void setExpandable(final ExpandableStatefulODE expandable) {
 
@@ -132,8 +130,7 @@ public class EventState {
 
 	/**
 	 * Get the maximal time interval between events handler checks.
-	 * 
-	 * @return maximal time interval between events handler checks
+	 * checks
 	 */
 	public double getMaxCheckInterval() {
 
@@ -142,8 +139,7 @@ public class EventState {
 
 	/**
 	 * Get the convergence threshold for event localization.
-	 * 
-	 * @return convergence threshold for event localization
+	 * localization
 	 */
 	public double getConvergence() {
 
@@ -152,8 +148,7 @@ public class EventState {
 
 	/**
 	 * Get the upper limit in the iteration count for event localization.
-	 * 
-	 * @return upper limit in the iteration count for event localization
+	 * localization
 	 */
 	public int getMaxIterationCount() {
 
@@ -162,9 +157,9 @@ public class EventState {
 
 	/**
 	 * Reinitialize the beginning of the step.
+	 * interpolator
+	 * valid for the current step
 	 * 
-	 * @param interpolator
-	 *            valid for the current step
 	 * @exception MaxCountExceededException
 	 *                if the interpolator throws one because
 	 *                the number of functions evaluations is exceeded
@@ -197,9 +192,9 @@ public class EventState {
 
 	/**
 	 * Get the complete state (primary and secondary).
+	 * interpolator
+	 * interpolator to use
 	 * 
-	 * @param interpolator
-	 *            interpolator to use
 	 * @return complete state
 	 */
 	private double[] getCompleteState(final StepInterpolator interpolator) {
@@ -215,9 +210,9 @@ public class EventState {
 
 	/**
 	 * Evaluate the impact of the proposed step on the event handler.
+	 * interpolator
+	 * step interpolator for the proposed step
 	 * 
-	 * @param interpolator
-	 *            step interpolator for the proposed step
 	 * @return true if the event handler triggers an event before
 	 *         the end of the proposed step
 	 * @exception MaxCountExceededException
@@ -310,9 +305,8 @@ public class EventState {
 
 	/**
 	 * Get the occurrence time of the event triggered in the current step.
-	 * 
-	 * @return occurrence time of the event triggered in the current
-	 *         step or infinity if no events are triggered
+	 * current
+	 * step or infinity if no events are triggered
 	 */
 	public double getEventTime() {
 
@@ -321,10 +315,10 @@ public class EventState {
 
 	/**
 	 * Acknowledge the fact the step has been accepted by the integrator.
+	 * t
+	 * value of the independent <i>time</i> variable at the
+	 * end of the step
 	 * 
-	 * @param t
-	 *            value of the independent <i>time</i> variable at the
-	 *            end of the step
 	 * @param y
 	 *            array containing the current value of the state vector
 	 *            at the end of the step
@@ -347,8 +341,7 @@ public class EventState {
 	/**
 	 * Check if the integration should be stopped at the end of the
 	 * current step.
-	 * 
-	 * @return true if the integration should be stopped
+	 * stopped
 	 */
 	public boolean stop() {
 
@@ -357,10 +350,10 @@ public class EventState {
 
 	/**
 	 * Let the event handler reset the state if it wants.
+	 * t
+	 * value of the independent <i>time</i> variable at the
+	 * beginning of the next step
 	 * 
-	 * @param t
-	 *            value of the independent <i>time</i> variable at the
-	 *            beginning of the next step
 	 * @param y
 	 *            array were to put the desired state vector at the beginning
 	 *            of the next step

@@ -51,9 +51,8 @@ public class Well1024a extends AbstractWell {
 
 	/**
 	 * Creates a new random number generator using a single int seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integer)
+	 * seed
+	 * the initial seed (32 bits integer)
 	 */
 	public Well1024a(int seed) {
 
@@ -62,10 +61,9 @@ public class Well1024a extends AbstractWell {
 
 	/**
 	 * Creates a new random number generator using an int array seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integers array), if null
-	 *            the seed of the generator will be related to the current time
+	 * seed
+	 * the initial seed (32 bits integers array), if null
+	 * the seed of the generator will be related to the current time
 	 */
 	public Well1024a(int[] seed) {
 
@@ -74,9 +72,8 @@ public class Well1024a extends AbstractWell {
 
 	/**
 	 * Creates a new random number generator using a single long seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (64 bits integer)
+	 * seed
+	 * the initial seed (64 bits integer)
 	 */
 	public Well1024a(long seed) {
 

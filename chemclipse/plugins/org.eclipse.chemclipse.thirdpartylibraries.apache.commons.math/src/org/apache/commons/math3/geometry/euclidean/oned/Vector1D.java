@@ -54,9 +54,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	/**
 	 * Simple constructor.
 	 * Build a vector from its coordinates
+	 * x
+	 * abscissa
 	 * 
-	 * @param x
-	 *            abscissa
 	 * @see #getX()
 	 */
 	public Vector1D(double x) {
@@ -68,9 +68,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * Multiplicative constructor
 	 * Build a vector from another one and a scale factor.
 	 * The vector built will be a * u
+	 * a
+	 * scale factor
 	 * 
-	 * @param a
-	 *            scale factor
 	 * @param u
 	 *            base (unscaled) vector
 	 */
@@ -83,9 +83,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * Linear constructor
 	 * Build a vector from two other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -102,9 +102,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * Linear constructor
 	 * Build a vector from three other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -125,9 +125,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * Linear constructor
 	 * Build a vector from four other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3 + a4 * u4
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -150,8 +150,8 @@ public class Vector1D implements Vector<Euclidean1D> {
 
 	/**
 	 * Get the abscissa of the vector.
+	 * vector
 	 * 
-	 * @return abscissa of the vector
 	 * @see #Vector1D(double)
 	 */
 	public double getX() {
@@ -266,9 +266,7 @@ public class Vector1D implements Vector<Euclidean1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated as of 3.3, replaced with {@link #distance(Point)}
+	 * {@inheritDoc} #distance(Point)}
 	 */
 	@Deprecated
 	public double distance(Vector<Euclidean1D> p) {
@@ -312,9 +310,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>p1.subtract(p2).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * p1
+	 * first vector
 	 * 
-	 * @param p1
-	 *            first vector
 	 * @param p2
 	 *            second vector
 	 * @return the distance between p1 and p2 according to the L<sub>2</sub> norm
@@ -329,9 +327,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>p1.subtract(p2).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * p1
+	 * first vector
 	 * 
-	 * @param p1
-	 *            first vector
 	 * @param p2
 	 *            second vector
 	 * @return the distance between p1 and p2 according to the L<sub>&infin;</sub> norm
@@ -346,9 +344,9 @@ public class Vector1D implements Vector<Euclidean1D> {
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>p1.subtract(p2).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * p1
+	 * first vector
 	 * 
-	 * @param p1
-	 *            first vector
 	 * @param p2
 	 *            second vector
 	 * @return the square of the distance between p1 and p2
@@ -409,8 +407,7 @@ public class Vector1D implements Vector<Euclidean1D> {
 
 	/**
 	 * Get a string representation of this vector.
-	 * 
-	 * @return a string representation of this vector
+	 * vector
 	 */
 	@Override
 	public String toString() {

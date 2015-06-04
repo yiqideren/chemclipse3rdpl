@@ -20,67 +20,12 @@ import javassist.bytecode.Descriptor;
  *
  * <p>
  * This hashtable is used for replacing class names in a class definition or a method body. Define a subclass of this class if a more complex mapping algorithm is needed. For example,
- *
- * <pre>
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  * 
  * class MyClassMap extends ClassMap {
  * 
- * 	public Object get(Object jvmClassName) {
+ * public Object get(Object jvmClassName) {
  * 
- * 		String name = toJavaName((String)jvmClassName);
- * 		if(name.startsWith(&quot;java.&quot;))
- * 			return toJvmName(&quot;java2.&quot; + name.substring(5));
- * 		else
- * 			return super.get(jvmClassName);
- * 	}
- * }
- * </pre>
+ * String name = toJavaName((String)jvmClassName); if(name.startsWith(&quot;java.&quot;)) return toJvmName(&quot;java2.&quot; + name.substring(5)); else return super.get(jvmClassName); } }
  *
  * <p>
  * This subclass maps <code>java.lang.String</code> to <code>java2.lang.String</code>. Note that <code>get()</code> receives and returns the internal representation of a class name. For example, the internal representation of <code>java.lang.String</code> is <code>java/lang/String</code>.

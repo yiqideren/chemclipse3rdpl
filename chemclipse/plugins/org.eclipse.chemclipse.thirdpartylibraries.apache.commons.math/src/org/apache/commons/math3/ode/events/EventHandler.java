@@ -73,9 +73,9 @@ public interface EventHandler {
 	 * <p>
 	 * This method is called once at the start of the integration. It may be used by the event handler to initialize some internal data if needed.
 	 * </p>
+	 * t0
+	 * start value of the independent <i>time</i> variable
 	 * 
-	 * @param t0
-	 *            start value of the independent <i>time</i> variable
 	 * @param y0
 	 *            array containing the start value of the state vector
 	 * @param t
@@ -85,7 +85,6 @@ public interface EventHandler {
 
 	/**
 	 * Compute the value of the switching function.
-	 * 
 	 * <p>
 	 * The discrete events are generated when the sign of this switching function changes. The integrator will take care to change the stepsize in such a way these events occur exactly at step boundaries. The switching function must be continuous in its roots neighborhood (but not necessarily smooth), as the integrator will need to find its roots to locate precisely the events.
 	 * </p>
@@ -99,9 +98,9 @@ public interface EventHandler {
 	 * * h(t)}, where sign is a variable with initial value set to {@code +1}. Each time {@link #eventOccurred(double, double[], boolean) eventOccurred} is called, {@code sign} is reset to {@code -sign}. This allows the {@code g(t)} function to remain continuous (and even smooth) even across events, despite {@code h(t)} is not. Basically, the event is used to <em>fold</em> {@code h(t)} at bounce points, and {@code sign} is used to <em>unfold</em> it back, so the solvers sees a {@code g(t)}
 	 * function which behaves smoothly even across events.
 	 * </p>
+	 * t
+	 * current value of the independent <i>time</i> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <i>time</i> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 * @return value of the g switching function
@@ -110,12 +109,10 @@ public interface EventHandler {
 
 	/**
 	 * Handle an event and choose what to do next.
-	 * 
 	 * <p>
 	 * This method is called when the integrator has accepted a step ending exactly on a sign change of the function, just <em>before</em> the step handler itself is called (see below for scheduling). It allows the user to update his internal data to acknowledge the fact the event has been handled (for example setting a flag in the {@link org.apache.commons.math3.ode.FirstOrderDifferentialEquations
 	 * differential equations} to switch the derivatives computation in case of discontinuity), or to direct the integrator to either stop or continue integration, possibly with a reset state or derivatives.
 	 * </p>
-	 * 
 	 * <ul>
 	 * <li>if {@link Action#STOP} is returned, the step handler will be called with the <code>isLast</code> flag of the {@link org.apache.commons.math3.ode.sampling.StepHandler#handleStep handleStep} method set to true and the integration will be stopped,</li>
 	 * <li>if {@link Action#RESET_STATE} is returned, the {@link #resetState
@@ -123,16 +120,15 @@ public interface EventHandler {
 	 * <li>if {@link Action#RESET_DERIVATIVES} is returned, the integrator will recompute the derivatives,
 	 * <li>if {@link Action#CONTINUE} is returned, no specific action will be taken (apart from having called this method) and integration will continue.</li>
 	 * </ul>
-	 * 
 	 * <p>
 	 * The scheduling between this method and the {@link org.apache.commons.math3.ode.sampling.StepHandler StepHandler} method {@link org.apache.commons.math3.ode.sampling.StepHandler#handleStep(org.apache.commons.math3.ode.sampling.StepInterpolator, boolean)
 	 * handleStep(interpolator, isLast)} is to call this method first and <code>handleStep</code> afterwards. This scheduling allows the integrator to pass <code>true</code> as the <code>isLast</code> parameter to the step handler to make it aware the step will be the last one if this method returns {@link Action#STOP}. As the interpolator may be used to navigate back throughout the last step (as {@link org.apache.commons.math3.ode.sampling.StepNormalizer StepNormalizer} does for example), user
 	 * code called by this method and user code called by step handlers may experience apparently out of order values of the independent time variable. As an example, if the same user object implements both this {@link EventHandler EventHandler} interface and the {@link org.apache.commons.math3.ode.sampling.FixedStepHandler FixedStepHandler} interface, a <em>forward</em> integration may call its <code>eventOccurred</code> method with t = 10 first and call its <code>handleStep</code> method with
 	 * t = 9 afterwards. Such out of order calls are limited to the size of the integration step for {@link org.apache.commons.math3.ode.sampling.StepHandler variable step handlers} and to the size of the fixed step for {@link org.apache.commons.math3.ode.sampling.FixedStepHandler fixed step handlers}.
 	 * </p>
+	 * t
+	 * current value of the independent <i>time</i> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <i>time</i> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 * @param increasing
@@ -146,13 +142,12 @@ public interface EventHandler {
 
 	/**
 	 * Reset the state prior to continue the integration.
-	 * 
 	 * <p>
 	 * This method is called after the step handler has returned and before the next step is started, but only when {@link #eventOccurred} has itself returned the {@link Action#RESET_STATE} indicator. It allows the user to reset the state vector for the next step, without perturbing the step handler of the finishing step. If the {@link #eventOccurred} never returns the {@link Action#RESET_STATE} indicator, this function will never be called, and it is safe to leave its body empty.
 	 * </p>
+	 * t
+	 * current value of the independent <i>time</i> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <i>time</i> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 *            the new state should be put in the same array

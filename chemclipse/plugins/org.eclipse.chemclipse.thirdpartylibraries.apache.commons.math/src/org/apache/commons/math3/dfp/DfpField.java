@@ -126,9 +126,8 @@ public class DfpField implements Field<Dfp> {
 	 * <p>
 	 * Note that since the {@link Dfp} class uses 10000 as its radix, each radix digit is equivalent to 4 decimal digits. This implies that asking for 13, 14, 15 or 16 decimal digits will really lead to a 4 radix 10000 digits in all cases.
 	 * </p>
-	 * 
-	 * @param decimalDigits
-	 *            minimal number of decimal digits.
+	 * decimalDigits
+	 * minimal number of decimal digits.
 	 */
 	public DfpField(final int decimalDigits) {
 
@@ -140,9 +139,9 @@ public class DfpField implements Field<Dfp> {
 	 * <p>
 	 * Note that since the {@link Dfp} class uses 10000 as its radix, each radix digit is equivalent to 4 decimal digits. This implies that asking for 13, 14, 15 or 16 decimal digits will really lead to a 4 radix 10000 digits in all cases.
 	 * </p>
+	 * decimalDigits
+	 * minimal number of decimal digits
 	 * 
-	 * @param decimalDigits
-	 *            minimal number of decimal digits
 	 * @param computeConstants
 	 *            if true, the transcendental constants for the given precision
 	 *            must be computed (setting this flag to false is RESERVED for the internal recursive call)
@@ -200,8 +199,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the number of radix digits of the {@link Dfp} instances built by this factory.
-	 * 
-	 * @return number of radix digits
+	 * digits
 	 */
 	public int getRadixDigits() {
 
@@ -211,12 +209,11 @@ public class DfpField implements Field<Dfp> {
 	/**
 	 * Set the rounding mode.
 	 * If not set, the default value is {@link RoundingMode#ROUND_HALF_EVEN}.
-	 * 
-	 * @param mode
-	 *            desired rounding mode
-	 *            Note that the rounding mode is common to all {@link Dfp} instances
-	 *            belonging to the current {@link DfpField} in the system and will
-	 *            affect all future calculations.
+	 * mode
+	 * desired rounding mode
+	 * Note that the rounding mode is common to all {@link Dfp} instances
+	 * belonging to the current {@link DfpField} in the system and will
+	 * affect all future calculations.
 	 */
 	public void setRoundingMode(final RoundingMode mode) {
 
@@ -225,8 +222,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the current rounding mode.
-	 * 
-	 * @return current rounding mode
+	 * mode
 	 */
 	public RoundingMode getRoundingMode() {
 
@@ -235,8 +231,8 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the IEEE 854 status flags.
+	 * flags
 	 * 
-	 * @return IEEE 854 status flags
 	 * @see #clearIEEEFlags()
 	 * @see #setIEEEFlags(int)
 	 * @see #setIEEEFlagsBits(int)
@@ -253,8 +249,8 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Clears the IEEE 854 status flags.
+	 * #getIEEEFlags()
 	 * 
-	 * @see #getIEEEFlags()
 	 * @see #setIEEEFlags(int)
 	 * @see #setIEEEFlagsBits(int)
 	 * @see #FLAG_INVALID
@@ -270,9 +266,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Sets the IEEE 854 status flags.
+	 * flags
+	 * desired value for the flags
 	 * 
-	 * @param flags
-	 *            desired value for the flags
 	 * @see #getIEEEFlags()
 	 * @see #clearIEEEFlags()
 	 * @see #setIEEEFlagsBits(int)
@@ -292,9 +288,9 @@ public class DfpField implements Field<Dfp> {
 	 * <p>
 	 * Calling this method is equivalent to call {@code setIEEEFlags(getIEEEFlags() | bits)}
 	 * </p>
+	 * bits
+	 * bits to set
 	 * 
-	 * @param bits
-	 *            bits to set
 	 * @see #getIEEEFlags()
 	 * @see #clearIEEEFlags()
 	 * @see #setIEEEFlags(int)
@@ -311,8 +307,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Makes a {@link Dfp} with a value of 0.
-	 * 
-	 * @return a new {@link Dfp} with a value of 0
+	 * 0
 	 */
 	public Dfp newDfp() {
 
@@ -321,9 +316,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Create an instance from a byte value.
+	 * x
+	 * value to convert to an instance
 	 * 
-	 * @param x
-	 *            value to convert to an instance
 	 * @return a new {@link Dfp} with the same value as x
 	 */
 	public Dfp newDfp(final byte x) {
@@ -333,9 +328,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Create an instance from an int value.
+	 * x
+	 * value to convert to an instance
 	 * 
-	 * @param x
-	 *            value to convert to an instance
 	 * @return a new {@link Dfp} with the same value as x
 	 */
 	public Dfp newDfp(final int x) {
@@ -345,9 +340,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Create an instance from a long value.
+	 * x
+	 * value to convert to an instance
 	 * 
-	 * @param x
-	 *            value to convert to an instance
 	 * @return a new {@link Dfp} with the same value as x
 	 */
 	public Dfp newDfp(final long x) {
@@ -357,9 +352,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Create an instance from a double value.
+	 * x
+	 * value to convert to an instance
 	 * 
-	 * @param x
-	 *            value to convert to an instance
 	 * @return a new {@link Dfp} with the same value as x
 	 */
 	public Dfp newDfp(final double x) {
@@ -369,9 +364,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Copy constructor.
+	 * d
+	 * instance to copy
 	 * 
-	 * @param d
-	 *            instance to copy
 	 * @return a new {@link Dfp} with the same value as d
 	 */
 	public Dfp newDfp(Dfp d) {
@@ -381,9 +376,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Create a {@link Dfp} given a String representation.
+	 * s
+	 * string representation of the instance
 	 * 
-	 * @param s
-	 *            string representation of the instance
 	 * @return a new {@link Dfp} parsed from specified string
 	 */
 	public Dfp newDfp(final String s) {
@@ -393,9 +388,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Creates a {@link Dfp} with a non-finite value.
+	 * sign
+	 * sign of the Dfp to create
 	 * 
-	 * @param sign
-	 *            sign of the Dfp to create
 	 * @param nans
 	 *            code of the value, must be one of {@link Dfp#INFINITE}, {@link Dfp#SNAN}, {@link Dfp#QNAN}
 	 * @return a new {@link Dfp} with a non-finite value
@@ -407,8 +402,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant 0.
-	 * 
-	 * @return a {@link Dfp} with value 0
+	 * 0
 	 */
 	public Dfp getZero() {
 
@@ -417,8 +411,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant 1.
-	 * 
-	 * @return a {@link Dfp} with value 1
+	 * 1
 	 */
 	public Dfp getOne() {
 
@@ -433,8 +426,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant 2.
-	 * 
-	 * @return a {@link Dfp} with value 2
+	 * 2
 	 */
 	public Dfp getTwo() {
 
@@ -443,8 +435,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &radic;2.
-	 * 
-	 * @return a {@link Dfp} with value &radic;2
+	 * &radic;2
 	 */
 	public Dfp getSqr2() {
 
@@ -453,8 +444,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &radic;2 split in two pieces.
-	 * 
-	 * @return a {@link Dfp} with value &radic;2 split in two pieces
+	 * pieces
 	 */
 	public Dfp[] getSqr2Split() {
 
@@ -463,8 +453,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &radic;2 / 2.
-	 * 
-	 * @return a {@link Dfp} with value &radic;2 / 2
+	 * 2
 	 */
 	public Dfp getSqr2Reciprocal() {
 
@@ -473,8 +462,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &radic;3.
-	 * 
-	 * @return a {@link Dfp} with value &radic;3
+	 * &radic;3
 	 */
 	public Dfp getSqr3() {
 
@@ -483,8 +471,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &radic;3 / 3.
-	 * 
-	 * @return a {@link Dfp} with value &radic;3 / 3
+	 * 3
 	 */
 	public Dfp getSqr3Reciprocal() {
 
@@ -493,8 +480,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &pi;.
-	 * 
-	 * @return a {@link Dfp} with value &pi;
+	 * &pi;
 	 */
 	public Dfp getPi() {
 
@@ -503,8 +489,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant &pi; split in two pieces.
-	 * 
-	 * @return a {@link Dfp} with value &pi; split in two pieces
+	 * pieces
 	 */
 	public Dfp[] getPiSplit() {
 
@@ -513,8 +498,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant e.
-	 * 
-	 * @return a {@link Dfp} with value e
+	 * e
 	 */
 	public Dfp getE() {
 
@@ -523,8 +507,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant e split in two pieces.
-	 * 
-	 * @return a {@link Dfp} with value e split in two pieces
+	 * pieces
 	 */
 	public Dfp[] getESplit() {
 
@@ -533,8 +516,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant ln(2).
-	 * 
-	 * @return a {@link Dfp} with value ln(2)
+	 * ln(2)
 	 */
 	public Dfp getLn2() {
 
@@ -543,8 +525,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant ln(2) split in two pieces.
-	 * 
-	 * @return a {@link Dfp} with value ln(2) split in two pieces
+	 * pieces
 	 */
 	public Dfp[] getLn2Split() {
 
@@ -553,8 +534,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant ln(5).
-	 * 
-	 * @return a {@link Dfp} with value ln(5)
+	 * ln(5)
 	 */
 	public Dfp getLn5() {
 
@@ -563,8 +543,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant ln(5) split in two pieces.
-	 * 
-	 * @return a {@link Dfp} with value ln(5) split in two pieces
+	 * pieces
 	 */
 	public Dfp[] getLn5Split() {
 
@@ -573,8 +552,7 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Get the constant ln(10).
-	 * 
-	 * @return a {@link Dfp} with value ln(10)
+	 * ln(10)
 	 */
 	public Dfp getLn10() {
 
@@ -585,9 +563,9 @@ public class DfpField implements Field<Dfp> {
 	 * Breaks a string representation up into two {@link Dfp}'s.
 	 * The split is such that the sum of them is equivalent to the input string,
 	 * but has higher precision than using a single Dfp.
+	 * a
+	 * string representation of the number to split
 	 * 
-	 * @param a
-	 *            string representation of the number to split
 	 * @return an array of two {@link Dfp Dfp} instances which sum equals a
 	 */
 	private Dfp[] split(final String a) {
@@ -627,9 +605,8 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Recompute the high precision string constants.
-	 * 
-	 * @param highPrecisionDecimalDigits
-	 *            precision at which the string constants mus be computed
+	 * highPrecisionDecimalDigits
+	 * precision at which the string constants mus be computed
 	 */
 	private static void computeStringConstants(final int highPrecisionDecimalDigits) {
 
@@ -655,9 +632,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Compute &pi; using Jonathan and Peter Borwein quartic formula.
+	 * one
+	 * constant with value 1 at desired precision
 	 * 
-	 * @param one
-	 *            constant with value 1 at desired precision
 	 * @param two
 	 *            constant with value 2 at desired precision
 	 * @param three
@@ -696,9 +673,9 @@ public class DfpField implements Field<Dfp> {
 
 	/**
 	 * Compute exp(a).
+	 * a
+	 * number for which we want the exponential
 	 * 
-	 * @param a
-	 *            number for which we want the exponential
 	 * @param one
 	 *            constant with value 1 at desired precision
 	 * @return exp(a)
@@ -777,9 +754,9 @@ public class DfpField implements Field<Dfp> {
 	 * But now we want to find ln(a), so we need to find the value of x
 	 * such that a = (x+1)/(x-1). This is easily solved to find that
 	 * x = (a-1)/(a+1).
+	 * a
+	 * number for which we want the exponential
 	 * 
-	 * @param a
-	 *            number for which we want the exponential
 	 * @param one
 	 *            constant with value 1 at desired precision
 	 * @param two

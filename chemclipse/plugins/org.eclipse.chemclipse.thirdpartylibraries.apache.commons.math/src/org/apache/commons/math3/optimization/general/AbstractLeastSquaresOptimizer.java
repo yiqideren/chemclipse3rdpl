@@ -56,8 +56,7 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 
 	/**
 	 * Singularity threshold (cf. {@link #getCovariances(double)}).
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	private static final double DEFAULT_SINGULARITY_THRESHOLD = 1e-14;
@@ -66,51 +65,44 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 	 * This matrix is in canonical form just after the calls to {@link #updateJacobian()}, but may be modified by the solver
 	 * in the derived class (the {@link LevenbergMarquardtOptimizer
 	 * Levenberg-Marquardt optimizer} does this).
-	 * 
-	 * @deprecated As of 3.1. To be removed in 4.0. Please use {@link #computeWeightedJacobian(double[])} instead.
+	 * instead.
 	 */
 	@Deprecated
 	protected double[][] weightedResidualJacobian;
 	/**
 	 * Number of columns of the jacobian matrix.
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	protected int cols;
 	/**
 	 * Number of rows of the jacobian matrix.
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	protected int rows;
 	/**
 	 * Current point.
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	protected double[] point;
 	/**
 	 * Current objective function value.
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	protected double[] objective;
 	/**
 	 * Weighted residuals
-	 * 
-	 * @deprecated As of 3.1.
+	 * 3.1.
 	 */
 	@Deprecated
 	protected double[] weightedResiduals;
 	/**
 	 * Cost value (square root of the sum of the residuals).
-	 * 
-	 * @deprecated As of 3.1. Field to become "private" in 4.0.
-	 *             Please use {@link #setCost(double)}.
+	 * 4.0.
+	 * Please use {@link #setCost(double)}.
 	 */
 	@Deprecated
 	protected double cost;
@@ -124,8 +116,7 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 	/**
 	 * Simple constructor with default settings.
 	 * The convergence check is set to a {@link org.apache.commons.math3.optimization.SimpleVectorValueChecker}.
-	 * 
-	 * @deprecated See {@link org.apache.commons.math3.optimization.SimpleValueChecker#SimpleValueChecker()}
+	 * org.apache.commons.math3.optimization.SimpleValueChecker#SimpleValueChecker()}
 	 */
 	@Deprecated
 	protected AbstractLeastSquaresOptimizer() {
@@ -202,10 +193,10 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 
 	/**
 	 * Update the residuals array and cost function value.
+	 * DimensionMismatchException
+	 * if the dimension does not match the
+	 * problem dimension.
 	 * 
-	 * @throws DimensionMismatchException
-	 *             if the dimension does not match the
-	 *             problem dimension.
 	 * @throws org.apache.commons.math3.exception.TooManyEvaluationsException
 	 *             if the maximal number of evaluations is exceeded.
 	 * @deprecated As of 3.1. Please use {@link #computeResiduals(double[])}, {@link #computeObjectiveValue(double[])}, {@link #computeCost(double[])} and {@link #setCost(double)} instead.
@@ -255,8 +246,7 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 	 * Get a Chi-Square-like value assuming the N residuals follow N
 	 * distinct normal distributions centered on 0 and whose variances are
 	 * the reciprocal of the weights.
-	 * 
-	 * @return chi-square value
+	 * value
 	 */
 	public double getChiSquare() {
 
@@ -411,10 +401,8 @@ public abstract class AbstractLeastSquaresOptimizer extends BaseAbstractMultivar
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated As of 3.1. Please use {@link BaseAbstractMultivariateVectorOptimizer#optimize(int, org.apache.commons.math3.analysis.MultivariateVectorFunction,OptimizationData[])
-	 *             optimize(int,MultivariateDifferentiableVectorFunction,OptimizationData...)} instead.
+	 * {@inheritDoc} org.apache.commons.math3.analysis.MultivariateVectorFunction,OptimizationData[])
+	 * optimize(int,MultivariateDifferentiableVectorFunction,OptimizationData...)} instead.
 	 */
 	@Override
 	@Deprecated

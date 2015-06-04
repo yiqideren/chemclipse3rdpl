@@ -26,9 +26,9 @@ import org.apache.commons.math3.optimization.PointValuePair;
  * Optimization algorithms find the input point set that either {@link GoalType
  * maximize or minimize} an objective function. In the linear case the form of the function is restricted to
  * 
- * <pre>
+ * 
  * c<sub>1</sub>x<sub>1</sub> + ... c<sub>n</sub>x<sub>n</sub> = v
- * </pre>
+ * 
  * 
  * and there may be linear constraints too, of one of the forms:
  * <ul>
@@ -50,16 +50,14 @@ public interface LinearOptimizer {
 
 	/**
 	 * Set the maximal number of iterations of the algorithm.
-	 * 
-	 * @param maxIterations
-	 *            maximal number of function calls
+	 * maxIterations
+	 * maximal number of function calls
 	 */
 	void setMaxIterations(int maxIterations);
 
 	/**
 	 * Get the maximal number of iterations of the algorithm.
-	 * 
-	 * @return maximal number of iterations
+	 * iterations
 	 */
 	int getMaxIterations();
 
@@ -68,16 +66,15 @@ public interface LinearOptimizer {
 	 * <p>
 	 * The number of evaluations corresponds to the last call to the {@link #optimize(LinearObjectiveFunction, Collection, GoalType, boolean) optimize} method. It is 0 if the method has not been called yet.
 	 * </p>
-	 * 
-	 * @return number of iterations
+	 * iterations
 	 */
 	int getIterations();
 
 	/**
 	 * Optimizes an objective function.
+	 * f
+	 * linear objective function
 	 * 
-	 * @param f
-	 *            linear objective function
 	 * @param constraints
 	 *            linear constraints
 	 * @param goalType

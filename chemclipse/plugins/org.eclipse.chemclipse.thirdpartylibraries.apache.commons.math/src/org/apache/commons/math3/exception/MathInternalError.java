@@ -39,9 +39,8 @@ public class MathInternalError extends MathIllegalStateException {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param cause
-	 *            root cause
+	 * cause
+	 * root cause
 	 */
 	public MathInternalError(final Throwable cause) {
 

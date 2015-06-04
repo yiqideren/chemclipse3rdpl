@@ -51,9 +51,9 @@ public class TransformerMap implements NumberTransformer, Serializable {
 
 	/**
 	 * Tests if a Class is present in the TransformerMap.
+	 * key
+	 * Class to check
 	 * 
-	 * @param key
-	 *            Class to check
 	 * @return true|false
 	 */
 	public boolean containsClass(Class<?> key) {
@@ -63,9 +63,9 @@ public class TransformerMap implements NumberTransformer, Serializable {
 
 	/**
 	 * Tests if a NumberTransformer is present in the TransformerMap.
+	 * value
+	 * NumberTransformer to check
 	 * 
-	 * @param value
-	 *            NumberTransformer to check
 	 * @return true|false
 	 */
 	public boolean containsTransformer(NumberTransformer value) {
@@ -76,9 +76,9 @@ public class TransformerMap implements NumberTransformer, Serializable {
 	/**
 	 * Returns the Transformer that is mapped to a class
 	 * if mapping is not present, this returns null.
+	 * key
+	 * The Class of the object
 	 * 
-	 * @param key
-	 *            The Class of the object
 	 * @return the mapped NumberTransformer or null.
 	 */
 	public NumberTransformer getTransformer(Class<?> key) {
@@ -90,9 +90,9 @@ public class TransformerMap implements NumberTransformer, Serializable {
 	 * Sets a Class to Transformer Mapping in the Map. If
 	 * the Class is already present, this overwrites that
 	 * mapping.
+	 * key
+	 * The Class
 	 * 
-	 * @param key
-	 *            The Class
 	 * @param transformer
 	 *            The NumberTransformer
 	 * @return the replaced transformer if one is present
@@ -104,9 +104,9 @@ public class TransformerMap implements NumberTransformer, Serializable {
 
 	/**
 	 * Removes a Class to Transformer Mapping in the Map.
+	 * key
+	 * The Class
 	 * 
-	 * @param key
-	 *            The Class
 	 * @return the removed transformer if one is present or
 	 *         null if none was present.
 	 */
@@ -125,8 +125,7 @@ public class TransformerMap implements NumberTransformer, Serializable {
 
 	/**
 	 * Returns the Set of Classes used as keys in the map.
-	 * 
-	 * @return Set of Classes
+	 * Classes
 	 */
 	public Set<Class<?>> classes() {
 
@@ -136,8 +135,7 @@ public class TransformerMap implements NumberTransformer, Serializable {
 	/**
 	 * Returns the Set of NumberTransformers used as values
 	 * in the map.
-	 * 
-	 * @return Set of NumberTransformers
+	 * NumberTransformers
 	 */
 	public Collection<NumberTransformer> transformers() {
 

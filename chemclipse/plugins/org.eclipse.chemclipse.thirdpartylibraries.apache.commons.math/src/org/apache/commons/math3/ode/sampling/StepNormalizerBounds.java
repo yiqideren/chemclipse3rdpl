@@ -48,10 +48,10 @@ public enum StepNormalizerBounds {
 
 	/**
 	 * Simple constructor.
+	 * first
+	 * Whether the first point should be passed to the
+	 * underlying fixed step size step handler.
 	 * 
-	 * @param first
-	 *            Whether the first point should be passed to the
-	 *            underlying fixed step size step handler.
 	 * @param last
 	 *            Whether the last point should be passed to the
 	 *            underlying fixed step size step handler.
@@ -65,9 +65,8 @@ public enum StepNormalizerBounds {
 	/**
 	 * Returns a value indicating whether the first point should be passed
 	 * to the underlying fixed step size step handler.
-	 * 
-	 * @return value indicating whether the first point should be passed
-	 *         to the underlying fixed step size step handler.
+	 * passed
+	 * to the underlying fixed step size step handler.
 	 */
 	public boolean firstIncluded() {
 
@@ -77,9 +76,8 @@ public enum StepNormalizerBounds {
 	/**
 	 * Returns a value indicating whether the last point should be passed
 	 * to the underlying fixed step size step handler.
-	 * 
-	 * @return value indicating whether the last point should be passed
-	 *         to the underlying fixed step size step handler.
+	 * passed
+	 * to the underlying fixed step size step handler.
 	 */
 	public boolean lastIncluded() {
 

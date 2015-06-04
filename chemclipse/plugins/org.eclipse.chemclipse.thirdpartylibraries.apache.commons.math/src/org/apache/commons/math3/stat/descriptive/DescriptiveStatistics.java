@@ -196,8 +196,7 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	/**
 	 * Returns the <a href="http://www.xycoon.com/arithmetic_mean.htm">
 	 * arithmetic mean </a> of the available values
-	 * 
-	 * @return The mean or Double.NaN if no values have been added.
+	 * added.
 	 */
 	public double getMean() {
 
@@ -207,9 +206,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	/**
 	 * Returns the <a href="http://www.xycoon.com/geometric_mean.htm">
 	 * geometric mean </a> of the available values
-	 * 
-	 * @return The geometricMean, Double.NaN if no values have been added,
-	 *         or if the product of the available values is less than or equal to 0.
+	 * added,
+	 * or if the product of the available values is less than or equal to 0.
 	 */
 	public double getGeometricMean() {
 
@@ -245,9 +243,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the standard deviation of the available values.
-	 * 
-	 * @return The standard deviation, Double.NaN if no values have been added
-	 *         or 0.0 for a single value set.
+	 * added
+	 * or 0.0 for a single value set.
 	 */
 	public double getStandardDeviation() {
 
@@ -266,9 +263,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	 * Returns the quadratic mean, a.k.a.
 	 * <a href="http://mathworld.wolfram.com/Root-Mean-Square.html">
 	 * root-mean-square</a> of the available values
-	 * 
-	 * @return The quadratic mean or {@code Double.NaN} if no values
-	 *         have been added.
+	 * values
+	 * have been added.
 	 */
 	public double getQuadraticMean() {
 
@@ -279,9 +275,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	/**
 	 * Returns the skewness of the available values. Skewness is a
 	 * measure of the asymmetry of a given distribution.
-	 * 
-	 * @return The skewness, Double.NaN if no values have been added
-	 *         or 0.0 for a value set &lt;=2.
+	 * added
+	 * or 0.0 for a value set &lt;=2.
 	 */
 	public double getSkewness() {
 
@@ -291,9 +286,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	/**
 	 * Returns the Kurtosis of the available values. Kurtosis is a
 	 * measure of the "peakedness" of a distribution
-	 * 
-	 * @return The kurtosis, Double.NaN if no values have been added, or 0.0
-	 *         for a value set &lt;=3.
+	 * 0.0
+	 * for a value set &lt;=3.
 	 */
 	public double getKurtosis() {
 
@@ -302,8 +296,7 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the maximum of the available values
-	 * 
-	 * @return The max or Double.NaN if no values have been added.
+	 * added.
 	 */
 	public double getMax() {
 
@@ -312,8 +305,7 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the minimum of the available values
-	 * 
-	 * @return The min or Double.NaN if no values have been added.
+	 * added.
 	 */
 	public double getMin() {
 
@@ -322,8 +314,7 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the number of available values
-	 * 
-	 * @return The number of available values
+	 * values
 	 */
 	public long getN() {
 
@@ -332,8 +323,7 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the sum of the values that have been added to Univariate.
-	 * 
-	 * @return The sum or Double.NaN if no values have been added
+	 * added
 	 */
 	public double getSum() {
 
@@ -342,9 +332,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the sum of the squares of the available values.
-	 * 
-	 * @return The sum of the squares or Double.NaN if no
-	 *         values have been added.
+	 * no
+	 * values have been added.
 	 */
 	public double getSumsq() {
 
@@ -419,9 +408,8 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 	 * sorted in ascending order. The returned array is a fresh
 	 * copy of the underlying data -- i.e., it is not a reference to the
 	 * stored data.
-	 * 
-	 * @return returns the current set of
-	 *         numbers sorted in ascending order
+	 * of
+	 * numbers sorted in ascending order
 	 */
 	public double[] getSortedValues() {
 
@@ -432,9 +420,9 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Returns the element at the specified index
+	 * index
+	 * The Index of the element
 	 * 
-	 * @param index
-	 *            The Index of the element
 	 * @return return the element at the specified index
 	 */
 	public double getElement(int index) {
@@ -514,9 +502,9 @@ public class DescriptiveStatistics implements StatisticalSummary, Serializable {
 
 	/**
 	 * Apply the given statistic to the data associated with this set of statistics.
+	 * stat
+	 * the statistic to apply
 	 * 
-	 * @param stat
-	 *            the statistic to apply
 	 * @return the computed value of the statistic.
 	 */
 	public double apply(UnivariateStatistic stat) {

@@ -24,18 +24,11 @@ import javassist.CtMethod.ConstParameter;
  * <p>
  * The proxy class for class A is as follows:
  *
- * <pre>
- * public class A implements Proxy, Serializable {
- *   private ObjectImporter importer;
- *   private int objectId;
- *   public int _getObjectId() { return objectId; }
- *   public A(ObjectImporter oi, int id) {
- *     importer = oi; objectId = id;
- *   }
  * 
- *   ... the same methods that the original class A declares ...
- * }
- * </pre>
+ * public class A implements Proxy, Serializable { private ObjectImporter importer; private int objectId; public int _getObjectId() { return objectId; } public A(ObjectImporter oi, int id) { importer = oi; objectId = id; }
+ * 
+ * ... the same methods that the original class A declares ... }
+ * 
  *
  * <p>
  * Instances of the proxy class is created by an <code>ObjectImporter</code> object.

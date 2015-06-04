@@ -198,9 +198,9 @@ public class CtNewConstructor {
 	 * <p>
 	 * If <code>howto</code> is <code>PASS_ARRAY</code>, the created constructor calls the super's constructor with the given parameters in the form of an array of <code>Object</code>. The signature of the super's constructor must be:
 	 *
-	 * <pre>
+	 * 
 	 * constructor(Object[] params, &lt;type&gt; cvalue)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Here, <code>cvalue</code> is the constant value specified by <code>cparam</code>.
@@ -208,9 +208,9 @@ public class CtNewConstructor {
 	 * <p>
 	 * If <code>cparam</code> is <code>null</code>, the signature must be:
 	 *
-	 * <pre>
+	 * 
 	 * constructor(Object[] params)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * If <code>body</code> is not null, a copy of that method is embedded in the body of the created constructor. The embedded method is executed after the super's constructor is called and the values of fields are initialized. Note that <code>body</code> must not be a constructor but a method.
@@ -218,16 +218,16 @@ public class CtNewConstructor {
 	 * <p>
 	 * Since the embedded method is wrapped in parameter-conversion code as in <code>CtNewMethod.wrapped()</code>, the constructor parameters are passed in the form of an array of <code>Object</code>. The method specified by <code>body</code> must have the signature shown below:
 	 *
-	 * <pre>
+	 * 
 	 * Object method(Object[] params, &lt;type&gt; cvalue)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * If <code>cparam</code> is <code>null</code>, the signature must be:
 	 *
-	 * <pre>
+	 * 
 	 * Object method(Object[] params)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Although the type of the returned value is <code>Object</code>, the value must be always <code>null</code>.
@@ -235,144 +235,28 @@ public class CtNewConstructor {
 	 * <p>
 	 * <i>Example:</i>
 	 *
-	 * <pre>
-	 * ClassPool pool = ... ;
-	 * CtClass xclass = pool.makeClass("X");
-	 * CtMethod method = pool.getMethod("Sample", "m");
-	 * xclass.setSuperclass(pool.get("Y"));
-	 * CtClass[] argTypes = { CtClass.intType };
-	 * ConstParameter cparam = ConstParameter.string("test");
-	 * CtConstructor c = CtNewConstructor.make(argTypes, null,
-	 *                                  PASS_PARAMS, method, cparam, xclass);
-	 * xclass.addConstructor(c);
-	 * </pre>
+	 * 
+	 * ClassPool pool = ... ; CtClass xclass = pool.makeClass("X"); CtMethod method = pool.getMethod("Sample", "m"); xclass.setSuperclass(pool.get("Y")); CtClass[] argTypes = { CtClass.intType }; ConstParameter cparam = ConstParameter.string("test"); CtConstructor c = CtNewConstructor.make(argTypes, null, PASS_PARAMS, method, cparam, xclass); xclass.addConstructor(c);
+	 * 
 	 *
 	 * <p>
 	 * where the class <code>Sample</code> is as follows:
-	 *
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * public class Sample {
 	 * 
-	 * 	public Object m(Object[] args, String msg) {
+	 * public Object m(Object[] args, String msg) {
 	 * 
-	 * 		System.out.println(msg);
-	 * 		return null;
-	 * 	}
-	 * }
-	 * </pre>
+	 * System.out.println(msg); return null; } }
 	 *
 	 * <p>
 	 * This program produces the following class:
 	 *
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * public class X extends Y {
 	 * 
-	 * 	public X(int p0) {
+	 * public X(int p0) {
 	 * 
-	 * 		super(p0);
-	 * 		String msg = &quot;test&quot;;
-	 * 		Object[] args = new Object[]{p0};
-	 * 		// begin of copied body
-	 * 		System.out.println(msg);
-	 * 		Object result = null;
-	 * 		// end
-	 * 	}
-	 * }
-	 * </pre>
+	 * super(p0); String msg = &quot;test&quot;; Object[] args = new Object[]{p0}; // begin of copied body System.out.println(msg); Object result = null; // end } }
 	 *
 	 * @param parameters
 	 *            a list of the parameter types

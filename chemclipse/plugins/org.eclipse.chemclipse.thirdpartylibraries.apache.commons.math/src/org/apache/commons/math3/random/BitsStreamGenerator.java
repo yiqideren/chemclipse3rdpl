@@ -53,9 +53,9 @@ public abstract class BitsStreamGenerator implements RandomGenerator, Serializab
 	 * <p>
 	 * This method is the core generation algorithm. It is used by all the public generation methods for the various primitive types {@link #nextBoolean()}, {@link #nextBytes(byte[])}, {@link #nextDouble()}, {@link #nextFloat()}, {@link #nextGaussian()}, {@link #nextInt()}, {@link #next(int)} and {@link #nextLong()}.
 	 * </p>
+	 * bits
+	 * number of random bits to produce
 	 * 
-	 * @param bits
-	 *            number of random bits to produce
 	 * @return random bits generated
 	 */
 	protected abstract int next(int bits);

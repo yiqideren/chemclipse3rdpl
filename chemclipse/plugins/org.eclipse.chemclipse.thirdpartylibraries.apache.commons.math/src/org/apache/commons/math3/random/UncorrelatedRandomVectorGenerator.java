@@ -39,9 +39,9 @@ public class UncorrelatedRandomVectorGenerator implements RandomVectorGenerator 
 	 * <p>
 	 * Build an uncorrelated random vector generator from its mean and standard deviation vectors.
 	 * </p>
+	 * mean
+	 * expected mean values for each component
 	 * 
-	 * @param mean
-	 *            expected mean values for each component
 	 * @param standardDeviation
 	 *            standard deviation for each component
 	 * @param generator
@@ -63,9 +63,9 @@ public class UncorrelatedRandomVectorGenerator implements RandomVectorGenerator 
 	 * <p>
 	 * Build a null mean random and unit standard deviation uncorrelated vector generator
 	 * </p>
+	 * dimension
+	 * dimension of the vectors to generate
 	 * 
-	 * @param dimension
-	 *            dimension of the vectors to generate
 	 * @param generator
 	 *            underlying generator for uncorrelated normalized
 	 *            components
@@ -80,8 +80,7 @@ public class UncorrelatedRandomVectorGenerator implements RandomVectorGenerator 
 
 	/**
 	 * Generate an uncorrelated random vector.
-	 * 
-	 * @return a random vector as a newly built array of double
+	 * double
 	 */
 	public double[] nextVector() {
 

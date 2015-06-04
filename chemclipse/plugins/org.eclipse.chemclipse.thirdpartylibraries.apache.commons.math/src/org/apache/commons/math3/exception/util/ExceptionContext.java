@@ -57,9 +57,8 @@ public class ExceptionContext implements Serializable {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param throwable
-	 *            the exception this context refers too
+	 * throwable
+	 * the exception this context refers too
 	 */
 	public ExceptionContext(final Throwable throwable) {
 
@@ -71,8 +70,7 @@ public class ExceptionContext implements Serializable {
 
 	/**
 	 * Get a reference to the exception to which the context relates.
-	 * 
-	 * @return a reference to the exception to which the context relates
+	 * relates
 	 */
 	public Throwable getThrowable() {
 

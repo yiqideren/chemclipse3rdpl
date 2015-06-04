@@ -40,48 +40,44 @@ public interface SubHyperplane<S extends Space> {
 	 * <p>
 	 * The instance created is completely independent of the original one. A deep copy is used, none of the underlying objects are shared (except for the nodes attributes and immutable objects).
 	 * </p>
-	 * 
-	 * @return a new sub-hyperplane, copy of the instance
+	 * instance
 	 */
 	SubHyperplane<S> copySelf();
 
 	/**
 	 * Get the underlying hyperplane.
-	 * 
-	 * @return underlying hyperplane
+	 * hyperplane
 	 */
 	Hyperplane<S> getHyperplane();
 
 	/**
 	 * Check if the instance is empty.
-	 * 
-	 * @return true if the instance is empty
+	 * empty
 	 */
 	boolean isEmpty();
 
 	/**
 	 * Get the size of the instance.
-	 * 
-	 * @return the size of the instance (this is a length in 1D, an area
-	 *         in 2D, a volume in 3D ...)
+	 * area
+	 * in 2D, a volume in 3D ...)
 	 */
 	double getSize();
 
 	/**
 	 * Compute the relative position of the instance with respect
 	 * to an hyperplane.
+	 * hyperplane
+	 * hyperplane to check instance against
 	 * 
-	 * @param hyperplane
-	 *            hyperplane to check instance against
 	 * @return one of {@link Side#PLUS}, {@link Side#MINUS}, {@link Side#BOTH}, {@link Side#HYPER}
 	 */
 	Side side(Hyperplane<S> hyperplane);
 
 	/**
 	 * Split the instance in two parts by an hyperplane.
+	 * hyperplane
+	 * splitting hyperplane
 	 * 
-	 * @param hyperplane
-	 *            splitting hyperplane
 	 * @return an object containing both the part of the instance
 	 *         on the plus side of the hyperplane and the part of the
 	 *         instance on the minus side of the hyperplane
@@ -90,19 +86,18 @@ public interface SubHyperplane<S extends Space> {
 
 	/**
 	 * Compute the union of the instance and another sub-hyperplane.
+	 * other
+	 * other sub-hyperplane to union (<em>must</em> be in the
+	 * same hyperplane as the instance)
 	 * 
-	 * @param other
-	 *            other sub-hyperplane to union (<em>must</em> be in the
-	 *            same hyperplane as the instance)
 	 * @return a new sub-hyperplane, union of the instance and other
 	 */
 	SubHyperplane<S> reunite(SubHyperplane<S> other);
 
 	/**
 	 * Class holding the results of the {@link #split split} method.
-	 * 
-	 * @param <U>
-	 *            Type of the embedding space.
+	 * <U>
+	 * Type of the embedding space.
 	 */
 	public static class SplitSubHyperplane<U extends Space> {
 

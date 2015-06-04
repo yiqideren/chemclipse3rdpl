@@ -30,9 +30,8 @@ public class DummyLocalizable implements Localizable {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param source
-	 *            source text
+	 * source
+	 * source text
 	 */
 	public DummyLocalizable(final String source) {
 

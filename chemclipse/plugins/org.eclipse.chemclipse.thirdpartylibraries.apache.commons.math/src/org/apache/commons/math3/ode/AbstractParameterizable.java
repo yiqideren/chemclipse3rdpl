@@ -29,9 +29,8 @@ public abstract class AbstractParameterizable implements Parameterizable {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param names
-	 *            names of the supported parameters
+	 * names
+	 * names of the supported parameters
 	 */
 	protected AbstractParameterizable(final String... names) {
 
@@ -43,9 +42,8 @@ public abstract class AbstractParameterizable implements Parameterizable {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param names
-	 *            names of the supported parameters
+	 * names
+	 * names of the supported parameters
 	 */
 	protected AbstractParameterizable(final Collection<String> names) {
 
@@ -72,9 +70,9 @@ public abstract class AbstractParameterizable implements Parameterizable {
 
 	/**
 	 * Check if a parameter is supported and throw an IllegalArgumentException if not.
+	 * name
+	 * name of the parameter to check
 	 * 
-	 * @param name
-	 *            name of the parameter to check
 	 * @exception UnknownParameterException
 	 *                if the parameter is not supported
 	 * @see #isSupported(String)

@@ -39,9 +39,9 @@ public class SimpsonIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a Simpson integrator with given accuracies and iterations counts.
+	 * relativeAccuracy
+	 * relative accuracy of the result
 	 * 
-	 * @param relativeAccuracy
-	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
 	 *            absolute accuracy of the result
 	 * @param minimalIterationCount
@@ -69,9 +69,9 @@ public class SimpsonIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a Simpson integrator with given iteration counts.
+	 * minimalIterationCount
+	 * minimum number of iterations
 	 * 
-	 * @param minimalIterationCount
-	 *            minimum number of iterations
 	 * @param maximalIterationCount
 	 *            maximum number of iterations
 	 *            (must be less than or equal to {@link #SIMPSON_MAX_ITERATIONS_COUNT})

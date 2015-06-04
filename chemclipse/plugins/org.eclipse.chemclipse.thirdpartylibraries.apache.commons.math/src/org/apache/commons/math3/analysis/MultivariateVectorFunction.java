@@ -23,9 +23,9 @@ public interface MultivariateVectorFunction {
 
 	/**
 	 * Compute the value for the function at the given point.
+	 * point
+	 * point at which the function must be evaluated
 	 * 
-	 * @param point
-	 *            point at which the function must be evaluated
 	 * @return function value for the given point
 	 * @exception IllegalArgumentException
 	 *                if point's dimension is wrong

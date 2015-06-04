@@ -39,9 +39,9 @@ import org.apache.commons.math3.util.MathUtils;
  * <p>
  * The algorithm then tries to minimize the objective function:
  * 
- * <pre>
+ * 
  * J = &#8721;<sub>i=1..C</sub>&#8721;<sub>k=1..N</sub> u<sub>ik</sub><sup>m</sup>d<sub>ik</sub><sup>2</sup>
- * </pre>
+ * 
  * 
  * with d<sub>ik</sub> being the distance between data point i and the cluster center k.
  * <p>
@@ -157,8 +157,7 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Return the number of clusters this instance will use.
-	 * 
-	 * @return the number of clusters
+	 * clusters
 	 */
 	public int getK() {
 
@@ -167,8 +166,7 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the fuzziness factor used by this instance.
-	 * 
-	 * @return the fuzziness factor
+	 * factor
 	 */
 	public double getFuzziness() {
 
@@ -177,8 +175,7 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the maximum number of iterations this instance will use.
-	 * 
-	 * @return the maximum number of iterations, or -1 if no maximum is set
+	 * set
 	 */
 	public int getMaxIterations() {
 
@@ -187,8 +184,7 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the convergence criteria used by this instance.
-	 * 
-	 * @return the convergence criteria
+	 * criteria
 	 */
 	public double getEpsilon() {
 
@@ -197,8 +193,7 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the random generator this instance will use.
-	 * 
-	 * @return the random generator
+	 * generator
 	 */
 	public RandomGenerator getRandomGenerator() {
 
@@ -226,9 +221,8 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 	/**
 	 * Returns an unmodifiable list of the data points used in the last
 	 * call to {@link #cluster(Collection)}.
-	 * 
-	 * @return the list of data points, or {@code null} if {@link #cluster(Collection)} has
-	 *         not been called before.
+	 * has
+	 * not been called before.
 	 */
 	public List<T> getDataPoints() {
 
@@ -237,9 +231,8 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the list of clusters resulting from the last call to {@link #cluster(Collection)}.
-	 * 
-	 * @return the list of clusters, or {@code null} if {@link #cluster(Collection)} has
-	 *         not been called before.
+	 * has
+	 * not been called before.
 	 */
 	public List<CentroidCluster<T>> getClusters() {
 
@@ -248,8 +241,8 @@ public class FuzzyKMeansClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Get the value of the objective function.
+	 * value
 	 * 
-	 * @return the objective function evaluation as double value
 	 * @throws MathIllegalStateException
 	 *             if {@link #cluster(Collection)} has not been called before
 	 */

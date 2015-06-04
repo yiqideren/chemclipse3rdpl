@@ -28,9 +28,8 @@ public interface StorelessUnivariateStatistic extends UnivariateStatistic {
 
 	/**
 	 * Updates the internal state of the statistic to reflect the addition of the new value.
-	 * 
-	 * @param d
-	 *            the new value.
+	 * d
+	 * the new value.
 	 */
 	void increment(double d);
 
@@ -65,16 +64,14 @@ public interface StorelessUnivariateStatistic extends UnivariateStatistic {
 
 	/**
 	 * Returns the current value of the Statistic.
-	 * 
-	 * @return value of the statistic, <code>Double.NaN</code> if it
-	 *         has been cleared or just instantiated.
+	 * it
+	 * has been cleared or just instantiated.
 	 */
 	double getResult();
 
 	/**
 	 * Returns the number of values that have been added.
-	 * 
-	 * @return the number of values.
+	 * values.
 	 */
 	long getN();
 

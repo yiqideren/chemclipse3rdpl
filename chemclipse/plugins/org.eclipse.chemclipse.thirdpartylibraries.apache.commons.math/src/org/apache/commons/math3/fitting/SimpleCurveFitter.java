@@ -76,9 +76,9 @@ public class SimpleCurveFitter extends AbstractCurveFitter {
 
 	/**
 	 * Configure the start point (initial guess).
+	 * newStart
+	 * new start point (initial guess)
 	 * 
-	 * @param newStart
-	 *            new start point (initial guess)
 	 * @return a new instance.
 	 */
 	public SimpleCurveFitter withStartPoint(double[] newStart) {
@@ -88,9 +88,9 @@ public class SimpleCurveFitter extends AbstractCurveFitter {
 
 	/**
 	 * Configure the maximum number of iterations.
+	 * newMaxIter
+	 * maximum number of iterations
 	 * 
-	 * @param newMaxIter
-	 *            maximum number of iterations
 	 * @return a new instance.
 	 */
 	public SimpleCurveFitter withMaxIterations(int newMaxIter) {

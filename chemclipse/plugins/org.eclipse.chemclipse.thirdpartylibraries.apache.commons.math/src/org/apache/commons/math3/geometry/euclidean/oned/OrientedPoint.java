@@ -42,9 +42,9 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Simple constructor.
+	 * location
+	 * location of the hyperplane
 	 * 
-	 * @param location
-	 *            location of the hyperplane
 	 * @param direct
 	 *            if true, the plus side of the hyperplane is towards
 	 *            abscissas greater than {@code location}
@@ -61,9 +61,9 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Simple constructor.
+	 * location
+	 * location of the hyperplane
 	 * 
-	 * @param location
-	 *            location of the hyperplane
 	 * @param direct
 	 *            if true, the plus side of the hyperplane is towards
 	 *            abscissas greater than {@code location}
@@ -80,8 +80,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 	 * <p>
 	 * Since instances are immutable, this method directly returns the instance.
 	 * </p>
-	 * 
-	 * @return the instance itself
+	 * itself
 	 */
 	public OrientedPoint copySelf() {
 
@@ -90,9 +89,9 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Get the offset (oriented distance) of a vector.
+	 * vector
+	 * vector to check
 	 * 
-	 * @param vector
-	 *            vector to check
 	 * @return offset of the vector
 	 */
 	public double getOffset(Vector<Euclidean1D> vector) {
@@ -113,8 +112,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 	 * Since this class represent zero dimension spaces which does not have lower dimension sub-spaces, this method returns a dummy implementation of a {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane SubHyperplane}. This implementation is only used to allow the {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane
 	 * SubHyperplane} class implementation to work properly, it should <em>not</em> be used otherwise.
 	 * </p>
-	 * 
-	 * @return a dummy sub hyperplane
+	 * hyperplane
 	 */
 	public SubOrientedPoint wholeHyperplane() {
 
@@ -123,8 +121,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance (really an {@link IntervalsSet IntervalsSet} instance)
+	 * instance)
 	 */
 	public IntervalsSet wholeSpace() {
 
@@ -138,9 +135,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public Point<Euclidean1D> project(Point<Euclidean1D> point) {
 
@@ -148,9 +143,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public double getTolerance() {
 
@@ -159,8 +152,7 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Get the hyperplane location on the real line.
-	 * 
-	 * @return the hyperplane location
+	 * location
 	 */
 	public Vector1D getLocation() {
 
@@ -169,9 +161,8 @@ public class OrientedPoint implements Hyperplane<Euclidean1D> {
 
 	/**
 	 * Check if the hyperplane orientation is direct.
-	 * 
-	 * @return true if the plus side of the hyperplane is towards
-	 *         abscissae greater than hyperplane location
+	 * towards
+	 * abscissae greater than hyperplane location
 	 */
 	public boolean isDirect() {
 

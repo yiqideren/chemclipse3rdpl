@@ -69,9 +69,7 @@ public class Logit implements UnivariateDifferentiableFunction, DifferentiableUn
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated as of 3.1, replaced by {@link #value(DerivativeStructure)}
+	 * {@inheritDoc} #value(DerivativeStructure)}
 	 */
 	@Deprecated
 	public UnivariateFunction derivative() {
@@ -176,9 +174,8 @@ public class Logit implements UnivariateDifferentiableFunction, DifferentiableUn
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} 3.1
 	 * 
-	 * @since 3.1
 	 * @exception OutOfRangeException
 	 *                if parameter is outside of function domain
 	 */

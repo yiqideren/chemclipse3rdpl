@@ -31,16 +31,16 @@ import org.apache.commons.math3.random.RandomGenerator;
  *
  * Example (2-point crossover):
  * 
- * <pre>
+ * 
  * -C- denotes a crossover point
- *           -C-       -C-                         -C-        -C-
- * p1 = (1 0  | 1 0 0 1 | 0 1 1)    X    p2 = (0 1  | 1 0 1 0  | 1 1 1)
- *      \----/ \-------/ \-----/              \----/ \--------/ \-----/
- *        ||      (*)       ||                  ||      (**)       ||
- *        VV      (**)      VV                  VV      (*)        VV
- *      /----\ /--------\ /-----\             /----\ /--------\ /-----\
- * c1 = (1 0  | 1 0 1 0  | 0 1 1)    X   c2 = (0 1  | 1 0 0 1  | 0 1 1)
- * </pre>
+ * -C- -C- -C- -C-
+ * p1 = (1 0 | 1 0 0 1 | 0 1 1) X p2 = (0 1 | 1 0 1 0 | 1 1 1)
+ * \----/ \-------/ \-----/ \----/ \--------/ \-----/
+ * || (*) || || (**) ||
+ * VV (**) VV VV (*) VV
+ * /----\ /--------\ /-----\ /----\ /--------\ /-----\
+ * c1 = (1 0 | 1 0 1 0 | 0 1 1) X c2 = (0 1 | 1 0 0 1 | 0 1 1)
+ * 
  *
  * This policy works only on {@link AbstractListChromosome}, and therefore it
  * is parameterized by T. Moreover, the chromosomes must have same lengths.
@@ -89,16 +89,15 @@ public class NPointCrossover<T> implements CrossoverPolicy {
 	 *
 	 * Example (2-point crossover):
 	 * 
-	 * <pre>
 	 * -C- denotes a crossover point
-	 *           -C-       -C-                         -C-        -C-
-	 * p1 = (1 0  | 1 0 0 1 | 0 1 1)    X    p2 = (0 1  | 1 0 1 0  | 1 1 1)
-	 *      \----/ \-------/ \-----/              \----/ \--------/ \-----/
-	 *        ||      (*)       ||                  ||      (**)       ||
-	 *        VV      (**)      VV                  VV      (*)        VV
-	 *      /----\ /--------\ /-----\             /----\ /--------\ /-----\
-	 * c1 = (1 0  | 1 0 1 0  | 0 1 1)    X   c2 = (0 1  | 1 0 0 1  | 0 1 1)
-	 * </pre>
+	 * -C- -C- -C- -C-
+	 * p1 = (1 0 | 1 0 0 1 | 0 1 1) X p2 = (0 1 | 1 0 1 0 | 1 1 1)
+	 * \----/ \-------/ \-----/ \----/ \--------/ \-----/
+	 * || (*) || || (**) ||
+	 * VV (**) VV VV (*) VV
+	 * /----\ /--------\ /-----\ /----\ /--------\ /-----\
+	 * c1 = (1 0 | 1 0 1 0 | 0 1 1) X c2 = (0 1 | 1 0 0 1 | 0 1 1)
+	 * 
 	 *
 	 * @param first
 	 *            first parent (p1)

@@ -52,9 +52,9 @@ public class LeastSquaresConverter implements MultivariateFunction {
 
 	/**
 	 * Build a simple converter for uncorrelated residuals with the same weight.
+	 * function
+	 * vectorial residuals function to wrap
 	 * 
-	 * @param function
-	 *            vectorial residuals function to wrap
 	 * @param observations
 	 *            observations to be compared to objective function to compute residuals
 	 */
@@ -71,9 +71,7 @@ public class LeastSquaresConverter implements MultivariateFunction {
 	 * <p>
 	 * The scalar objective function value is computed as:
 	 * 
-	 * <pre>
 	 * objective = &sum;weight<sub>i</sub>(observation<sub>i</sub>-objective<sub>i</sub>)<sup>2</sup>
-	 * </pre>
 	 * 
 	 * </p>
 	 * <p>
@@ -83,9 +81,9 @@ public class LeastSquaresConverter implements MultivariateFunction {
 	 * <p>
 	 * The array computed by the objective function, the observations array and the weights array must have consistent sizes or a {@link DimensionMismatchException} will be triggered while computing the scalar objective.
 	 * </p>
+	 * function
+	 * vectorial residuals function to wrap
 	 * 
-	 * @param function
-	 *            vectorial residuals function to wrap
 	 * @param observations
 	 *            observations to be compared to objective function to compute residuals
 	 * @param weights
@@ -111,17 +109,15 @@ public class LeastSquaresConverter implements MultivariateFunction {
 	 * <p>
 	 * The scalar objective function value is computed as:
 	 * 
-	 * <pre>
 	 * objective = y<sup>T</sup>y with y = scale&times;(observation-objective)
-	 * </pre>
 	 * 
 	 * </p>
 	 * <p>
 	 * The array computed by the objective function, the observations array and the the scaling matrix must have consistent sizes or a {@link DimensionMismatchException} will be triggered while computing the scalar objective.
 	 * </p>
+	 * function
+	 * vectorial residuals function to wrap
 	 * 
-	 * @param function
-	 *            vectorial residuals function to wrap
 	 * @param observations
 	 *            observations to be compared to objective function to compute residuals
 	 * @param scale

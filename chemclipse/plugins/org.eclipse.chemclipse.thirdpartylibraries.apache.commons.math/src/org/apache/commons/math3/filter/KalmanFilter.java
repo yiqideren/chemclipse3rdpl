@@ -32,15 +32,15 @@ import org.apache.commons.math3.util.MathUtils;
  * of a discrete-time controlled process that is governed by the linear
  * stochastic difference equation:
  *
- * <pre>
+ * 
  * <i>x<sub>k</sub></i> = <b>A</b><i>x<sub>k-1</sub></i> + <b>B</b><i>u<sub>k-1</sub></i> + <i>w<sub>k-1</sub></i>
- * </pre>
+ * 
  *
  * with a measurement <i>x<sub>k</sub></i> that is
  *
- * <pre>
+ * 
  * <i>z<sub>k</sub></i> = <b>H</b><i>x<sub>k</sub></i> + <i>v<sub>k</sub></i>.
- * </pre>
+ * 
  *
  * <p>
  * The random variables <i>w<sub>k</sub></i> and <i>v<sub>k</sub></i> represent the process and measurement noise and are assumed to be independent of each other and distributed with normal probability (white noise).

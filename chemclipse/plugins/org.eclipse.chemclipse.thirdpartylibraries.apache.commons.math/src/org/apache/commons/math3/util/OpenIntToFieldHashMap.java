@@ -84,9 +84,8 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Build an empty map with default size and using zero for missing entries.
-	 * 
-	 * @param field
-	 *            field to which the elements belong
+	 * field
+	 * field to which the elements belong
 	 */
 	public OpenIntToFieldHashMap(final Field<T> field) {
 
@@ -95,9 +94,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Build an empty map with default size
+	 * field
+	 * field to which the elements belong
 	 * 
-	 * @param field
-	 *            field to which the elements belong
 	 * @param missingEntries
 	 *            value to return when a missing entry is fetched
 	 */
@@ -108,9 +107,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Build an empty map with specified size and using zero for missing entries.
+	 * field
+	 * field to which the elements belong
 	 * 
-	 * @param field
-	 *            field to which the elements belong
 	 * @param expectedSize
 	 *            expected number of elements in the map
 	 */
@@ -121,9 +120,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Build an empty map with specified size.
+	 * field
+	 * field to which the elements belong
 	 * 
-	 * @param field
-	 *            field to which the elements belong
 	 * @param expectedSize
 	 *            expected number of elements in the map
 	 * @param missingEntries
@@ -142,9 +141,8 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param source
-	 *            map to copy
+	 * source
+	 * map to copy
 	 */
 	public OpenIntToFieldHashMap(final OpenIntToFieldHashMap<T> source) {
 
@@ -164,9 +162,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Compute the capacity needed for a given size.
+	 * expectedSize
+	 * expected size of the map
 	 * 
-	 * @param expectedSize
-	 *            expected size of the map
 	 * @return capacity to use for the specified size
 	 */
 	private static int computeCapacity(final int expectedSize) {
@@ -184,9 +182,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Find the smallest power of two greater than the input value
+	 * i
+	 * input value
 	 * 
-	 * @param i
-	 *            input value
 	 * @return smallest power of two greater than the input value
 	 */
 	private static int nextPowerOfTwo(final int i) {
@@ -196,9 +194,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Get the stored value associated with the given key
+	 * key
+	 * key associated with the data
 	 * 
-	 * @param key
-	 *            key associated with the data
 	 * @return data associated with the key
 	 */
 	public T get(final int key) {
@@ -224,9 +222,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Check if a value is associated with a key.
+	 * key
+	 * key to check
 	 * 
-	 * @param key
-	 *            key to check
 	 * @return true if a value is associated with key
 	 */
 	public boolean containsKey(final int key) {
@@ -255,8 +253,7 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 	 * <p>
 	 * The specialized iterators returned are fail-fast: they throw a <code>ConcurrentModificationException</code> when they detect the map has been modified during iteration.
 	 * </p>
-	 * 
-	 * @return iterator over the map elements
+	 * elements
 	 */
 	public Iterator iterator() {
 
@@ -265,9 +262,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Perturb the hash for starting probing.
+	 * hash
+	 * initial hash
 	 * 
-	 * @param hash
-	 *            initial hash
 	 * @return perturbed hash
 	 */
 	private static int perturb(final int hash) {
@@ -277,9 +274,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Find the index at which a key should be inserted
+	 * key
+	 * key to lookup
 	 * 
-	 * @param key
-	 *            key to lookup
 	 * @return index at which key should be inserted
 	 */
 	private int findInsertionIndex(final int key) {
@@ -289,9 +286,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Find the index at which a key should be inserted
+	 * keys
+	 * keys table
 	 * 
-	 * @param keys
-	 *            keys table
 	 * @param states
 	 *            states table
 	 * @param key
@@ -343,9 +340,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Compute next probe for collision resolution
+	 * perturb
+	 * perturbed hash
 	 * 
-	 * @param perturb
-	 *            perturbed hash
 	 * @param j
 	 *            previous probe
 	 * @return next probe
@@ -357,9 +354,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Change the index sign
+	 * index
+	 * initial index
 	 * 
-	 * @param index
-	 *            initial index
 	 * @return changed index
 	 */
 	private static int changeIndexSign(final int index) {
@@ -369,8 +366,7 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Get the number of elements stored in the map.
-	 * 
-	 * @return number of elements stored in the map
+	 * map
 	 */
 	public int size() {
 
@@ -379,9 +375,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Remove the value associated with a key.
+	 * key
+	 * key to which the value is associated
 	 * 
-	 * @param key
-	 *            key to which the value is associated
 	 * @return removed value
 	 */
 	public T remove(final int key) {
@@ -408,9 +404,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 	/**
 	 * Check if the tables contain an element associated with specified key
 	 * at specified index.
+	 * key
+	 * key to check
 	 * 
-	 * @param key
-	 *            key to check
 	 * @param index
 	 *            index to check
 	 * @return true if an element is associated with key at index
@@ -422,9 +418,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Remove an element at specified index.
+	 * index
+	 * index of the element to remove
 	 * 
-	 * @param index
-	 *            index of the element to remove
 	 * @return removed value
 	 */
 	private T doRemove(int index) {
@@ -440,9 +436,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Put a value associated with a key in the map.
+	 * key
+	 * key to which value is associated
 	 * 
-	 * @param key
-	 *            key to which value is associated
 	 * @param value
 	 *            value to put in the map
 	 * @return previous value associated with the key
@@ -501,8 +497,7 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Check if tables should grow due to increased size.
-	 * 
-	 * @return true if tables should grow
+	 * grow
 	 */
 	private boolean shouldGrowTable() {
 
@@ -511,9 +506,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Compute the hash value of a key
+	 * key
+	 * key to hash
 	 * 
-	 * @param key
-	 *            key to hash
 	 * @return hash value of the key
 	 */
 	private static int hashOf(final int key) {
@@ -629,9 +624,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Read a serialized object.
+	 * stream
+	 * input stream
 	 * 
-	 * @param stream
-	 *            input stream
 	 * @throws IOException
 	 *             if object cannot be read
 	 * @throws ClassNotFoundException
@@ -646,9 +641,9 @@ public class OpenIntToFieldHashMap<T extends FieldElement<T>> implements Seriali
 
 	/**
 	 * Build an array of elements.
+	 * length
+	 * size of the array to build
 	 * 
-	 * @param length
-	 *            size of the array to build
 	 * @return a new array
 	 */
 	@SuppressWarnings("unchecked")

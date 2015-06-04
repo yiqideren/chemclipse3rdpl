@@ -29,7 +29,8 @@ import javassist.bytecode.MethodInfo;
  * <p>
  * To do this, the original class file representing a reflective class:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -79,41 +80,37 @@ import javassist.bytecode.MethodInfo;
  * 
  * class Person {
  * 
- * 	public int f(int i) {
+ * public int f(int i) {
  * 
- * 		return i + 1;
- * 	}
+ * return i + 1; }
  * 
- * 	public int value;
- * }
- * </pre>
+ * public int value; }
+ * 
  *
  * <p>
  * is modified so that it represents a class:
  *
- * <pre>
+ * 
  * class Person implements Metalevel {
  * 
- * 	public int _original_f(int i) {
+ * public int _original_f(int i) {
  * 
- * 		return i + 1;
- * 	}
+ * return i + 1; }
  * 
- * 	public int f(int i) { &lt;i&gt;delegate to the metaobject&lt;/i&gt; }
+ * public int f(int i) { &lt;i&gt;delegate to the metaobject&lt;/i&gt; }
  * 
- * 	public int value;
+ * public int value;
  * 
- * 	public int _r_value() { &lt;i&gt;read &quot;value&quot;&lt;/i&gt; }
+ * public int _r_value() { &lt;i&gt;read &quot;value&quot;&lt;/i&gt; }
  * 
- * 	public void _w_value(int v) { &lt;i&gt;write &quot;value&quot;&lt;/i&gt; }
+ * public void _w_value(int v) { &lt;i&gt;write &quot;value&quot;&lt;/i&gt; }
  * 
- * 	public ClassMetaobject _getClass() { &lt;i&gt;return a class metaobject&lt;/i&gt; }
+ * public ClassMetaobject _getClass() { &lt;i&gt;return a class metaobject&lt;/i&gt; }
  * 
- * 	public Metaobject _getMetaobject() { &lt;i&gt;return a metaobject&lt;/i&gt; }
+ * public Metaobject _getMetaobject() { &lt;i&gt;return a metaobject&lt;/i&gt; }
  * 
- * 	public void _setMetaobject(Metaobject m) { &lt;i&gt;change a metaobject&lt;/i&gt; }
- * }
- * </pre>
+ * public void _setMetaobject(Metaobject m) { &lt;i&gt;change a metaobject&lt;/i&gt; } }
+ * 
  *
  * @see javassist.tools.reflect.ClassMetaobject
  * @see javassist.tools.reflect.Metaobject

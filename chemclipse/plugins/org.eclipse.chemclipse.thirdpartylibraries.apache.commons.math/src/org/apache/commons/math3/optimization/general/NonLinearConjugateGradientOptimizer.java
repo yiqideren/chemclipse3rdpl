@@ -118,11 +118,10 @@ public class NonLinearConjugateGradientOptimizer extends AbstractScalarDifferent
 	 * <p>
 	 * The initial step is a factor with respect to the search direction, which itself is roughly related to the gradient of the function
 	 * </p>
-	 * 
-	 * @param initialStep
-	 *            initial step used to bracket the optimum in line search,
-	 *            if a non-positive value is used, the initial step is reset to its
-	 *            default value of 1.0
+	 * initialStep
+	 * initial step used to bracket the optimum in line search,
+	 * if a non-positive value is used, the initial step is reset to its
+	 * default value of 1.0
 	 */
 	public void setInitialStep(final double initialStep) {
 

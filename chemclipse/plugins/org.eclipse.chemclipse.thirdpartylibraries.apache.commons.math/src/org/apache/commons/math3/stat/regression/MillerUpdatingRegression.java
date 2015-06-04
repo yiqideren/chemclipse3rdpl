@@ -26,15 +26,9 @@ import org.apache.commons.math3.util.MathArrays;
  * <p>
  * The algorithm is described in:
  * 
- * <pre>
- * Algorithm AS 274: Least Squares Routines to Supplement Those of Gentleman
- * Author(s): Alan J. Miller
- * Source: Journal of the Royal Statistical Society.
- * Series C (Applied Statistics), Vol. 41, No. 2
- * (1992), pp. 458-478
- * Published by: Blackwell Publishing for the Royal Statistical Society
- * Stable URL: http://www.jstor.org/stable/2347583
- * </pre>
+ * 
+ * Algorithm AS 274: Least Squares Routines to Supplement Those of Gentleman Author(s): Alan J. Miller Source: Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 41, No. 2 (1992), pp. 458-478 Published by: Blackwell Publishing for the Royal Statistical Society Stable URL: http://www.jstor.org/stable/2347583
+ * 
  * 
  * </p>
  *
@@ -156,8 +150,7 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 
 	/**
 	 * A getter method which determines whether a constant is included.
-	 * 
-	 * @return true regression has an intercept, false no intercept
+	 * intercept
 	 */
 	public boolean hasIntercept() {
 
@@ -166,8 +159,7 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 
 	/**
 	 * Gets the number of observations added to the regression model.
-	 * 
-	 * @return number of observations
+	 * observations
 	 */
 	public long getN() {
 
@@ -176,9 +168,9 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 
 	/**
 	 * Adds an observation to the regression model.
+	 * x
+	 * the array with regressor values
 	 * 
-	 * @param x
-	 *            the array with regressor values
 	 * @param y
 	 *            the value of dependent variable given these regressors
 	 * @exception ModelSpecificationException
@@ -203,9 +195,9 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 
 	/**
 	 * Adds multiple observations to the model.
+	 * x
+	 * observations on the regressors
 	 * 
-	 * @param x
-	 *            observations on the regressors
 	 * @param y
 	 *            observations on the regressand
 	 * @throws ModelSpecificationException
@@ -306,9 +298,9 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	/**
 	 * Adds to number a and b such that the contamination due to
 	 * numerical smallness of one addend does not corrupt the sum.
+	 * a
+	 * - an addend
 	 * 
-	 * @param a
-	 *            - an addend
 	 * @param b
 	 *            - an addend
 	 * @return the sum of the a and b
@@ -484,13 +476,12 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	 * Calculates the sum of squared errors for the full regression
 	 * and all subsets in the following manner:
 	 * 
-	 * <pre>
 	 * rss[] ={
 	 * ResidualSumOfSquares_allNvars,
 	 * ResidualSumOfSquares_FirstNvars-1,
 	 * ResidualSumOfSquares_FirstNvars-2,
 	 * ..., ResidualSumOfSquares_FirstVariable}
-	 * </pre>
+	 * 
 	 */
 	private void ss() {
 
@@ -509,15 +500,14 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	 * matrix stored in lower triangular form. The matrix will have
 	 * ( nreq + 1 ) * nreq / 2 elements. For illustration
 	 * 
-	 * <pre>
 	 * cov =
 	 * {
-	 *  cov_00,
-	 *  cov_10, cov_11,
-	 *  cov_20, cov_21, cov22,
-	 *  ...
+	 * cov_00,
+	 * cov_10, cov_11,
+	 * cov_20, cov_21, cov22,
+	 * ...
 	 * }
-	 * </pre>
+	 * 
 	 *
 	 * @param nreq
 	 *            how many of the regressors to include (either in canonical
@@ -577,9 +567,9 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	/**
 	 * This internal method calculates the inverse of the upper-triangular portion
 	 * of the R matrix.
+	 * rinv
+	 * the storage for the inverse of r
 	 * 
-	 * @param rinv
-	 *            the storage for the inverse of r
 	 * @param nreq
 	 *            how many of the regressors to include (either in canonical
 	 *            order, or in the current reordered state)
@@ -618,15 +608,14 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	 * In the original algorithm only the partial correlations of the regressors
 	 * is returned to the user. In this implementation, we have
 	 * 
-	 * <pre>
 	 * corr =
 	 * {
-	 *   corrxx - lower triangular
-	 *   corrxy - bottom row of the matrix
+	 * corrxx - lower triangular
+	 * corrxy - bottom row of the matrix
 	 * }
 	 * Replaces subroutines PCORR and COR of:
-	 * ALGORITHM AS274  APPL. STATIST. (1992) VOL.41, NO. 2
-	 * </pre>
+	 * ALGORITHM AS274 APPL. STATIST. (1992) VOL.41, NO. 2
+	 * 
 	 *
 	 * <p>
 	 * Calculate partial correlations after the variables in rows 1, 2, ..., IN have been forced into the regression. If IN = 1, and the first row of R represents a constant in the model, then the usual simple correlations are returned.
@@ -635,9 +624,7 @@ public class MillerUpdatingRegression implements UpdatingMultipleLinearRegressio
 	 * <p>
 	 * If IN = 0, the value returned in array CORMAT for the correlation of variables Xi & Xj is:
 	 * 
-	 * <pre>
 	 * sum(Xi.Xj) / Sqrt(sum(Xi &circ; 2).sum(Xj &circ; 2))
-	 * </pre>
 	 * 
 	 * </p>
 	 *

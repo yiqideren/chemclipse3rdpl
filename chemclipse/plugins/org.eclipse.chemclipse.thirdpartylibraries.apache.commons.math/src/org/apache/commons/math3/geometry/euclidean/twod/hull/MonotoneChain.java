@@ -51,9 +51,8 @@ public class MonotoneChain extends AbstractConvexHullGenerator2D {
 
 	/**
 	 * Create a new MonotoneChain instance.
-	 * 
-	 * @param includeCollinearPoints
-	 *            whether collinear points shall be added as hull vertices
+	 * includeCollinearPoints
+	 * whether collinear points shall be added as hull vertices
 	 */
 	public MonotoneChain(final boolean includeCollinearPoints) {
 
@@ -62,9 +61,9 @@ public class MonotoneChain extends AbstractConvexHullGenerator2D {
 
 	/**
 	 * Create a new MonotoneChain instance.
+	 * includeCollinearPoints
+	 * whether collinear points shall be added as hull vertices
 	 * 
-	 * @param includeCollinearPoints
-	 *            whether collinear points shall be added as hull vertices
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 */

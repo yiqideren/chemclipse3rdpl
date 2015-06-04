@@ -34,9 +34,8 @@ public class UniformRandomGenerator implements NormalizedRandomGenerator {
 
 	/**
 	 * Create a new generator.
-	 * 
-	 * @param generator
-	 *            underlying random generator to use
+	 * generator
+	 * underlying random generator to use
 	 */
 	public UniformRandomGenerator(RandomGenerator generator) {
 
@@ -48,8 +47,7 @@ public class UniformRandomGenerator implements NormalizedRandomGenerator {
 	 * <p>
 	 * The number generated is uniformly distributed between -&sqrt;(3) and +&sqrt;(3).
 	 * </p>
-	 * 
-	 * @return a random scalar with null mean and unit standard deviation
+	 * deviation
 	 */
 	public double nextNormalizedDouble() {
 

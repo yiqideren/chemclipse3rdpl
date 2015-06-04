@@ -42,9 +42,8 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param tolerance
-	 *            below which points are consider to be identical
+	 * tolerance
+	 * below which points are consider to be identical
 	 */
 	public PropertiesComputer(final double tolerance) {
 
@@ -90,9 +89,9 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Compute convex cell area.
+	 * start
+	 * start vertex of the convex cell boundary
 	 * 
-	 * @param start
-	 *            start vertex of the convex cell boundary
 	 * @return area
 	 */
 	private double convexCellArea(final Vertex start) {
@@ -121,9 +120,9 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Compute convex cell barycenter.
+	 * start
+	 * start vertex of the convex cell boundary
 	 * 
-	 * @param start
-	 *            start vertex of the convex cell boundary
 	 * @return barycenter
 	 */
 	private Vector3D convexCellBarycenter(final Vertex start) {
@@ -140,8 +139,7 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Get the area.
-	 * 
-	 * @return area
+	 * area
 	 */
 	public double getArea() {
 
@@ -150,8 +148,7 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Get the barycenter.
-	 * 
-	 * @return barycenter
+	 * barycenter
 	 */
 	public S2Point getBarycenter() {
 
@@ -164,8 +161,7 @@ class PropertiesComputer implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Get the points strictly inside convex cells.
-	 * 
-	 * @return points strictly inside convex cells
+	 * cells
 	 */
 	public List<Vector3D> getConvexCellsInsidePoints() {
 

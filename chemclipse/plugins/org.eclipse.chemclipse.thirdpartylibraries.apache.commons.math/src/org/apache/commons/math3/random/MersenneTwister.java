@@ -87,9 +87,8 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 
 	/**
 	 * Creates a new random number generator using a single int seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integer)
+	 * seed
+	 * the initial seed (32 bits integer)
 	 */
 	public MersenneTwister(int seed) {
 
@@ -99,10 +98,9 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 
 	/**
 	 * Creates a new random number generator using an int array seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integers array), if null
-	 *            the seed of the generator will be related to the current time
+	 * seed
+	 * the initial seed (32 bits integers array), if null
+	 * the seed of the generator will be related to the current time
 	 */
 	public MersenneTwister(int[] seed) {
 
@@ -112,9 +110,8 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 
 	/**
 	 * Creates a new random number generator using a single long seed.
-	 * 
-	 * @param seed
-	 *            the initial seed (64 bits integer)
+	 * seed
+	 * the initial seed (64 bits integer)
 	 */
 	public MersenneTwister(long seed) {
 
@@ -127,9 +124,8 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 	 * <p>
 	 * The state of the generator is exactly the same as a new generator built with the same seed.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integer)
+	 * seed
+	 * the initial seed (32 bits integer)
 	 */
 	@Override
 	public void setSeed(int seed) {
@@ -152,11 +148,10 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 	 * <p>
 	 * The state of the generator is exactly the same as a new generator built with the same seed.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the initial seed (32 bits integers array), if null
-	 *            the seed of the generator will be the current system time plus the
-	 *            system identity hash code of this instance
+	 * seed
+	 * the initial seed (32 bits integers array), if null
+	 * the seed of the generator will be the current system time plus the
+	 * system identity hash code of this instance
 	 */
 	@Override
 	public void setSeed(int[] seed) {
@@ -203,9 +198,8 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 	 * <p>
 	 * The state of the generator is exactly the same as a new generator built with the same seed.
 	 * </p>
-	 * 
-	 * @param seed
-	 *            the initial seed (64 bits integer)
+	 * seed
+	 * the initial seed (64 bits integer)
 	 */
 	@Override
 	public void setSeed(long seed) {
@@ -218,9 +212,9 @@ public class MersenneTwister extends BitsStreamGenerator implements Serializable
 	 * <p>
 	 * This method is the core generation algorithm. It is used by all the public generation methods for the various primitive types {@link #nextBoolean()}, {@link #nextBytes(byte[])}, {@link #nextDouble()}, {@link #nextFloat()}, {@link #nextGaussian()}, {@link #nextInt()}, {@link #next(int)} and {@link #nextLong()}.
 	 * </p>
+	 * bits
+	 * number of random bits to produce
 	 * 
-	 * @param bits
-	 *            number of random bits to produce
 	 * @return random bits generated
 	 */
 	@Override

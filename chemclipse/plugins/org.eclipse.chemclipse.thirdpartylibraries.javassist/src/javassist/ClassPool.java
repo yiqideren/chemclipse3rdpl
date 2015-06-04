@@ -183,10 +183,9 @@ public class ClassPool {
 	 * <p>
 	 * When this method is called for the first time, the default class pool is created with the following code snippet:
 	 *
-	 * <pre>
-	 * ClassPool cp = new ClassPool();
-	 * cp.appendSystemPath();
-	 * </pre>
+	 * 
+	 * ClassPool cp = new ClassPool(); cp.appendSystemPath();
+	 * 
 	 *
 	 * <p>
 	 * If the default class pool cannot find any class files, try <code>ClassClassPath</code> and <code>LoaderClassPath</code>.
@@ -367,9 +366,9 @@ public class ClassPool {
 	 * This method is useful if you want to generate a new class as a copy
 	 * of another class (except the class name). For example,
 	 *
-	 * <pre>
+	 * 
 	 * getAndRename(&quot;Point&quot;, &quot;Pair&quot;)
-	 * </pre>
+	 * 
 	 *
 	 * returns a <code>CtClass</code> object representing <code>Pair</code> class. The definition of <code>Pair</code> is the same as that of <code>Point</code> class except the class name since <code>Pair</code> is defined by reading <code>Point.class</code>.
 	 *

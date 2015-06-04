@@ -24,9 +24,9 @@ import javassist.bytecode.analysis.FramePrinter;
  * <p>
  * For example,
  * 
- * <pre>
+ * 
  * % java javassist.tools.framedump foo.class
- * </pre>
+ * 
  */
 public class framedump {
 

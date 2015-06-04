@@ -24,9 +24,9 @@ public interface ParameterizedODE extends Parameterizable {
 
 	/**
 	 * Get parameter value from its name.
+	 * name
+	 * parameter name
 	 * 
-	 * @param name
-	 *            parameter name
 	 * @return parameter value
 	 * @exception UnknownParameterException
 	 *                if parameter is not supported
@@ -35,9 +35,9 @@ public interface ParameterizedODE extends Parameterizable {
 
 	/**
 	 * Set the value for a given parameter.
+	 * name
+	 * parameter name
 	 * 
-	 * @param name
-	 *            parameter name
 	 * @param value
 	 *            parameter value
 	 * @exception UnknownParameterException

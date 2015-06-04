@@ -157,9 +157,7 @@ public class Product extends AbstractStorelessUnivariateStatistic implements Ser
 	 * <p>
 	 * Uses the formula,
 	 * 
-	 * <pre>
-	 *    weighted product = &prod;values[i]<sup>weights[i]</sup>
-	 * </pre>
+	 * weighted product = &prod;values[i]<sup>weights[i]</sup>
 	 * 
 	 * that is, the weights are applied as exponents when computing the weighted product.
 	 * </p>
@@ -209,9 +207,7 @@ public class Product extends AbstractStorelessUnivariateStatistic implements Ser
 	 * <p>
 	 * Uses the formula,
 	 * 
-	 * <pre>
-	 *    weighted product = &prod;values[i]<sup>weights[i]</sup>
-	 * </pre>
+	 * weighted product = &prod;values[i]<sup>weights[i]</sup>
 	 * 
 	 * that is, the weights are applied as exponents when computing the weighted product.
 	 * </p>

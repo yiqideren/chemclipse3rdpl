@@ -125,9 +125,8 @@ class SchurTransformer {
 
 	/**
 	 * Transform original matrix to Schur form.
-	 * 
-	 * @throws MaxCountExceededException
-	 *             if the transformation does not converge
+	 * MaxCountExceededException
+	 * if the transformation does not converge
 	 */
 	private void transform() {
 

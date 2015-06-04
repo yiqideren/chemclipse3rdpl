@@ -67,11 +67,10 @@ public class NordsieckStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param interpolator
-	 *            interpolator to copy from. The copy is a deep
-	 *            copy: its arrays are separated from the original arrays of the
-	 *            instance
+	 * interpolator
+	 * interpolator to copy from. The copy is a deep
+	 * copy: its arrays are separated from the original arrays of the
+	 * instance
 	 */
 	public NordsieckStepInterpolator(final NordsieckStepInterpolator interpolator) {
 
@@ -101,10 +100,10 @@ public class NordsieckStepInterpolator extends AbstractStepInterpolator {
 	 * <p>
 	 * Beware that all arrays <em>must</em> be references to integrator arrays, in order to ensure proper update without copy.
 	 * </p>
+	 * y
+	 * reference to the integrator array holding the state at
+	 * the end of the step
 	 * 
-	 * @param y
-	 *            reference to the integrator array holding the state at
-	 *            the end of the step
 	 * @param forward
 	 *            integration direction indicator
 	 * @param primaryMapper
@@ -124,9 +123,9 @@ public class NordsieckStepInterpolator extends AbstractStepInterpolator {
 	 * <p>
 	 * Beware that all arrays <em>must</em> be references to integrator arrays, in order to ensure proper update without copy.
 	 * </p>
+	 * time
+	 * time at which all arrays are defined
 	 * 
-	 * @param time
-	 *            time at which all arrays are defined
 	 * @param stepSize
 	 *            step size used in the scaled and Nordsieck arrays
 	 * @param scaledDerivative
@@ -151,9 +150,8 @@ public class NordsieckStepInterpolator extends AbstractStepInterpolator {
 	 * <p>
 	 * Since the scaled and Nordsieck arrays are shared with the caller, this method has the side effect of rescaling this arrays in the caller too.
 	 * </p>
-	 * 
-	 * @param stepSize
-	 *            new step size to use in the scaled and Nordsieck arrays
+	 * stepSize
+	 * new step size to use in the scaled and Nordsieck arrays
 	 */
 	public void rescale(final double stepSize) {
 
@@ -181,8 +179,8 @@ public class NordsieckStepInterpolator extends AbstractStepInterpolator {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls.
 	 * </p>
+	 * #getInterpolatedTime}
 	 * 
-	 * @return state vector at time {@link #getInterpolatedTime}
 	 * @see #getInterpolatedDerivatives()
 	 * @exception MaxCountExceededException
 	 *                if the number of functions evaluations is exceeded

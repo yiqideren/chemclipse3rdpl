@@ -457,8 +457,8 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * U is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
+	 * matrix
 	 * 
-	 * @return the U matrix
 	 * @see #getUT()
 	 */
 	public RealMatrix getU() {
@@ -472,8 +472,8 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * U is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
+	 * singular)
 	 * 
-	 * @return the U matrix (or null if decomposed matrix is singular)
 	 * @see #getU()
 	 */
 	public RealMatrix getUT() {
@@ -490,8 +490,7 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * &Sigma; is a diagonal matrix. The singular values are provided in non-increasing order, for compatibility with Jama.
 	 * </p>
-	 * 
-	 * @return the &Sigma; matrix
+	 * matrix
 	 */
 	public RealMatrix getS() {
 
@@ -507,8 +506,7 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * The singular values are provided in non-increasing order, for compatibility with Jama.
 	 * </p>
-	 * 
-	 * @return the diagonal elements of the &Sigma; matrix
+	 * matrix
 	 */
 	public double[] getSingularValues() {
 
@@ -520,8 +518,8 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * V is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
+	 * singular)
 	 * 
-	 * @return the V matrix (or null if decomposed matrix is singular)
 	 * @see #getVT()
 	 */
 	public RealMatrix getV() {
@@ -535,8 +533,8 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * V is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
+	 * singular)
 	 * 
-	 * @return the V matrix (or null if decomposed matrix is singular)
 	 * @see #getV()
 	 */
 	public RealMatrix getVT() {
@@ -553,10 +551,10 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * The covariance matrix is V &times; J &times; V<sup>T</sup> where J is the diagonal matrix of the inverse of the squares of the singular values.
 	 * </p>
+	 * minSingularValue
+	 * value below which singular values are ignored
+	 * (a 0 or negative value implies all singular value will be used)
 	 * 
-	 * @param minSingularValue
-	 *            value below which singular values are ignored
-	 *            (a 0 or negative value implies all singular value will be used)
 	 * @return covariance matrix
 	 * @exception IllegalArgumentException
 	 *                if minSingularValue is larger than
@@ -592,8 +590,7 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * The L<sub>2</sub> norm is max(|A &times; u|<sub>2</sub> / |u|<sub>2</sub>), where |.|<sub>2</sub> denotes the vectorial 2-norm (i.e. the traditional euclidian norm).
 	 * </p>
-	 * 
-	 * @return norm
+	 * norm
 	 */
 	public double getNorm() {
 
@@ -602,8 +599,7 @@ public class SingularValueDecomposition {
 
 	/**
 	 * Return the condition number of the matrix.
-	 * 
-	 * @return condition number of the matrix
+	 * matrix
 	 */
 	public double getConditionNumber() {
 
@@ -627,8 +623,7 @@ public class SingularValueDecomposition {
 	 * <p>
 	 * The effective numerical rank is the number of non-negligible singular values. The threshold used to identify non-negligible terms is max(m,n) &times; ulp(s<sub>1</sub>) where ulp(s<sub>1</sub>) is the least significant bit of the largest singular value.
 	 * </p>
-	 * 
-	 * @return effective numerical matrix rank
+	 * rank
 	 */
 	public int getRank() {
 
@@ -643,8 +638,7 @@ public class SingularValueDecomposition {
 
 	/**
 	 * Get a solver for finding the A &times; X = B solution in least square sense.
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	public DecompositionSolver getSolver() {
 

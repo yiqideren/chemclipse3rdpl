@@ -22,14 +22,9 @@ package org.apache.commons.math3.ode.nonstiff;
  * <p>
  * This method is an explicit Runge-Kutta method, its Butcher-array is the following one :
  * 
- * <pre>
- *    0  |  0    0    0    0
- *   1/2 | 1/2   0    0    0
- *   1/2 |  0   1/2   0    0
- *    1  |  0    0    1    0
- *       |--------------------
- *       | 1/6  1/3  1/3  1/6
- * </pre>
+ * 
+ * 0 | 0 0 0 0 1/2 | 1/2 0 0 0 1/2 | 0 1/2 0 0 1 | 0 0 1 0 |-------------------- | 1/6 1/3 1/3 1/6
+ * 
  * 
  * </p>
  *
@@ -53,9 +48,8 @@ public class ClassicalRungeKuttaIntegrator extends RungeKuttaIntegrator {
 	 * Simple constructor.
 	 * Build a fourth-order Runge-Kutta integrator with the given
 	 * step.
-	 * 
-	 * @param step
-	 *            integration step
+	 * step
+	 * integration step
 	 */
 	public ClassicalRungeKuttaIntegrator(final double step) {
 

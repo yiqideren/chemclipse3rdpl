@@ -145,10 +145,10 @@ public class CtField extends CtMember {
 	 * Compiles the given source code and creates a field.
 	 * Examples of the source code are:
 	 *
-	 * <pre>
+	 * 
 	 * "public String name;"
 	 * "public int k = 3;"
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Note that the source code ends with <code>';'</code> (semicolon).

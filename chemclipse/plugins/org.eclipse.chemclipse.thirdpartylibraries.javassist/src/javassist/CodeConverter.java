@@ -26,15 +26,9 @@ import javassist.convert.*;
  * <p>
  * Example:
  * 
- * <pre>
- * ClassPool cp = ClassPool.getDefault();
- * CtClass point = cp.get(&quot;Point&quot;);
- * CtClass singleton = cp.get(&quot;Singleton&quot;);
- * CtClass client = cp.get(&quot;Client&quot;);
- * CodeConverter conv = new CodeConverter();
- * conv.replaceNew(point, singleton, &quot;makePoint&quot;);
- * client.instrument(conv);
- * </pre>
+ * 
+ * ClassPool cp = ClassPool.getDefault(); CtClass point = cp.get(&quot;Point&quot;); CtClass singleton = cp.get(&quot;Singleton&quot;); CtClass client = cp.get(&quot;Client&quot;); CodeConverter conv = new CodeConverter(); conv.replaceNew(point, singleton, &quot;makePoint&quot;); client.instrument(conv);
+ * 
  *
  * <p>
  * This program substitutes "<code>Singleton.makePoint()</code>" for all occurrences of "<code>new Point()</code>" appearing in methods declared in a <code>Client</code> class.
@@ -53,74 +47,22 @@ public class CodeConverter {
 	 * compile-time classes for class <code>Point</code> and class <code>Singleton</code>, respectively)
 	 * replaces all occurrences of:
 	 *
-	 * <pre>
+	 * 
 	 * new Point(x, y)
-	 * </pre>
+	 * 
 	 *
 	 * in the method body with:
 	 *
-	 * <pre>
+	 * 
 	 * Singleton.createPoint(x, y)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * This enables to intercept instantiation of <code>Point</code> and change the samentics. For example, the following <code>createPoint()</code> implements the singleton pattern:
-	 *
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * public static Point createPoint(int x, int y) {
 	 * 
-	 * 	if(aPoint == null)
-	 * 		aPoint = new Point(x, y);
-	 * 	return aPoint;
-	 * }
-	 * </pre>
+	 * if(aPoint == null) aPoint = new Point(x, y); return aPoint; }
 	 *
 	 * <p>
 	 * The static method call substituted for the original <code>new</code> expression must be able to receive the same set of parameters as the original constructor. If there are multiple constructors with different parameter types, then there must be multiple static methods with the same name but different parameter types.
@@ -148,15 +90,15 @@ public class CodeConverter {
 	 * compile-time classes for class <code>Point</code> and class <code>Point2</code>, respectively)
 	 * replaces all occurrences of:
 	 *
-	 * <pre>
+	 * 
 	 * new Point(x, y)
-	 * </pre>
+	 * 
 	 *
 	 * in the method body with:
 	 *
-	 * <pre>
+	 * 
 	 * new Point2(x, y)
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Note that <code>Point2</code> must be type-compatible with <code>Point</code>. It must have the same set of methods, fields, and constructors as the replaced class.
@@ -198,7 +140,6 @@ public class CodeConverter {
 	 * <p>
 	 * For example, the program below
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -246,14 +187,14 @@ public class CodeConverter {
 	 * 
 	 * 
 	 * 
-	 * Point p = new Point();
-	 * int newX = p.x + 3;
-	 * </pre>
+	 * 
+	 * 
+	 * Point p = new Point(); int newX = p.x + 3;
+	 * 
 	 *
 	 * <p>
 	 * can be translated into:
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -301,19 +242,19 @@ public class CodeConverter {
 	 * 
 	 * 
 	 * 
-	 * Point p = new Point();
-	 * int newX = Accessor.readX(p) + 3;
-	 * </pre>
+	 * 
+	 * 
+	 * Point p = new Point(); int newX = Accessor.readX(p) + 3;
+	 * 
 	 *
 	 * <p>
 	 * where
 	 *
-	 * <pre>
+	 * 
 	 * public class Accessor {
 	 * 
-	 * 	public static int readX(Object target) { ... }
-	 * }
-	 * </pre>
+	 * public static int readX(Object target) { ... } }
+	 * 
 	 *
 	 * <p>
 	 * The type of the parameter of <code>readX()</code> must be <code>java.lang.Object</code> independently of the actual type of <code>target</code>. The return type must be the same as the field type.
@@ -342,28 +283,25 @@ public class CodeConverter {
 	 * <p>
 	 * For example, the program below
 	 *
-	 * <pre>
-	 * Point p = new Point();
-	 * p.x = 3;
-	 * </pre>
+	 * 
+	 * Point p = new Point(); p.x = 3;
+	 * 
 	 *
 	 * <p>
 	 * can be translated into:
 	 *
-	 * <pre>
-	 * Point p = new Point();
-	 * Accessor.writeX(3);
-	 * </pre>
+	 * 
+	 * Point p = new Point(); Accessor.writeX(3);
+	 * 
 	 *
 	 * <p>
 	 * where
 	 *
-	 * <pre>
+	 * 
 	 * public class Accessor {
 	 * 
-	 * 	public static void writeX(Object target, int value) { ... }
-	 * }
-	 * </pre>
+	 * public static void writeX(Object target, int value) { ... } }
+	 * 
 	 *
 	 * <p>
 	 * The type of the first parameter of <code>writeX()</code> must be <code>java.lang.Object</code> independently of the actual type of <code>target</code>. The type of the second parameter is the same as the field type.
@@ -400,7 +338,8 @@ public class CodeConverter {
 	 * <p>
 	 * If we have the following class:
 	 * 
-	 * <pre>
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
@@ -450,58 +389,21 @@ public class CodeConverter {
 	 * 
 	 * class POJO {
 	 * 
-	 * 	int[] ints = new int[]{1, 2, 3, 4, 5};
-	 * 	long[] longs = new int[]{10, 20, 30};
-	 * 	Object objects = new Object[]{true, false};
-	 * 	Integer[] integers = new Integer[]{new Integer(10)};
-	 * }
-	 * </pre>
+	 * int[] ints = new int[]{1, 2, 3, 4, 5}; long[] longs = new int[]{10, 20, 30}; Object objects = new Object[]{true, false}; Integer[] integers = new Integer[]{new Integer(10)}; }
+	 * 
 	 * 
 	 * and this is accessed as:
 	 * 
-	 * <pre>
-	 * POJO p = new POJO();
-	 * // Write to int array
-	 * p.ints[2] = 7;
-	 * // Read from int array
-	 * int i = p.ints[2];
-	 * // Write to long array
-	 * p.longs[2] = 1000L;
-	 * // Read from long array
-	 * long l = p.longs[2];
-	 * // Write to Object array
-	 * p.objects[2] = &quot;Hello&quot;;
-	 * // Read from Object array
-	 * Object o = p.objects[2];
-	 * // Write to Integer array
-	 * Integer integer = new Integer(5);
-	 * p.integers[0] = integer;
-	 * // Read from Object array
-	 * integer = p.integers[0];
-	 * </pre>
+	 * 
+	 * POJO p = new POJO(); // Write to int array p.ints[2] = 7; // Read from int array int i = p.ints[2]; // Write to long array p.longs[2] = 1000L; // Read from long array long l = p.longs[2]; // Write to Object array p.objects[2] = &quot;Hello&quot;; // Read from Object array Object o = p.objects[2]; // Write to Integer array Integer integer = new Integer(5); p.integers[0] = integer; // Read from Object array integer = p.integers[0];
+	 * 
 	 * 
 	 * Following instrumentation we will have
 	 * 
-	 * <pre>
-	 * POJO p = new POJO();
-	 * // Write to int array
-	 * ArrayAdvisor.arrayWriteInt(p.ints, 2, 7);
-	 * // Read from int array
-	 * int i = ArrayAdvisor.arrayReadInt(p.ints, 2);
-	 * // Write to long array
-	 * ArrayAdvisor.arrayWriteLong(p.longs, 2, 1000L);
-	 * // Read from long array
-	 * long l = ArrayAdvisor.arrayReadLong(p.longs, 2);
-	 * // Write to Object array
-	 * ArrayAdvisor.arrayWriteObject(p.objects, 2, &quot;Hello&quot;);
-	 * // Read from Object array
-	 * Object o = ArrayAdvisor.arrayReadObject(p.objects, 2);
-	 * // Write to Integer array
-	 * Integer integer = new Integer(5);
-	 * ArrayAdvisor.arrayWriteObject(p.integers, 0, integer);
-	 * // Read from Object array
-	 * integer = ArrayAdvisor.arrayWriteObject(p.integers, 0);
-	 * </pre>
+	 * 
+	 * POJO p = new POJO(); // Write to int array ArrayAdvisor.arrayWriteInt(p.ints, 2, 7); // Read from int array int i = ArrayAdvisor.arrayReadInt(p.ints, 2); // Write to long array ArrayAdvisor.arrayWriteLong(p.longs, 2, 1000L); // Read from long array long l = ArrayAdvisor.arrayReadLong(p.longs, 2); // Write to Object array ArrayAdvisor.arrayWriteObject(p.objects, 2, &quot;Hello&quot;); // Read from Object array Object o = ArrayAdvisor.arrayReadObject(p.objects, 2); // Write to Integer array
+	 * Integer integer = new Integer(5); ArrayAdvisor.arrayWriteObject(p.integers, 0, integer); // Read from Object array integer = ArrayAdvisor.arrayWriteObject(p.integers, 0);
+	 * 
 	 * 
 	 * @see DefaultArrayAccessReplacementMethodNames
 	 * 
@@ -569,27 +471,27 @@ public class CodeConverter {
 	 * the target object and all the parameters to the originally invoked
 	 * method. For example, if the originally invoked method is <code>move()</code>:
 	 *
-	 * <pre>
+	 * 
 	 * class Point {
 	 * 
-	 * 	Point move(int x, int y) { ... }
+	 * Point move(int x, int y) { ... }
 	 * }
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Then the before method must be something like this:
 	 *
-	 * <pre>
+	 * 
 	 * class Verbose {
 	 * 
-	 * 	static void print(Point target, int x, int y) { ... }
-	 * }
-	 * </pre>
+	 * static void print(Point target, int x, int y) { ... } }
+	 * 
 	 *
 	 * <p>
 	 * The <code>CodeConverter</code> would translate bytecode equivalent to:
 	 *
-	 * <pre>
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
@@ -638,17 +540,14 @@ public class CodeConverter {
 	 * 
 	 * 
 	 * Point p2 = p.move(x + y, 0);
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * into the bytecode equivalent to:
 	 *
-	 * <pre>
-	 * int tmp1 = x + y;
-	 * int tmp2 = 0;
-	 * Verbose.print(p, tmp1, tmp2);
-	 * Point p2 = p.move(tmp1, tmp2);
-	 * </pre>
+	 * 
+	 * int tmp1 = x + y; int tmp2 = 0; Verbose.print(p, tmp1, tmp2); Point p2 = p.move(tmp1, tmp2);
+	 * 
 	 *
 	 * @param origMethod
 	 *            the method originally invoked.
@@ -670,27 +569,27 @@ public class CodeConverter {
 	 * the target object and all the parameters to the originally invoked
 	 * method. For example, if the originally invoked method is <code>move()</code>:
 	 *
-	 * <pre>
+	 * 
 	 * class Point {
 	 * 
-	 * 	Point move(int x, int y) { ... }
+	 * Point move(int x, int y) { ... }
 	 * }
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Then the after method must be something like this:
 	 *
-	 * <pre>
+	 * 
 	 * class Verbose {
 	 * 
-	 * 	static void print(Point target, int x, int y) { ... }
-	 * }
-	 * </pre>
+	 * static void print(Point target, int x, int y) { ... } }
+	 * 
 	 *
 	 * <p>
 	 * The <code>CodeConverter</code> would translate bytecode equivalent to:
 	 *
-	 * <pre>
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
@@ -739,17 +638,14 @@ public class CodeConverter {
 	 * 
 	 * 
 	 * Point p2 = p.move(x + y, 0);
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * into the bytecode equivalent to:
 	 *
-	 * <pre>
-	 * int tmp1 = x + y;
-	 * int tmp2 = 0;
-	 * Point p2 = p.move(tmp1, tmp2);
-	 * Verbose.print(p, tmp1, tmp2);
-	 * </pre>
+	 * 
+	 * int tmp1 = x + y; int tmp2 = 0; Point p2 = p.move(tmp1, tmp2); Verbose.print(p, tmp1, tmp2);
+	 * 
 	 *
 	 * @param origMethod
 	 *            the method originally invoked.

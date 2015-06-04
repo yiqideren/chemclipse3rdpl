@@ -28,9 +28,9 @@ public interface MainStateJacobianProvider extends FirstOrderDifferentialEquatio
 
 	/**
 	 * Compute the jacobian matrix of ODE with respect to main state.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the main state vector
 	 * @param yDot

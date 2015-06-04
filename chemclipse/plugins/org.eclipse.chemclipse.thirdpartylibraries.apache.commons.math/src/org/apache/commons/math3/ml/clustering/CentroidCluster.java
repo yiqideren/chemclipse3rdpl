@@ -32,9 +32,8 @@ public class CentroidCluster<T extends Clusterable> extends Cluster<T> {
 
 	/**
 	 * Build a cluster centered at a specified point.
-	 * 
-	 * @param center
-	 *            the point which is to be the center of this cluster
+	 * center
+	 * the point which is to be the center of this cluster
 	 */
 	public CentroidCluster(final Clusterable center) {
 
@@ -44,8 +43,7 @@ public class CentroidCluster<T extends Clusterable> extends Cluster<T> {
 
 	/**
 	 * Get the point chosen to be the center of this cluster.
-	 * 
-	 * @return chosen cluster center
+	 * center
 	 */
 	public Clusterable getCenter() {
 

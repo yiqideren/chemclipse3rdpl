@@ -35,10 +35,8 @@ public class DfpMath {
 	/**
 	 * Breaks a string representation up into two dfp's.
 	 * <p>
-	 * The two dfp are such that the sum of them is equivalent to the input string, but has higher precision than using a single dfp. This is useful for improving accuracy of exponentiation and critical multiplies.
+	 * The two dfp are such that the sum of them is equivalent to the input string, but has higher precision than using a single dfp. This is useful for improving accuracy of exponentiation and critical multiplies. field field to which the Dfp must belong
 	 * 
-	 * @param field
-	 *            field to which the Dfp must belong
 	 * @param a
 	 *            string representation to split
 	 * @return an array of two {@link Dfp} which sum is a
@@ -81,9 +79,9 @@ public class DfpMath {
 
 	/**
 	 * Splits a {@link Dfp} into 2 {@link Dfp}'s such that their sum is equal to the input {@link Dfp}.
+	 * a
+	 * number to split
 	 * 
-	 * @param a
-	 *            number to split
 	 * @return two elements array containing the split number
 	 */
 	protected static Dfp[] split(final Dfp a) {
@@ -100,9 +98,9 @@ public class DfpMath {
 	 * meant to be added together.
 	 * Use binomial multiplication so ab = a0 b0 + a0 b1 + a1 b0 + a1 b1
 	 * Store the first term in result0, the rest in result1
+	 * a
+	 * first factor of the multiplication, in split form
 	 * 
-	 * @param a
-	 *            first factor of the multiplication, in split form
 	 * @param b
 	 *            second factor of the multiplication, in split form
 	 * @return a &times; b, in split form
@@ -127,9 +125,9 @@ public class DfpMath {
 	 * Divide two numbers that are split in to two pieces that are meant to be added together.
 	 * Inverse of split multiply above:
 	 * (a+b) / (c+d) = (a/c) + ( (bc-ad)/(c**2+cd) )
+	 * a
+	 * dividend, in split form
 	 * 
-	 * @param a
-	 *            dividend, in split form
 	 * @param b
 	 *            divisor, in split form
 	 * @return a / b, in split form
@@ -146,9 +144,9 @@ public class DfpMath {
 
 	/**
 	 * Raise a split base to the a power.
+	 * base
+	 * number to raise
 	 * 
-	 * @param base
-	 *            number to raise
 	 * @param a
 	 *            power
 	 * @return base<sup>a</sup>
@@ -196,9 +194,9 @@ public class DfpMath {
 
 	/**
 	 * Raises base to the power a by successive squaring.
+	 * base
+	 * number to raise
 	 * 
-	 * @param base
-	 *            number to raise
 	 * @param a
 	 *            power
 	 * @return base<sup>a</sup>
@@ -243,9 +241,9 @@ public class DfpMath {
 	 * a is broken into two parts, such that a = n+m where n is an integer.
 	 * We use pow() to compute e<sup>n</sup> and a Taylor series to compute
 	 * e<sup>m</sup>. We return e*<sup>n</sup> &times; e<sup>m</sup>
+	 * a
+	 * power at which e should be raised
 	 * 
-	 * @param a
-	 *            power at which e should be raised
 	 * @return e<sup>a</sup>
 	 */
 	public static Dfp exp(final Dfp a) {
@@ -269,9 +267,9 @@ public class DfpMath {
 	/**
 	 * Computes e to the given power.
 	 * Where -1 < a < 1. Use the classic Taylor series. 1 + x**2/2! + x**3/3! + x**4/4! ...
+	 * a
+	 * power at which e should be raised
 	 * 
-	 * @param a
-	 *            power at which e should be raised
 	 * @return e<sup>a</sup>
 	 */
 	protected static Dfp expInternal(final Dfp a) {
@@ -297,9 +295,9 @@ public class DfpMath {
 	 * a is first split into three parts such that a = (10000^h)(2^j)k.
 	 * ln(a) is computed by ln(a) = ln(5)*h + ln(2)*(h+j) + ln(k)
 	 * k is in the range 2/3 < k <4/3 and is passed on to a series expansion.
+	 * a
+	 * number from which logarithm is requested
 	 * 
-	 * @param a
-	 *            number from which logarithm is requested
 	 * @return log(a)
 	 */
 	public static Dfp log(Dfp a) {
@@ -404,9 +402,9 @@ public class DfpMath {
 	 * But now we want to find ln(a), so we need to find the value of x
 	 * such that a = (x+1)/(x-1). This is easily solved to find that
 	 * x = (a-1)/(a+1).
+	 * a
+	 * number from which logarithm is requested, in split form
 	 * 
-	 * @param a
-	 *            number from which logarithm is requested, in split form
 	 * @return log(a)
 	 */
 	protected static Dfp[] logInternal(final Dfp a[]) {
@@ -477,9 +475,8 @@ public class DfpMath {
 	 * <li>if x < 0 and y > 0, finite, and odd integer then result is -(|x|<sup>y</sup>)
 	 * <li>if x < 0 and y > 0, finite, and not integer then result is NaN
 	 * </ul>
+	 * x base to be raised
 	 * 
-	 * @param x
-	 *            base to be raised
 	 * @param y
 	 *            power to which base should be raised
 	 * @return x<sup>y</sup>
@@ -628,9 +625,9 @@ public class DfpMath {
 	/**
 	 * Computes sin(a) Used when 0 < a < pi/4.
 	 * Uses the classic Taylor series. x - x**3/3! + x**5/5! ...
+	 * a
+	 * number from which sine is desired, in split form
 	 * 
-	 * @param a
-	 *            number from which sine is desired, in split form
 	 * @return sin(a)
 	 */
 	protected static Dfp sinInternal(Dfp a[]) {
@@ -657,9 +654,9 @@ public class DfpMath {
 	/**
 	 * Computes cos(a) Used when 0 < a < pi/4.
 	 * Uses the classic Taylor series for cosine. 1 - x**2/2! + x**4/4! ...
+	 * a
+	 * number from which cosine is desired, in split form
 	 * 
-	 * @param a
-	 *            number from which cosine is desired, in split form
 	 * @return cos(a)
 	 */
 	protected static Dfp cosInternal(Dfp a[]) {
@@ -686,9 +683,9 @@ public class DfpMath {
 
 	/**
 	 * computes the sine of the argument.
+	 * a
+	 * number from which sine is desired
 	 * 
-	 * @param a
-	 *            number from which sine is desired
 	 * @return sin(a)
 	 */
 	public static Dfp sin(final Dfp a) {
@@ -733,9 +730,9 @@ public class DfpMath {
 
 	/**
 	 * computes the cosine of the argument.
+	 * a
+	 * number from which cosine is desired
 	 * 
-	 * @param a
-	 *            number from which cosine is desired
 	 * @return cos(a)
 	 */
 	public static Dfp cos(Dfp a) {
@@ -779,9 +776,9 @@ public class DfpMath {
 
 	/**
 	 * computes the tangent of the argument.
+	 * a
+	 * number from which tangent is desired
 	 * 
-	 * @param a
-	 *            number from which tangent is desired
 	 * @return tan(a)
 	 */
 	public static Dfp tan(final Dfp a) {
@@ -791,9 +788,9 @@ public class DfpMath {
 
 	/**
 	 * computes the arc-tangent of the argument.
+	 * a
+	 * number from which arc-tangent is desired
 	 * 
-	 * @param a
-	 *            number from which arc-tangent is desired
 	 * @return atan(a)
 	 */
 	protected static Dfp atanInternal(final Dfp a) {
@@ -825,9 +822,9 @@ public class DfpMath {
 	 * since tan(PI/8) = sqrt(2)-1,
 	 *
 	 * atan(x) = atan( (x - sqrt(2) + 1) / (1+x*sqrt(2) - x) + PI/8.0
+	 * a
+	 * number from which arc-tangent is desired
 	 * 
-	 * @param a
-	 *            number from which arc-tangent is desired
 	 * @return atan(a)
 	 */
 	public static Dfp atan(final Dfp a) {
@@ -878,9 +875,9 @@ public class DfpMath {
 
 	/**
 	 * computes the arc-sine of the argument.
+	 * a
+	 * number from which arc-sine is desired
 	 * 
-	 * @param a
-	 *            number from which arc-sine is desired
 	 * @return asin(a)
 	 */
 	public static Dfp asin(final Dfp a) {
@@ -890,9 +887,9 @@ public class DfpMath {
 
 	/**
 	 * computes the arc-cosine of the argument.
+	 * a
+	 * number from which arc-cosine is desired
 	 * 
-	 * @param a
-	 *            number from which arc-cosine is desired
 	 * @return acos(a)
 	 */
 	public static Dfp acos(Dfp a) {

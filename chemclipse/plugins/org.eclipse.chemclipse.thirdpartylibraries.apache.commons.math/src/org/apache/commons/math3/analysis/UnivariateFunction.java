@@ -22,7 +22,8 @@ package org.apache.commons.math3.analysis;
  * a root solver as an example, but the same construct is applicable to
  * ODE integrators or optimizers.
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -81,41 +82,41 @@ package org.apache.commons.math3.analysis;
  * 
  * private static class LocalException extends RuntimeException {
  * 
- * 	// The x value that caused the problem.
- * 	private final double x;
+ * // The x value that caused the problem.
+ * private final double x;
  * 
- * 	public LocalException(double x) {
+ * public LocalException(double x) {
  * 
- * 		this.x = x;
- * 	}
+ * this.x = x;
+ * }
  * 
- * 	public double getX() {
+ * public double getX() {
  * 
- * 		return x;
- * 	}
+ * return x;
+ * }
  * }
  * 
  * private static class MyFunction implements UnivariateFunction {
  * 
- * 	public double value(double x) {
+ * public double value(double x) {
  * 
- * 		double y = hugeFormula(x);
- * 		if(somethingBadHappens) {
- * 			throw new LocalException(x);
- * 		}
- * 		return y;
- * 	}
+ * double y = hugeFormula(x);
+ * if(somethingBadHappens) {
+ * throw new LocalException(x);
+ * }
+ * return y;
+ * }
  * }
  * 
  * public void compute() {
  * 
- * 	try {
- * 		solver.solve(maxEval, new MyFunction(a, b, c), min, max);
- * 	} catch(LocalException le) {
- * 		// Retrieve the x value.
- * 	}
+ * try {
+ * solver.solve(maxEval, new MyFunction(a, b, c), min, max);
+ * } catch(LocalException le) {
+ * // Retrieve the x value.
  * }
- * </pre>
+ * }
+ * 
  *
  * As shown, the exception is local to the user's code and it is guaranteed
  * that Apache Commons Math will not catch it.

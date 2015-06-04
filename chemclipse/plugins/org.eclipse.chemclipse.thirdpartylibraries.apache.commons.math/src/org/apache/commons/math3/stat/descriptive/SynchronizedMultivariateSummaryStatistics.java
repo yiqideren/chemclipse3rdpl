@@ -36,9 +36,9 @@ public class SynchronizedMultivariateSummaryStatistics extends MultivariateSumma
 
 	/**
 	 * Construct a SynchronizedMultivariateSummaryStatistics instance
+	 * k
+	 * dimension of the data
 	 * 
-	 * @param k
-	 *            dimension of the data
 	 * @param isCovarianceBiasCorrected
 	 *            if true, the unbiased sample
 	 *            covariance is computed, otherwise the biased population covariance

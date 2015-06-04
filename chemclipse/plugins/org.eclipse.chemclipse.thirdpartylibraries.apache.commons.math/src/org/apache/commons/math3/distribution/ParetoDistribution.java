@@ -27,9 +27,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * <strong>Parameters:</strong> The probability distribution function of {@code X} is given by (for {@code x >= k}):
  * 
- * <pre>
+ * 
  * α * k &circ; α / x &circ; (α + 1)
- * </pre>
+ * 
  * <p>
  * <ul>
  * <li>{@code k} is the <em>scale</em> parameter: this is the minimum possible value of {@code X},</li>

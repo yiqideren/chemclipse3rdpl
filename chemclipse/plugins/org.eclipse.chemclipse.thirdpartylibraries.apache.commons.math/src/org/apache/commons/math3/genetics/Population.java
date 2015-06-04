@@ -25,30 +25,27 @@ public interface Population extends Iterable<Chromosome> {
 
 	/**
 	 * Access the current population size.
-	 * 
-	 * @return the current population size.
+	 * size.
 	 */
 	int getPopulationSize();
 
 	/**
 	 * Access the maximum population size.
-	 * 
-	 * @return the maximum population size.
+	 * size.
 	 */
 	int getPopulationLimit();
 
 	/**
 	 * Start the population for the next generation.
-	 * 
-	 * @return the beginnings of the next generation.
+	 * generation.
 	 */
 	Population nextGeneration();
 
 	/**
 	 * Add the given chromosome to the population.
+	 * chromosome
+	 * the chromosome to add.
 	 * 
-	 * @param chromosome
-	 *            the chromosome to add.
 	 * @throws NumberIsTooLargeException
 	 *             if the population would exceed the population limit when adding
 	 *             this chromosome
@@ -57,8 +54,7 @@ public interface Population extends Iterable<Chromosome> {
 
 	/**
 	 * Access the fittest chromosome in this population.
-	 * 
-	 * @return the fittest chromosome.
+	 * chromosome.
 	 */
 	Chromosome getFittestChromosome();
 }

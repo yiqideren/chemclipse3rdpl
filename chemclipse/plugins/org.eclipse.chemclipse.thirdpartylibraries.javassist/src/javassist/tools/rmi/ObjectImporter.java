@@ -80,7 +80,6 @@ public class ObjectImporter implements java.io.Serializable {
 	 * <p>
 	 * If you run a program with <code>javassist.tools.web.Viewer</code>, you can construct an object importer as follows:
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -128,9 +127,10 @@ public class ObjectImporter implements java.io.Serializable {
 	 * 
 	 * 
 	 * 
-	 * Viewer v = (Viewer)this.getClass().getClassLoader();
-	 * ObjectImporter oi = new ObjectImporter(v.getServer(), v.getPort());
-	 * </pre>
+	 * 
+	 * 
+	 * Viewer v = (Viewer)this.getClass().getClassLoader(); ObjectImporter oi = new ObjectImporter(v.getServer(), v.getPort());
+	 * 
 	 *
 	 * @see javassist.tools.web.Viewer
 	 */

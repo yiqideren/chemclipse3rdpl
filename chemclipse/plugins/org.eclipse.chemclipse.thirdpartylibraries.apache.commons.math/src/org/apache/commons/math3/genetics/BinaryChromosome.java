@@ -27,9 +27,9 @@ public abstract class BinaryChromosome extends AbstractListChromosome<Integer> {
 
 	/**
 	 * Constructor.
+	 * representation
+	 * list of {0,1} values representing the chromosome
 	 * 
-	 * @param representation
-	 *            list of {0,1} values representing the chromosome
 	 * @throws InvalidRepresentationException
 	 *             iff the <code>representation</code> can not represent a valid chromosome
 	 */
@@ -40,9 +40,9 @@ public abstract class BinaryChromosome extends AbstractListChromosome<Integer> {
 
 	/**
 	 * Constructor.
+	 * representation
+	 * array of {0,1} values representing the chromosome
 	 * 
-	 * @param representation
-	 *            array of {0,1} values representing the chromosome
 	 * @throws InvalidRepresentationException
 	 *             iff the <code>representation</code> can not represent a valid chromosome
 	 */
@@ -66,9 +66,9 @@ public abstract class BinaryChromosome extends AbstractListChromosome<Integer> {
 
 	/**
 	 * Returns a representation of a random binary array of length <code>length</code>.
+	 * length
+	 * length of the array
 	 * 
-	 * @param length
-	 *            length of the array
 	 * @return a random binary array of length <code>length</code>
 	 */
 	public static List<Integer> randomBinaryRepresentation(int length) {

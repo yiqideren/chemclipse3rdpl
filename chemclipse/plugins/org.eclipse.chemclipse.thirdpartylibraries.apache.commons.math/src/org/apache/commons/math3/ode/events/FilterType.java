@@ -48,33 +48,33 @@ public enum FilterType {
 		 * </ul>
 		 * </p>
 		 * 
-		 * <pre>
-		 *  g(t)
-		 *             ___                     ___                     ___
-		 *            /   \                   /   \                   /   \
-		 *           /     \                 /     \                 /     \
-		 *          /  g>0  \               /  g>0  \               /  g>0  \
-		 *         /         \             /         \             /         \
-		 *  ----- X --------- 0 --------- X --------- 0 --------- X --------- 0 ---
-		 *       /             \         /             \         /             \
-		 *      /               \ g<0   /               \  g<0  /               \ g<0
-		 *     /                 \     /                 \     /                 \     /
-		 * ___/                   \___/                   \___/                   \___/
-		 * </pre>
 		 * 
-		 * <pre>
-		 *  h(t,y)) as an alteration of g(t,y)
-		 *             ___                                 ___         ___
-		 *    \       /   \                               /   \       /   \
-		 *     \     /     \ h=+g                        /     \     /     \
-		 *      \   /       \      h=min(-s,-g,+g)      /       \   /       \
-		 *       \_/         \                         /         \_/         \
-		 *  ------ ---------- 0 ----------_---------- 0 --------------------- 0 ---
-		 *                     \         / \         /                         \
-		 *   h=max(+s,-g,+g)    \       /   \       /       h=max(+s,-g,+g)     \
-		 *                       \     /     \     / h=-g                        \     /
-		 *                        \___/       \___/                               \___/
-		 * </pre>
+		 * g(t)
+		 * ___ ___ ___
+		 * / \ / \ / \
+		 * / \ / \ / \
+		 * / g>0 \ / g>0 \ / g>0 \
+		 * / \ / \ / \
+		 * ----- X --------- 0 --------- X --------- 0 --------- X --------- 0 ---
+		 * / \ / \ / \
+		 * / \ g<0 / \ g<0 / \ g<0
+		 * / \ / \ / \ /
+		 * ___/ \___/ \___/ \___/
+		 * 
+		 * 
+		 * 
+		 * h(t,y)) as an alteration of g(t,y)
+		 * ___ ___ ___
+		 * \ / \ / \ / \
+		 * \ / \ h=+g / \ / \
+		 * \ / \ h=min(-s,-g,+g) / \ / \
+		 * \_/ \ / \_/ \
+		 * ------ ---------- 0 ----------_---------- 0 --------------------- 0 ---
+		 * \ / \ / \
+		 * h=max(+s,-g,+g) \ / \ / h=max(+s,-g,+g) \
+		 * \ / \ / h=-g \ /
+		 * \___/ \___/ \___/
+		 * 
 		 * <p>
 		 * As shown by the figure above, several expressions are used to compute h, depending on the current state:
 		 * <ul>
@@ -228,33 +228,33 @@ public enum FilterType {
 		 * </ul>
 		 * </p>
 		 * 
-		 * <pre>
-		 *  g(t)
-		 *             ___                     ___                     ___
-		 *            /   \                   /   \                   /   \
-		 *           /     \                 /     \                 /     \
-		 *          /  g>0  \               /  g>0  \               /  g>0  \
-		 *         /         \             /         \             /         \
-		 *  ----- 0 --------- X --------- 0 --------- X --------- 0 --------- X ---
-		 *       /             \         /             \         /             \
-		 *      /               \ g<0   /               \  g<0  /               \ g<0
-		 *     /                 \     /                 \     /                 \     /
-		 * ___/                   \___/                   \___/                   \___/
-		 * </pre>
 		 * 
-		 * <pre>
-		 *  h(t,y)) as an alteration of g(t,y)
-		 *                                     ___         ___
-		 *    \                               /   \       /   \
-		 *     \ h=-g                        /     \     /     \ h=-g
-		 *      \      h=min(-s,-g,+g)      /       \   /       \      h=min(-s,-g,+g)
-		 *       \                         /         \_/         \
-		 *  ------0 ----------_---------- 0 --------------------- 0 --------- _ ---
-		 *         \         / \         /                         \         / \
-		 *          \       /   \       /       h=max(+s,-g,+g)     \       /   \
-		 *           \     /     \     / h=+g                        \     /     \     /
-		 *            \___/       \___/                               \___/       \___/
-		 * </pre>
+		 * g(t)
+		 * ___ ___ ___
+		 * / \ / \ / \
+		 * / \ / \ / \
+		 * / g>0 \ / g>0 \ / g>0 \
+		 * / \ / \ / \
+		 * ----- 0 --------- X --------- 0 --------- X --------- 0 --------- X ---
+		 * / \ / \ / \
+		 * / \ g<0 / \ g<0 / \ g<0
+		 * / \ / \ / \ /
+		 * ___/ \___/ \___/ \___/
+		 * 
+		 * 
+		 * 
+		 * h(t,y)) as an alteration of g(t,y)
+		 * ___ ___
+		 * \ / \ / \
+		 * \ h=-g / \ / \ h=-g
+		 * \ h=min(-s,-g,+g) / \ / \ h=min(-s,-g,+g)
+		 * \ / \_/ \
+		 * ------0 ----------_---------- 0 --------------------- 0 --------- _ ---
+		 * \ / \ / \ / \
+		 * \ / \ / h=max(+s,-g,+g) \ / \
+		 * \ / \ / h=+g \ / \ /
+		 * \___/ \___/ \___/ \___/
+		 * 
 		 * <p>
 		 * As shown by the figure above, several expressions are used to compute h, depending on the current state:
 		 * <ul>
@@ -385,17 +385,16 @@ public enum FilterType {
 
 	/**
 	 * Get the increasing status of triggered events.
-	 * 
-	 * @return true if triggered events are increasing events
+	 * events
 	 */
 	protected abstract boolean getTriggeredIncreasing();
 
 	/**
 	 * Get next function transformer in the specified direction.
+	 * previous
+	 * transformer active on the previous point with respect
+	 * to integration direction (may be null if no previous point is known)
 	 * 
-	 * @param previous
-	 *            transformer active on the previous point with respect
-	 *            to integration direction (may be null if no previous point is known)
 	 * @param g
 	 *            current value of the g function
 	 * @param forward

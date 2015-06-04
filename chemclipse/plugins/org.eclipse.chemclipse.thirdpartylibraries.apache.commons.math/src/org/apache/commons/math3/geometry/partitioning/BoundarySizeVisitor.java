@@ -62,8 +62,7 @@ class BoundarySizeVisitor<S extends Space> implements BSPTreeVisitor<S> {
 
 	/**
 	 * Get the size of the boundary.
-	 * 
-	 * @return size of the boundary
+	 * boundary
 	 */
 	public double getSize() {
 

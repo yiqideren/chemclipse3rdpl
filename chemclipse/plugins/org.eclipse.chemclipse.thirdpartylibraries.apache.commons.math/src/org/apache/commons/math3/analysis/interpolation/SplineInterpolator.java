@@ -46,9 +46,9 @@ public class SplineInterpolator implements UnivariateInterpolator {
 
 	/**
 	 * Computes an interpolating function for the data set.
+	 * x
+	 * the arguments for the interpolation points
 	 * 
-	 * @param x
-	 *            the arguments for the interpolation points
 	 * @param y
 	 *            the values for the interpolation points
 	 * @return a function which interpolates the data set

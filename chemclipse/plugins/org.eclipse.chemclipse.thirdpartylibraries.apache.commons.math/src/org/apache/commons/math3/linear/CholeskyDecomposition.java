@@ -61,9 +61,9 @@ public class CholeskyDecomposition {
 	 * <p>
 	 * Calling this constructor is equivalent to call {@link #CholeskyDecomposition(RealMatrix, double, double)} with the thresholds set to the default values {@link #DEFAULT_RELATIVE_SYMMETRY_THRESHOLD} and {@link #DEFAULT_ABSOLUTE_POSITIVITY_THRESHOLD}
 	 * </p>
+	 * matrix
+	 * the matrix to decompose
 	 * 
-	 * @param matrix
-	 *            the matrix to decompose
 	 * @throws NonSquareMatrixException
 	 *             if the matrix is not square.
 	 * @throws NonSymmetricMatrixException
@@ -82,9 +82,9 @@ public class CholeskyDecomposition {
 
 	/**
 	 * Calculates the Cholesky decomposition of the given matrix.
+	 * matrix
+	 * the matrix to decompose
 	 * 
-	 * @param matrix
-	 *            the matrix to decompose
 	 * @param relativeSymmetryThreshold
 	 *            threshold above which off-diagonal
 	 *            elements are considered too different and matrix not symmetric
@@ -150,8 +150,7 @@ public class CholeskyDecomposition {
 	 * <p>
 	 * L is an lower-triangular matrix
 	 * </p>
-	 * 
-	 * @return the L matrix
+	 * matrix
 	 */
 	public RealMatrix getL() {
 
@@ -166,8 +165,7 @@ public class CholeskyDecomposition {
 	 * <p>
 	 * L<sup>T</sup> is an upper-triangular matrix
 	 * </p>
-	 * 
-	 * @return the transpose of the matrix L of the decomposition
+	 * decomposition
 	 */
 	public RealMatrix getLT() {
 
@@ -180,8 +178,7 @@ public class CholeskyDecomposition {
 
 	/**
 	 * Return the determinant of the matrix
-	 * 
-	 * @return determinant of the matrix
+	 * matrix
 	 */
 	public double getDeterminant() {
 
@@ -195,8 +192,7 @@ public class CholeskyDecomposition {
 
 	/**
 	 * Get a solver for finding the A &times; X = B solution in least square sense.
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	public DecompositionSolver getSolver() {
 

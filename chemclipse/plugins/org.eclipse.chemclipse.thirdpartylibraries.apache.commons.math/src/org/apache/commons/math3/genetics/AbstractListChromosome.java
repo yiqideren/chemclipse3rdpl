@@ -33,9 +33,9 @@ public abstract class AbstractListChromosome<T> extends Chromosome {
 
 	/**
 	 * Constructor, copying the input representation.
+	 * representation
+	 * inner representation of the chromosome
 	 * 
-	 * @param representation
-	 *            inner representation of the chromosome
 	 * @throws InvalidRepresentationException
 	 *             iff the <code>representation</code> can not represent a valid chromosome
 	 */
@@ -46,9 +46,9 @@ public abstract class AbstractListChromosome<T> extends Chromosome {
 
 	/**
 	 * Constructor, copying the input representation.
+	 * representation
+	 * inner representation of the chromosome
 	 * 
-	 * @param representation
-	 *            inner representation of the chromosome
 	 * @throws InvalidRepresentationException
 	 *             iff the <code>representation</code> can not represent a valid chromosome
 	 */
@@ -59,9 +59,9 @@ public abstract class AbstractListChromosome<T> extends Chromosome {
 
 	/**
 	 * Constructor.
+	 * representation
+	 * inner representation of the chromosome
 	 * 
-	 * @param representation
-	 *            inner representation of the chromosome
 	 * @param copyList
 	 *            if {@code true}, the representation will be copied, otherwise it will be referenced.
 	 * @since 3.3
@@ -84,8 +84,7 @@ public abstract class AbstractListChromosome<T> extends Chromosome {
 
 	/**
 	 * Returns the (immutable) inner representation of the chromosome.
-	 * 
-	 * @return the representation of the chromosome
+	 * chromosome
 	 */
 	protected List<T> getRepresentation() {
 
@@ -94,8 +93,7 @@ public abstract class AbstractListChromosome<T> extends Chromosome {
 
 	/**
 	 * Returns the length of the chromosome.
-	 * 
-	 * @return the length of the chromosome
+	 * chromosome
 	 */
 	public int getLength() {
 

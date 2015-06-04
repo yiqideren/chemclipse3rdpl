@@ -131,11 +131,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Returns a {@code Complex} whose value is {@code (this + addend)}.
 	 * Uses the definitional formula
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   (a + bi) + (c + di) = (a+c) + (b+d)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * <br/>
 	 * If either {@code this} or {@code addend} has a {@code NaN} value in
@@ -196,13 +194,11 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Returns a {@code Complex} whose value is {@code (this / divisor)}.
 	 * Implements the definitional formula
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *    a + bi          ac + bd + (bc - ad)i
 	 *    ----------- = -------------------------
 	 *    c + di         c<sup>2</sup> + d<sup>2</sup>
 	 *  </code>
-	 * </pre>
 	 * 
 	 * but uses
 	 * <a href="http://doi.acm.org/10.1145/1039813.1039814">
@@ -480,11 +476,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Implements preliminary checks for {@code NaN} and infinity followed by
 	 * the definitional formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   (a + bi)(c + di) = (ac - bd) + (ad + bc)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * Returns {@link #NaN} if either {@code this} or {@code factor} has one or
 	 * more {@code NaN} parts. <br/>
@@ -571,11 +565,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Returns a {@code Complex} whose value is {@code (this - subtrahend)}.
 	 * Uses the definitional formula
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   (a + bi) - (c + di) = (a-c) + (b-d)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * If either {@code this} or {@code subtrahend} has a {@code NaN]} value in either part, {@link #NaN} is returned; otherwise infinite and {@code NaN} values are
 	 * returned in the parts of the result according to the rules for {@link java.lang.Double} arithmetic.
@@ -617,11 +609,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * inverse cosine</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   acos(z) = -i (log(z + i (sqrt(1 - z<sup>2</sup>))))
 	 *  </code>
-	 * </pre>
 	 * 
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
 	 * input argument is {@code NaN} or infinite.
@@ -643,11 +633,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * inverse sine</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   asin(z) = -i (log(sqrt(1 - z<sup>2</sup>) + iz))
 	 *  </code>
-	 * </pre>
 	 * 
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
 	 * input argument is {@code NaN} or infinite.
@@ -669,11 +657,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * inverse tangent</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   atan(z) = (i/2) log((i + z)/(i - z))
 	 *  </code>
-	 * </pre>
 	 * 
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
 	 * input argument is {@code NaN} or infinite.
@@ -696,11 +682,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   cos(a + bi) = cos(a)cosh(b) - sin(a)sinh(b)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -708,14 +692,12 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   cos(1 &plusmn; INFINITY i) = 1 &#x2213; INFINITY i
 	 *   cos(&plusmn;INFINITY + i) = NaN + NaN i
 	 *   cos(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the cosine of this complex number.
 	 * @since 1.2
@@ -734,11 +716,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * hyperbolic cosine</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   cosh(a + bi) = cosh(a)cos(b) + sinh(a)sin(b)i}
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -746,14 +726,12 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   cosh(1 &plusmn; INFINITY i) = NaN + NaN i
 	 *   cosh(&plusmn;INFINITY + i) = INFINITY &plusmn; INFINITY i
 	 *   cosh(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the hyperbolic cosine of this complex number.
 	 * @since 1.2
@@ -772,11 +750,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * exponential function</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   exp(a + bi) = exp(a)cos(b) + exp(a)sin(b)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#exp}, {@link FastMath#cos}, and {@link FastMath#sin}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -784,15 +760,13 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   exp(1 &plusmn; INFINITY i) = NaN + NaN i
 	 *   exp(INFINITY + i) = INFINITY + INFINITY i
 	 *   exp(-INFINITY + i) = 0 + 0i
 	 *   exp(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return <code><i>e</i><sup>this</sup></code>.
 	 * @since 1.2
@@ -812,11 +786,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * natural logarithm</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   log(a + bi) = ln(|a + bi|) + arg(a + bi)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where ln on the right hand side is {@link FastMath#log}, {@code |a + bi|} is the modulus, {@link Complex#abs}, and {@code arg(a + bi) = }{@link FastMath#atan2}(b, a). <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -824,9 +796,7 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite (or critical) values in real or imaginary parts of the input may
 	 * result in infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   log(1 &plusmn; INFINITY i) = INFINITY &plusmn; (&pi;/2)i
 	 *   log(INFINITY + i) = INFINITY + 0i
 	 *   log(-INFINITY + i) = INFINITY + &pi;i
@@ -834,7 +804,7 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 *   log(-INFINITY &plusmn; INFINITY i) = INFINITY &plusmn; (3&pi;/4)i
 	 *   log(0 + 0i) = -INFINITY + 0i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the value <code>ln &nbsp; this</code>, the natural logarithm
 	 *         of {@code this}.
@@ -852,11 +822,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Returns of value of this complex number raised to the power of {@code x}.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   y<sup>x</sup> = exp(x&middot;log(y))
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where {@code exp} and {@code log} are {@link #exp} and {@link #log}, respectively. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -895,11 +863,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   sin(a + bi) = sin(a)cosh(b) - cos(a)sinh(b)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -907,14 +873,12 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or {@code NaN} values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   sin(1 &plusmn; INFINITY i) = 1 &plusmn; INFINITY i
 	 *   sin(&plusmn;INFINITY + i) = NaN + NaN i
 	 *   sin(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the sine of this complex number.
 	 * @since 1.2
@@ -933,11 +897,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * hyperbolic sine</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   sinh(a + bi) = sinh(a)cos(b)) + cosh(a)sin(b)i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -945,14 +907,12 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   sinh(1 &plusmn; INFINITY i) = NaN + NaN i
 	 *   sinh(&plusmn;INFINITY + i) = &plusmn; INFINITY + INFINITY i
 	 *   sinh(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the hyperbolic sine of {@code this}.
 	 * @since 1.2
@@ -974,10 +934,7 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * <li>Let {@code t = sqrt((|a| + |a + bi|) / 2)}</li>
 	 * <li>
 	 * 
-	 * <pre>
-	 * if {@code  a &#8805; 0} return {@code t + (b/2t)i}
-	 *  else return {@code |b|/2t + sign(b)t i }
-	 * </pre>
+	 * if {@code  a &#8805; 0} return {@code t + (b/2t)i} else return {@code |b|/2t + sign(b)t i }
 	 * 
 	 * </li>
 	 * </ol>
@@ -993,16 +950,14 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   sqrt(1 &plusmn; INFINITY i) = INFINITY + NaN i
 	 *   sqrt(INFINITY + i) = INFINITY + 0i
 	 *   sqrt(-INFINITY + i) = 0 + INFINITY i
 	 *   sqrt(INFINITY &plusmn; INFINITY i) = INFINITY + NaN i
 	 *   sqrt(-INFINITY &plusmn; INFINITY i) = NaN &plusmn; INFINITY i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the square root of {@code this}.
 	 * @since 1.2
@@ -1048,11 +1003,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * tangent</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   tan(a + bi) = sin(2a)/(cos(2a)+cosh(2b)) + [sinh(2b)/(cos(2a)+cosh(2b))]i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -1060,15 +1013,13 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite (or critical) values in real or imaginary parts of the input may
 	 * result in infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   tan(a &plusmn; INFINITY i) = 0 &plusmn; i
 	 *   tan(&plusmn;INFINITY + bi) = NaN + NaN i
 	 *   tan(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *   tan(&plusmn;&pi;/2 + 0 i) = &plusmn;INFINITY + NaN i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the tangent of {@code this}.
 	 * @since 1.2
@@ -1096,11 +1047,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * hyperbolic tangent</a> of this complex number.
 	 * Implements the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   tan(a + bi) = sinh(2a)/(cosh(2a)+cos(2b)) + [sin(2b)/(cosh(2a)+cos(2b))]i
 	 *  </code>
-	 * </pre>
 	 * 
 	 * where the (real) functions on the right-hand side are {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and {@link FastMath#sinh}. <br/>
 	 * Returns {@link Complex#NaN} if either real or imaginary part of the
@@ -1108,15 +1057,13 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Infinite values in real or imaginary parts of the input may result in
 	 * infinite or NaN values returned in parts of the result.
 	 * 
-	 * <pre>
-	 *  Examples:
-	 *  <code>
+	 * Examples: <code>
 	 *   tanh(a &plusmn; INFINITY i) = NaN + NaN i
 	 *   tanh(&plusmn;INFINITY + bi) = &plusmn;1 + 0 i
 	 *   tanh(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
 	 *   tanh(0 + (&pi;/2)i) = NaN + INFINITY i
 	 *  </code>
-	 * </pre>
+	 * 
 	 *
 	 * @return the hyperbolic tangent of {@code this}.
 	 * @since 1.2
@@ -1163,11 +1110,9 @@ public class Complex implements FieldElement<Complex>, Serializable {
 	 * Computes the n-th roots of this complex number.
 	 * The nth roots are defined by the formula:
 	 * 
-	 * <pre>
-	 *  <code>
+	 * <code>
 	 *   z<sub>k</sub> = abs<sup>1/n</sup> (cos(phi + 2&pi;k/n) + i (sin(phi + 2&pi;k/n))
 	 *  </code>
-	 * </pre>
 	 * 
 	 * for <i>{@code k=0, 1, ..., n-1}</i>, where {@code abs} and {@code phi} are respectively the {@link #abs() modulus} and {@link #getArgument() argument} of this complex number. <br/>
 	 * If one or both parts of this complex number is NaN, a list with just

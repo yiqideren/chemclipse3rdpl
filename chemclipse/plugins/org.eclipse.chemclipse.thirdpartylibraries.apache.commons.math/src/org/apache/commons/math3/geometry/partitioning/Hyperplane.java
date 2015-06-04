@@ -40,8 +40,7 @@ public interface Hyperplane<S extends Space> {
 	 * <p>
 	 * The instance created is completely independant of the original one. A deep copy is used, none of the underlying objects are shared (except for immutable objects).
 	 * </p>
-	 * 
-	 * @return a new hyperplane, copy of the instance
+	 * instance
 	 */
 	Hyperplane<S> copySelf();
 
@@ -50,18 +49,18 @@ public interface Hyperplane<S extends Space> {
 	 * <p>
 	 * The offset is 0 if the point is on the underlying hyperplane, it is positive if the point is on one particular side of the hyperplane, and it is negative if the point is on the other side, according to the hyperplane natural orientation.
 	 * </p>
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return offset of the point
 	 */
 	double getOffset(Point<S> point);
 
 	/**
 	 * Project a point to the hyperplane.
+	 * point
+	 * point to project
 	 * 
-	 * @param point
-	 *            point to project
 	 * @return projected point
 	 * @since 3.3
 	 */
@@ -69,8 +68,8 @@ public interface Hyperplane<S extends Space> {
 
 	/**
 	 * Get the tolerance below which points are considered to belong to the hyperplane.
+	 * hyperplane
 	 * 
-	 * @return tolerance below which points are considered to belong to the hyperplane
 	 * @since 3.3
 	 */
 	double getTolerance();
@@ -80,9 +79,9 @@ public interface Hyperplane<S extends Space> {
 	 * <p>
 	 * This method is expected to be called on parallel hyperplanes. The method should <em>not</em> re-check for parallelism, only for orientation, typically by testing something like the sign of the dot-products of normals.
 	 * </p>
+	 * other
+	 * other hyperplane to check against the instance
 	 * 
-	 * @param other
-	 *            other hyperplane to check against the instance
 	 * @return true if the instance and the other hyperplane have
 	 *         the same orientation
 	 */
@@ -90,15 +89,13 @@ public interface Hyperplane<S extends Space> {
 
 	/**
 	 * Build a sub-hyperplane covering the whole hyperplane.
-	 * 
-	 * @return a sub-hyperplane covering the whole hyperplane
+	 * hyperplane
 	 */
 	SubHyperplane<S> wholeHyperplane();
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance
+	 * instance
 	 */
 	Region<S> wholeSpace();
 }

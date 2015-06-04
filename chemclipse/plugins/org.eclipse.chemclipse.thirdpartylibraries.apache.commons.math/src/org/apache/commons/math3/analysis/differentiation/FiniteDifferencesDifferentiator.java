@@ -67,9 +67,9 @@ public class FiniteDifferencesDifferentiator implements UnivariateFunctionDiffer
 	 * <p>
 	 * Beware that wrong settings for the finite differences differentiator can lead to highly unstable and inaccurate results, especially for high derivation orders. Using very small step sizes is often a <em>bad</em> idea.
 	 * </p>
+	 * nbPoints
+	 * number of points to use
 	 * 
-	 * @param nbPoints
-	 *            number of points to use
 	 * @param stepSize
 	 *            step size (gap between each point)
 	 * @exception NotPositiveException
@@ -93,9 +93,9 @@ public class FiniteDifferencesDifferentiator implements UnivariateFunctionDiffer
 	 * <p>
 	 * Beware that wrong settings for the finite differences differentiator can lead to highly unstable and inaccurate results, especially for high derivation orders. Using very small step sizes is often a <em>bad</em> idea.
 	 * </p>
+	 * nbPoints
+	 * number of points to use
 	 * 
-	 * @param nbPoints
-	 *            number of points to use
 	 * @param stepSize
 	 *            step size (gap between each point)
 	 * @param tLower
@@ -130,8 +130,7 @@ public class FiniteDifferencesDifferentiator implements UnivariateFunctionDiffer
 
 	/**
 	 * Get the number of points to use.
-	 * 
-	 * @return number of points to use
+	 * use
 	 */
 	public int getNbPoints() {
 
@@ -140,8 +139,7 @@ public class FiniteDifferencesDifferentiator implements UnivariateFunctionDiffer
 
 	/**
 	 * Get the step size.
-	 * 
-	 * @return step size
+	 * size
 	 */
 	public double getStepSize() {
 
@@ -153,9 +151,9 @@ public class FiniteDifferencesDifferentiator implements UnivariateFunctionDiffer
 	 * <p>
 	 * Evaluation is done using divided differences.
 	 * </p>
+	 * t
+	 * evaluation abscissa value and derivatives
 	 * 
-	 * @param t
-	 *            evaluation abscissa value and derivatives
 	 * @param t0
 	 *            first sample point abscissa
 	 * @param y

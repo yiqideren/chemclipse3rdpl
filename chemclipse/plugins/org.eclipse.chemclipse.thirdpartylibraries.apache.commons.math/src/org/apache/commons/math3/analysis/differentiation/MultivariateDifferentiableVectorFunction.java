@@ -27,9 +27,9 @@ public interface MultivariateDifferentiableVectorFunction extends MultivariateVe
 
 	/**
 	 * Compute the value for the function at the given point.
+	 * point
+	 * point at which the function must be evaluated
 	 * 
-	 * @param point
-	 *            point at which the function must be evaluated
 	 * @return function value for the given point
 	 * @exception MathIllegalArgumentException
 	 *                if {@code point} does not

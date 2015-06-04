@@ -29,9 +29,8 @@ public class GaussianRandomGenerator implements NormalizedRandomGenerator {
 
 	/**
 	 * Create a new generator.
-	 * 
-	 * @param generator
-	 *            underlying random generator to use
+	 * generator
+	 * underlying random generator to use
 	 */
 	public GaussianRandomGenerator(final RandomGenerator generator) {
 
@@ -40,8 +39,7 @@ public class GaussianRandomGenerator implements NormalizedRandomGenerator {
 
 	/**
 	 * Generate a random scalar with null mean and unit standard deviation.
-	 * 
-	 * @return a random scalar with null mean and unit standard deviation
+	 * deviation
 	 */
 	public double nextNormalizedDouble() {
 

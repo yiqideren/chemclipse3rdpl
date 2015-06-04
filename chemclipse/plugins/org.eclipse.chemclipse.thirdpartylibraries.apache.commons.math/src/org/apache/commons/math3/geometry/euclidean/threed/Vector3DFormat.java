@@ -52,9 +52,8 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	public Vector3DFormat(final NumberFormat format) {
 
@@ -63,9 +62,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -79,9 +78,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -96,8 +95,7 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Returns the default 3D vector format for the current locale.
-	 * 
-	 * @return the default 3D vector format.
+	 * format.
 	 */
 	public static Vector3DFormat getInstance() {
 
@@ -106,9 +104,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Returns the default 3D vector format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the 3D vector format specific to the given locale.
 	 */
 	public static Vector3DFormat getInstance(final Locale locale) {
@@ -118,9 +116,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Formats a {@link Vector3D} object to produce a string.
+	 * vector
+	 * the object to format.
 	 * 
-	 * @param vector
-	 *            the object to format.
 	 * @param toAppendTo
 	 *            where the text is to be appended
 	 * @param pos
@@ -137,9 +135,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Parses a string to produce a {@link Vector3D} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @return the parsed {@link Vector3D} object.
 	 * @throws MathParseException
 	 *             if the beginning of the specified string
@@ -158,9 +156,9 @@ public class Vector3DFormat extends VectorFormat<Euclidean3D> {
 
 	/**
 	 * Parses a string to produce a {@link Vector3D} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/ouput parsing parameter.
 	 * @return the parsed {@link Vector3D} object.

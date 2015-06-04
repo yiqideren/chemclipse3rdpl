@@ -33,9 +33,8 @@ public class VectorialMean implements Serializable {
 
 	/**
 	 * Constructs a VectorialMean.
-	 * 
-	 * @param dimension
-	 *            vectors dimension
+	 * dimension
+	 * vectors dimension
 	 */
 	public VectorialMean(int dimension) {
 
@@ -47,9 +46,9 @@ public class VectorialMean implements Serializable {
 
 	/**
 	 * Add a new vector to the sample.
+	 * v
+	 * vector to add
 	 * 
-	 * @param v
-	 *            vector to add
 	 * @throws DimensionMismatchException
 	 *             if the vector does not have the right dimension
 	 */
@@ -65,8 +64,7 @@ public class VectorialMean implements Serializable {
 
 	/**
 	 * Get the mean vector.
-	 * 
-	 * @return mean vector
+	 * vector
 	 */
 	public double[] getResult() {
 
@@ -79,8 +77,7 @@ public class VectorialMean implements Serializable {
 
 	/**
 	 * Get the number of vectors in the sample.
-	 * 
-	 * @return number of vectors in the sample
+	 * sample
 	 */
 	public long getN() {
 

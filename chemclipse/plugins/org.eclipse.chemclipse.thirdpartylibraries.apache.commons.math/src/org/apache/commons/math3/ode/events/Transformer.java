@@ -103,9 +103,9 @@ enum Transformer {
 
 	/**
 	 * Transform value of function g.
+	 * g
+	 * raw value of function g
 	 * 
-	 * @param g
-	 *            raw value of function g
 	 * @return transformed value of function g
 	 */
 	protected abstract double transformed(double g);

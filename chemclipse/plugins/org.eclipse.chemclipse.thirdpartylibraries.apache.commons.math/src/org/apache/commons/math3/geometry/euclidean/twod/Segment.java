@@ -33,9 +33,9 @@ public class Segment {
 
 	/**
 	 * Build a segment.
+	 * start
+	 * start point of the segment
 	 * 
-	 * @param start
-	 *            start point of the segment
 	 * @param end
 	 *            end point of the segment
 	 * @param line
@@ -50,8 +50,7 @@ public class Segment {
 
 	/**
 	 * Get the start point of the segment.
-	 * 
-	 * @return start point of the segment
+	 * segment
 	 */
 	public Vector2D getStart() {
 
@@ -60,8 +59,7 @@ public class Segment {
 
 	/**
 	 * Get the end point of the segment.
-	 * 
-	 * @return end point of the segment
+	 * segment
 	 */
 	public Vector2D getEnd() {
 
@@ -70,8 +68,7 @@ public class Segment {
 
 	/**
 	 * Get the line containing the segment.
-	 * 
-	 * @return line containing the segment
+	 * segment
 	 */
 	public Line getLine() {
 

@@ -41,14 +41,14 @@ import org.apache.commons.math3.exception.util.LocalizedFormats;
  *
  * Example (zero-start cycle):
  * 
- * <pre>
- * p1 = (8 4 7 3 6 2 5 1 9 0)    X   c1 = (8 1 2 3 4 5 6 7 9 0)
- * p2 = (0 1 2 3 4 5 6 7 8 9)    X   c2 = (0 4 7 3 6 2 5 1 8 9)
+ * 
+ * p1 = (8 4 7 3 6 2 5 1 9 0) X c1 = (8 1 2 3 4 5 6 7 9 0)
+ * p2 = (0 1 2 3 4 5 6 7 8 9) X c2 = (0 4 7 3 6 2 5 1 8 9)
  * 
  * cycle 1: 8 0 9
  * cycle 2: 4 1 7 2 5 6
  * cycle 3: 3
- * </pre>
+ * 
  *
  * This policy works only on {@link AbstractListChromosome}, and therefore it
  * is parameterized by T. Moreover, the chromosomes must have same lengths.

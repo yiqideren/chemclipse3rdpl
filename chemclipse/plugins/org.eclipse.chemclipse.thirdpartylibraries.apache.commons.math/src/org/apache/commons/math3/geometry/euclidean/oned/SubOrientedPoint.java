@@ -34,9 +34,9 @@ public class SubOrientedPoint extends AbstractSubHyperplane<Euclidean1D, Euclide
 
 	/**
 	 * Simple constructor.
+	 * hyperplane
+	 * underlying hyperplane
 	 * 
-	 * @param hyperplane
-	 *            underlying hyperplane
 	 * @param remainingRegion
 	 *            remaining region of the hyperplane
 	 */

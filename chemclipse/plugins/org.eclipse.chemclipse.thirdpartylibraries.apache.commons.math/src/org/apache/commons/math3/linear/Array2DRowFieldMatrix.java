@@ -47,9 +47,8 @@ public class Array2DRowFieldMatrix<T extends FieldElement<T>> extends AbstractFi
 
 	/**
 	 * Creates a matrix with no data
-	 * 
-	 * @param field
-	 *            field to which the elements belong
+	 * field
+	 * field to which the elements belong
 	 */
 	public Array2DRowFieldMatrix(final Field<T> field) {
 

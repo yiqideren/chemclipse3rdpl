@@ -34,9 +34,8 @@ public enum Relationship {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param stringValue
-	 *            display string for the relationship
+	 * stringValue
+	 * display string for the relationship
 	 */
 	private Relationship(String stringValue) {
 
@@ -51,8 +50,7 @@ public enum Relationship {
 
 	/**
 	 * Get the relationship obtained when multiplying all coefficients by -1.
-	 * 
-	 * @return relationship obtained when multiplying all coefficients by -1
+	 * -1
 	 */
 	public Relationship oppositeRelationship() {
 

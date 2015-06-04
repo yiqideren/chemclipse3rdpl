@@ -31,8 +31,7 @@ public class UniformRealDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Default inverse cumulative probability accuracy.
-	 * 
-	 * @deprecated as of 3.2 not used anymore, will be removed in 4.0
+	 * 4.0
 	 */
 	@Deprecated
 	public static final double DEFAULT_INVERSE_ABSOLUTE_ACCURACY = 1e-9;

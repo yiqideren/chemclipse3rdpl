@@ -88,9 +88,9 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 
 	/**
 	 * Append another model at the end of the instance.
+	 * model
+	 * model to add at the end of the instance
 	 * 
-	 * @param model
-	 *            model to add at the end of the instance
 	 * @exception MathIllegalArgumentException
 	 *                if the model to append is not
 	 *                compatible with the instance (dimension of the state vector,
@@ -144,9 +144,9 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * Handle the last accepted step.
 	 * A copy of the information provided by the last step is stored in
 	 * the instance for later use.
+	 * interpolator
+	 * interpolator for the last accepted step.
 	 * 
-	 * @param interpolator
-	 *            interpolator for the last accepted step.
 	 * @param isLast
 	 *            true if the step is the last one
 	 * @exception MaxCountExceededException
@@ -168,8 +168,7 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 
 	/**
 	 * Get the initial integration time.
-	 * 
-	 * @return initial integration time
+	 * time
 	 */
 	public double getInitialTime() {
 
@@ -178,8 +177,7 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 
 	/**
 	 * Get the final integration time.
-	 * 
-	 * @return final integration time
+	 * time
 	 */
 	public double getFinalTime() {
 
@@ -190,8 +188,7 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * Get the time of the interpolated point.
 	 * If {@link #setInterpolatedTime} has not been called, it returns
 	 * the final integration time.
-	 * 
-	 * @return interpolation point time
+	 * time
 	 */
 	public double getInterpolatedTime() {
 
@@ -209,9 +206,9 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * <p>
 	 * Note that each time this method is called, the internal arrays returned in {@link #getInterpolatedState()}, {@link #getInterpolatedDerivatives()} and {@link #getInterpolatedSecondaryState(int)} <em>will</em> be overwritten. So if their content must be preserved across several calls, user must copy them.
 	 * </p>
+	 * time
+	 * time of the interpolated point
 	 * 
-	 * @param time
-	 *            time of the interpolated point
 	 * @see #getInterpolatedState()
 	 * @see #getInterpolatedDerivatives()
 	 * @see #getInterpolatedSecondaryState(int)
@@ -295,8 +292,8 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * #getInterpolatedTime}
 	 * 
-	 * @return state vector at time {@link #getInterpolatedTime}
 	 * @exception MaxCountExceededException
 	 *                if the number of functions evaluations is exceeded
 	 * @see #setInterpolatedTime(double)
@@ -314,8 +311,8 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * #getInterpolatedTime}
 	 * 
-	 * @return derivatives of the state vector at time {@link #getInterpolatedTime}
 	 * @exception MaxCountExceededException
 	 *                if the number of functions evaluations is exceeded
 	 * @see #setInterpolatedTime(double)
@@ -334,10 +331,10 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * secondaryStateIndex
+	 * index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
+	 * ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param secondaryStateIndex
-	 *            index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
-	 *            ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * @return interpolated secondary state at the current interpolation date
 	 * @see #setInterpolatedTime(double)
 	 * @see #getInterpolatedState()
@@ -357,10 +354,10 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * secondaryStateIndex
+	 * index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
+	 * ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param secondaryStateIndex
-	 *            index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
-	 *            ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * @return interpolated secondary derivatives at the current interpolation date
 	 * @see #setInterpolatedTime(double)
 	 * @see #getInterpolatedState()
@@ -377,9 +374,9 @@ public class ContinuousOutputModel implements StepHandler, Serializable {
 
 	/**
 	 * Compare a step interval and a double.
+	 * time
+	 * point to locate
 	 * 
-	 * @param time
-	 *            point to locate
 	 * @param interval
 	 *            step interval
 	 * @return -1 if the double is before the interval, 0 if it is in

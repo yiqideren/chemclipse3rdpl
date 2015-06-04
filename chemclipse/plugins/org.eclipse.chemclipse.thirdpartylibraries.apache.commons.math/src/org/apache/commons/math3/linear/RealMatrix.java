@@ -252,19 +252,11 @@ public interface RealMatrix extends AnyMatrix {
 	 * Example:<br>
 	 * Starting with
 	 * 
-	 * <pre>
-	 * 1  2  3  4
-	 * 5  6  7  8
-	 * 9  0  1  2
-	 * </pre>
+	 * 1 2 3 4 5 6 7 8 9 0 1 2
 	 * 
 	 * and <code>subMatrix = {{3, 4} {5,6}}</code>, invoking {@code setSubMatrix(subMatrix,1,1))} will result in
 	 * 
-	 * <pre>
-	 * 1  2  3  4
-	 * 5  3  4  8
-	 * 9  5  6  2
-	 * </pre>
+	 * 1 2 3 4 5 3 4 8 9 5 6 2
 	 * 
 	 * </p>
 	 *
@@ -590,9 +582,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor, int, int, int, int)
@@ -614,9 +606,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor, int, int, int, int)
@@ -638,9 +630,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -674,9 +666,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -710,9 +702,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
@@ -734,9 +726,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
@@ -758,9 +750,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -794,9 +786,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -830,9 +822,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
@@ -854,9 +846,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor)
 	 * @see #walkInRowOrder(RealMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(RealMatrixChangingVisitor, int, int, int, int)
@@ -878,9 +870,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -914,9 +906,9 @@ public interface RealMatrix extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow

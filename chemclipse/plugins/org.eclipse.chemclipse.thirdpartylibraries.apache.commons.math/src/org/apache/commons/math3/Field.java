@@ -32,8 +32,7 @@ public interface Field<T> {
 	 * <p>
 	 * The additive identity is the element e<sub>0</sub> of the field such that for all elements a of the field, the equalities a + e<sub>0</sub> = e<sub>0</sub> + a = a hold.
 	 * </p>
-	 * 
-	 * @return additive identity of the field
+	 * field
 	 */
 	T getZero();
 
@@ -42,8 +41,7 @@ public interface Field<T> {
 	 * <p>
 	 * The multiplicative identity is the element e<sub>1</sub> of the field such that for all elements a of the field, the equalities a &times; e<sub>1</sub> = e<sub>1</sub> &times; a = a hold.
 	 * </p>
-	 * 
-	 * @return multiplicative identity of the field
+	 * field
 	 */
 	T getOne();
 

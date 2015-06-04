@@ -42,14 +42,11 @@ public class ComplexUtils {
 	 * <p>
 	 * If <code>r</code> is infinite and <code>theta</code> is finite, infinite or NaN values may be returned in parts of the result, following the rules for double arithmetic.
 	 * 
-	 * <pre>
-	 * Examples:
-	 * <code>
+	 * Examples: <code>
 	 * polar2Complex(INFINITY, &pi;/4) = INFINITY + INFINITY i
 	 * polar2Complex(INFINITY, 0) = INFINITY + NaN i
 	 * polar2Complex(INFINITY, -&pi;/4) = INFINITY - INFINITY i
 	 * polar2Complex(INFINITY, 5&pi;/4) = -INFINITY - INFINITY i </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *

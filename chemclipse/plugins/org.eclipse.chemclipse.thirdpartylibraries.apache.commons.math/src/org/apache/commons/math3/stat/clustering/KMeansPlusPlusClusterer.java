@@ -62,9 +62,8 @@ public class KMeansPlusPlusClusterer<T extends Clusterable<T>> {
 	 * <p>
 	 * The default strategy for handling empty clusters that may appear during algorithm iterations is to split the cluster with largest distance variance.
 	 * </p>
-	 * 
-	 * @param random
-	 *            random generator to use for choosing initial centers
+	 * random
+	 * random generator to use for choosing initial centers
 	 */
 	public KMeansPlusPlusClusterer(final Random random) {
 
@@ -73,9 +72,9 @@ public class KMeansPlusPlusClusterer<T extends Clusterable<T>> {
 
 	/**
 	 * Build a clusterer.
+	 * random
+	 * random generator to use for choosing initial centers
 	 * 
-	 * @param random
-	 *            random generator to use for choosing initial centers
 	 * @param emptyStrategy
 	 *            strategy to use for handling empty clusters that
 	 *            may appear during algorithm iterations

@@ -45,9 +45,9 @@ public class SynchronizedDescriptiveStatistics extends DescriptiveStatistics {
 
 	/**
 	 * Construct an instance with finite window
+	 * window
+	 * the finite window size.
 	 * 
-	 * @param window
-	 *            the finite window size.
 	 * @throws MathIllegalArgumentException
 	 *             if window size is less than 1 but
 	 *             not equal to {@link #INFINITE_WINDOW}

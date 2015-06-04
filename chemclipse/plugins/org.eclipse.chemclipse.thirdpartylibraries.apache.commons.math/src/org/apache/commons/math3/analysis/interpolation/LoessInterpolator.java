@@ -49,8 +49,7 @@ public class LoessInterpolator implements UnivariateInterpolator, Serializable {
 	public static final int DEFAULT_ROBUSTNESS_ITERS = 2;
 	/**
 	 * Default value for accuracy.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	public static final double DEFAULT_ACCURACY = 1e-12;
 	/** serializable version identifier. */
@@ -107,8 +106,7 @@ public class LoessInterpolator implements UnivariateInterpolator, Serializable {
 	 *            This many robustness iterations are done.</br>
 	 *            A sensible value is usually 0 (just the initial fit without any
 	 *            robustness iterations) to 4, the default value is {@link #DEFAULT_ROBUSTNESS_ITERS}.
-	 * 
-	 * @see #LoessInterpolator(double, int, double)
+	 *            double)
 	 */
 	public LoessInterpolator(double bandwidth, int robustnessIters) {
 

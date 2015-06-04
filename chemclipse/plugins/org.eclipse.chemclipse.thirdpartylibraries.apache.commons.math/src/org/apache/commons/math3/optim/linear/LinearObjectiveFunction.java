@@ -29,9 +29,9 @@ import org.apache.commons.math3.optim.OptimizationData;
  * <p>
  * A linear objective function has one the form:
  * 
- * <pre>
+ * 
  * c<sub>1</sub>x<sub>1</sub> + ... c<sub>n</sub>x<sub>n</sub> + d
- * </pre>
+ * 
  * 
  * The c<sub>i</sub> and d are the coefficients of the equation, the x<sub>i</sub> are the coordinates of the current point.
  * </p>
@@ -135,9 +135,9 @@ public class LinearObjectiveFunction implements MultivariateFunction, Optimizati
 
 	/**
 	 * Serialize the instance.
+	 * oos
+	 * stream where object should be written
 	 * 
-	 * @param oos
-	 *            stream where object should be written
 	 * @throws IOException
 	 *             if object cannot be written to stream
 	 */
@@ -149,9 +149,9 @@ public class LinearObjectiveFunction implements MultivariateFunction, Optimizati
 
 	/**
 	 * Deserialize the instance.
+	 * ois
+	 * stream from which the object should be read
 	 * 
-	 * @param ois
-	 *            stream from which the object should be read
 	 * @throws ClassNotFoundException
 	 *             if a class in the stream cannot be found
 	 * @throws IOException

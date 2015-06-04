@@ -55,9 +55,9 @@ public class LevyDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Creates a LevyDistribution.
+	 * rng
+	 * random generator to be used for sampling
 	 * 
-	 * @param rng
-	 *            random generator to be used for sampling
 	 * @param mu
 	 *            location
 	 * @param c
@@ -77,9 +77,7 @@ public class LevyDistribution extends AbstractRealDistribution {
 	 * From Wikipedia: The probability density function of the L&eacute;vy distribution over the domain is
 	 * </p>
 	 * 
-	 * <pre>
 	 * f(x; &mu;, c) = &radic;(c / 2&pi;) * e<sup>-c / 2 (x - &mu;)</sup> / (x - &mu;)<sup>3/2</sup>
-	 * </pre>
 	 * <p>
 	 * For this distribution, {@code X}, this method returns {@code P(X < x)}. If {@code x} is less than location parameter &mu;, {@code Double.NaN} is returned, as in these cases the distribution is not defined.
 	 * </p>
@@ -116,9 +114,8 @@ public class LevyDistribution extends AbstractRealDistribution {
 	 * From Wikipedia: the cumulative distribution function is
 	 * </p>
 	 * 
-	 * <pre>
 	 * f(x; u, c) = erfc (&radic; (c / 2 (x - u )))
-	 * </pre>
+	 * 
 	 */
 	public double cumulativeProbability(final double x) {
 
@@ -141,8 +138,7 @@ public class LevyDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Get the scale parameter of the distribution.
-	 * 
-	 * @return scale parameter of the distribution
+	 * distribution
 	 */
 	public double getScale() {
 
@@ -151,8 +147,7 @@ public class LevyDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Get the location parameter of the distribution.
-	 * 
-	 * @return location parameter of the distribution
+	 * distribution
 	 */
 	public double getLocation() {
 

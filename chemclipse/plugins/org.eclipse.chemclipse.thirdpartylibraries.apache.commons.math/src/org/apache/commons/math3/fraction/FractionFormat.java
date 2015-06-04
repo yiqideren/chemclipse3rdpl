@@ -46,9 +46,8 @@ public class FractionFormat extends AbstractFormat {
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * both the numerator and denominator.
-	 * 
-	 * @param format
-	 *            the custom format for both the numerator and denominator.
+	 * format
+	 * the custom format for both the numerator and denominator.
 	 */
 	public FractionFormat(final NumberFormat format) {
 
@@ -58,9 +57,9 @@ public class FractionFormat extends AbstractFormat {
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * the numerator and a custom number format for the denominator.
+	 * numeratorFormat
+	 * the custom format for the numerator.
 	 * 
-	 * @param numeratorFormat
-	 *            the custom format for the numerator.
 	 * @param denominatorFormat
 	 *            the custom format for the denominator.
 	 */
@@ -72,8 +71,7 @@ public class FractionFormat extends AbstractFormat {
 	/**
 	 * Get the set of locales for which complex formats are available. This
 	 * is the same set as the {@link NumberFormat} set.
-	 * 
-	 * @return available complex format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -95,8 +93,7 @@ public class FractionFormat extends AbstractFormat {
 
 	/**
 	 * Returns the default complex format for the current locale.
-	 * 
-	 * @return the default complex format.
+	 * format.
 	 */
 	public static FractionFormat getImproperInstance() {
 
@@ -105,9 +102,9 @@ public class FractionFormat extends AbstractFormat {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the complex format specific to the given locale.
 	 */
 	public static FractionFormat getImproperInstance(final Locale locale) {
@@ -117,8 +114,7 @@ public class FractionFormat extends AbstractFormat {
 
 	/**
 	 * Returns the default complex format for the current locale.
-	 * 
-	 * @return the default complex format.
+	 * format.
 	 */
 	public static FractionFormat getProperInstance() {
 
@@ -127,9 +123,9 @@ public class FractionFormat extends AbstractFormat {
 
 	/**
 	 * Returns the default complex format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the complex format specific to the given locale.
 	 */
 	public static FractionFormat getProperInstance(final Locale locale) {
@@ -140,8 +136,7 @@ public class FractionFormat extends AbstractFormat {
 	/**
 	 * Create a default number format. The default number format is based on {@link NumberFormat#getNumberInstance(java.util.Locale)} with the only
 	 * customizing is the maximum number of fraction digits, which is set to 0.
-	 * 
-	 * @return the default number format.
+	 * format.
 	 */
 	protected static NumberFormat getDefaultNumberFormat() {
 
@@ -205,9 +200,9 @@ public class FractionFormat extends AbstractFormat {
 
 	/**
 	 * Parses a string to produce a {@link Fraction} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @return the parsed {@link Fraction} object.
 	 * @exception MathParseException
 	 *                if the beginning of the specified string
@@ -227,9 +222,9 @@ public class FractionFormat extends AbstractFormat {
 	/**
 	 * Parses a string to produce a {@link Fraction} object. This method
 	 * expects the string to be formatted as an improper fraction.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter.
 	 * @return the parsed {@link Fraction} object.

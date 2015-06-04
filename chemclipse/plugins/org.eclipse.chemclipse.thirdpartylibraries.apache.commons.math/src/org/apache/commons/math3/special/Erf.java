@@ -130,9 +130,9 @@ public class Erf {
 	 * <p>
 	 * This implementation is described in the paper: <a href="http://people.maths.ox.ac.uk/gilesm/files/gems_erfinv.pdf">Approximating the erfinv function</a> by Mike Giles, Oxford-Man Institute of Quantitative Finance, which was published in GPU Computing Gems, volume 2, 2010. The source code is available <a href="http://gpucomputing.net/?q=node/1828">here</a>.
 	 * </p>
+	 * x
+	 * the value
 	 * 
-	 * @param x
-	 *            the value
 	 * @return t such that x = erf(t)
 	 * @since 3.2
 	 */
@@ -225,9 +225,9 @@ public class Erf {
 
 	/**
 	 * Returns the inverse erfc.
+	 * x
+	 * the value
 	 * 
-	 * @param x
-	 *            the value
 	 * @return t such that x = erfc(t)
 	 * @since 3.2
 	 */

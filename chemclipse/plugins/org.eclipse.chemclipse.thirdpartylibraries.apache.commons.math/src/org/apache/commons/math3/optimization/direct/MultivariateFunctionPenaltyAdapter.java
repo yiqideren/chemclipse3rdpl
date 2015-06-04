@@ -61,9 +61,7 @@ public class MultivariateFunctionPenaltyAdapter implements MultivariateFunction 
 	 * <p>
 	 * When the optimizer provided points are out of range, the value of the penalty function will be used instead of the value of the underlying function. In order for this penalty to be effective in rejecting this point during the optimization process, the penalty function value should be defined with care. This value is computed as:
 	 * 
-	 * <pre>
-	 *   penalty(point) = offset + &sum;<sub>i</sub>[scale[i] * &radic;|point[i]-boundary[i]|]
-	 * </pre>
+	 * penalty(point) = offset + &sum;<sub>i</sub>[scale[i] * &radic;|point[i]-boundary[i]|]
 	 * 
 	 * where indices i correspond to all the components that violates their boundaries.
 	 * </p>
@@ -73,9 +71,9 @@ public class MultivariateFunctionPenaltyAdapter implements MultivariateFunction 
 	 * <p>
 	 * These choices for the penalty function have two properties. First, all out of range points will return a function value that is worse than the value returned by any in range point. Second, the penalty is worse for large boundaries violation than for small violations, so the optimizer has an hint about the direction in which it should search for acceptable points.
 	 * </p>
+	 * bounded
+	 * bounded function
 	 * 
-	 * @param bounded
-	 *            bounded function
 	 * @param lower
 	 *            lower bounds for each element of the input parameters array
 	 *            (some elements may be set to {@code Double.NEGATIVE_INFINITY} for
@@ -123,9 +121,9 @@ public class MultivariateFunctionPenaltyAdapter implements MultivariateFunction 
 	 * <p>
 	 * This method simply returns the value of the underlying function if the unbounded point already fulfills the bounds, and compute a replacement value using the offset and scale if bounds are violated, without calling the function at all.
 	 * </p>
+	 * point
+	 * unbounded point
 	 * 
-	 * @param point
-	 *            unbounded point
 	 * @return either underlying function value or penalty function value
 	 */
 	public double value(double[] point) {

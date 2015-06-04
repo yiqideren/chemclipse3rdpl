@@ -399,9 +399,7 @@ public class RegressionResults implements Serializable {
 	 * <p>
 	 * Returns the adjusted R-squared statistic, defined by the formula
 	 * 
-	 * <pre>
 	 * R<sup>2</sup><sub>adj</sub> = 1 - [SSR (n - 1)] / [SSTO (n - p)]
-	 * </pre>
 	 * 
 	 * where SSR is the sum of squared residuals}, SSTO is the total sum of squares}, n is the number of observations and p is the number of parameters estimated (including the intercept).
 	 * </p>
@@ -409,9 +407,7 @@ public class RegressionResults implements Serializable {
 	 * <p>
 	 * If the regression is estimated without an intercept term, what is returned is
 	 * 
-	 * <pre>
 	 * <code> 1 - (1 - {@link #getRSquared()} ) * (n / (n - p)) </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -425,8 +421,7 @@ public class RegressionResults implements Serializable {
 	/**
 	 * Returns true if the regression model has been computed including an intercept.
 	 * In this case, the coefficient of the intercept is the first element of the {@link #getParameterEstimates() parameter estimates}.
-	 * 
-	 * @return true if the model has an intercept term
+	 * term
 	 */
 	public boolean hasIntercept() {
 

@@ -21,11 +21,9 @@ import java.util.ArrayList;
  * <p>
  * To directly read or edit a bytecode sequence, call {@link #byteAt(int)}, {@link #s16bitAt(int)}, {@link #writeByte(int, int)}, {@link #write16bit(int, int)}, and other methods. For example, if <code>method</code> refers to a <code>CtMethod</code> object, the following code substitutes the <code>NOP</code> instruction for the first instruction of the method:
  *
- * <pre>
- * CodeAttribute ca = method.getMethodInfo().getCodeAttribute();
- * CodeIterator ci = ca.iterator();
- * ci.writeByte(Opcode.NOP, 0);
- * </pre>
+ * 
+ * CodeAttribute ca = method.getMethodInfo().getCodeAttribute(); CodeIterator ci = ca.iterator(); ci.writeByte(Opcode.NOP, 0);
+ * 
  *
  * <p>
  * To visit every instruction, call {@link #next()} on a <code>CodeIterator</code>. It returns the index of the first byte of the next instruction.

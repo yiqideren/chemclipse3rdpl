@@ -29,16 +29,9 @@ import javassist.CannotCompileException;
  * <p>
  * The following code is an example:
  *
- * <pre>
- * CtMethod cm = ...;
- * cm.instrument(new ExprEditor() {
- *     public void edit(MethodCall m) throws CannotCompileException {
- *         if (m.getClassName().equals("Point")) {
- *             System.out.println(m.getMethodName() + " line: "
- *                                + m.getLineNumber());
- *     }
- * });
- * </pre>
+ * 
+ * CtMethod cm = ...; cm.instrument(new ExprEditor() { public void edit(MethodCall m) throws CannotCompileException { if (m.getClassName().equals("Point")) { System.out.println(m.getMethodName() + " line: " + m.getLineNumber()); } });
+ * 
  *
  * <p>
  * This code inspects all method calls appearing in the method represented by <code>cm</code> and it prints the names and the line numbers of the methods declared in class <code>Point</code>. This code does not modify the body of the method represented by <code>cm</code>. If the method body must be modified, call <code>replace()</code> in <code>MethodCall</code>.

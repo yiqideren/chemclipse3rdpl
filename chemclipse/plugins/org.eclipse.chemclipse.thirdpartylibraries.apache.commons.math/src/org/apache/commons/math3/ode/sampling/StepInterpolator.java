@@ -38,15 +38,13 @@ public interface StepInterpolator extends Externalizable {
 
 	/**
 	 * Get the previous grid point time.
-	 * 
-	 * @return previous grid point time
+	 * time
 	 */
 	double getPreviousTime();
 
 	/**
 	 * Get the current grid point time.
-	 * 
-	 * @return current grid point time
+	 * time
 	 */
 	double getCurrentTime();
 
@@ -54,8 +52,7 @@ public interface StepInterpolator extends Externalizable {
 	 * Get the time of the interpolated point.
 	 * If {@link #setInterpolatedTime} has not been called, it returns
 	 * the current grid point time.
-	 * 
-	 * @return interpolation point time
+	 * time
 	 */
 	double getInterpolatedTime();
 
@@ -67,9 +64,9 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * Setting the time changes the instance internal state. This includes the internal arrays returned in {@link #getInterpolatedState()}, {@link #getInterpolatedDerivatives()}, {@link #getInterpolatedSecondaryState(int)} and {@link #getInterpolatedSecondaryDerivatives(int)}. So if their content must be preserved across several calls, user must copy them.
 	 * </p>
+	 * time
+	 * time of the interpolated point
 	 * 
-	 * @param time
-	 *            time of the interpolated point
 	 * @see #getInterpolatedState()
 	 * @see #getInterpolatedDerivatives()
 	 * @see #getInterpolatedSecondaryState(int)
@@ -82,8 +79,8 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * #getInterpolatedTime}
 	 * 
-	 * @return state vector at time {@link #getInterpolatedTime}
 	 * @see #getInterpolatedDerivatives()
 	 * @see #getInterpolatedSecondaryState(int)
 	 * @see #getInterpolatedSecondaryDerivatives(int)
@@ -98,8 +95,8 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * #getInterpolatedTime}
 	 * 
-	 * @return derivatives of the state vector at time {@link #getInterpolatedTime}
 	 * @see #getInterpolatedState()
 	 * @see #getInterpolatedSecondaryState(int)
 	 * @see #getInterpolatedSecondaryDerivatives(int)
@@ -115,10 +112,10 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls to the associated {@link #setInterpolatedTime(double)} method.
 	 * </p>
+	 * index
+	 * index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
+	 * ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param index
-	 *            index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
-	 *            ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * @return interpolated secondary state at the current interpolation date
 	 * @see #getInterpolatedState()
 	 * @see #getInterpolatedDerivatives()
@@ -135,10 +132,10 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * The returned vector is a reference to a reused array, so it should not be modified and it should be copied if it needs to be preserved across several calls.
 	 * </p>
+	 * index
+	 * index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
+	 * ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param index
-	 *            index of the secondary set, as returned by {@link org.apache.commons.math3.ode.ExpandableStatefulODE#addSecondaryEquations(org.apache.commons.math3.ode.SecondaryEquations)
-	 *            ExpandableStatefulODE.addSecondaryEquations(SecondaryEquations)}
 	 * @return interpolated secondary derivatives at the current interpolation date
 	 * @see #getInterpolatedState()
 	 * @see #getInterpolatedDerivatives()
@@ -155,9 +152,8 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * This method provides the integration direction as specified by the integrator itself, it avoid some nasty problems in degenerated cases like null steps due to cancellation at step initialization, step control or discrete events triggering.
 	 * </p>
-	 * 
-	 * @return true if the integration variable (time) increases during
-	 *         integration
+	 * during
+	 * integration
 	 */
 	boolean isForward();
 
@@ -166,8 +162,8 @@ public interface StepInterpolator extends Externalizable {
 	 * <p>
 	 * The copied instance is guaranteed to be independent from the original one. Both can be used with different settings for interpolated time without any side effect.
 	 * </p>
+	 * independently.
 	 * 
-	 * @return a deep copy of the instance, which can be used independently.
 	 * @see #setInterpolatedTime(double)
 	 * @exception MaxCountExceededException
 	 *                if the number of functions evaluations is exceeded

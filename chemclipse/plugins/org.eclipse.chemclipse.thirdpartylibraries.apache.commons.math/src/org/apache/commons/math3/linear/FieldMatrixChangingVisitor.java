@@ -30,9 +30,9 @@ public interface FieldMatrixChangingVisitor<T extends FieldElement<?>> {
 	 * <p>
 	 * This method is called once before any entry of the matrix is visited.
 	 * </p>
+	 * rows
+	 * number of rows of the matrix
 	 * 
-	 * @param rows
-	 *            number of rows of the matrix
 	 * @param columns
 	 *            number of columns of the matrix
 	 * @param startRow
@@ -48,9 +48,9 @@ public interface FieldMatrixChangingVisitor<T extends FieldElement<?>> {
 
 	/**
 	 * Visit one matrix entry.
+	 * row
+	 * row index of the entry
 	 * 
-	 * @param row
-	 *            row index of the entry
 	 * @param column
 	 *            column index of the entry
 	 * @param value
@@ -64,8 +64,7 @@ public interface FieldMatrixChangingVisitor<T extends FieldElement<?>> {
 	 * <p>
 	 * This method is called once after all entries of the matrix have been visited.
 	 * </p>
-	 * 
-	 * @return the value that the <code>walkInXxxOrder</code> must return
+	 * return
 	 */
 	T end();
 }

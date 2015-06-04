@@ -39,9 +39,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build an intervals set representing the whole real line.
+	 * tolerance
+	 * tolerance below which points are considered identical.
 	 * 
-	 * @param tolerance
-	 *            tolerance below which points are considered identical.
 	 * @since 3.3
 	 */
 	public IntervalsSet(final double tolerance) {
@@ -51,10 +51,10 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build an intervals set corresponding to a single interval.
+	 * lower
+	 * lower bound of the interval, must be lesser or equal
+	 * to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * 
-	 * @param lower
-	 *            lower bound of the interval, must be lesser or equal
-	 *            to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * @param upper
 	 *            upper bound of the interval, must be greater or equal
 	 *            to {@code lower} (may be {@code Double.POSITIVE_INFINITY})
@@ -72,9 +72,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the intervals set
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the intervals set
 	 * @param tolerance
 	 *            tolerance below which points are considered identical.
 	 * @since 3.3
@@ -97,9 +97,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements
 	 * @param tolerance
 	 *            tolerance below which points are considered identical.
 	 * @since 3.3
@@ -111,8 +111,7 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build an intervals set representing the whole real line.
-	 * 
-	 * @deprecated as of 3.1 replaced with {@link #IntervalsSet(double)}
+	 * #IntervalsSet(double)}
 	 */
 	@Deprecated
 	public IntervalsSet() {
@@ -122,10 +121,10 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build an intervals set corresponding to a single interval.
+	 * lower
+	 * lower bound of the interval, must be lesser or equal
+	 * to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * 
-	 * @param lower
-	 *            lower bound of the interval, must be lesser or equal
-	 *            to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * @param upper
 	 *            upper bound of the interval, must be greater or equal
 	 *            to {@code lower} (may be {@code Double.POSITIVE_INFINITY})
@@ -142,9 +141,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the intervals set
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the intervals set
 	 * @deprecated as of 3.3, replaced with {@link #IntervalsSet(BSPTree, double)}
 	 */
 	@Deprecated
@@ -166,9 +165,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements
 	 * @deprecated as of 3.3, replaced with {@link #IntervalsSet(Collection, double)}
 	 */
 	@Deprecated
@@ -179,10 +178,10 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build an inside/outside tree representing a single interval.
+	 * lower
+	 * lower bound of the interval, must be lesser or equal
+	 * to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * 
-	 * @param lower
-	 *            lower bound of the interval, must be lesser or equal
-	 *            to {@code upper} (may be {@code Double.NEGATIVE_INFINITY})
 	 * @param upper
 	 *            upper bound of the interval, must be greater or equal
 	 *            to {@code lower} (may be {@code Double.POSITIVE_INFINITY})
@@ -245,11 +244,10 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the lowest value belonging to the instance.
-	 * 
-	 * @return lowest value belonging to the instance
-	 *         ({@code Double.NEGATIVE_INFINITY} if the instance doesn't
-	 *         have any low bound, {@code Double.POSITIVE_INFINITY} if the
-	 *         instance is empty)
+	 * instance
+	 * ({@code Double.NEGATIVE_INFINITY} if the instance doesn't
+	 * have any low bound, {@code Double.POSITIVE_INFINITY} if the
+	 * instance is empty)
 	 */
 	public double getInf() {
 
@@ -265,11 +263,10 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the highest value belonging to the instance.
-	 * 
-	 * @return highest value belonging to the instance
-	 *         ({@code Double.POSITIVE_INFINITY} if the instance doesn't
-	 *         have any high bound, {@code Double.NEGATIVE_INFINITY} if the
-	 *         instance is empty)
+	 * instance
+	 * ({@code Double.POSITIVE_INFINITY} if the instance doesn't
+	 * have any high bound, {@code Double.NEGATIVE_INFINITY} if the
+	 * instance is empty)
 	 */
 	public double getSup() {
 
@@ -284,9 +281,7 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	@Override
 	public BoundaryProjection<Euclidean1D> projectToBoundary(final Point<Euclidean1D> point) {
@@ -324,9 +319,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Build a finite point.
+	 * x
+	 * abscissa of the point
 	 * 
-	 * @param x
-	 *            abscissa of the point
 	 * @return a new point for finite abscissa, null otherwise
 	 */
 	private Vector1D finiteOrNullPoint(final double x) {
@@ -340,8 +335,7 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * This method builds this intervals set as an ordered list of {@link Interval Interval} elements. If the intervals set has no lower limit, the first interval will have its low bound equal to {@code Double.NEGATIVE_INFINITY}. If the intervals set has no upper limit, the last interval will have its upper bound equal to {@code Double.POSITIVE_INFINITY}. An empty tree will build an empty list while a tree representing the whole real line will build a one element list with both bounds being
 	 * infinite.
 	 * </p>
-	 * 
-	 * @return a new ordered list containing {@link Interval Interval} elements
+	 * elements
 	 */
 	public List<Interval> asList() {
 
@@ -354,9 +348,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the first leaf node of a tree.
+	 * root
+	 * tree root
 	 * 
-	 * @param root
-	 *            tree root
 	 * @return first leaf node
 	 */
 	private BSPTree<Euclidean1D> getFirstLeaf(final BSPTree<Euclidean1D> root) {
@@ -374,9 +368,8 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the node corresponding to the first interval boundary.
-	 * 
-	 * @return smallest internal node,
-	 *         or null if there are no internal nodes (i.e. the set is either empty or covers the real line)
+	 * node,
+	 * or null if there are no internal nodes (i.e. the set is either empty or covers the real line)
 	 */
 	private BSPTree<Euclidean1D> getFirstIntervalBoundary() {
 
@@ -396,9 +389,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Check if an internal node corresponds to the start abscissa of an interval.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the node corresponds to the start abscissa of an interval
 	 */
 	private boolean isIntervalStart(final BSPTree<Euclidean1D> node) {
@@ -418,9 +411,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Check if an internal node corresponds to the end abscissa of an interval.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the node corresponds to the end abscissa of an interval
 	 */
 	private boolean isIntervalEnd(final BSPTree<Euclidean1D> node) {
@@ -440,9 +433,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the next internal node.
+	 * node
+	 * current internal node
 	 * 
-	 * @param node
-	 *            current internal node
 	 * @return next internal node in ascending order, or null
 	 *         if this is the last internal node
 	 */
@@ -461,9 +454,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the previous internal node.
+	 * node
+	 * current internal node
 	 * 
-	 * @param node
-	 *            current internal node
 	 * @return previous internal node in ascending order, or null
 	 *         if this is the first internal node
 	 */
@@ -482,9 +475,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Find the leaf node just before an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return leaf node just before the internal node
 	 */
 	private BSPTree<Euclidean1D> leafBefore(BSPTree<Euclidean1D> node) {
@@ -498,9 +491,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Find the leaf node just after an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return leaf node just after the internal node
 	 */
 	private BSPTree<Euclidean1D> leafAfter(BSPTree<Euclidean1D> node) {
@@ -514,9 +507,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Check if a node is the child before its parent in ascending order.
+	 * node
+	 * child node considered
 	 * 
-	 * @param node
-	 *            child node considered
 	 * @return true is the node has a parent end is before it in ascending order
 	 */
 	private boolean isBeforeParent(final BSPTree<Euclidean1D> node) {
@@ -531,9 +524,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Check if a node is the child after its parent in ascending order.
+	 * node
+	 * child node considered
 	 * 
-	 * @param node
-	 *            child node considered
 	 * @return true is the node has a parent end is after it in ascending order
 	 */
 	private boolean isAfterParent(final BSPTree<Euclidean1D> node) {
@@ -548,9 +541,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Find the child node just before an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return child node just before the internal node
 	 */
 	private BSPTree<Euclidean1D> childBefore(BSPTree<Euclidean1D> node) {
@@ -566,9 +559,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Find the child node just after an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return child node just after the internal node
 	 */
 	private BSPTree<Euclidean1D> childAfter(BSPTree<Euclidean1D> node) {
@@ -584,9 +577,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Check if an internal node has a direct oriented point.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the oriented point is direct
 	 */
 	private boolean isDirect(final BSPTree<Euclidean1D> node) {
@@ -596,9 +589,9 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 
 	/**
 	 * Get the abscissa of an internal node.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return abscissa
 	 */
 	private double getAngle(final BSPTree<Euclidean1D> node) {
@@ -614,8 +607,7 @@ public class IntervalsSet extends AbstractRegion<Euclidean1D, Euclidean1D> imple
 	 * <p>
 	 * The iterator does <em>not</em> support the optional {@code remove} operation.
 	 * </p>
-	 * 
-	 * @since 3.3
+	 * 3.3
 	 */
 	public Iterator<double[]> iterator() {
 

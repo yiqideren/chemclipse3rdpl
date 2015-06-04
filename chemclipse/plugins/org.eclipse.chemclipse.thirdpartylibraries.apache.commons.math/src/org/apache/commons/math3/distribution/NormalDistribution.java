@@ -33,8 +33,7 @@ public class NormalDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Default inverse cumulative probability accuracy.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	public static final double DEFAULT_INVERSE_ABSOLUTE_ACCURACY = 1e-9;
 	/** Serializable version identifier. */
@@ -195,9 +194,7 @@ public class NormalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	@Override
 	public double inverseCumulativeProbability(final double p) throws OutOfRangeException {

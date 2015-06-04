@@ -44,8 +44,7 @@ public abstract class AbstractScalarDifferentiableOptimizer extends BaseAbstract
 	 * Simple constructor with default settings.
 	 * The convergence check is set to a {@link org.apache.commons.math3.optimization.SimpleValueChecker
 	 * SimpleValueChecker}.
-	 * 
-	 * @deprecated See {@link org.apache.commons.math3.optimization.SimpleValueChecker#SimpleValueChecker()}
+	 * org.apache.commons.math3.optimization.SimpleValueChecker#SimpleValueChecker()}
 	 */
 	@Deprecated
 	protected AbstractScalarDifferentiableOptimizer() {

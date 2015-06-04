@@ -57,9 +57,8 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Insert an element in the tree.
-	 * 
-	 * @param element
-	 *            element to insert (silently ignored if null)
+	 * element
+	 * element to insert (silently ignored if null)
 	 */
 	public void insert(final T element) {
 
@@ -77,9 +76,9 @@ public class AVLTree<T extends Comparable<T>> {
 	 * <p>
 	 * The element is deleted only if there is a node {@code n} containing exactly the element instance specified, i.e. for which {@code n.getElement() == element}. This is purposely <em>different</em> from the specification of the {@code java.util.Set} {@code remove} method (in fact, this is the reason why a specific class has been developed).
 	 * </p>
+	 * element
+	 * element to delete (silently ignored if null)
 	 * 
-	 * @param element
-	 *            element to delete (silently ignored if null)
 	 * @return true if the element was deleted from the tree
 	 */
 	public boolean delete(final T element) {
@@ -103,8 +102,7 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Check if the tree is empty.
-	 * 
-	 * @return true if the tree is empty
+	 * empty
 	 */
 	public boolean isEmpty() {
 
@@ -113,8 +111,7 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Get the number of elements of the tree.
-	 * 
-	 * @return number of elements contained in the tree
+	 * tree
 	 */
 	public int size() {
 
@@ -123,9 +120,9 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Get the node whose element is the smallest one in the tree.
+	 * tree
+	 * or null if the tree is empty
 	 * 
-	 * @return the tree node containing the smallest element in the tree
-	 *         or null if the tree is empty
 	 * @see #getLargest
 	 * @see #getNotSmaller
 	 * @see #getNotLarger
@@ -139,9 +136,9 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Get the node whose element is the largest one in the tree.
+	 * tree
+	 * or null if the tree is empty
 	 * 
-	 * @return the tree node containing the largest element in the tree
-	 *         or null if the tree is empty
 	 * @see #getSmallest
 	 * @see #getNotSmaller
 	 * @see #getNotLarger
@@ -155,9 +152,9 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Get the node whose element is not smaller than the reference object.
+	 * reference
+	 * reference object (may not be in the tree)
 	 * 
-	 * @param reference
-	 *            reference object (may not be in the tree)
 	 * @return the tree node containing the smallest element not smaller
 	 *         than the reference object or null if either the tree is empty or
 	 *         all its elements are smaller than the reference object
@@ -189,9 +186,9 @@ public class AVLTree<T extends Comparable<T>> {
 
 	/**
 	 * Get the node whose element is not larger than the reference object.
+	 * reference
+	 * reference object (may not be in the tree)
 	 * 
-	 * @param reference
-	 *            reference object (may not be in the tree)
 	 * @return the tree node containing the largest element not larger
 	 *         than the reference object (in which case the node is guaranteed
 	 *         not to be empty) or null if either the tree is empty or all its
@@ -240,8 +237,7 @@ public class AVLTree<T extends Comparable<T>> {
 	 * <p>
 	 * The nodes are not independant from each other but must obey specific balancing constraints and the tree structure is rearranged as elements are inserted or deleted from the tree. The creation, modification and tree-related navigation methods have therefore restricted access. Only the order-related navigation, reading and delete methods are public.
 	 * </p>
-	 * 
-	 * @see AVLTree
+	 * AVLTree
 	 */
 	public class Node {
 

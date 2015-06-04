@@ -39,15 +39,9 @@ import org.apache.commons.math3.util.Precision;
  * <p>
  * Example:
  * 
- * <pre>
- *   W |  Z |  x1 |  x2 |  x- | s1 |  s2 |  a1 |  RHS
- * ---------------------------------------------------
- *  -1    0    0     0     0     0     0     1     0   &lt;= phase 1 objective
- *   0    1   -15   -10    0     0     0     0     0   &lt;= phase 2 objective
- *   0    0    1     0     0     1     0     0     2   &lt;= constraint 1
- *   0    0    0     1     0     0     1     0     3   &lt;= constraint 2
- *   0    0    1     1     0     0     0     1     4   &lt;= constraint 3
- * </pre>
+ * 
+ * W | Z | x1 | x2 | x- | s1 | s2 | a1 | RHS --------------------------------------------------- -1 0 0 0 0 0 0 1 0 &lt;= phase 1 objective 0 1 -15 -10 0 0 0 0 0 &lt;= phase 2 objective 0 0 1 0 0 1 0 0 2 &lt;= constraint 1 0 0 0 1 0 0 1 0 3 &lt;= constraint 2 0 0 1 1 0 0 0 1 4 &lt;= constraint 3
+ * 
  * 
  * W: Phase 1 objective function</br> Z: Phase 2 objective function</br> x1 &amp; x2: Decision variables</br> x-: Extra decision variable to allow for negative values</br> s1 &amp; s2: Slack/Surplus variables</br> a1: Artificial variable</br> RHS: Right hand side</br>
  * </p>
@@ -106,9 +100,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Build a tableau for a linear problem.
+	 * f
+	 * linear objective function
 	 * 
-	 * @param f
-	 *            linear objective function
 	 * @param constraints
 	 *            linear constraints
 	 * @param goalType
@@ -163,9 +157,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Create the tableau by itself.
+	 * maximize
+	 * if true, goal is to maximize the objective function
 	 * 
-	 * @param maximize
-	 *            if true, goal is to maximize the objective function
 	 * @return created tableau
 	 */
 	protected Array2DRowRealMatrix createTableau(final boolean maximize) {
@@ -218,9 +212,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get new versions of the constraints which have positive right hand sides.
+	 * originalConstraints
+	 * original (not normalized) constraints
 	 * 
-	 * @param originalConstraints
-	 *            original (not normalized) constraints
 	 * @return new versions of the constraints
 	 */
 	public List<LinearConstraint> normalizeConstraints(Collection<LinearConstraint> originalConstraints) {
@@ -234,9 +228,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get a new equation equivalent to this one with a positive right hand side.
+	 * constraint
+	 * reference constraint
 	 * 
-	 * @param constraint
-	 *            reference constraint
 	 * @return new equation
 	 */
 	private LinearConstraint normalize(final LinearConstraint constraint) {
@@ -249,8 +243,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the number of objective functions in this tableau.
-	 * 
-	 * @return 2 for Phase 1. 1 for Phase 2.
+	 * 2.
 	 */
 	protected final int getNumObjectiveFunctions() {
 
@@ -259,9 +252,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get a count of constraints corresponding to a specified relationship.
+	 * relationship
+	 * relationship to count
 	 * 
-	 * @param relationship
-	 *            relationship to count
 	 * @return number of constraint with the specified relationship
 	 */
 	private int getConstraintTypeCounts(final Relationship relationship) {
@@ -277,9 +270,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the -1 times the sum of all coefficients in the given array.
+	 * coefficients
+	 * coefficients to sum
 	 * 
-	 * @param coefficients
-	 *            coefficients to sum
 	 * @return the -1 times the sum of all coefficients in the given array.
 	 */
 	protected static double getInvertedCoefficientSum(final RealVector coefficients) {
@@ -293,9 +286,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Checks whether the given column is basic.
+	 * col
+	 * index of the column to check
 	 * 
-	 * @param col
-	 *            index of the column to check
 	 * @return the row that the variable is basic in. null if the column is not basic
 	 */
 	protected Integer getBasicRow(final int col) {
@@ -306,9 +299,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Returns the variable that is basic in this row.
+	 * row
+	 * the index of the row to check
 	 * 
-	 * @param row
-	 *            the index of the row to check
 	 * @return the variable that is basic for this row.
 	 */
 	protected int getBasicVariable(final int row) {
@@ -318,9 +311,8 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Initializes the basic variable / row mapping.
-	 * 
-	 * @param startColumn
-	 *            the column to start
+	 * startColumn
+	 * the column to start
 	 */
 	private void initializeBasicVariables(final int startColumn) {
 
@@ -338,9 +330,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Returns the row in which the given column is basic.
+	 * col
+	 * index of the column
 	 * 
-	 * @param col
-	 *            index of the column
 	 * @return the row that the variable is basic in, or {@code null} if the variable is not basic.
 	 */
 	private Integer findBasicRow(final int col) {
@@ -415,8 +407,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Returns whether the problem is at an optimal state.
-	 * 
-	 * @return whether the model has been solved
+	 * solved
 	 */
 	boolean isOptimal() {
 
@@ -433,8 +424,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the current solution.
-	 * 
-	 * @return current solution
+	 * solution
 	 */
 	protected PointValuePair getSolution() {
 
@@ -470,9 +460,9 @@ class SimplexTableau implements Serializable {
 	/**
 	 * Perform the row operations of the simplex algorithm with the selected
 	 * pivot column and row.
+	 * pivotCol
+	 * the pivot column
 	 * 
-	 * @param pivotCol
-	 *            the pivot column
 	 * @param pivotRow
 	 *            the pivot row
 	 */
@@ -502,9 +492,8 @@ class SimplexTableau implements Serializable {
 	 * <p>
 	 * After application of this operation, the following will hold:
 	 * 
-	 * <pre>
 	 * dividendRow = dividendRow / divisor
-	 * </pre>
+	 * 
 	 *
 	 * @param dividendRowIndex
 	 *            index of the row
@@ -524,9 +513,8 @@ class SimplexTableau implements Serializable {
 	 * <p>
 	 * After application of this operation, the following will hold:
 	 * 
-	 * <pre>
 	 * minuendRow = minuendRow - multiple * subtrahendRow
-	 * </pre>
+	 * 
 	 *
 	 * @param minuendRowIndex
 	 *            row index
@@ -546,8 +534,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the width of the tableau.
-	 * 
-	 * @return width of the tableau
+	 * tableau
 	 */
 	protected final int getWidth() {
 
@@ -556,8 +543,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the height of the tableau.
-	 * 
-	 * @return height of the tableau
+	 * tableau
 	 */
 	protected final int getHeight() {
 
@@ -566,9 +552,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get an entry of the tableau.
+	 * row
+	 * row index
 	 * 
-	 * @param row
-	 *            row index
 	 * @param column
 	 *            column index
 	 * @return entry at (row, column)
@@ -580,9 +566,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Set an entry of the tableau.
+	 * row
+	 * row index
 	 * 
-	 * @param row
-	 *            row index
 	 * @param column
 	 *            column index
 	 * @param value
@@ -595,8 +581,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the offset of the first slack variable.
-	 * 
-	 * @return offset of the first slack variable
+	 * variable
 	 */
 	protected final int getSlackVariableOffset() {
 
@@ -605,8 +590,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the offset of the first artificial variable.
-	 * 
-	 * @return offset of the first artificial variable
+	 * variable
 	 */
 	protected final int getArtificialVariableOffset() {
 
@@ -615,8 +599,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the offset of the right hand side.
-	 * 
-	 * @return offset of the right hand side
+	 * side
 	 */
 	protected final int getRhsOffset() {
 
@@ -638,8 +621,8 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the original number of decision variables.
+	 * variables
 	 * 
-	 * @return original number of decision variables
 	 * @see #getNumDecisionVariables()
 	 */
 	protected final int getOriginalNumDecisionVariables() {
@@ -649,8 +632,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the number of slack variables.
-	 * 
-	 * @return number of slack variables
+	 * variables
 	 */
 	protected final int getNumSlackVariables() {
 
@@ -659,8 +641,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the number of artificial variables.
-	 * 
-	 * @return number of artificial variables
+	 * variables
 	 */
 	protected final int getNumArtificialVariables() {
 
@@ -669,9 +650,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the row from the tableau.
+	 * row
+	 * the row index
 	 * 
-	 * @param row
-	 *            the row index
 	 * @return the reference to the underlying row data
 	 */
 	protected final double[] getRow(int row) {
@@ -681,8 +662,7 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Get the tableau data.
-	 * 
-	 * @return tableau data
+	 * data
 	 */
 	protected final double[][] getData() {
 
@@ -710,9 +690,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Serialize the instance.
+	 * oos
+	 * stream where object should be written
 	 * 
-	 * @param oos
-	 *            stream where object should be written
 	 * @throws IOException
 	 *             if object cannot be written to stream
 	 */
@@ -724,9 +704,9 @@ class SimplexTableau implements Serializable {
 
 	/**
 	 * Deserialize the instance.
+	 * ois
+	 * stream from which the object should be read
 	 * 
-	 * @param ois
-	 *            stream from which the object should be read
 	 * @throws ClassNotFoundException
 	 *             if a class in the stream cannot be found
 	 * @throws IOException

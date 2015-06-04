@@ -102,21 +102,16 @@ class ByteVector implements Cloneable {
  * <p>
  * A <code>Bytecode</code> object is an unbounded array containing bytecode. For example,
  *
- * <pre>
- * ConstPool cp = ...;    // constant pool table
- * Bytecode b = new Bytecode(cp, 1, 0);
- * b.addIconst(3);
- * b.addReturn(CtClass.intType);
- * CodeAttribute ca = b.toCodeAttribute();
- * </pre>
+ * 
+ * ConstPool cp = ...; // constant pool table Bytecode b = new Bytecode(cp, 1, 0); b.addIconst(3); b.addReturn(CtClass.intType); CodeAttribute ca = b.toCodeAttribute();
+ * 
  *
  * <p>
  * This program produces a Code attribute including a bytecode sequence:
  *
- * <pre>
- * iconst_3
- * ireturn
- * </pre>
+ * 
+ * iconst_3 ireturn
+ * 
  *
  * @see ConstPool
  * @see CodeAttribute

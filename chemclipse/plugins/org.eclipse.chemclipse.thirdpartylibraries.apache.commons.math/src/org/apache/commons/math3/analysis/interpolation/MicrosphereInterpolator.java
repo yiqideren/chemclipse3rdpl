@@ -61,9 +61,9 @@ public class MicrosphereInterpolator implements MultivariateInterpolator {
 
 	/**
 	 * Create a microsphere interpolator.
+	 * elements
+	 * Number of surface elements of the microsphere.
 	 * 
-	 * @param elements
-	 *            Number of surface elements of the microsphere.
 	 * @param exponent
 	 *            Exponent used in the power law that computes the
 	 *            weights (distance dimming factor) of the sample data.

@@ -42,8 +42,7 @@ public class BigRealField implements Field<BigReal>, Serializable {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static BigRealField getInstance() {
 
@@ -84,8 +83,7 @@ public class BigRealField implements Field<BigReal>, Serializable {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

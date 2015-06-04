@@ -336,9 +336,9 @@ public class StepNormalizer implements StepHandler {
 	/**
 	 * Simple constructor. Uses {@link StepNormalizerMode#INCREMENT INCREMENT} mode, and {@link StepNormalizerBounds#FIRST FIRST} bounds setting, for
 	 * backwards compatibility.
+	 * h
+	 * fixed time step (sign is not used)
 	 * 
-	 * @param h
-	 *            fixed time step (sign is not used)
 	 * @param handler
 	 *            fixed time step handler to wrap
 	 */
@@ -349,9 +349,9 @@ public class StepNormalizer implements StepHandler {
 
 	/**
 	 * Simple constructor. Uses {@link StepNormalizerBounds#FIRST FIRST} bounds setting.
+	 * h
+	 * fixed time step (sign is not used)
 	 * 
-	 * @param h
-	 *            fixed time step (sign is not used)
 	 * @param handler
 	 *            fixed time step handler to wrap
 	 * @param mode
@@ -365,9 +365,9 @@ public class StepNormalizer implements StepHandler {
 
 	/**
 	 * Simple constructor. Uses {@link StepNormalizerMode#INCREMENT INCREMENT} mode.
+	 * h
+	 * fixed time step (sign is not used)
 	 * 
-	 * @param h
-	 *            fixed time step (sign is not used)
 	 * @param handler
 	 *            fixed time step handler to wrap
 	 * @param bounds
@@ -381,9 +381,9 @@ public class StepNormalizer implements StepHandler {
 
 	/**
 	 * Simple constructor.
+	 * h
+	 * fixed time step (sign is not used)
 	 * 
-	 * @param h
-	 *            fixed time step (sign is not used)
 	 * @param handler
 	 *            fixed time step handler to wrap
 	 * @param mode
@@ -419,15 +419,15 @@ public class StepNormalizer implements StepHandler {
 
 	/**
 	 * Handle the last accepted step
+	 * interpolator
+	 * interpolator for the last accepted step. For
+	 * efficiency purposes, the various integrators reuse the same
+	 * object on each call, so if the instance wants to keep it across
+	 * all calls (for example to provide at the end of the integration a
+	 * continuous model valid throughout the integration range), it
+	 * should build a local copy using the clone method and store this
+	 * copy.
 	 * 
-	 * @param interpolator
-	 *            interpolator for the last accepted step. For
-	 *            efficiency purposes, the various integrators reuse the same
-	 *            object on each call, so if the instance wants to keep it across
-	 *            all calls (for example to provide at the end of the integration a
-	 *            continuous model valid throughout the integration range), it
-	 *            should build a local copy using the clone method and store this
-	 *            copy.
 	 * @param isLast
 	 *            true if the step is the last one
 	 * @exception MaxCountExceededException
@@ -481,9 +481,9 @@ public class StepNormalizer implements StepHandler {
 	/**
 	 * Returns a value indicating whether the next normalized time is in the
 	 * current step.
+	 * nextTime
+	 * the next normalized time
 	 * 
-	 * @param nextTime
-	 *            the next normalized time
 	 * @param interpolator
 	 *            interpolator for the last accepted step, to use to
 	 *            get the end time of the current step
@@ -497,9 +497,8 @@ public class StepNormalizer implements StepHandler {
 
 	/**
 	 * Invokes the underlying step handler for the current normalized step.
-	 * 
-	 * @param isLast
-	 *            true if the step is the last one
+	 * isLast
+	 * true if the step is the last one
 	 */
 	private void doNormalizedStep(boolean isLast) {
 
@@ -512,10 +511,10 @@ public class StepNormalizer implements StepHandler {
 	/**
 	 * Stores the interpolated information for the given time in the current
 	 * state.
+	 * interpolator
+	 * interpolator for the last accepted step, to use to
+	 * get the interpolated information
 	 * 
-	 * @param interpolator
-	 *            interpolator for the last accepted step, to use to
-	 *            get the interpolated information
 	 * @param t
 	 *            the time for which to store the interpolated information
 	 * @exception MaxCountExceededException

@@ -33,7 +33,8 @@ import org.apache.commons.math3.util.MathArrays;
  * This implies that this class can be used to convert from one representation to another one. For example, converting a rotation matrix into a set of Cardan angles from can be done using the following single line of code:
  * </p>
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -91,7 +92,7 @@ import org.apache.commons.math3.util.MathArrays;
  * 
  * 
  * double[] angles = new Rotation(matrix, 1.0e-10).getAngles(RotationOrder.XYZ);
- * </pre>
+ * 
  * <p>
  * Focus is oriented on what a rotation <em>do</em> rather than on its underlying representation. Once it has been built, and regardless of its internal representation, a rotation is an <em>operator</em> which basically transforms three dimensional {@link Vector3D vectors} into other three dimensional {@link Vector3D vectors}. Depending on the application, the meaning of these vectors may vary and the semantics of the rotation also.
  * </p>
@@ -146,9 +147,9 @@ public class Rotation implements Serializable {
 	 * <p>
 	 * Note that some conventions put the scalar part of the quaternion as the 4<sup>th</sup> component and the vector part as the first three components. This is <em>not</em> our convention. We put the scalar part as the first component.
 	 * </p>
+	 * q0
+	 * scalar part of the quaternion
 	 * 
-	 * @param q0
-	 *            scalar part of the quaternion
 	 * @param q1
 	 *            first coordinate of the vectorial part of the quaternion
 	 * @param q2
@@ -187,9 +188,9 @@ public class Rotation implements Serializable {
 	 * <p>
 	 * On the one hand this convention is consistent with a vectorial perspective (moving vectors in fixed frames), on the other hand it is different from conventions with a frame perspective (fixed vectors viewed from different frames) like the ones used for example in spacecraft attitude community or in the graphics community.
 	 * </p>
+	 * axis
+	 * axis around which to rotate
 	 * 
-	 * @param axis
-	 *            axis around which to rotate
 	 * @param angle
 	 *            rotation angle.
 	 * @exception MathIllegalArgumentException
@@ -211,29 +212,25 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Build a rotation from a 3X3 matrix.
-	 * 
 	 * <p>
 	 * Rotation matrices are orthogonal matrices, i.e. unit matrices (which are matrices for which m.m<sup>T</sup> = I) with real coefficients. The module of the determinant of unit matrices is 1, among the orthogonal 3X3 matrices, only the ones having a positive determinant (+1) are rotation matrices.
 	 * </p>
-	 * 
 	 * <p>
 	 * When a rotation is defined by a matrix with truncated values (typically when it is extracted from a technical sheet where only four to five significant digits are available), the matrix is not orthogonal anymore. This constructor handles this case transparently by using a copy of the given matrix and applying a correction to the copy in order to perfect its orthogonality. If the Frobenius norm of the correction needed is above the given threshold, then the matrix is considered to be too
 	 * far from a true rotation matrix and an exception is thrown.
 	 * <p>
+	 * m rotation matrix
 	 * 
-	 * @param m
-	 *            rotation matrix
 	 * @param threshold
 	 *            convergence threshold for the iterative
 	 *            orthogonality correction (convergence is reached when the
 	 *            difference between two steps of the Frobenius norm of the
 	 *            correction is below this threshold)
-	 * 
-	 * @exception NotARotationMatrixException
-	 *                if the matrix is not a 3X3
-	 *                matrix, or if it cannot be transformed into an orthogonal matrix
-	 *                with the given threshold, or if the determinant of the resulting
-	 *                orthogonal matrix is negative
+	 *            NotARotationMatrixException
+	 *            if the matrix is not a 3X3
+	 *            matrix, or if it cannot be transformed into an orthogonal matrix
+	 *            with the given threshold, or if the determinant of the resulting
+	 *            orthogonal matrix is negative
 	 */
 	public Rotation(double[][] m, double threshold) throws NotARotationMatrixException {
 
@@ -257,17 +254,15 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Build the rotation that transforms a pair of vector into another pair.
-	 * 
 	 * <p>
 	 * Except for possible scale factors, if the instance were applied to the pair (u<sub>1</sub>, u<sub>2</sub>) it will produce the pair (v<sub>1</sub>, v<sub>2</sub>).
 	 * </p>
-	 * 
 	 * <p>
 	 * If the angular separation between u<sub>1</sub> and u<sub>2</sub> is not the same as the angular separation between v<sub>1</sub> and v<sub>2</sub>, then a corrected v'<sub>2</sub> will be used rather than v<sub>2</sub>, the corrected vector will be in the (v<sub>1</sub>, v<sub>2</sub>) plane.
 	 * </p>
+	 * u1
+	 * first vector of the origin pair
 	 * 
-	 * @param u1
-	 *            first vector of the origin pair
 	 * @param u2
 	 *            second vector of the origin pair
 	 * @param v1
@@ -301,13 +296,12 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Build one of the rotations that transform one vector into another one.
-	 * 
 	 * <p>
 	 * Except for a possible scale factor, if the instance were applied to the vector u it will produce the vector v. There is an infinite number of such rotations, this constructor choose the one with the smallest associated angle (i.e. the one whose axis is orthogonal to the (u, v) plane). If u and v are colinear, an arbitrary rotation axis is chosen.
 	 * </p>
+	 * u
+	 * origin vector
 	 * 
-	 * @param u
-	 *            origin vector
 	 * @param v
 	 *            desired image of u by the rotation
 	 * @exception MathArithmeticException
@@ -342,16 +336,15 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Build a rotation from three Cardan or Euler elementary rotations.
-	 * 
 	 * <p>
 	 * Cardan rotations are three successive rotations around the canonical axes X, Y and Z, each axis being used once. There are 6 such sets of rotations (XYZ, XZY, YXZ, YZX, ZXY and ZYX). Euler rotations are three successive rotations around the canonical axes X, Y and Z, the first and last rotations being around the same axis. There are 6 such sets of rotations (XYX, XZX, YXY, YZY, ZXZ and ZYZ), the most popular one being ZXZ.
 	 * </p>
 	 * <p>
 	 * Beware that many people routinely use the term Euler angles even for what really are Cardan angles (this confusion is especially widespread in the aerospace business where Roll, Pitch and Yaw angles are often wrongly tagged as Euler angles).
 	 * </p>
+	 * order
+	 * order of rotations to use
 	 * 
-	 * @param order
-	 *            order of rotations to use
 	 * @param alpha1
 	 *            angle of the first elementary rotation
 	 * @param alpha2
@@ -373,9 +366,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Convert an orthogonal rotation matrix to a quaternion.
+	 * ort
+	 * orthogonal rotation matrix
 	 * 
-	 * @param ort
-	 *            orthogonal rotation matrix
 	 * @return quaternion corresponding to the matrix
 	 */
 	private static double[] mat2quat(final double[][] ort) {
@@ -437,9 +430,8 @@ public class Rotation implements Serializable {
 	 * Build a rotation which reverse the effect of another
 	 * rotation. This means that if r(u) = v, then r.revert(v) = u. The
 	 * instance is not changed.
-	 * 
-	 * @return a new rotation whose effect is the reverse of the effect
-	 *         of the instance
+	 * effect
+	 * of the instance
 	 */
 	public Rotation revert() {
 
@@ -448,8 +440,7 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the scalar coordinate of the quaternion.
-	 * 
-	 * @return scalar coordinate of the quaternion
+	 * quaternion
 	 */
 	public double getQ0() {
 
@@ -458,8 +449,7 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the first coordinate of the vectorial part of the quaternion.
-	 * 
-	 * @return first coordinate of the vectorial part of the quaternion
+	 * quaternion
 	 */
 	public double getQ1() {
 
@@ -468,8 +458,7 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the second coordinate of the vectorial part of the quaternion.
-	 * 
-	 * @return second coordinate of the vectorial part of the quaternion
+	 * quaternion
 	 */
 	public double getQ2() {
 
@@ -478,8 +467,7 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the third coordinate of the vectorial part of the quaternion.
-	 * 
-	 * @return third coordinate of the vectorial part of the quaternion
+	 * quaternion
 	 */
 	public double getQ3() {
 
@@ -488,8 +476,8 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the normalized axis of the rotation.
+	 * rotation
 	 * 
-	 * @return normalized axis of the rotation
 	 * @see #Rotation(Vector3D, double)
 	 */
 	public Vector3D getAxis() {
@@ -507,8 +495,8 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the angle of the rotation.
+	 * &pi;)
 	 * 
-	 * @return angle of the rotation (between 0 and &pi;)
 	 * @see #Rotation(Vector3D, double)
 	 */
 	public double getAngle() {
@@ -523,7 +511,6 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the Cardan or Euler angles corresponding to the instance.
-	 * 
 	 * <p>
 	 * The equations show that each rotation can be defined by two different values of the Cardan or Euler angles set. For example if Cardan angles are used, the rotation defined by the angles a<sub>1</sub>, a<sub>2</sub> and a<sub>3</sub> is the same as the rotation defined by the angles &pi; + a<sub>1</sub>, &pi; - a<sub>2</sub> and &pi; + a<sub>3</sub>. This method implements the following arbitrary choices:
 	 * </p>
@@ -531,14 +518,13 @@ public class Rotation implements Serializable {
 	 * <li>for Cardan angles, the chosen set is the one for which the second angle is between -&pi;/2 and &pi;/2 (i.e its cosine is positive),</li>
 	 * <li>for Euler angles, the chosen set is the one for which the second angle is between 0 and &pi; (i.e its sine is positive).</li>
 	 * </ul>
-	 * 
 	 * <p>
 	 * Cardan and Euler angle have a very disappointing drawback: all of them have singularities. This means that if the instance is too close to the singularities corresponding to the given rotation order, it will be impossible to retrieve the angles. For Cardan angles, this is often called gimbal lock. There is <em>nothing</em> to do to prevent this, it is an intrinsic problem with Cardan and Euler representation (but not a problem with the rotation itself, which is perfectly well defined).
 	 * For Cardan angles, singularities occur when the second angle is close to -&pi;/2 or +&pi;/2, for Euler angle singularities occur when the second angle is close to 0 or &pi;, this implies that the identity rotation is always singular for Euler angles!
 	 * </p>
+	 * order
+	 * rotation order to use
 	 * 
-	 * @param order
-	 *            rotation order to use
 	 * @return an array of three angles, in the order specified by the set
 	 * @exception CardanEulerSingularityException
 	 *                if the rotation is
@@ -695,8 +681,7 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Get the 3X3 matrix corresponding to the instance
-	 * 
-	 * @return the matrix corresponding to the instance
+	 * instance
 	 */
 	public double[][] getMatrix() {
 
@@ -730,9 +715,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Apply the rotation to a vector.
+	 * u
+	 * vector to apply the rotation to
 	 * 
-	 * @param u
-	 *            vector to apply the rotation to
 	 * @return a new vector which is the image of u by the rotation
 	 */
 	public Vector3D applyTo(Vector3D u) {
@@ -746,9 +731,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Apply the rotation to a vector stored in an array.
+	 * in
+	 * an array with three items which stores vector to rotate
 	 * 
-	 * @param in
-	 *            an array with three items which stores vector to rotate
 	 * @param out
 	 *            an array with three items to put result to (it can be the same
 	 *            array as in)
@@ -766,9 +751,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Apply the inverse of the rotation to a vector.
+	 * u
+	 * vector to apply the inverse of the rotation to
 	 * 
-	 * @param u
-	 *            vector to apply the inverse of the rotation to
 	 * @return a new vector which such that u is its image by the rotation
 	 */
 	public Vector3D applyInverseTo(Vector3D u) {
@@ -783,9 +768,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Apply the inverse of the rotation to a vector stored in an array.
+	 * in
+	 * an array with three items which stores vector to rotate
 	 * 
-	 * @param in
-	 *            an array with three items which stores vector to rotate
 	 * @param out
 	 *            an array with three items to put result to (it can be the same
 	 *            array as in)
@@ -809,9 +794,9 @@ public class Rotation implements Serializable {
 	 * vector and v its image by r (i.e. r.applyTo(u) = v), let w be the image
 	 * of v by the instance (i.e. applyTo(v) = w), then w = comp.applyTo(u),
 	 * where comp = applyTo(r).
+	 * r
+	 * rotation to apply the rotation to
 	 * 
-	 * @param r
-	 *            rotation to apply the rotation to
 	 * @return a new rotation which is the composition of r by the instance
 	 */
 	public Rotation applyTo(Rotation r) {
@@ -827,9 +812,9 @@ public class Rotation implements Serializable {
 	 * let w be the inverse image of v by the instance
 	 * (i.e. applyInverseTo(v) = w), then w = comp.applyTo(u), where
 	 * comp = applyInverseTo(r).
+	 * r
+	 * rotation to apply the rotation to
 	 * 
-	 * @param r
-	 *            rotation to apply the rotation to
 	 * @return a new rotation which is the composition of r by the inverse
 	 *         of the instance
 	 */
@@ -840,9 +825,9 @@ public class Rotation implements Serializable {
 
 	/**
 	 * Perfect orthogonality on a 3X3 matrix.
+	 * m
+	 * initial matrix (not exactly orthogonal)
 	 * 
-	 * @param m
-	 *            initial matrix (not exactly orthogonal)
 	 * @param threshold
 	 *            convergence threshold for the iterative
 	 *            orthogonality correction (convergence is reached when the
@@ -934,18 +919,16 @@ public class Rotation implements Serializable {
 	 * The <i>distance</i> is intended here as a way to check if two rotations are almost similar (i.e. they transform vectors the same way) or very different. It is mathematically defined as the angle of the rotation r that prepended to one of the rotations gives the other one:
 	 * </p>
 	 * 
-	 * <pre>
-	 *        r<sub>1</sub>(r) = r<sub>2</sub>
-	 * </pre>
+	 * r<sub>1</sub>(r) = r<sub>2</sub>
 	 * <p>
 	 * This distance is an angle between 0 and &pi;. Its value is the smallest possible upper bound of the angle in radians between r<sub>1</sub>(v) and r<sub>2</sub>(v) for all possible vectors v. This upper bound is reached for some v. The distance is equal to 0 if and only if the two rotations are identical.
 	 * </p>
 	 * <p>
 	 * Comparing two rotations should always be done using this value rather than for example comparing the components of the quaternions. It is much more stable, and has a geometric meaning. Also comparing quaternions components is error prone since for example quaternions (0.36, 0.48, -0.48, -0.64) and (-0.36, -0.48, 0.48, 0.64) represent exactly the same rotation despite their components are different (they are exact opposites).
 	 * </p>
+	 * r1
+	 * first rotation
 	 * 
-	 * @param r1
-	 *            first rotation
 	 * @param r2
 	 *            second rotation
 	 * @return <i>distance</i> between r1 and r2

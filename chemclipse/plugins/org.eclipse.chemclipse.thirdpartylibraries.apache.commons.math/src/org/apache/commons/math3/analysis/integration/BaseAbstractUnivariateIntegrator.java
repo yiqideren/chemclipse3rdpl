@@ -68,9 +68,9 @@ public abstract class BaseAbstractUnivariateIntegrator implements UnivariateInte
 	 * <li>maximum number of iterations: usually a high iteration count indicates convergence problems. However, the "reasonable value" varies widely for different algorithms. Users are advised to use the default value supplied by the algorithm.</li>
 	 * </ul>
 	 * </p>
+	 * relativeAccuracy
+	 * relative accuracy of the result
 	 * 
-	 * @param relativeAccuracy
-	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
 	 *            absolute accuracy of the result
 	 * @param minimalIterationCount
@@ -105,9 +105,9 @@ public abstract class BaseAbstractUnivariateIntegrator implements UnivariateInte
 
 	/**
 	 * Construct an integrator with given accuracies.
+	 * relativeAccuracy
+	 * relative accuracy of the result
 	 * 
-	 * @param relativeAccuracy
-	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
 	 *            absolute accuracy of the result
 	 */
@@ -118,9 +118,9 @@ public abstract class BaseAbstractUnivariateIntegrator implements UnivariateInte
 
 	/**
 	 * Construct an integrator with given iteration counts.
+	 * minimalIterationCount
+	 * minimum number of iterations
 	 * 
-	 * @param minimalIterationCount
-	 *            minimum number of iterations
 	 * @param maximalIterationCount
 	 *            maximum number of iterations
 	 * @exception NotStrictlyPositiveException

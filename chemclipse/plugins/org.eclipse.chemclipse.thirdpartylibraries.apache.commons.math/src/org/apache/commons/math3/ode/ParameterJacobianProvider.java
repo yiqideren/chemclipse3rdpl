@@ -30,9 +30,9 @@ public interface ParameterJacobianProvider extends Parameterizable {
 	 * <p>
 	 * If the parameter does not belong to the collection returned by {@link #getParametersNames()}, the Jacobian will be set to 0, but no errors will be triggered.
 	 * </p>
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the main state vector
 	 * @param yDot

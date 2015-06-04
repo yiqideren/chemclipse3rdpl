@@ -53,9 +53,8 @@ public class Vector2DFormat extends VectorFormat<Euclidean2D> {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	public Vector2DFormat(final NumberFormat format) {
 
@@ -64,9 +63,9 @@ public class Vector2DFormat extends VectorFormat<Euclidean2D> {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -80,9 +79,9 @@ public class Vector2DFormat extends VectorFormat<Euclidean2D> {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -97,8 +96,7 @@ public class Vector2DFormat extends VectorFormat<Euclidean2D> {
 
 	/**
 	 * Returns the default 2D vector format for the current locale.
-	 * 
-	 * @return the default 2D vector format.
+	 * format.
 	 */
 	public static Vector2DFormat getInstance() {
 
@@ -107,9 +105,9 @@ public class Vector2DFormat extends VectorFormat<Euclidean2D> {
 
 	/**
 	 * Returns the default 2D vector format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the 2D vector format specific to the given locale.
 	 */
 	public static Vector2DFormat getInstance(final Locale locale) {

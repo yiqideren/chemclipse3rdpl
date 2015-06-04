@@ -39,9 +39,9 @@ class ParameterJacobianWrapper implements ParameterJacobianProvider {
 
 	/**
 	 * Wrap a {@link ParameterizedODE} into a {@link ParameterJacobianProvider}.
+	 * fode
+	 * main first order differential equations set
 	 * 
-	 * @param fode
-	 *            main first order differential equations set
 	 * @param pode
 	 *            secondary problem, without parameter Jacobian computation skill
 	 * @param paramsAndSteps

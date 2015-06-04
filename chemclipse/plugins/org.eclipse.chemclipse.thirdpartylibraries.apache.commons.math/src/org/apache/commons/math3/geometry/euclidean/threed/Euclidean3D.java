@@ -38,8 +38,7 @@ public class Euclidean3D implements Serializable, Space {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static Euclidean3D getInstance() {
 
@@ -74,8 +73,7 @@ public class Euclidean3D implements Serializable, Space {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

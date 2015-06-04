@@ -83,8 +83,7 @@ public class PointValuePair extends Pair<double[], Double> implements Serializab
 
 	/**
 	 * Replace the instance with a data transfer object for serialization.
-	 * 
-	 * @return data transfer object that will be serialized
+	 * serialized
 	 */
 	private Object writeReplace() {
 

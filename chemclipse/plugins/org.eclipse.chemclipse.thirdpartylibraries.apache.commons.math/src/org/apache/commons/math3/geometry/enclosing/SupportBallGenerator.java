@@ -36,9 +36,9 @@ public interface SupportBallGenerator<S extends Space, P extends Point<S>> {
 
 	/**
 	 * Create a ball whose boundary lies on prescribed support points.
+	 * support
+	 * support points (may be empty)
 	 * 
-	 * @param support
-	 *            support points (may be empty)
 	 * @return ball whose boundary lies on the prescribed support points
 	 */
 	EnclosingBall<S, P> ballOnSupport(List<P> support);

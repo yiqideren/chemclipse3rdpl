@@ -41,7 +41,8 @@ import org.apache.commons.math3.util.FastMath;
  * style, like this:
  * </p>
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -99,7 +100,7 @@ import org.apache.commons.math3.util.FastMath;
  * 
  * 
  * RealVector result = v.mapAddToSelf(3.4).mapToSelf(new Tan()).mapToSelf(new Power(2.3));
- * </pre>
+ * 
  *
  * @since 2.1
  */
@@ -905,9 +906,7 @@ public abstract class RealVector {
 	/**
 	 * Acts as if implemented as:
 	 * 
-	 * <pre>
 	 * return copy().mapToSelf(function);
-	 * </pre>
 	 * 
 	 * Returns a new vector. Does not change instance data.
 	 *
@@ -923,12 +922,10 @@ public abstract class RealVector {
 	/**
 	 * Acts as if it is implemented as:
 	 * 
-	 * <pre>
 	 * Entry e = null;
 	 * for(Iterator&lt;Entry&gt; it = iterator(); it.hasNext(); e = it.next()) {
-	 * 	e.setValue(function.value(e.getValue()));
+	 * e.setValue(function.value(e.getValue()));
 	 * }
-	 * </pre>
 	 * 
 	 * Entries of this vector are modified in-place by this method.
 	 *
@@ -1347,12 +1344,10 @@ public abstract class RealVector {
 	 * returned vector is <em>not</em> immutable, since any modification of {@code v} will also change the returned view.
 	 * For example, in the following piece of code
 	 * 
-	 * <pre>
 	 * RealVector v = new ArrayRealVector(2);
 	 * RealVector w = RealVector.unmodifiableRealVector(v);
 	 * v.setEntry(0, 1.2);
 	 * v.setEntry(1, -3.4);
-	 * </pre>
 	 * 
 	 * the changes will be seen in the {@code w} view of {@code v}.
 	 *

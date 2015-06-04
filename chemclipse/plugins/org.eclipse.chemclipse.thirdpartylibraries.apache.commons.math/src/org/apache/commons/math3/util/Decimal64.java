@@ -297,9 +297,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public double getReal() {
 
@@ -307,9 +305,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 add(final double a) {
 
@@ -317,9 +313,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 subtract(final double a) {
 
@@ -327,9 +321,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 multiply(final double a) {
 
@@ -337,9 +329,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 divide(final double a) {
 
@@ -347,9 +337,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 remainder(final double a) {
 
@@ -357,9 +345,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 remainder(final Decimal64 a) {
 
@@ -367,9 +353,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 abs() {
 
@@ -377,9 +361,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 ceil() {
 
@@ -387,9 +369,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 floor() {
 
@@ -397,9 +377,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 rint() {
 
@@ -407,9 +385,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public long round() {
 
@@ -417,9 +393,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 signum() {
 
@@ -427,9 +401,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 copySign(final Decimal64 sign) {
 
@@ -437,9 +409,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 copySign(final double sign) {
 
@@ -447,9 +417,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 scalb(final int n) {
 
@@ -457,9 +425,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 hypot(final Decimal64 y) {
 
@@ -467,9 +433,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 sqrt() {
 
@@ -477,9 +441,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 cbrt() {
 
@@ -487,9 +449,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 rootN(final int n) {
 
@@ -501,9 +461,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 pow(final double p) {
 
@@ -511,9 +469,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 pow(final int n) {
 
@@ -521,9 +477,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 pow(final Decimal64 e) {
 
@@ -531,9 +485,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 exp() {
 
@@ -541,9 +493,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 expm1() {
 
@@ -551,9 +501,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 log() {
 
@@ -561,9 +509,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 log1p() {
 
@@ -572,8 +518,8 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 
 	/**
 	 * Base 10 logarithm.
+	 * instance
 	 * 
-	 * @return base 10 logarithm of the instance
 	 * @since 3.2
 	 */
 	public Decimal64 log10() {
@@ -582,9 +528,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 cos() {
 
@@ -592,9 +536,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 sin() {
 
@@ -602,9 +544,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 tan() {
 
@@ -612,9 +552,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 acos() {
 
@@ -622,9 +560,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 asin() {
 
@@ -632,9 +568,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 atan() {
 
@@ -642,9 +576,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 atan2(final Decimal64 x) {
 
@@ -652,9 +584,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 cosh() {
 
@@ -662,9 +592,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 sinh() {
 
@@ -672,9 +600,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 tanh() {
 
@@ -682,9 +608,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 acosh() {
 
@@ -692,9 +616,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 asinh() {
 
@@ -702,9 +624,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 atanh() {
 
@@ -712,9 +632,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final Decimal64[] a, final Decimal64[] b) throws DimensionMismatchException {
 
@@ -731,9 +649,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final double[] a, final Decimal64[] b) throws DimensionMismatchException {
 
@@ -748,9 +664,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final Decimal64 a1, final Decimal64 b1, final Decimal64 a2, final Decimal64 b2) {
 
@@ -758,9 +672,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final double a1, final Decimal64 b1, final double a2, final Decimal64 b2) {
 
@@ -768,9 +680,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final Decimal64 a1, final Decimal64 b1, final Decimal64 a2, final Decimal64 b2, final Decimal64 a3, final Decimal64 b3) {
 
@@ -778,9 +688,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final double a1, final Decimal64 b1, final double a2, final Decimal64 b2, final double a3, final Decimal64 b3) {
 
@@ -788,9 +696,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final Decimal64 a1, final Decimal64 b1, final Decimal64 a2, final Decimal64 b2, final Decimal64 a3, final Decimal64 b3, final Decimal64 a4, final Decimal64 b4) {
 
@@ -798,9 +704,7 @@ public class Decimal64 extends Number implements RealFieldElement<Decimal64>, Co
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.2
+	 * {@inheritDoc} 3.2
 	 */
 	public Decimal64 linearCombination(final double a1, final Decimal64 b1, final double a2, final Decimal64 b2, final double a3, final Decimal64 b3, final double a4, final Decimal64 b4) {
 

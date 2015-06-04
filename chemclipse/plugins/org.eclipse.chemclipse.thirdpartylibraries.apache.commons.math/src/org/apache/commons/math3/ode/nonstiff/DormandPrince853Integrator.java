@@ -106,11 +106,11 @@ public class DormandPrince853Integrator extends EmbeddedRungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build an eighth order Dormand-Prince integrator with the given step bounds
+	 * minStep
+	 * minimal step (sign is irrelevant, regardless of
+	 * integration direction, forward or backward), the last step can
+	 * be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (sign is irrelevant, regardless of
-	 *            integration direction, forward or backward), the last step can
-	 *            be smaller than this
 	 * @param maxStep
 	 *            maximal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can
@@ -128,11 +128,11 @@ public class DormandPrince853Integrator extends EmbeddedRungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build an eighth order Dormand-Prince integrator with the given step bounds
+	 * minStep
+	 * minimal step (sign is irrelevant, regardless of
+	 * integration direction, forward or backward), the last step can
+	 * be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (sign is irrelevant, regardless of
-	 *            integration direction, forward or backward), the last step can
-	 *            be smaller than this
 	 * @param maxStep
 	 *            maximal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can

@@ -76,9 +76,8 @@ public class GeometricMean extends AbstractStorelessUnivariateStatistic implemen
 
 	/**
 	 * Create a GeometricMean instance using the given SumOfLogs instance
-	 * 
-	 * @param sumOfLogs
-	 *            sum of logs instance to use for computation
+	 * sumOfLogs
+	 * sum of logs instance to use for computation
 	 */
 	public GeometricMean(SumOfLogs sumOfLogs) {
 
@@ -218,9 +217,8 @@ public class GeometricMean extends AbstractStorelessUnivariateStatistic implemen
 
 	/**
 	 * Throws MathIllegalStateException if n > 0.
-	 * 
-	 * @throws MathIllegalStateException
-	 *             if data has been added to this statistic
+	 * MathIllegalStateException
+	 * if data has been added to this statistic
 	 */
 	private void checkEmpty() throws MathIllegalStateException {
 

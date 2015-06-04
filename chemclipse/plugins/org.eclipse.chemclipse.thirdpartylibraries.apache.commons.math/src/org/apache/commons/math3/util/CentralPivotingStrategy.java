@@ -30,9 +30,9 @@ public class CentralPivotingStrategy implements PivotingStrategyInterface, Seria
 
 	/**
 	 * {@inheritDoc} This in particular picks a average of begin and end indices
+	 * of
+	 * the first and the last element indices of the array slice
 	 * 
-	 * @return The index corresponding to a simple average of
-	 *         the first and the last element indices of the array slice
 	 * @throws MathIllegalArgumentException
 	 *             when indices exceeds range
 	 */

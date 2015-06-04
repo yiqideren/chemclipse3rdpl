@@ -31,10 +31,9 @@ public class CardanEulerSingularityException extends MathIllegalStateException {
 	/**
 	 * Simple constructor.
 	 * build an exception with a default message.
-	 * 
-	 * @param isCardan
-	 *            if true, the rotation is related to Cardan angles,
-	 *            if false it is related to EulerAngles
+	 * isCardan
+	 * if true, the rotation is related to Cardan angles,
+	 * if false it is related to EulerAngles
 	 */
 	public CardanEulerSingularityException(boolean isCardan) {
 

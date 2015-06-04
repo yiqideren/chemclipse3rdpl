@@ -46,27 +46,27 @@ public interface Transform<S extends Space, T extends Space> {
 
 	/**
 	 * Transform a point of a space.
+	 * point
+	 * point to transform
 	 * 
-	 * @param point
-	 *            point to transform
 	 * @return a new object representing the transformed point
 	 */
 	Point<S> apply(Point<S> point);
 
 	/**
 	 * Transform an hyperplane of a space.
+	 * hyperplane
+	 * hyperplane to transform
 	 * 
-	 * @param hyperplane
-	 *            hyperplane to transform
 	 * @return a new object representing the transformed hyperplane
 	 */
 	Hyperplane<S> apply(Hyperplane<S> hyperplane);
 
 	/**
 	 * Transform a sub-hyperplane embedded in an hyperplane.
+	 * sub
+	 * sub-hyperplane to transform
 	 * 
-	 * @param sub
-	 *            sub-hyperplane to transform
 	 * @param original
 	 *            hyperplane in which the sub-hyperplane is
 	 *            defined (this is the original hyperplane, the transform has <em>not</em> been applied to it)

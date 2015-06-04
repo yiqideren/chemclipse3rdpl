@@ -63,9 +63,9 @@ public class S2Point implements Point<Sphere2D> {
 	/**
 	 * Simple constructor.
 	 * Build a vector from its spherical coordinates
+	 * theta
+	 * azimuthal angle \( \theta \) in the x-y plane
 	 * 
-	 * @param theta
-	 *            azimuthal angle \( \theta \) in the x-y plane
 	 * @param phi
 	 *            polar angle \( \varphi \)
 	 * @see #getTheta()
@@ -81,9 +81,9 @@ public class S2Point implements Point<Sphere2D> {
 	/**
 	 * Simple constructor.
 	 * Build a vector from its underlying 3D vector
+	 * vector
+	 * 3D vector
 	 * 
-	 * @param vector
-	 *            3D vector
 	 * @exception MathArithmeticException
 	 *                if vector norm is zero
 	 */
@@ -94,9 +94,9 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Build a point from its internal components.
+	 * theta
+	 * azimuthal angle \( \theta \) in the x-y plane
 	 * 
-	 * @param theta
-	 *            azimuthal angle \( \theta \) in the x-y plane
 	 * @param phi
 	 *            polar angle \( \varphi \)
 	 * @param vector
@@ -111,9 +111,9 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Build the normalized vector corresponding to spherical coordinates.
+	 * theta
+	 * azimuthal angle \( \theta \) in the x-y plane
 	 * 
-	 * @param theta
-	 *            azimuthal angle \( \theta \) in the x-y plane
 	 * @param phi
 	 *            polar angle \( \varphi \)
 	 * @return normalized vector
@@ -134,8 +134,8 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Get the azimuthal angle \( \theta \) in the x-y plane.
+	 * plane
 	 * 
-	 * @return azimuthal angle \( \theta \) in the x-y plane
 	 * @see #S2Point(double, double)
 	 */
 	public double getTheta() {
@@ -145,8 +145,8 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Get the polar angle \( \varphi \).
+	 * \)
 	 * 
-	 * @return polar angle \( \varphi \)
 	 * @see #S2Point(double, double)
 	 */
 	public double getPhi() {
@@ -156,8 +156,7 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Get the corresponding normalized vector in the 3D euclidean space.
-	 * 
-	 * @return normalized vector
+	 * vector
 	 */
 	public Vector3D getVector() {
 
@@ -178,8 +177,7 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Get the opposite of the instance.
-	 * 
-	 * @return a new vector which is opposite to the instance
+	 * instance
 	 */
 	public S2Point negate() {
 
@@ -194,9 +192,9 @@ public class S2Point implements Point<Sphere2D> {
 
 	/**
 	 * Compute the distance (angular separation) between two points.
+	 * p1
+	 * first vector
 	 * 
-	 * @param p1
-	 *            first vector
 	 * @param p2
 	 *            second vector
 	 * @return the angular separation between p1 and p2

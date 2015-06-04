@@ -52,9 +52,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build a polyhedrons set representing the whole real line.
+	 * tolerance
+	 * tolerance below which points are considered identical
 	 * 
-	 * @param tolerance
-	 *            tolerance below which points are considered identical
 	 * @since 3.3
 	 */
 	public PolyhedronsSet(final double tolerance) {
@@ -71,9 +71,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * This constructor is aimed at expert use, as building the tree may be a difficult task. It is not intended for general use and for performances reasons does not check thoroughly its input, as this would require walking the full tree each time. Failing to provide a tree with the proper attributes, <em>will</em> therefore generate problems like {@link NullPointerException} or {@link ClassCastException} only later on. This limitation is known and explains why this constructor is for expert
 	 * use only. The caller does have the responsibility to provided correct arguments.
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @since 3.3
@@ -95,10 +95,10 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @since 3.3
@@ -116,9 +116,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * Some basic sanity checks are performed but not everything is thoroughly assessed, so it remains under caller responsibility to ensure the vertices and facets are consistent and properly define a polyhedrons set.
 	 * </p>
+	 * vertices
+	 * list of polyhedrons set vertices
 	 * 
-	 * @param vertices
-	 *            list of polyhedrons set vertices
 	 * @param facets
 	 *            list of facets, as vertices indices in the vertices list
 	 * @param tolerance
@@ -134,9 +134,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build a parallellepipedic box.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -158,8 +158,7 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build a polyhedrons set representing the whole real line.
-	 * 
-	 * @deprecated as of 3.3, replaced with {@link #PolyhedronsSet(double)}
+	 * #PolyhedronsSet(double)}
 	 */
 	@Deprecated
 	public PolyhedronsSet() {
@@ -172,9 +171,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @deprecated as of 3.3, replaced with {@link #PolyhedronsSet(BSPTree, double)}
 	 */
 	@Deprecated
@@ -195,10 +194,10 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @deprecated as of 3.3, replaced with {@link #PolyhedronsSet(Collection, double)}
 	 */
 	@Deprecated
@@ -209,9 +208,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build a parallellepipedic box.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -232,9 +231,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build a parallellepipedic box boundary.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -269,9 +268,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Build boundary from vertices and facets.
+	 * vertices
+	 * list of polyhedrons set vertices
 	 * 
-	 * @param vertices
-	 *            list of polyhedrons set vertices
 	 * @param facets
 	 *            list of facets, as vertices indices in the vertices list
 	 * @param tolerance
@@ -335,9 +334,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Find the facets that reference each edges.
+	 * vertices
+	 * list of polyhedrons set vertices
 	 * 
-	 * @param vertices
-	 *            list of polyhedrons set vertices
 	 * @param facets
 	 *            list of facets, as vertices indices in the vertices list
 	 * @return references array such that r[v][k] = f for some k if facet f contains vertex v
@@ -378,9 +377,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Find the successors of all vertices among all facets they belong to.
+	 * vertices
+	 * list of polyhedrons set vertices
 	 * 
-	 * @param vertices
-	 *            list of polyhedrons set vertices
 	 * @param facets
 	 *            list of facets, as vertices indices in the vertices list
 	 * @param references
@@ -510,9 +509,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Get the first sub-hyperplane crossed by a semi-infinite line.
+	 * point
+	 * start point of the part of the line considered
 	 * 
-	 * @param point
-	 *            start point of the part of the line considered
 	 * @param line
 	 *            line to consider (contains point)
 	 * @return the first sub-hyperplane crossed by the line after the
@@ -526,9 +525,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Get the first sub-hyperplane crossed by a semi-infinite line.
+	 * node
+	 * current node
 	 * 
-	 * @param node
-	 *            current node
 	 * @param point
 	 *            start point of the part of the line considered
 	 * @param line
@@ -586,9 +585,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Check if a point belongs to the boundary part of a node.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @param node
 	 *            node containing the boundary facet to check
 	 * @return the boundary facet this points belongs to (or null if it
@@ -613,9 +612,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * The instance is not modified, a new instance is created.
 	 * </p>
+	 * center
+	 * rotation center
 	 * 
-	 * @param center
-	 *            rotation center
 	 * @param rotation
 	 *            vectorial rotation operator
 	 * @return a new instance representing the rotated region
@@ -690,9 +689,9 @@ public class PolyhedronsSet extends AbstractRegion<Euclidean3D, Euclidean2D> {
 	 * <p>
 	 * The instance is not modified, a new instance is created.
 	 * </p>
+	 * translation
+	 * translation to apply
 	 * 
-	 * @param translation
-	 *            translation to apply
 	 * @return a new instance representing the translated region
 	 */
 	public PolyhedronsSet translate(final Vector3D translation) {

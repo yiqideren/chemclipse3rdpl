@@ -49,9 +49,8 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Build a region representing the whole space.
-	 * 
-	 * @param tolerance
-	 *            tolerance below which points are considered identical.
+	 * tolerance
+	 * tolerance below which points are considered identical.
 	 */
 	protected AbstractRegion(final double tolerance) {
 
@@ -64,9 +63,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}. The tree also <em>must</em> have either null internal nodes or internal nodes representing the boundary as specified in the {@link #getTree getTree} method).
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @param tolerance
 	 *            tolerance below which points are considered identical.
 	 */
@@ -88,10 +87,10 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @param tolerance
 	 *            tolerance below which points are considered identical.
 	 */
@@ -147,10 +146,10 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Build a convex region from an array of bounding hyperplanes.
+	 * hyperplanes
+	 * array of bounding hyperplanes (if null, an
+	 * empty region will be built)
 	 * 
-	 * @param hyperplanes
-	 *            array of bounding hyperplanes (if null, an
-	 *            empty region will be built)
 	 * @param tolerance
 	 *            tolerance below which points are considered identical.
 	 */
@@ -181,8 +180,7 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Get the tolerance below which points are considered to belong to hyperplanes.
-	 * 
-	 * @return tolerance below which points are considered to belong to hyperplanes
+	 * hyperplanes
 	 */
 	public double getTolerance() {
 
@@ -191,10 +189,10 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Recursively build a tree by inserting cut sub-hyperplanes.
+	 * node
+	 * current tree node (it is a leaf node at the beginning
+	 * of the call)
 	 * 
-	 * @param node
-	 *            current tree node (it is a leaf node at the beginning
-	 *            of the call)
 	 * @param boundary
 	 *            collection of edges belonging to the cell defined
 	 *            by the node
@@ -292,9 +290,7 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	public BoundaryProjection<S> projectToBoundary(final Point<S> point) {
 
@@ -305,9 +301,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Check a point with respect to the region.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return a code representing the point status: either {@link Region.Location#INSIDE}, {@link Region.Location#OUTSIDE} or {@link Region.Location#BOUNDARY}
 	 */
 	public Location checkPoint(final Vector<S> point) {
@@ -323,9 +319,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Check a point with respect to the region starting at a given node.
+	 * node
+	 * root node of the region
 	 * 
-	 * @param node
-	 *            root node of the region
 	 * @param point
 	 *            point to check
 	 * @return a code representing the point status: either {@link Region.Location#INSIDE INSIDE}, {@link Region.Location#OUTSIDE
@@ -338,9 +334,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Check a point with respect to the region starting at a given node.
+	 * node
+	 * root node of the region
 	 * 
-	 * @param node
-	 *            root node of the region
 	 * @param point
 	 *            point to check
 	 * @return a code representing the point status: either {@link Region.Location#INSIDE INSIDE}, {@link Region.Location#OUTSIDE
@@ -388,9 +384,8 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Set the size of the instance.
-	 * 
-	 * @param size
-	 *            size of the instance
+	 * size
+	 * size of the instance
 	 */
 	protected void setSize(final double size) {
 
@@ -408,9 +403,8 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Set the barycenter of the instance.
-	 * 
-	 * @param barycenter
-	 *            barycenter of the instance
+	 * barycenter
+	 * barycenter of the instance
 	 */
 	protected void setBarycenter(final Vector<S> barycenter) {
 
@@ -419,9 +413,8 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Set the barycenter of the instance.
-	 * 
-	 * @param barycenter
-	 *            barycenter of the instance
+	 * barycenter
+	 * barycenter of the instance
 	 */
 	protected void setBarycenter(final Point<S> barycenter) {
 
@@ -453,9 +446,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 	/**
 	 * Recursively compute the parts of a sub-hyperplane that are
 	 * contained in the region.
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param sub
 	 *            sub-hyperplane traversing the region
 	 * @return filtered sub-hyperplane
@@ -492,9 +485,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 	 * <p>
 	 * Applying a transform to a region consist in applying the transform to all the hyperplanes of the underlying BSP tree and of the boundary (and also to the sub-hyperplanes embedded in these hyperplanes) and to the barycenter. The instance is not modified, a new instance is built.
 	 * </p>
+	 * transform
+	 * transform to apply
 	 * 
-	 * @param transform
-	 *            transform to apply
 	 * @return a new region, resulting from the application of the
 	 *         transform to the instance
 	 */
@@ -522,9 +515,9 @@ public abstract class AbstractRegion<S extends Space, T extends Space> implement
 
 	/**
 	 * Recursively transform an inside/outside BSP-tree.
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param transform
 	 *            transform to apply
 	 * @param map

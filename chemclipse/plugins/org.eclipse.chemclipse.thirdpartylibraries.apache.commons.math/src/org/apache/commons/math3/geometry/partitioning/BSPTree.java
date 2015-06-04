@@ -81,9 +81,8 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Build a tree having only one root cell representing the whole space.
-	 * 
-	 * @param attribute
-	 *            attribute of the tree (may be null)
+	 * attribute
+	 * attribute of the tree (may be null)
 	 */
 	public BSPTree(final Object attribute) {
 
@@ -102,9 +101,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * This method is mainly useful to build trees bottom-up. Building trees top-down is realized with the help of method {@link #insertCut insertCut}.
 	 * </p>
+	 * cut
+	 * cut sub-hyperplane for the tree
 	 * 
-	 * @param cut
-	 *            cut sub-hyperplane for the tree
 	 * @param plus
 	 *            plus side sub-tree
 	 * @param minus
@@ -133,11 +132,11 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * This method is mainly useful when called on leaf nodes (i.e. nodes for which {@link #getCut getCut} returns {@code null}), in this case it provides a way to build a tree top-down (whereas the {@link #BSPTree(SubHyperplane, BSPTree, BSPTree, Object) 4 arguments constructor} is devoted to build trees bottom-up).
 	 * </p>
+	 * hyperplane
+	 * hyperplane to insert, it will be chopped in
+	 * order to fit in the cell defined by the parent nodes of the
+	 * instance
 	 * 
-	 * @param hyperplane
-	 *            hyperplane to insert, it will be chopped in
-	 *            order to fit in the cell defined by the parent nodes of the
-	 *            instance
 	 * @return true if a cut sub-hyperplane has been inserted (i.e. if
 	 *         the cell now has two leaf child nodes)
 	 * @see #BSPTree(SubHyperplane, BSPTree, BSPTree, Object)
@@ -168,8 +167,7 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The instance created is completely independent of the original one. A deep copy is used, none of the underlying objects are shared (except for the nodes attributes and immutable objects).
 	 * </p>
-	 * 
-	 * @return a new tree, copy of the instance
+	 * instance
 	 */
 	public BSPTree<S> copySelf() {
 
@@ -181,8 +179,7 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the cut sub-hyperplane.
-	 * 
-	 * @return cut sub-hyperplane, null if this is a leaf tree
+	 * tree
 	 */
 	public SubHyperplane<S> getCut() {
 
@@ -191,9 +188,8 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the tree on the plus side of the cut hyperplane.
-	 * 
-	 * @return tree on the plus side of the cut hyperplane, null if this
-	 *         is a leaf tree
+	 * this
+	 * is a leaf tree
 	 */
 	public BSPTree<S> getPlus() {
 
@@ -202,9 +198,8 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the tree on the minus side of the cut hyperplane.
-	 * 
-	 * @return tree on the minus side of the cut hyperplane, null if this
-	 *         is a leaf tree
+	 * this
+	 * is a leaf tree
 	 */
 	public BSPTree<S> getMinus() {
 
@@ -213,8 +208,7 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the parent node.
-	 * 
-	 * @return parent node, null if the node has no parents
+	 * parents
 	 */
 	public BSPTree<S> getParent() {
 
@@ -223,9 +217,9 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Associate an attribute with the instance.
+	 * attribute
+	 * attribute to associate with the node
 	 * 
-	 * @param attribute
-	 *            attribute to associate with the node
 	 * @see #getAttribute
 	 */
 	public void setAttribute(final Object attribute) {
@@ -235,10 +229,10 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the attribute associated with the instance.
+	 * no
+	 * attribute has been explicitly set using the {@link #setAttribute
+	 * setAttribute} method
 	 * 
-	 * @return attribute associated with the node or null if no
-	 *         attribute has been explicitly set using the {@link #setAttribute
-	 *         setAttribute} method
 	 * @see #setAttribute
 	 */
 	public Object getAttribute() {
@@ -248,9 +242,8 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Visit the BSP tree nodes.
-	 * 
-	 * @param visitor
-	 *            object visiting the tree nodes
+	 * visitor
+	 * object visiting the tree nodes
 	 */
 	public void visit(final BSPTreeVisitor<S> visitor) {
 
@@ -299,9 +292,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * Fitting is done by chopping off the parts of the sub-hyperplane that lie outside of the cell using the cut-hyperplanes of the parent nodes of the instance.
 	 * </p>
+	 * sub
+	 * sub-hyperplane to fit
 	 * 
-	 * @param sub
-	 *            sub-hyperplane to fit
 	 * @return a new sub-hyperplane, guaranteed to have no part outside
 	 *         of the instance cell
 	 */
@@ -323,9 +316,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * If the returned cell is a leaf node the points belongs to the interior of the node, if the cell is an internal node the points belongs to the node cut sub-hyperplane.
 	 * </p>
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return the tree cell to which the point belongs
 	 * @deprecated as of 3.3, replaced with {@link #getCell(Point, double)}
 	 */
@@ -340,9 +333,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * If the returned cell is a leaf node the points belongs to the interior of the node, if the cell is an internal node the points belongs to the node cut sub-hyperplane.
 	 * </p>
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @param tolerance
 	 *            tolerance below which points close to a cut hyperplane
 	 *            are considered to belong to the hyperplane itself
@@ -368,9 +361,9 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the cells whose cut sub-hyperplanes are close to the point.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @param maxOffset
 	 *            offset below which a cut sub-hyperplane is considered
 	 *            close to the point (in absolute value)
@@ -386,9 +379,9 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Get the cells whose cut sub-hyperplanes are close to the point.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @param maxOffset
 	 *            offset below which a cut sub-hyperplane is considered
 	 *            close to the point (in absolute value)
@@ -439,10 +432,10 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The algorithm used here is directly derived from the one described in the Naylor, Amanatides and Thibault paper (section III, Binary Partitioning of a BSP Tree).
 	 * </p>
+	 * tree
+	 * other tree to merge with the instance (will be <em>unusable</em> after the operation, as well as the
+	 * instance itself)
 	 * 
-	 * @param tree
-	 *            other tree to merge with the instance (will be <em>unusable</em> after the operation, as well as the
-	 *            instance itself)
 	 * @param leafMerger
 	 *            object implementing the final merging phase
 	 *            (this is where the semantic of the operation occurs, generally
@@ -458,10 +451,10 @@ public class BSPTree<S extends Space> {
 
 	/**
 	 * Merge a BSP tree with the instance.
+	 * tree
+	 * other tree to merge with the instance (will be <em>unusable</em> after the operation, as well as the
+	 * instance itself)
 	 * 
-	 * @param tree
-	 *            other tree to merge with the instance (will be <em>unusable</em> after the operation, as well as the
-	 *            instance itself)
 	 * @param leafMerger
 	 *            object implementing the final merging phase
 	 *            (this is where the semantic of the operation occurs, generally
@@ -513,9 +506,8 @@ public class BSPTree<S extends Space> {
 	 * As explained in Bruce Naylor, John Amanatides and William Thibault paper <a href="http://www.cs.yorku.ca/~amana/research/bsptSetOp.pdf">Merging BSP Trees Yields Polyhedral Set Operations</a>, the operations on {@link BSPTree BSP trees} can be expressed as a generic recursive merging operation where only the final part, when one of the operand is a leaf, is specific to the real operation semantics. For example, a tree representing a region using a boolean attribute to identify inside cells
 	 * and outside cells would use four different objects to implement the final merging phase of the four set operations union, intersection, difference and symmetric difference (exclusive or).
 	 * </p>
-	 * 
-	 * @param <S>
-	 *            Type of the space.
+	 * <S>
+	 * Type of the space.
 	 */
 	public interface LeafMerger<S extends Space> {
 
@@ -557,8 +549,7 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * Such cases happens for example when a cut sub-hyperplane is inserted into another tree (during a merge operation), and is split in several parts, some of which becomes smaller than the tolerance. The corresponding node as then no cut sub-hyperplane anymore, but does have children. This interface specifies how to handle this situation. setting
 	 * </p>
-	 * 
-	 * @since 3.4
+	 * 3.4
 	 */
 	public interface VanishingCutHandler<S extends Space> {
 
@@ -583,11 +574,11 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The algorithm used here is the one given in Naylor, Amanatides and Thibault paper (section III, Binary Partitioning of a BSP Tree).
 	 * </p>
+	 * sub
+	 * partitioning sub-hyperplane, must be already clipped
+	 * to the convex region represented by the instance, will be used as
+	 * the cut sub-hyperplane of the returned tree
 	 * 
-	 * @param sub
-	 *            partitioning sub-hyperplane, must be already clipped
-	 *            to the convex region represented by the instance, will be used as
-	 *            the cut sub-hyperplane of the returned tree
 	 * @return a tree having the specified sub-hyperplane as its cut
 	 *         sub-hyperplane, the two parts of the split instance as its two
 	 *         sub-trees and a null parent
@@ -651,9 +642,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The instance itself is modified so its former parent should not be used anymore.
 	 * </p>
+	 * parentTree
+	 * parent tree to connect to (may be null)
 	 * 
-	 * @param parentTree
-	 *            parent tree to connect to (may be null)
 	 * @param isPlusChild
 	 *            if true and if parentTree is not null, the
 	 *            resulting tree should be the plus child of its parent, ignored if
@@ -680,9 +671,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The instance itself is modified so its former parent should not be used anymore.
 	 * </p>
+	 * parentTree
+	 * parent tree to connect to (may be null)
 	 * 
-	 * @param parentTree
-	 *            parent tree to connect to (may be null)
 	 * @param isPlusChild
 	 *            if true and if parentTree is not null, the
 	 *            resulting tree should be the plus child of its parent, ignored if
@@ -744,10 +735,10 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * This method can be used to extract a convex cell from a tree. The original cell may either be a leaf node or an internal node. If it is an internal node, it's subtree will be ignored (i.e. the extracted cell will be a leaf node in all cases). The original tree to which the original cell belongs is not touched at all, a new independent tree will be built.
 	 * </p>
+	 * cellAttribute
+	 * attribute to set for the leaf node
+	 * corresponding to the initial instance cell
 	 * 
-	 * @param cellAttribute
-	 *            attribute to set for the leaf node
-	 *            corresponding to the initial instance cell
 	 * @param otherLeafsAttributes
 	 *            attribute to set for the other leaf
 	 *            nodes
@@ -780,9 +771,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The instance is modified in place, all the parts that are on the minus side of the chopping hyperplane are discarded, only the parts on the plus side remain.
 	 * </p>
+	 * hyperplane
+	 * chopping hyperplane
 	 * 
-	 * @param hyperplane
-	 *            chopping hyperplane
 	 * @param vanishingHandler
 	 *            handler to use for handling very rare corner
 	 *            cases of vanishing cut sub-hyperplanes in internal nodes during merging
@@ -809,9 +800,9 @@ public class BSPTree<S extends Space> {
 	 * <p>
 	 * The instance is modified in place, all the parts that are on the plus side of the chopping hyperplane are discarded, only the parts on the minus side remain.
 	 * </p>
+	 * hyperplane
+	 * chopping hyperplane
 	 * 
-	 * @param hyperplane
-	 *            chopping hyperplane
 	 * @param vanishingHandler
 	 *            handler to use for handling very rare corner
 	 *            cases of vanishing cut sub-hyperplanes in internal nodes during merging

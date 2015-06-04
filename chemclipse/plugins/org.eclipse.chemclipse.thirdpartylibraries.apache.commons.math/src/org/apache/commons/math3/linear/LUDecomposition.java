@@ -76,9 +76,9 @@ public class LUDecomposition {
 
 	/**
 	 * Calculates the LU-decomposition of the given matrix.
+	 * matrix
+	 * The matrix to decompose.
 	 * 
-	 * @param matrix
-	 *            The matrix to decompose.
 	 * @param singularityThreshold
 	 *            threshold (based on partial row norm)
 	 *            under which a matrix is considered singular
@@ -162,8 +162,7 @@ public class LUDecomposition {
 	 * <p>
 	 * L is a lower-triangular matrix
 	 * </p>
-	 * 
-	 * @return the L matrix (or null if decomposed matrix is singular)
+	 * singular)
 	 */
 	public RealMatrix getL() {
 
@@ -186,8 +185,7 @@ public class LUDecomposition {
 	 * <p>
 	 * U is an upper-triangular matrix
 	 * </p>
-	 * 
-	 * @return the U matrix (or null if decomposed matrix is singular)
+	 * singular)
 	 */
 	public RealMatrix getU() {
 
@@ -213,8 +211,8 @@ public class LUDecomposition {
 	 * The positions of the 1 elements are given by the {@link #getPivot()
 	 * pivot permutation vector}.
 	 * </p>
+	 * singular)
 	 * 
-	 * @return the P rows permutation matrix (or null if decomposed matrix is singular)
 	 * @see #getPivot()
 	 */
 	public RealMatrix getP() {
@@ -231,8 +229,8 @@ public class LUDecomposition {
 
 	/**
 	 * Returns the pivot permutation vector.
+	 * vector
 	 * 
-	 * @return the pivot permutation vector
 	 * @see #getP()
 	 */
 	public int[] getPivot() {
@@ -242,8 +240,7 @@ public class LUDecomposition {
 
 	/**
 	 * Return the determinant of the matrix
-	 * 
-	 * @return determinant of the matrix
+	 * matrix
 	 */
 	public double getDeterminant() {
 
@@ -262,8 +259,7 @@ public class LUDecomposition {
 	/**
 	 * Get a solver for finding the A &times; X = B solution in exact linear
 	 * sense.
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	public DecompositionSolver getSolver() {
 

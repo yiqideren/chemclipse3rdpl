@@ -44,9 +44,9 @@ public class S1Point implements Point<Sphere1D> {
 	/**
 	 * Simple constructor.
 	 * Build a vector from its coordinates
+	 * alpha
+	 * azimuthal angle \( \alpha \)
 	 * 
-	 * @param alpha
-	 *            azimuthal angle \( \alpha \)
 	 * @see #getAlpha()
 	 */
 	public S1Point(final double alpha) {
@@ -56,9 +56,9 @@ public class S1Point implements Point<Sphere1D> {
 
 	/**
 	 * Build a point from its internal components.
+	 * alpha
+	 * azimuthal angle \( \alpha \)
 	 * 
-	 * @param alpha
-	 *            azimuthal angle \( \alpha \)
 	 * @param vector
 	 *            corresponding vector
 	 */
@@ -70,8 +70,8 @@ public class S1Point implements Point<Sphere1D> {
 
 	/**
 	 * Get the azimuthal angle \( \alpha \).
+	 * \)
 	 * 
-	 * @return azimuthal angle \( \alpha \)
 	 * @see #S1Point(double)
 	 */
 	public double getAlpha() {
@@ -81,8 +81,7 @@ public class S1Point implements Point<Sphere1D> {
 
 	/**
 	 * Get the corresponding normalized vector in the 2D euclidean space.
-	 * 
-	 * @return normalized vector
+	 * vector
 	 */
 	public Vector2D getVector() {
 
@@ -109,9 +108,9 @@ public class S1Point implements Point<Sphere1D> {
 
 	/**
 	 * Compute the distance (angular separation) between two points.
+	 * p1
+	 * first vector
 	 * 
-	 * @param p1
-	 *            first vector
 	 * @param p2
 	 *            second vector
 	 * @return the angular separation between p1 and p2

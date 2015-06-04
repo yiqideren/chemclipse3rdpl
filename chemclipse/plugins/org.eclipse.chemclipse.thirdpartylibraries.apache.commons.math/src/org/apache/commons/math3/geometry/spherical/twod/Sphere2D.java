@@ -41,8 +41,7 @@ public class Sphere2D implements Serializable, Space {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static Sphere2D getInstance() {
 
@@ -77,8 +76,7 @@ public class Sphere2D implements Serializable, Space {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

@@ -65,9 +65,9 @@ public class LegendreGaussIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a Legendre-Gauss integrator with given accuracies and iterations counts.
+	 * n
+	 * number of points desired (must be between 2 and 5 inclusive)
 	 * 
-	 * @param n
-	 *            number of points desired (must be between 2 and 5 inclusive)
 	 * @param relativeAccuracy
 	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
@@ -112,9 +112,9 @@ public class LegendreGaussIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a Legendre-Gauss integrator with given accuracies.
+	 * n
+	 * number of points desired (must be between 2 and 5 inclusive)
 	 * 
-	 * @param n
-	 *            number of points desired (must be between 2 and 5 inclusive)
 	 * @param relativeAccuracy
 	 *            relative accuracy of the result
 	 * @param absoluteAccuracy
@@ -129,9 +129,9 @@ public class LegendreGaussIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Build a Legendre-Gauss integrator with given iteration counts.
+	 * n
+	 * number of points desired (must be between 2 and 5 inclusive)
 	 * 
-	 * @param n
-	 *            number of points desired (must be between 2 and 5 inclusive)
 	 * @param minimalIterationCount
 	 *            minimum number of iterations
 	 * @param maximalIterationCount
@@ -177,9 +177,9 @@ public class LegendreGaussIntegrator extends BaseAbstractUnivariateIntegrator {
 
 	/**
 	 * Compute the n-th stage integral.
+	 * n
+	 * number of steps
 	 * 
-	 * @param n
-	 *            number of steps
 	 * @return the value of n-th stage integral
 	 * @throws TooManyEvaluationsException
 	 *             if the maximum number of evaluations

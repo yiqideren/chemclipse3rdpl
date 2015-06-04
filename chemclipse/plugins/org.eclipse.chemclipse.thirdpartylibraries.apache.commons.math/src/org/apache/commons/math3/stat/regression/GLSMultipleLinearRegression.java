@@ -24,21 +24,21 @@ import org.apache.commons.math3.linear.RealVector;
  *
  * GLS assumes a general covariance matrix Omega of the error
  * 
- * <pre>
+ * 
  * u ~ N(0, Omega)
- * </pre>
+ * 
  *
  * Estimated by GLS,
  * 
- * <pre>
+ * 
  * b=(X' Omega^-1 X)^-1X'Omega^-1 y
- * </pre>
+ * 
  * 
  * whose variance is
  * 
- * <pre>
+ * 
  * Var(b)=(X' Omega^-1 X)^-1
- * </pre>
+ * 
  * 
  * @since 2.0
  */
@@ -51,9 +51,9 @@ public class GLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 
 	/**
 	 * Replace sample data, overriding any previous sample.
+	 * y
+	 * y values of the sample
 	 * 
-	 * @param y
-	 *            y values of the sample
 	 * @param x
 	 *            x values of the sample
 	 * @param covariance
@@ -85,8 +85,7 @@ public class GLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	 * <p>
 	 * The inverse of the covariance matrix is lazily evaluated and cached.
 	 * </p>
-	 * 
-	 * @return inverse of the covariance
+	 * covariance
 	 */
 	protected RealMatrix getOmegaInverse() {
 
@@ -99,9 +98,7 @@ public class GLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	/**
 	 * Calculates beta by GLS.
 	 * 
-	 * <pre>
-	 *  b=(X' Omega^-1 X)^-1X'Omega^-1 y
-	 * </pre>
+	 * b=(X' Omega^-1 X)^-1X'Omega^-1 y
 	 * 
 	 * @return beta
 	 */
@@ -118,9 +115,7 @@ public class GLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	/**
 	 * Calculates the variance on the beta.
 	 * 
-	 * <pre>
-	 *  Var(b)=(X' Omega^-1 X)^-1
-	 * </pre>
+	 * Var(b)=(X' Omega^-1 X)^-1
 	 * 
 	 * @return The beta variance matrix
 	 */
@@ -135,9 +130,7 @@ public class GLSMultipleLinearRegression extends AbstractMultipleLinearRegressio
 	/**
 	 * Calculates the estimated variance of the error term using the formula
 	 * 
-	 * <pre>
-	 *  Var(u) = Tr(u' Omega^-1 u)/(n-k)
-	 * </pre>
+	 * Var(u) = Tr(u' Omega^-1 u)/(n-k)
 	 * 
 	 * where n and k are the row and column dimensions of the design
 	 * matrix X.

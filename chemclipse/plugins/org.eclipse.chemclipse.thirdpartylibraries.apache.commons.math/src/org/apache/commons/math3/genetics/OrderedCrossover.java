@@ -40,11 +40,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * Example (random sublist from index 3 to 7, underlined):
  * 
- * <pre>
- * p1 = (8 4 7 3 6 2 5 1 9 0)   X   c1 = (0 4 7 3 6 2 5 1 8 9)
- *             ---------                        ---------
- * p2 = (0 1 2 3 4 5 6 7 8 9)   X   c2 = (8 1 2 3 4 5 6 7 9 0)
- * </pre>
+ * 
+ * p1 = (8 4 7 3 6 2 5 1 9 0) X c1 = (0 4 7 3 6 2 5 1 8 9) --------- --------- p2 = (0 1 2 3 4 5 6 7 8 9) X c2 = (8 1 2 3 4 5 6 7 9 0)
+ * 
  * <p>
  * This policy works only on {@link AbstractListChromosome}, and therefore it is parameterized by T. Moreover, the chromosomes must have same lengths.
  *

@@ -31,9 +31,8 @@ public class GradientFunction implements MultivariateVectorFunction {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param f
-	 *            underlying real-valued function
+	 * f
+	 * underlying real-valued function
 	 */
 	public GradientFunction(final MultivariateDifferentiableFunction f) {
 

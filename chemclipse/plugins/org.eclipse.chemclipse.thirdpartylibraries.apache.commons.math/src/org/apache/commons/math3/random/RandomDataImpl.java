@@ -221,8 +221,7 @@ public class RandomDataImpl implements RandomData, Serializable {
 	 * <p>
 	 * <strong>Algorithm Description</strong>: if the lower bound is excluded, scales the output of Random.nextDouble(), but rejects 0 values (i.e., will generate another random double if Random.nextDouble() returns 0). This is necessary to provide a symmetric output interval (both endpoints excluded).
 	 * </p>
-	 * 
-	 * @since 3.0
+	 * 3.0
 	 */
 	public double nextUniform(double lower, double upper, boolean lowerInclusive) throws NumberIsTooLargeException, NotFiniteNumberException, NotANumberException {
 

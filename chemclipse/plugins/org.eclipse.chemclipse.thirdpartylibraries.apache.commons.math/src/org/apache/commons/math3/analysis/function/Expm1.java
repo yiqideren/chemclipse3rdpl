@@ -35,9 +35,7 @@ public class Expm1 implements UnivariateDifferentiableFunction, DifferentiableUn
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated as of 3.1, replaced by {@link #value(DerivativeStructure)}
+	 * {@inheritDoc} #value(DerivativeStructure)}
 	 */
 	@Deprecated
 	public UnivariateFunction derivative() {
@@ -46,9 +44,7 @@ public class Expm1 implements UnivariateDifferentiableFunction, DifferentiableUn
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public DerivativeStructure value(final DerivativeStructure t) {
 

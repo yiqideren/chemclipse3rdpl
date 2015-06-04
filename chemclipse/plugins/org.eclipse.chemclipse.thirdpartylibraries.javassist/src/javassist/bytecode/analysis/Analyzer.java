@@ -39,7 +39,8 @@ import javassist.bytecode.Opcode;
  * Example:
  * </p>
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -90,13 +91,13 @@ import javassist.bytecode.Opcode;
  * // Method to analyze
  * public Object doSomething(int x) {
  * 
- * 	Number n;
- * 	if(x &lt; 5) {
- * 		n = new Double(0);
- * 	} else {
- * 		n = new Long(0);
- * 	}
- * 	return n;
+ * Number n;
+ * if(x &lt; 5) {
+ * n = new Double(0);
+ * } else {
+ * n = new Long(0);
+ * }
+ * return n;
  * }
  * 
  * // Which compiles to:
@@ -118,14 +119,14 @@ import javassist.bytecode.Opcode;
  * // 27: areturn
  * public void analyzeIt(CtClass clazz, MethodInfo method) {
  * 
- * 	Analyzer analyzer = new Analyzer();
- * 	Frame[] frames = analyzer.analyze(clazz, method);
- * 	frames[0].getLocal(0).getCtClass(); // returns clazz;
- * 	frames[0].getLocal(1).getCtClass(); // returns java.lang.String
- * 	frames[1].peek(); // returns Type.INTEGER
- * 	frames[27].peek().getCtClass(); // returns java.lang.Number
+ * Analyzer analyzer = new Analyzer();
+ * Frame[] frames = analyzer.analyze(clazz, method);
+ * frames[0].getLocal(0).getCtClass(); // returns clazz;
+ * frames[0].getLocal(1).getCtClass(); // returns java.lang.String
+ * frames[1].peek(); // returns Type.INTEGER
+ * frames[27].peek().getCtClass(); // returns java.lang.Number
  * }
- * </pre>
+ * 
  *
  * @see FramePrinter
  * @author Jason T. Greene

@@ -45,9 +45,8 @@ public abstract class ClusterEvaluator<T extends Clusterable> {
 
 	/**
 	 * Creates a new cluster evaluator with the given distance measure.
-	 * 
-	 * @param measure
-	 *            the distance measure to use
+	 * measure
+	 * the distance measure to use
 	 */
 	public ClusterEvaluator(final DistanceMeasure measure) {
 
@@ -56,9 +55,9 @@ public abstract class ClusterEvaluator<T extends Clusterable> {
 
 	/**
 	 * Computes the evaluation score for the given list of clusters.
+	 * clusters
+	 * the clusters to evaluate
 	 * 
-	 * @param clusters
-	 *            the clusters to evaluate
 	 * @return the computed score
 	 */
 	public abstract double score(List<? extends Cluster<T>> clusters);

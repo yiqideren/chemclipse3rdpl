@@ -79,8 +79,7 @@ class TriDiagonalTransformer {
 	 * <p>
 	 * Q is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
-	 * 
-	 * @return the Q matrix
+	 * matrix
 	 */
 	public RealMatrix getQ() {
 
@@ -95,8 +94,7 @@ class TriDiagonalTransformer {
 	 * <p>
 	 * Q is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
-	 * 
-	 * @return the Q matrix
+	 * matrix
 	 */
 	public RealMatrix getQT() {
 
@@ -136,8 +134,7 @@ class TriDiagonalTransformer {
 
 	/**
 	 * Returns the tridiagonal matrix T of the transform.
-	 * 
-	 * @return the T matrix
+	 * matrix
 	 */
 	public RealMatrix getT() {
 
@@ -164,8 +161,7 @@ class TriDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the main diagonal elements of the B matrix
+	 * matrix
 	 */
 	double[][] getHouseholderVectorsRef() {
 
@@ -177,8 +173,7 @@ class TriDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the main diagonal elements of the T matrix
+	 * matrix
 	 */
 	double[] getMainDiagonalRef() {
 
@@ -190,8 +185,7 @@ class TriDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the secondary diagonal elements of the T matrix
+	 * matrix
 	 */
 	double[] getSecondaryDiagonalRef() {
 

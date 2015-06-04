@@ -41,15 +41,13 @@ public abstract class AbstractRealDistribution implements RealDistribution, Seri
 	private static final long serialVersionUID = -38038050983108802L;
 	/**
 	 * RandomData instance used to generate samples from the distribution.
-	 * 
-	 * @deprecated As of 3.1, to be removed in 4.0. Please use the {@link #random} instance variable instead.
+	 * instead.
 	 */
 	@Deprecated
 	protected RandomDataImpl randomData = new RandomDataImpl();
 	/**
 	 * RNG instance used to generate samples from the distribution.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	protected final RandomGenerator random;
 	/** Solver absolute accuracy for inverse cumulative computation */

@@ -81,16 +81,12 @@ public class PolynomialsUtils {
 	 * <p>
 	 * <a href="http://mathworld.wolfram.com/ChebyshevPolynomialoftheFirstKind.html">Chebyshev polynomials of the first kind</a> are orthogonal polynomials. They can be defined by the following recurrence relations:
 	 * 
-	 * <pre>
-	 *  T<sub>0</sub>(X)   = 1
-	 *  T<sub>1</sub>(X)   = X
-	 *  T<sub>k+1</sub>(X) = 2X T<sub>k</sub>(X) - T<sub>k-1</sub>(X)
-	 * </pre>
+	 * T<sub>0</sub>(X) = 1 T<sub>1</sub>(X) = X T<sub>k+1</sub>(X) = 2X T<sub>k</sub>(X) - T<sub>k-1</sub>(X)
 	 * 
 	 * </p>
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @return Chebyshev polynomial of specified degree
 	 */
 	public static PolynomialFunction createChebyshevPolynomial(final int degree) {
@@ -112,16 +108,12 @@ public class PolynomialsUtils {
 	 * <p>
 	 * <a href="http://mathworld.wolfram.com/HermitePolynomial.html">Hermite polynomials</a> are orthogonal polynomials. They can be defined by the following recurrence relations:
 	 * 
-	 * <pre>
-	 *  H<sub>0</sub>(X)   = 1
-	 *  H<sub>1</sub>(X)   = 2X
-	 *  H<sub>k+1</sub>(X) = 2X H<sub>k</sub>(X) - 2k H<sub>k-1</sub>(X)
-	 * </pre>
+	 * H<sub>0</sub>(X) = 1 H<sub>1</sub>(X) = 2X H<sub>k+1</sub>(X) = 2X H<sub>k</sub>(X) - 2k H<sub>k-1</sub>(X)
 	 * 
 	 * </p>
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @return Hermite polynomial of specified degree
 	 */
 	public static PolynomialFunction createHermitePolynomial(final int degree) {
@@ -141,16 +133,12 @@ public class PolynomialsUtils {
 	 * <p>
 	 * <a href="http://mathworld.wolfram.com/LaguerrePolynomial.html">Laguerre polynomials</a> are orthogonal polynomials. They can be defined by the following recurrence relations:
 	 * 
-	 * <pre>
-	 *        L<sub>0</sub>(X)   = 1
-	 *        L<sub>1</sub>(X)   = 1 - X
-	 *  (k+1) L<sub>k+1</sub>(X) = (2k + 1 - X) L<sub>k</sub>(X) - k L<sub>k-1</sub>(X)
-	 * </pre>
+	 * L<sub>0</sub>(X) = 1 L<sub>1</sub>(X) = 1 - X (k+1) L<sub>k+1</sub>(X) = (2k + 1 - X) L<sub>k</sub>(X) - k L<sub>k-1</sub>(X)
 	 * 
 	 * </p>
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @return Laguerre polynomial of specified degree
 	 */
 	public static PolynomialFunction createLaguerrePolynomial(final int degree) {
@@ -171,16 +159,12 @@ public class PolynomialsUtils {
 	 * <p>
 	 * <a href="http://mathworld.wolfram.com/LegendrePolynomial.html">Legendre polynomials</a> are orthogonal polynomials. They can be defined by the following recurrence relations:
 	 * 
-	 * <pre>
-	 *        P<sub>0</sub>(X)   = 1
-	 *        P<sub>1</sub>(X)   = X
-	 *  (k+1) P<sub>k+1</sub>(X) = (2k+1) X P<sub>k</sub>(X) - k P<sub>k-1</sub>(X)
-	 * </pre>
+	 * P<sub>0</sub>(X) = 1 P<sub>1</sub>(X) = X (k+1) P<sub>k+1</sub>(X) = (2k+1) X P<sub>k</sub>(X) - k P<sub>k-1</sub>(X)
 	 * 
 	 * </p>
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @return Legendre polynomial of specified degree
 	 */
 	public static PolynomialFunction createLegendrePolynomial(final int degree) {
@@ -201,18 +185,12 @@ public class PolynomialsUtils {
 	 * <p>
 	 * <a href="http://mathworld.wolfram.com/JacobiPolynomial.html">Jacobi polynomials</a> are orthogonal polynomials. They can be defined by the following recurrence relations:
 	 * 
-	 * <pre>
-	 *        P<sub>0</sub><sup>vw</sup>(X)   = 1
-	 *        P<sub>-1</sub><sup>vw</sup>(X)  = 0
-	 *  2k(k + v + w)(2k + v + w - 2) P<sub>k</sub><sup>vw</sup>(X) =
-	 *  (2k + v + w - 1)[(2k + v + w)(2k + v + w - 2) X + v<sup>2</sup> - w<sup>2</sup>] P<sub>k-1</sub><sup>vw</sup>(X)
-	 *  - 2(k + v - 1)(k + w - 1)(2k + v + w) P<sub>k-2</sub><sup>vw</sup>(X)
-	 * </pre>
+	 * P<sub>0</sub><sup>vw</sup>(X) = 1 P<sub>-1</sub><sup>vw</sup>(X) = 0 2k(k + v + w)(2k + v + w - 2) P<sub>k</sub><sup>vw</sup>(X) = (2k + v + w - 1)[(2k + v + w)(2k + v + w - 2) X + v<sup>2</sup> - w<sup>2</sup>] P<sub>k-1</sub><sup>vw</sup>(X) - 2(k + v - 1)(k + w - 1)(2k + v + w) P<sub>k-2</sub><sup>vw</sup>(X)
 	 * 
 	 * </p>
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @param v
 	 *            first exponent
 	 * @param w
@@ -306,18 +284,17 @@ public class PolynomialsUtils {
 	 * Thus, if <code>P(x) = &Sigma;<sub>i</sub> a<sub>i</sub> x<sup>i</sup></code>,
 	 * then
 	 * 
-	 * <pre>
-	 *  <table>
-	 *   <tr>
-	 *    <td><code>P<sub>s</sub>(x)</td>
-	 *    <td>= &Sigma;<sub>i</sub> b<sub>i</sub> x<sup>i</sup></code></td>
-	 *   </tr>
-	 *   <tr>
-	 *    <td></td>
-	 *    <td>= &Sigma;<sub>i</sub> a<sub>i</sub> (x + shift)<sup>i</sup></code></td>
-	 *   </tr>
-	 *  </table>
-	 * </pre>
+	 * <table>
+	 * <tr>
+	 * <td><code>P<sub>s</sub>(x)</td>
+	 * <td>=&Sigma;<sub>i</sub> b<sub>i</sub> x<sup>i</sup></code></td>
+	 * </tr>
+	 * <tr>
+	 * <td></td>
+	 * <td>=&Sigma;<sub>i</sub> a<sub>i</sub> (x + shift)<sup>i</sup></code></td>
+	 * </tr>
+	 * </table>
+	 * 
 	 *
 	 * @param coefficients
 	 *            Coefficients of the original polynomial.
@@ -353,9 +330,9 @@ public class PolynomialsUtils {
 
 	/**
 	 * Get the coefficients array for a given degree.
+	 * degree
+	 * degree of the polynomial
 	 * 
-	 * @param degree
-	 *            degree of the polynomial
 	 * @param coefficients
 	 *            list where the computed coefficients are stored
 	 * @param generator
@@ -389,9 +366,9 @@ public class PolynomialsUtils {
 
 	/**
 	 * Compute polynomial coefficients up to a given degree.
+	 * degree
+	 * maximal degree
 	 * 
-	 * @param degree
-	 *            maximal degree
 	 * @param maxDegree
 	 *            current maximal degree
 	 * @param generator

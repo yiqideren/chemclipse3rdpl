@@ -182,9 +182,9 @@ public class Covariance {
 	/**
 	 * Compute a covariance matrix from a matrix whose columns represent
 	 * covariates.
+	 * matrix
+	 * input matrix (must have at least one column and two rows)
 	 * 
-	 * @param matrix
-	 *            input matrix (must have at least one column and two rows)
 	 * @param biasCorrected
 	 *            determines whether or not covariance estimates are bias-corrected
 	 * @return covariance matrix
@@ -210,9 +210,9 @@ public class Covariance {
 	/**
 	 * Create a covariance matrix from a matrix whose columns represent
 	 * covariates. Covariances are computed using the bias-corrected formula.
+	 * matrix
+	 * input matrix (must have at least one column and two rows)
 	 * 
-	 * @param matrix
-	 *            input matrix (must have at least one column and two rows)
 	 * @return covariance matrix
 	 * @throws MathIllegalArgumentException
 	 *             if matrix does not contain sufficient data
@@ -226,9 +226,9 @@ public class Covariance {
 	/**
 	 * Compute a covariance matrix from a rectangular array whose columns represent
 	 * covariates.
+	 * data
+	 * input array (must have at least one column and two rows)
 	 * 
-	 * @param data
-	 *            input array (must have at least one column and two rows)
 	 * @param biasCorrected
 	 *            determines whether or not covariance estimates are bias-corrected
 	 * @return covariance matrix
@@ -247,9 +247,9 @@ public class Covariance {
 	/**
 	 * Create a covariance matrix from a rectangular array whose columns represent
 	 * covariates. Covariances are computed using the bias-corrected formula.
+	 * data
+	 * input array (must have at least one column and two rows)
 	 * 
-	 * @param data
-	 *            input array (must have at least one column and two rows)
 	 * @return covariance matrix
 	 * @throws MathIllegalArgumentException
 	 *             if the data array does not contain sufficient data
@@ -327,9 +327,9 @@ public class Covariance {
 	/**
 	 * Throws MathIllegalArgumentException if the matrix does not have at least
 	 * one column and two rows.
+	 * matrix
+	 * matrix to check
 	 * 
-	 * @param matrix
-	 *            matrix to check
 	 * @throws MathIllegalArgumentException
 	 *             if the matrix does not contain sufficient data
 	 *             to compute covariance

@@ -112,11 +112,11 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	 * Build a Gragg-Bulirsch-Stoer integrator with the given step
 	 * bounds. All tuning parameters are set to their default
 	 * values. The default step handler does nothing.
+	 * minStep
+	 * minimal step (sign is irrelevant, regardless of
+	 * integration direction, forward or backward), the last step can
+	 * be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (sign is irrelevant, regardless of
-	 *            integration direction, forward or backward), the last step can
-	 *            be smaller than this
 	 * @param maxStep
 	 *            maximal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can
@@ -140,10 +140,10 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	 * Build a Gragg-Bulirsch-Stoer integrator with the given step
 	 * bounds. All tuning parameters are set to their default
 	 * values. The default step handler does nothing.
+	 * minStep
+	 * minimal step (must be positive even for backward
+	 * integration), the last step can be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (must be positive even for backward
-	 *            integration), the last step can be smaller than this
 	 * @param maxStep
 	 *            maximal step (must be positive even for backward
 	 *            integration)
@@ -169,10 +169,10 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	 * <p>
 	 * By default, the test is performed, at most during two iterations at each step, and at most once for each of these iterations. The default stepsize reduction factor is 0.5.
 	 * </p>
+	 * performStabilityCheck
+	 * if true, stability check will be performed,
+	 * if false, the check will be skipped
 	 * 
-	 * @param performStabilityCheck
-	 *            if true, stability check will be performed,
-	 *            if false, the check will be skipped
 	 * @param maxNumIter
 	 *            maximal number of iterations for which checks are
 	 *            performed (the number of iterations is reset to default if negative
@@ -199,29 +199,24 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Set the step size control factors.
-	 * 
 	 * <p>
 	 * The new step size hNew is computed from the old one h by:
 	 * 
-	 * <pre>
 	 * hNew = h * stepControl2 / (err/stepControl1)^(1/(2k+1))
-	 * </pre>
 	 * 
 	 * where err is the scaled error and k the iteration number of the extrapolation scheme (counting from 0). The default values are 0.65 for stepControl1 and 0.94 for stepControl2.
 	 * </p>
 	 * <p>
 	 * The step size is subject to the restriction:
 	 * 
-	 * <pre>
 	 * stepControl3^(1/(2k+1))/stepControl4 <= hNew/h <= 1/stepControl3^(1/(2k+1))
-	 * </pre>
 	 * 
 	 * The default values are 0.02 for stepControl3 and 4.0 for stepControl4.
 	 * </p>
+	 * control1
+	 * first stepsize control factor (the factor is
+	 * reset to default if lower than 0.0001 or greater than 0.9999)
 	 * 
-	 * @param control1
-	 *            first stepsize control factor (the factor is
-	 *            reset to default if lower than 0.0001 or greater than 0.9999)
 	 * @param control2
 	 *            second stepsize control factor (the factor
 	 *            is reset to default if lower than 0.0001 or greater than 0.9999)
@@ -262,20 +257,18 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	 * The Gragg-Bulirsch-Stoer method changes both the step size and the order during integration, in order to minimize computation cost. Each extrapolation step increases the order by 2, so the maximal order that will be used is always even, it is twice the maximal number of columns in the extrapolation table.
 	 * </p>
 	 * 
-	 * <pre>
-	 * order is decreased if w(k-1) <= w(k)   * orderControl1
-	 * order is increased if w(k)   <= w(k-1) * orderControl2
-	 * </pre>
+	 * order is decreased if w(k-1) <= w(k) * orderControl1
+	 * order is increased if w(k) <= w(k-1) * orderControl2
 	 * <p>
 	 * where w is the table of work per unit step for each order (number of function calls divided by the step length), and k is the current order.
 	 * </p>
 	 * <p>
 	 * The default maximal order after construction is 18 (i.e. the maximal number of columns is 9). The default values are 0.8 for orderControl1 and 0.9 for orderControl2.
 	 * </p>
+	 * maximalOrder
+	 * maximal order in the extrapolation table (the
+	 * maximal order is reset to default if order <= 6 or odd)
 	 * 
-	 * @param maximalOrder
-	 *            maximal order in the extrapolation table (the
-	 *            maximal order is reset to default if order <= 6 or odd)
 	 * @param control1
 	 *            first order control factor (the factor is
 	 *            reset to default if lower than 0.0001 or greater than 0.9999)
@@ -357,10 +350,10 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	 * The interpolation order for dense output is 2k - mudif + 1. The
 	 * default value for mudif is 4 and the interpolation error is used
 	 * in stepsize control by default.
+	 * useInterpolationErrorForControl
+	 * if true, interpolation error is used
+	 * for stepsize control
 	 * 
-	 * @param useInterpolationErrorForControl
-	 *            if true, interpolation error is used
-	 *            for stepsize control
 	 * @param mudifControlParameter
 	 *            interpolation order control parameter (the parameter
 	 *            is reset to default if <= 0 or >= 7)
@@ -377,9 +370,9 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Update scaling array.
+	 * y1
+	 * first state vector to use for scaling
 	 * 
-	 * @param y1
-	 *            first state vector to use for scaling
 	 * @param y2
 	 *            second state vector to use for scaling
 	 * @param scale
@@ -403,9 +396,9 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 	/**
 	 * Perform integration over one step using substeps of a modified
 	 * midpoint method.
+	 * t0
+	 * initial time
 	 * 
-	 * @param t0
-	 *            initial time
 	 * @param y0
 	 *            initial value of the state vector at t0
 	 * @param step
@@ -481,9 +474,9 @@ public class GraggBulirschStoerIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Extrapolate a vector.
+	 * offset
+	 * offset to use in the coefficients table
 	 * 
-	 * @param offset
-	 *            offset to use in the coefficients table
 	 * @param k
 	 *            index of the last updated point
 	 * @param diag

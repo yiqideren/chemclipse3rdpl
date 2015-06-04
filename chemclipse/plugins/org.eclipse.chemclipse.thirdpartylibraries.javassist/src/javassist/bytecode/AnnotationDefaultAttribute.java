@@ -28,7 +28,8 @@ import java.util.Map;
  * <p>
  * For example, if you declare the following annotation type:
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -78,32 +79,24 @@ import java.util.Map;
  * 
  * &#064;interface Author {
  * 
- * 	String name() default &quot;Shakespeare&quot;;
+ * String name() default &quot;Shakespeare&quot;;
  * 
- * 	int age() default 99;
- * }
- * </pre>
+ * int age() default 99; }
+ * 
  *
  * <p>
  * The defautl values of <code>name</code> and <code>age</code> are stored as annotation default attributes in <code>Author.class</code>. The following code snippet obtains the default value of <code>name</code>:
  * 
- * <pre>
- * ClassPool pool = ...
- * CtClass cc = pool.get("Author");
- * CtMethod cm = cc.getDeclaredMethod("age");
- * MethodInfo minfo = cm.getMethodInfo();
- * AnnotationDefaultAttribute ada
- *         = (AnnotationDefaultAttribute)
- *           minfo.getAttribute(AnnotationDefaultAttribute.tag);
- * MemberValue value = ada.getDefaultValue());    // default value of age
- * </pre>
+ * 
+ * ClassPool pool = ... CtClass cc = pool.get("Author"); CtMethod cm = cc.getDeclaredMethod("age"); MethodInfo minfo = cm.getMethodInfo(); AnnotationDefaultAttribute ada = (AnnotationDefaultAttribute) minfo.getAttribute(AnnotationDefaultAttribute.tag); MemberValue value = ada.getDefaultValue()); // default value of age
+ * 
  *
  * <p>
  * If the following statement is executed after the code above, the default value of age is set to 80:
  *
- * <pre>
+ * 
  * ada.setDefaultValue(new IntegerMemberValue(minfo.getConstPool(), 80));
- * </pre>
+ * 
  *
  * @see AnnotationsAttribute
  * @see javassist.bytecode.annotation.MemberValue

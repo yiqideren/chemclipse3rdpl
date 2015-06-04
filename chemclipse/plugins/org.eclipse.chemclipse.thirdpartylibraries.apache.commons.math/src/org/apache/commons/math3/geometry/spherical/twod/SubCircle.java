@@ -33,9 +33,9 @@ public class SubCircle extends AbstractSubHyperplane<Sphere2D, Sphere1D> {
 
 	/**
 	 * Simple constructor.
+	 * hyperplane
+	 * underlying hyperplane
 	 * 
-	 * @param hyperplane
-	 *            underlying hyperplane
 	 * @param remainingRegion
 	 *            remaining region of the hyperplane
 	 */

@@ -36,9 +36,9 @@ public class SubPlane extends AbstractSubHyperplane<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Simple constructor.
+	 * hyperplane
+	 * underlying hyperplane
 	 * 
-	 * @param hyperplane
-	 *            underlying hyperplane
 	 * @param remainingRegion
 	 *            remaining region of the hyperplane
 	 */
@@ -90,9 +90,9 @@ public class SubPlane extends AbstractSubHyperplane<Euclidean3D, Euclidean2D> {
 
 	/**
 	 * Split the instance in two parts by an hyperplane.
+	 * hyperplane
+	 * splitting hyperplane
 	 * 
-	 * @param hyperplane
-	 *            splitting hyperplane
 	 * @return an object containing both the part of the instance
 	 *         on the plus side of the instance and the part of the
 	 *         instance on the minus side of the instance

@@ -87,9 +87,8 @@ public class RealMatrixFormat {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	public RealMatrixFormat(final NumberFormat format) {
 
@@ -98,9 +97,9 @@ public class RealMatrixFormat {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param rowPrefix
@@ -120,9 +119,9 @@ public class RealMatrixFormat {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param rowPrefix
@@ -154,8 +153,7 @@ public class RealMatrixFormat {
 	 * <p>
 	 * This is the same set as the {@link NumberFormat} set.
 	 * </p>
-	 * 
-	 * @return available real vector format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -164,8 +162,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format prefix.
-	 * 
-	 * @return format prefix.
+	 * prefix.
 	 */
 	public String getPrefix() {
 
@@ -174,8 +171,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format suffix.
-	 * 
-	 * @return format suffix.
+	 * suffix.
 	 */
 	public String getSuffix() {
 
@@ -184,8 +180,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format prefix.
-	 * 
-	 * @return format prefix.
+	 * prefix.
 	 */
 	public String getRowPrefix() {
 
@@ -194,8 +189,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format suffix.
-	 * 
-	 * @return format suffix.
+	 * suffix.
 	 */
 	public String getRowSuffix() {
 
@@ -204,8 +198,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format separator between rows of the matrix.
-	 * 
-	 * @return format separator for rows.
+	 * rows.
 	 */
 	public String getRowSeparator() {
 
@@ -214,8 +207,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the format separator between components.
-	 * 
-	 * @return format separator between components.
+	 * components.
 	 */
 	public String getColumnSeparator() {
 
@@ -224,8 +216,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Get the components format.
-	 * 
-	 * @return components format.
+	 * format.
 	 */
 	public NumberFormat getFormat() {
 
@@ -234,8 +225,7 @@ public class RealMatrixFormat {
 
 	/**
 	 * Returns the default real vector format for the current locale.
-	 * 
-	 * @return the default real vector format.
+	 * format.
 	 */
 	public static RealMatrixFormat getInstance() {
 
@@ -244,9 +234,9 @@ public class RealMatrixFormat {
 
 	/**
 	 * Returns the default real vector format for the given locale.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the real vector format specific to the given locale.
 	 */
 	public static RealMatrixFormat getInstance(final Locale locale) {
@@ -268,9 +258,9 @@ public class RealMatrixFormat {
 
 	/**
 	 * Formats a {@link RealMatrix} object to produce a string.
+	 * matrix
+	 * the object to format.
 	 * 
-	 * @param matrix
-	 *            the object to format.
 	 * @param toAppendTo
 	 *            where the text is to be appended
 	 * @param pos

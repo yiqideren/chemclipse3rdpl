@@ -479,8 +479,8 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	 * <ul>
 	 * <li>the distribution must be loaded before invoking this method</li>
 	 * </ul>
+	 * value.
 	 * 
-	 * @return the random value.
 	 * @throws MathIllegalStateException
 	 *             if the distribution has not been loaded
 	 */
@@ -605,9 +605,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 
 	// Distribution methods ---------------------------
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	@Override
 	public double probability(double x) {
@@ -630,8 +628,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	 * <li>Return k(x) * P(B) / K(B), where k is the within-bin kernel density and P(B) is the mass of B.</li>
 	 * </ol>
 	 * </p>
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public double density(double x) {
 
@@ -735,9 +732,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public double getNumericalMean() {
 
@@ -745,9 +740,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public double getNumericalVariance() {
 
@@ -755,9 +748,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public double getSupportLowerBound() {
 
@@ -765,9 +756,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public double getSupportUpperBound() {
 
@@ -775,9 +764,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public boolean isSupportLowerBoundInclusive() {
 
@@ -785,9 +772,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public boolean isSupportUpperBoundInclusive() {
 
@@ -795,9 +780,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public boolean isSupportConnected() {
 
@@ -805,9 +788,7 @@ public class EmpiricalDistribution extends AbstractRealDistribution {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	@Override
 	public void reseedRandomGenerator(long seed) {

@@ -48,9 +48,8 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Build a polygons set representing the whole real 2-sphere.
-	 * 
-	 * @param tolerance
-	 *            below which points are consider to be identical
+	 * tolerance
+	 * below which points are consider to be identical
 	 */
 	public SphericalPolygonsSet(final double tolerance) {
 
@@ -59,9 +58,9 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Build a polygons set representing a hemisphere.
+	 * pole
+	 * pole of the hemisphere (the pole is in the inside half)
 	 * 
-	 * @param pole
-	 *            pole of the hemisphere (the pole is in the inside half)
 	 * @param tolerance
 	 *            below which points are consider to be identical
 	 */
@@ -72,9 +71,9 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Build a polygons set representing a regular polygon.
+	 * center
+	 * center of the polygon (the center is in the inside half)
 	 * 
-	 * @param center
-	 *            center of the polygon (the center is in the inside half)
 	 * @param meridian
 	 *            point defining the reference meridian for first polygon vertex
 	 * @param outsideRadius
@@ -94,9 +93,9 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @param tolerance
 	 *            below which points are consider to be identical
 	 */
@@ -118,10 +117,10 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @param tolerance
 	 *            below which points are consider to be identical
 	 */
@@ -148,10 +147,10 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * Polygons with thin pikes or dents are inherently difficult to handle because they involve circles with almost opposite directions at some vertices. Polygons whose vertices come from some physical measurement with noise are also difficult because an edge that should be straight may be broken in lots of different pieces with almost equal directions. In both cases, computing the circles intersections is not numerically robust due to the almost 0 or almost &pi; angle. Such cases need to
 	 * carefully adjust the {@code hyperplaneThickness} parameter. A too small value would often lead to completely wrong polygons with large area wrongly identified as inside or outside. Large values are often much safer. As a rule of thumb, a value slightly below the size of the most accurate detail needed is a good value for the {@code hyperplaneThickness} parameter.
 	 * </p>
+	 * hyperplaneThickness
+	 * tolerance below which points are considered to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are considered to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param vertices
 	 *            vertices of the simple loop boundary
 	 */
@@ -162,9 +161,9 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Build the vertices representing a regular polygon.
+	 * center
+	 * center of the polygon (the center is in the inside half)
 	 * 
-	 * @param center
-	 *            center of the polygon (the center is in the inside half)
 	 * @param meridian
 	 *            point defining the reference meridian for first polygon vertex
 	 * @param outsideRadius
@@ -200,10 +199,10 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * For cases where this simple constructor applies, it is expected to be numerically more robust than the {@link #PolygonsSet(Collection) general
 	 * constructor} using {@link SubHyperplane subhyperplanes}.
 	 * </p>
+	 * hyperplaneThickness
+	 * tolerance below which points are consider to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are consider to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param vertices
 	 *            vertices of the simple loop boundary
 	 * @return the BSP tree of the input vertices
@@ -251,10 +250,10 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Recursively build a tree by inserting cut sub-hyperplanes.
+	 * hyperplaneThickness
+	 * tolerance below which points are considered to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are considered to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param node
 	 *            current tree node (it is a leaf node at the beginning
 	 *            of the call)
@@ -314,11 +313,9 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception MathIllegalStateException
-	 *                if the tolerance setting does not allow to build
-	 *                a clean non-ambiguous boundary
+	 * {@inheritDoc} MathIllegalStateException
+	 * if the tolerance setting does not allow to build
+	 * a clean non-ambiguous boundary
 	 */
 	@Override
 	protected void computeGeometricalProperties() throws MathIllegalStateException {
@@ -357,8 +354,8 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * <p>
 	 * All edges in the various loops have the inside of the region on their left side (i.e. toward their pole) and the outside on their right side (i.e. away from their pole) when moving in the underlying circle direction. This means that the closed loops obey the direct trigonometric orientation.
 	 * </p>
+	 * vertices.
 	 * 
-	 * @return boundary of the polygon, organized as an unmodifiable list of loops start vertices.
 	 * @exception MathIllegalStateException
 	 *                if the tolerance setting does not allow to build
 	 *                a clean non-ambiguous boundary
@@ -408,37 +405,30 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 	 * the sphere as outside, whereas the full check can be more computing intensive. A typical use case is therefore:
 	 * </p>
 	 * 
-	 * <pre>
-	 *   // compute region, plus an enclosing spherical cap
-	 *   SphericalPolygonsSet complexShape = ...;
-	 *   EnclosingBall<Sphere2D, S2Point> cap = complexShape.getEnclosingCap();
-	 * 
-	 *   // check lots of points
-	 *   for (Vector3D p : points) {
-	 * 
-	 *     final Location l;
-	 *     if (cap.contains(p)) {
-	 *       // we cannot be sure where the point is
-	 *       // we need to perform the full computation
-	 *       l = complexShape.checkPoint(v);
-	 *     } else {
-	 *       // no need to do further computation,
-	 *       // we already know the point is outside
-	 *       l = Location.OUTSIDE;
-	 *     }
-	 * 
-	 *     // use l ...
-	 * 
-	 *   }
-	 * </pre>
+	 * // compute region, plus an enclosing spherical cap
+	 * SphericalPolygonsSet complexShape = ...;
+	 * EnclosingBall<Sphere2D, S2Point> cap = complexShape.getEnclosingCap();
+	 * points
+	 * for (Vector3D p : points) {
+	 * l;
+	 * if (cap.contains(p)) {
+	 * // we cannot be sure where the point is
+	 * // we need to perform the full computation
+	 * l = complexShape.checkPoint(v);
+	 * } else {
+	 * // no need to do further computation,
+	 * // we already know the point is outside
+	 * l = Location.OUTSIDE;
+	 * }
+	 * ...
+	 * }
 	 * <p>
 	 * In the special cases of empty or whole sphere polygons, special spherical caps are returned, with angular radius set to negative or positive infinity so the {@link EnclosingBall#contains(org.apache.commons.math3.geometry.Point) ball.contains(point)} method return always false or true.
 	 * </p>
 	 * <p>
 	 * This method is <em>not</em> guaranteed to return the smallest enclosing cap.
 	 * </p>
-	 * 
-	 * @return a spherical cap enclosing the polygon
+	 * polygon
 	 */
 	public EnclosingBall<Sphere2D, S2Point> getEnclosingCap() {
 
@@ -503,8 +493,7 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Gather some inside points.
-	 * 
-	 * @return list of points known to be strictly in all inside convex cells
+	 * cells
 	 */
 	private List<Vector3D> getInsidePoints() {
 
@@ -515,8 +504,7 @@ public class SphericalPolygonsSet extends AbstractRegion<Sphere2D, Sphere1D> {
 
 	/**
 	 * Gather some outside points.
-	 * 
-	 * @return list of points known to be strictly in all outside convex cells
+	 * cells
 	 */
 	private List<Vector3D> getOutsidePoints() {
 

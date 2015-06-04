@@ -26,9 +26,9 @@ public interface UnivariateDifferentiableVectorFunction extends UnivariateVector
 
 	/**
 	 * Compute the value for the function.
+	 * x
+	 * the point for which the function value should be computed
 	 * 
-	 * @param x
-	 *            the point for which the function value should be computed
 	 * @return the value
 	 * @exception MathIllegalArgumentException
 	 *                if {@code x} does not

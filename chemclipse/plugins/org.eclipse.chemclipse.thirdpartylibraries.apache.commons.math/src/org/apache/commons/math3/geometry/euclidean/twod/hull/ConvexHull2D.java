@@ -50,9 +50,9 @@ public class ConvexHull2D implements ConvexHull<Euclidean2D, Vector2D>, Serializ
 
 	/**
 	 * Simple constructor.
+	 * vertices
+	 * the vertices of the convex hull, must be ordered
 	 * 
-	 * @param vertices
-	 *            the vertices of the convex hull, must be ordered
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @throws MathIllegalArgumentException
@@ -70,9 +70,9 @@ public class ConvexHull2D implements ConvexHull<Euclidean2D, Vector2D>, Serializ
 
 	/**
 	 * Checks whether the given hull vertices form a convex hull.
+	 * hullVertices
+	 * the hull vertices
 	 * 
-	 * @param hullVertices
-	 *            the hull vertices
 	 * @return {@code true} if the vertices form a convex hull, {@code false} otherwise
 	 */
 	private boolean isConvex(final Vector2D[] hullVertices) {
@@ -108,8 +108,7 @@ public class ConvexHull2D implements ConvexHull<Euclidean2D, Vector2D>, Serializ
 
 	/**
 	 * Get the line segments of the convex hull, ordered.
-	 * 
-	 * @return the line segments of the convex hull
+	 * hull
 	 */
 	public Segment[] getLineSegments() {
 

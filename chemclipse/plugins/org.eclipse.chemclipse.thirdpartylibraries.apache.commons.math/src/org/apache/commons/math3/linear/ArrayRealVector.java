@@ -233,9 +233,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * First vector (will be put in front of the new vector).
 	 * 
-	 * @param v1
-	 *            First vector (will be put in front of the new vector).
 	 * @param v2
 	 *            Second vector (will be put at back of the new vector).
 	 */
@@ -248,9 +248,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * First vector (will be put in front of the new vector).
 	 * 
-	 * @param v1
-	 *            First vector (will be put in front of the new vector).
 	 * @param v2
 	 *            Second vector (will be put at back of the new vector).
 	 */
@@ -267,9 +267,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * First vector (will be put in front of the new vector).
 	 * 
-	 * @param v1
-	 *            First vector (will be put in front of the new vector).
 	 * @param v2
 	 *            Second vector (will be put at back of the new vector).
 	 */
@@ -286,9 +286,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * First vector (will be put in front of the new vector).
 	 * 
-	 * @param v1
-	 *            First vector (will be put in front of the new vector).
 	 * @param v2
 	 *            Second vector (will be put at back of the new vector).
 	 */
@@ -303,9 +303,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * First vector (will be put in front of the new vector).
 	 * 
-	 * @param v1
-	 *            First vector (will be put in front of the new vector).
 	 * @param v2
 	 *            Second vector (will be put at back of the new vector).
 	 */
@@ -320,9 +320,9 @@ public class ArrayRealVector extends RealVector implements Serializable {
 
 	/**
 	 * Construct a vector by appending one vector to another vector.
+	 * v1
+	 * first vector (will be put in front of the new vector)
 	 * 
-	 * @param v1
-	 *            first vector (will be put in front of the new vector)
 	 * @param v2
 	 *            second vector (will be put at back of the new vector)
 	 */

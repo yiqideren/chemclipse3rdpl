@@ -50,10 +50,9 @@ public class ProperBigFractionFormat extends BigFractionFormat {
 	/**
 	 * Create a proper formatting instance with a custom number format for the
 	 * whole, numerator, and denominator.
-	 * 
-	 * @param format
-	 *            the custom format for the whole, numerator, and
-	 *            denominator.
+	 * format
+	 * the custom format for the whole, numerator, and
+	 * denominator.
 	 */
 	public ProperBigFractionFormat(final NumberFormat format) {
 
@@ -63,9 +62,9 @@ public class ProperBigFractionFormat extends BigFractionFormat {
 	/**
 	 * Create a proper formatting instance with a custom number format for each
 	 * of the whole, numerator, and denominator.
+	 * wholeFormat
+	 * the custom format for the whole.
 	 * 
-	 * @param wholeFormat
-	 *            the custom format for the whole.
 	 * @param numeratorFormat
 	 *            the custom format for the numerator.
 	 * @param denominatorFormat
@@ -114,8 +113,7 @@ public class ProperBigFractionFormat extends BigFractionFormat {
 
 	/**
 	 * Access the whole format.
-	 * 
-	 * @return the whole format.
+	 * format.
 	 */
 	public NumberFormat getWholeFormat() {
 
@@ -219,9 +217,9 @@ public class ProperBigFractionFormat extends BigFractionFormat {
 
 	/**
 	 * Modify the whole format.
+	 * format
+	 * The new whole format value.
 	 * 
-	 * @param format
-	 *            The new whole format value.
 	 * @throws NullArgumentException
 	 *             if {@code format} is {@code null}.
 	 */

@@ -106,8 +106,7 @@ public class DBSCANClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the maximum radius of the neighborhood to be considered.
-	 * 
-	 * @return maximum radius of the neighborhood
+	 * neighborhood
 	 */
 	public double getEps() {
 
@@ -116,8 +115,7 @@ public class DBSCANClusterer<T extends Clusterable> extends Clusterer<T> {
 
 	/**
 	 * Returns the minimum number of points needed for a cluster.
-	 * 
-	 * @return minimum number of points needed for a cluster
+	 * cluster
 	 */
 	public int getMinPts() {
 

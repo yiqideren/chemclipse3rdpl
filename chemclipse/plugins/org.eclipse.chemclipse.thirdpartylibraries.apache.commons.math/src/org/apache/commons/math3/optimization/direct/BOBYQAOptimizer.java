@@ -1165,8 +1165,8 @@ public class BOBYQAOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimiz
 	 *
 	 * Set the first NPT components of W to the leading elements of the
 	 * KNEW-th column of the H matrix.
+	 * knew
 	 * 
-	 * @param knew
 	 * @param adelt
 	 */
 	private double[] altmov(int knew, double adelt) {
@@ -1647,8 +1647,8 @@ public class BOBYQAOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimiz
 	 * gradient searches that are not restricted by any constraints. The
 	 * value CRVMIN=-1.0D0 is set, however, if all of these searches are
 	 * constrained.
+	 * delta
 	 * 
-	 * @param delta
 	 * @param gnew
 	 * @param xbdi
 	 * @param s
@@ -2121,8 +2121,8 @@ public class BOBYQAOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimiz
 	 * with that name, and DENOM is set to the denominator of the updating
 	 * formula. Elements of ZMAT may be treated as zero if their moduli are
 	 * at most ZTEST. The first NDIM elements of W are used for working space.
+	 * beta
 	 * 
-	 * @param beta
 	 * @param denom
 	 * @param knew
 	 */

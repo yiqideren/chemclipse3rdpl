@@ -35,9 +35,8 @@ class InsideFinder<S extends Space> {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param region
-	 *            region on which to operate
+	 * region
+	 * region on which to operate
 	 */
 	public InsideFinder(final Region<S> region) {
 
@@ -48,13 +47,12 @@ class InsideFinder<S extends Space> {
 
 	/**
 	 * Search recursively for inside leaf nodes on each side of the given hyperplane.
-	 * 
 	 * <p>
 	 * The algorithm used here is directly derived from the one described in section III (<i>Binary Partitioning of a BSP Tree</i>) of the Bruce Naylor, John Amanatides and William Thibault paper <a href="http://www.cs.yorku.ca/~amana/research/bsptSetOp.pdf">Merging BSP Trees Yields Polyhedral Set Operations</a> Proc. Siggraph '90, Computer Graphics 24(4), August 1990, pp 115-124, published by the Association for Computing Machinery (ACM)..
 	 * </p>
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param sub
 	 *            sub-hyperplane
 	 */
@@ -132,8 +130,7 @@ class InsideFinder<S extends Space> {
 
 	/**
 	 * Check if inside leaf nodes have been found on the plus side.
-	 * 
-	 * @return true if inside leaf nodes have been found on the plus side
+	 * side
 	 */
 	public boolean plusFound() {
 
@@ -142,8 +139,7 @@ class InsideFinder<S extends Space> {
 
 	/**
 	 * Check if inside leaf nodes have been found on the minus side.
-	 * 
-	 * @return true if inside leaf nodes have been found on the minus side
+	 * side
 	 */
 	public boolean minusFound() {
 

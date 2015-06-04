@@ -42,9 +42,8 @@ public class Cluster<T extends Clusterable> implements Serializable {
 
 	/**
 	 * Add a point to this cluster.
-	 * 
-	 * @param point
-	 *            point to add
+	 * point
+	 * point to add
 	 */
 	public void addPoint(final T point) {
 
@@ -53,8 +52,7 @@ public class Cluster<T extends Clusterable> implements Serializable {
 
 	/**
 	 * Get the points contained in the cluster.
-	 * 
-	 * @return points contained in the cluster
+	 * cluster
 	 */
 	public List<T> getPoints() {
 

@@ -31,9 +31,9 @@ public class SubLimitAngle extends AbstractSubHyperplane<Sphere1D, Sphere1D> {
 
 	/**
 	 * Simple constructor.
+	 * hyperplane
+	 * underlying hyperplane
 	 * 
-	 * @param hyperplane
-	 *            underlying hyperplane
 	 * @param remainingRegion
 	 *            remaining region of the hyperplane
 	 */

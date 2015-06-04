@@ -33,9 +33,9 @@ class ParameterConfiguration implements Serializable {
 
 	/**
 	 * Parameter name and step pair constructor.
+	 * parameterName
+	 * parameter name
 	 * 
-	 * @param parameterName
-	 *            parameter name
 	 * @param hP
 	 *            parameter step
 	 */
@@ -47,8 +47,7 @@ class ParameterConfiguration implements Serializable {
 
 	/**
 	 * Get parameter name.
-	 * 
-	 * @return parameterName parameter name
+	 * name
 	 */
 	public String getParameterName() {
 
@@ -57,8 +56,7 @@ class ParameterConfiguration implements Serializable {
 
 	/**
 	 * Get parameter step.
-	 * 
-	 * @return hP parameter step
+	 * step
 	 */
 	public double getHP() {
 
@@ -67,9 +65,8 @@ class ParameterConfiguration implements Serializable {
 
 	/**
 	 * Set parameter step.
-	 * 
-	 * @param hParam
-	 *            parameter step
+	 * hParam
+	 * parameter step
 	 */
 	public void setHP(final double hParam) {
 

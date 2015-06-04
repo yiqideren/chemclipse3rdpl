@@ -44,9 +44,9 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Simple constructor.
+	 * center
+	 * center of the ball
 	 * 
-	 * @param center
-	 *            center of the ball
 	 * @param radius
 	 *            radius of the ball
 	 * @param support
@@ -61,8 +61,7 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Get the center of the ball.
-	 * 
-	 * @return center of the ball
+	 * ball
 	 */
 	public P getCenter() {
 
@@ -71,8 +70,7 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Get the radius of the ball.
-	 * 
-	 * @return radius of the ball (can be negative if the ball is empty)
+	 * empty)
 	 */
 	public double getRadius() {
 
@@ -81,8 +79,7 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Get the support points used to define the ball.
-	 * 
-	 * @return support points used to define the ball
+	 * ball
 	 */
 	public P[] getSupport() {
 
@@ -91,8 +88,7 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Get the number of support points used to define the ball.
-	 * 
-	 * @return number of support points used to define the ball
+	 * ball
 	 */
 	public int getSupportSize() {
 
@@ -101,9 +97,9 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Check if a point is within the ball or at boundary.
+	 * point
+	 * point to test
 	 * 
-	 * @param point
-	 *            point to test
 	 * @return true if the point is within the ball or at boundary
 	 */
 	public boolean contains(final P point) {
@@ -113,9 +109,9 @@ public class EnclosingBall<S extends Space, P extends Point<S>> implements Seria
 
 	/**
 	 * Check if a point is within an enlarged ball or at boundary.
+	 * point
+	 * point to test
 	 * 
-	 * @param point
-	 *            point to test
 	 * @param margin
 	 *            margin to consider
 	 * @return true if the point is within the ball enlarged

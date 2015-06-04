@@ -77,8 +77,7 @@ public class BracketingNthOrderBrentSolverDFP {
 
 	/**
 	 * Get the maximal order.
-	 * 
-	 * @return maximal order
+	 * order
 	 */
 	public int getMaximalOrder() {
 
@@ -109,8 +108,7 @@ public class BracketingNthOrderBrentSolverDFP {
 
 	/**
 	 * Get the absolute accuracy.
-	 * 
-	 * @return absolute accuracy
+	 * accuracy
 	 */
 	public Dfp getAbsoluteAccuracy() {
 
@@ -119,8 +117,7 @@ public class BracketingNthOrderBrentSolverDFP {
 
 	/**
 	 * Get the relative accuracy.
-	 * 
-	 * @return relative accuracy
+	 * accuracy
 	 */
 	public Dfp getRelativeAccuracy() {
 
@@ -129,8 +126,7 @@ public class BracketingNthOrderBrentSolverDFP {
 
 	/**
 	 * Get the function accuracy.
-	 * 
-	 * @return function accuracy
+	 * accuracy
 	 */
 	public Dfp getFunctionValueAccuracy() {
 
@@ -378,9 +374,9 @@ public class BracketingNthOrderBrentSolverDFP {
 	 * <p>
 	 * The x value is guessed by evaluating polynomial Q(y) at y = targetY, where Q is built such that for all considered points (x<sub>i</sub>, y<sub>i</sub>), Q(y<sub>i</sub>) = x<sub>i</sub>.
 	 * </p>
+	 * targetY
+	 * target value for y
 	 * 
-	 * @param targetY
-	 *            target value for y
 	 * @param x
 	 *            reference points abscissas for interpolation,
 	 *            note that this array <em>is</em> modified during computation

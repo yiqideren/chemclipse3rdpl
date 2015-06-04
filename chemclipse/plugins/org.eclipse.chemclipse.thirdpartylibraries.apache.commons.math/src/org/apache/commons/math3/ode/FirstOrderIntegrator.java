@@ -42,9 +42,9 @@ public interface FirstOrderIntegrator extends ODEIntegrator {
 	 * <p>
 	 * Since this method stores some internal state variables made available in its public interface during integration ({@link #getCurrentSignedStepsize()}), it is <em>not</em> thread-safe.
 	 * </p>
+	 * equations
+	 * differential equations to integrate
 	 * 
-	 * @param equations
-	 *            differential equations to integrate
 	 * @param t0
 	 *            initial time
 	 * @param y0

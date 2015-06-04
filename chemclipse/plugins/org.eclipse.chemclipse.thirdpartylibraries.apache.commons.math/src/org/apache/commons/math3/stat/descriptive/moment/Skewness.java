@@ -63,9 +63,8 @@ public class Skewness extends AbstractStorelessUnivariateStatistic implements Se
 
 	/**
 	 * Constructs a Skewness with an external moment
-	 * 
-	 * @param m3
-	 *            external moment
+	 * m3
+	 * external moment
 	 */
 	public Skewness(final ThirdMoment m3) {
 

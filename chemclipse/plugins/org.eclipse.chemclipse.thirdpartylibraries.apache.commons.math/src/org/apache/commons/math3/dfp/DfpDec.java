@@ -26,9 +26,8 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Makes an instance with a value of zero.
-	 * 
-	 * @param factory
-	 *            factory linked to this instance
+	 * factory
+	 * factory linked to this instance
 	 */
 	protected DfpDec(final DfpField factory) {
 
@@ -37,9 +36,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Create an instance from a byte value.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param x
 	 *            value to convert to an instance
 	 */
@@ -50,9 +49,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Create an instance from an int value.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param x
 	 *            value to convert to an instance
 	 */
@@ -63,9 +62,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Create an instance from a long value.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param x
 	 *            value to convert to an instance
 	 */
@@ -76,9 +75,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Create an instance from a double value.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param x
 	 *            value to convert to an instance
 	 */
@@ -90,9 +89,8 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param d
-	 *            instance to copy
+	 * d
+	 * instance to copy
 	 */
 	public DfpDec(final Dfp d) {
 
@@ -102,9 +100,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Create an instance from a String representation.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param s
 	 *            string representation of the instance
 	 */
@@ -116,9 +114,9 @@ public class DfpDec extends Dfp {
 
 	/**
 	 * Creates an instance with a non-finite value.
+	 * factory
+	 * factory linked to this instance
 	 * 
-	 * @param factory
-	 *            factory linked to this instance
 	 * @param sign
 	 *            sign of the Dfp to create
 	 * @param nans
@@ -196,8 +194,7 @@ public class DfpDec extends Dfp {
 	 * Get the number of decimal digits this class is going to represent.
 	 * Default implementation returns {@link #getRadixDigits()}*4-3. Subclasses can
 	 * override this to return something less.
-	 * 
-	 * @return number of decimal digits this class is going to represent
+	 * represent
 	 */
 	protected int getDecimalDigits() {
 

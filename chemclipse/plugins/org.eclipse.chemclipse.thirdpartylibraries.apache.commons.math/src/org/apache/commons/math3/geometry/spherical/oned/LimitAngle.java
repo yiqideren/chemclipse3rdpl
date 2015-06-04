@@ -39,9 +39,9 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 
 	/**
 	 * Simple constructor.
+	 * location
+	 * location of the hyperplane
 	 * 
-	 * @param location
-	 *            location of the hyperplane
 	 * @param direct
 	 *            if true, the plus side of the hyperplane is towards
 	 *            angles greater than {@code location}
@@ -60,8 +60,7 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 	 * <p>
 	 * Since instances are immutable, this method directly returns the instance.
 	 * </p>
-	 * 
-	 * @return the instance itself
+	 * itself
 	 */
 	public LimitAngle copySelf() {
 
@@ -77,9 +76,8 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 
 	/**
 	 * Check if the hyperplane orientation is direct.
-	 * 
-	 * @return true if the plus side of the hyperplane is towards
-	 *         angles greater than hyperplane location
+	 * towards
+	 * angles greater than hyperplane location
 	 */
 	public boolean isDirect() {
 
@@ -91,8 +89,7 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 	 * <p>
 	 * Get a limit angle with reversed orientation with respect to the instance. A new object is built, the instance is untouched.
 	 * </p>
-	 * 
-	 * @return a new limit angle, with orientation opposite to the instance orientation
+	 * orientation
 	 */
 	public LimitAngle getReverse() {
 
@@ -105,8 +102,7 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 	 * Since this class represent zero dimension spaces which does not have lower dimension sub-spaces, this method returns a dummy implementation of a {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane SubHyperplane}. This implementation is only used to allow the {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane
 	 * SubHyperplane} class implementation to work properly, it should <em>not</em> be used otherwise.
 	 * </p>
-	 * 
-	 * @return a dummy sub hyperplane
+	 * hyperplane
 	 */
 	public SubLimitAngle wholeHyperplane() {
 
@@ -115,8 +111,7 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance (really an {@link ArcsSet IntervalsSet} instance)
+	 * instance)
 	 */
 	public ArcsSet wholeSpace() {
 
@@ -131,8 +126,7 @@ public class LimitAngle implements Hyperplane<Sphere1D> {
 
 	/**
 	 * Get the hyperplane location on the circle.
-	 * 
-	 * @return the hyperplane location
+	 * location
 	 */
 	public S1Point getLocation() {
 

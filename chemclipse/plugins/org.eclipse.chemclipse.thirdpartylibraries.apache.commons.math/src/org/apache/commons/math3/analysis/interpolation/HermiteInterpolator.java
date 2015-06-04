@@ -63,9 +63,9 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 	 * <p>
 	 * The point abscissae for all calls <em>must</em> be different.
 	 * </p>
+	 * x
+	 * abscissa of the sample point
 	 * 
-	 * @param x
-	 *            abscissa of the sample point
 	 * @param value
 	 *            value and derivatives of the sample point
 	 *            (if only one row is passed, it is the value, if two rows are
@@ -112,8 +112,8 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 
 	/**
 	 * Compute the interpolation polynomials.
+	 * array
 	 * 
-	 * @return interpolation polynomials array
 	 * @exception NoDataException
 	 *                if sample is empty
 	 */
@@ -145,9 +145,9 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 	 * Calling this method is equivalent to call the {@link PolynomialFunction#value(double)
 	 * value} methods of all polynomials returned by {@link #getPolynomials() getPolynomials}, except it does not build the intermediate polynomials, so this method is faster and numerically more stable.
 	 * </p>
+	 * x
+	 * interpolation abscissa
 	 * 
-	 * @param x
-	 *            interpolation abscissa
 	 * @return interpolated value
 	 * @exception NoDataException
 	 *                if sample is empty
@@ -174,9 +174,9 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 	 * <p>
 	 * Calling this method is equivalent to call the {@link PolynomialFunction#value(DerivativeStructure) value} methods of all polynomials returned by {@link #getPolynomials() getPolynomials}, except it does not build the intermediate polynomials, so this method is faster and numerically more stable.
 	 * </p>
+	 * x
+	 * interpolation abscissa
 	 * 
-	 * @param x
-	 *            interpolation abscissa
 	 * @return interpolated value
 	 * @exception NoDataException
 	 *                if sample is empty
@@ -201,10 +201,9 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 
 	/**
 	 * Check interpolation can be performed.
-	 * 
-	 * @exception NoDataException
-	 *                if interpolation cannot be performed
-	 *                because sample is empty
+	 * NoDataException
+	 * if interpolation cannot be performed
+	 * because sample is empty
 	 */
 	private void checkInterpolation() throws NoDataException {
 
@@ -215,9 +214,9 @@ public class HermiteInterpolator implements UnivariateDifferentiableVectorFuncti
 
 	/**
 	 * Create a polynomial from its coefficients.
+	 * c
+	 * polynomials coefficients
 	 * 
-	 * @param c
-	 *            polynomials coefficients
 	 * @return polynomial
 	 */
 	private PolynomialFunction polynomial(double... c) {

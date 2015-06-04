@@ -41,14 +41,12 @@ public class Gamma {
 
 	/**
 	 * <a href="http://en.wikipedia.org/wiki/Euler-Mascheroni_constant">Euler-Mascheroni constant</a>
-	 * 
-	 * @since 2.0
+	 * 2.0
 	 */
 	public static final double GAMMA = 0.577215664901532860606512090082;
 	/**
 	 * The value of the {@code g} constant in the Lanczos approximation, see {@link #lanczos(double)}.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static final double LANCZOS_G = 607.0 / 128.0;
 	/** Maximum allowed numerical error. */

@@ -29,9 +29,9 @@ public interface FieldElement<T> {
 
 	/**
 	 * Compute this + a.
+	 * a
+	 * element to add
 	 * 
-	 * @param a
-	 *            element to add
 	 * @return a new element representing this + a
 	 * @throws NullArgumentException
 	 *             if {@code addend} is {@code null}.
@@ -40,9 +40,9 @@ public interface FieldElement<T> {
 
 	/**
 	 * Compute this - a.
+	 * a
+	 * element to subtract
 	 * 
-	 * @param a
-	 *            element to subtract
 	 * @return a new element representing this - a
 	 * @throws NullArgumentException
 	 *             if {@code a} is {@code null}.
@@ -51,8 +51,7 @@ public interface FieldElement<T> {
 
 	/**
 	 * Returns the additive inverse of {@code this} element.
-	 * 
-	 * @return the opposite of {@code this}.
+	 * this}.
 	 */
 	T negate();
 
@@ -62,18 +61,18 @@ public interface FieldElement<T> {
 	 * <center>
 	 * n &times; this = &sum;<sub>i=1</sub><sup>n</sup> this.
 	 * </center>
+	 * n
+	 * Number of times {@code this} must be added to itself.
 	 * 
-	 * @param n
-	 *            Number of times {@code this} must be added to itself.
 	 * @return A new element representing n &times; this.
 	 */
 	T multiply(int n);
 
 	/**
 	 * Compute this &times; a.
+	 * a
+	 * element to multiply
 	 * 
-	 * @param a
-	 *            element to multiply
 	 * @return a new element representing this &times; a
 	 * @throws NullArgumentException
 	 *             if {@code a} is {@code null}.
@@ -82,9 +81,9 @@ public interface FieldElement<T> {
 
 	/**
 	 * Compute this &divide; a.
+	 * a
+	 * element to add
 	 * 
-	 * @param a
-	 *            element to add
 	 * @return a new element representing this &divide; a
 	 * @throws NullArgumentException
 	 *             if {@code a} is {@code null}.
@@ -95,8 +94,8 @@ public interface FieldElement<T> {
 
 	/**
 	 * Returns the multiplicative inverse of {@code this} element.
+	 * this}.
 	 * 
-	 * @return the inverse of {@code this}.
 	 * @throws MathArithmeticException
 	 *             if {@code this} is zero
 	 */
@@ -104,8 +103,7 @@ public interface FieldElement<T> {
 
 	/**
 	 * Get the {@link Field} to which the instance belongs.
-	 * 
-	 * @return {@link Field} to which the instance belongs
+	 * belongs
 	 */
 	Field<T> getField();
 }

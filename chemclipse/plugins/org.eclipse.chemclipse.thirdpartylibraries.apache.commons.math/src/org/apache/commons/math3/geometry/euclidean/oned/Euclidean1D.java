@@ -39,8 +39,7 @@ public class Euclidean1D implements Serializable, Space {
 
 	/**
 	 * Get the unique instance.
-	 * 
-	 * @return the unique instance
+	 * instance
 	 */
 	public static Euclidean1D getInstance() {
 
@@ -58,8 +57,8 @@ public class Euclidean1D implements Serializable, Space {
 	 * <p>
 	 * As the 1-dimension Euclidean space does not have proper sub-spaces, this method always throws a {@link NoSubSpaceException}
 	 * </p>
+	 * nothing
 	 * 
-	 * @return nothing
 	 * @throws NoSubSpaceException
 	 *             in all cases
 	 */
@@ -84,8 +83,7 @@ public class Euclidean1D implements Serializable, Space {
 	// CHECKSTYLE: resume HideUtilityClassConstructor
 	/**
 	 * Handle deserialization of the singleton.
-	 * 
-	 * @return the singleton instance
+	 * instance
 	 */
 	private Object readResolve() {
 

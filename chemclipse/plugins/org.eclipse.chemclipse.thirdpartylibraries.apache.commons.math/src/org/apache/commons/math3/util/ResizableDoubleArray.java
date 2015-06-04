@@ -47,15 +47,13 @@ public class ResizableDoubleArray implements DoubleArray, Serializable {
 
 	/**
 	 * Additive expansion mode.
-	 * 
-	 * @deprecated As of 3.1. Please use {@link ExpansionMode#ADDITIVE} instead.
+	 * instead.
 	 */
 	@Deprecated
 	public static final int ADDITIVE_MODE = 1;
 	/**
 	 * Multiplicative expansion mode.
-	 * 
-	 * @deprecated As of 3.1. Please use {@link ExpansionMode#MULTIPLICATIVE} instead.
+	 * instead.
 	 */
 	@Deprecated
 	public static final int MULTIPLICATIVE_MODE = 0;
@@ -101,8 +99,7 @@ public class ResizableDoubleArray implements DoubleArray, Serializable {
 
 	/**
 	 * Specification of expansion algorithm.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static enum ExpansionMode {
 		/** Multiplicative expansion mode. */
@@ -133,9 +130,9 @@ public class ResizableDoubleArray implements DoubleArray, Serializable {
 	 * <li>{@code expansionFactor = 2.0}</li>
 	 * <li>{@code contractionCriterion = 2.5}</li>
 	 * </ul>
+	 * initialCapacity
+	 * Initial size of the internal storage array.
 	 * 
-	 * @param initialCapacity
-	 *            Initial size of the internal storage array.
 	 * @throws MathIllegalArgumentException
 	 *             if {@code initialCapacity <= 0}.
 	 */
@@ -714,9 +711,7 @@ public class ResizableDoubleArray implements DoubleArray, Serializable {
 	/**
 	 * Returns a double array containing the elements of this <code>ResizableArray</code>. This method returns a copy, not a
 	 * reference to the underlying array, so that changes made to the returned
-	 * array have no effect on this <code>ResizableArray.</code>
-	 * 
-	 * @return the double array.
+	 * array have no effect on this <code>ResizableArray.</code> array.
 	 */
 	public synchronized double[] getElements() {
 
@@ -928,9 +923,9 @@ public class ResizableDoubleArray implements DoubleArray, Serializable {
 	 * <li><code>expansionFactor > 1</code></li>
 	 * <li><code>contractionFactor >= expansionFactor</code></li>
 	 * </ul>
+	 * expansionFactor
+	 * the new expansion factor value.
 	 * 
-	 * @param expansionFactor
-	 *            the new expansion factor value.
 	 * @throws MathIllegalArgumentException
 	 *             if expansionFactor is <= 1 or greater
 	 *             than contractionFactor

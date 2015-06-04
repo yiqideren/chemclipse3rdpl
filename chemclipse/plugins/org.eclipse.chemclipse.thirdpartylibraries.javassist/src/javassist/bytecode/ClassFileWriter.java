@@ -27,30 +27,11 @@ import java.io.IOException;
  *
  * <blockquote>
  * 
- * <pre>
- * ClassFileWriter cfw = new ClassFileWriter(ClassFile.JAVA_4, 0);
- * ConstPoolWriter cpw = cfw.getConstPool();
- * FieldWriter fw = cfw.getFieldWriter();
- * fw.add(AccessFlag.PUBLIC, &quot;value&quot;, &quot;I&quot;, null);
- * fw.add(AccessFlag.PUBLIC, &quot;value2&quot;, &quot;J&quot;, null);
- * int thisClass = cpw.addClassInfo(&quot;sample/Test&quot;);
- * int superClass = cpw.addClassInfo(&quot;java/lang/Object&quot;);
- * MethodWriter mw = cfw.getMethodWriter();
- * mw.begin(AccessFlag.PUBLIC, MethodInfo.nameInit, &quot;()V&quot;, null, null);
- * mw.add(Opcode.ALOAD_0);
- * mw.add(Opcode.INVOKESPECIAL);
- * int signature = cpw.addNameAndTypeInfo(MethodInfo.nameInit, &quot;()V&quot;);
- * mw.add16(cpw.addMethodrefInfo(superClass, signature));
- * mw.add(Opcode.RETURN);
- * mw.codeEnd(1, 1);
- * mw.end(null, null);
- * mw.begin(AccessFlag.PUBLIC, &quot;one&quot;, &quot;()I&quot;, null, null);
- * mw.add(Opcode.ICONST_1);
- * mw.add(Opcode.IRETURN);
- * mw.codeEnd(1, 1);
- * mw.end(null, null);
- * byte[] classfile = cfw.end(AccessFlag.PUBLIC, thisClass, superClass, null, null);
- * </pre>
+ * 
+ * ClassFileWriter cfw = new ClassFileWriter(ClassFile.JAVA_4, 0); ConstPoolWriter cpw = cfw.getConstPool(); FieldWriter fw = cfw.getFieldWriter(); fw.add(AccessFlag.PUBLIC, &quot;value&quot;, &quot;I&quot;, null); fw.add(AccessFlag.PUBLIC, &quot;value2&quot;, &quot;J&quot;, null); int thisClass = cpw.addClassInfo(&quot;sample/Test&quot;); int superClass = cpw.addClassInfo(&quot;java/lang/Object&quot;); MethodWriter mw = cfw.getMethodWriter(); mw.begin(AccessFlag.PUBLIC, MethodInfo.nameInit,
+ * &quot;()V&quot;, null, null); mw.add(Opcode.ALOAD_0); mw.add(Opcode.INVOKESPECIAL); int signature = cpw.addNameAndTypeInfo(MethodInfo.nameInit, &quot;()V&quot;); mw.add16(cpw.addMethodrefInfo(superClass, signature)); mw.add(Opcode.RETURN); mw.codeEnd(1, 1); mw.end(null, null); mw.begin(AccessFlag.PUBLIC, &quot;one&quot;, &quot;()I&quot;, null, null); mw.add(Opcode.ICONST_1); mw.add(Opcode.IRETURN); mw.codeEnd(1, 1); mw.end(null, null); byte[] classfile = cfw.end(AccessFlag.PUBLIC, thisClass,
+ * superClass, null, null);
+ * 
  * 
  * </blockquote>
  *
@@ -59,25 +40,21 @@ import java.io.IOException;
  *
  * <blockquote>
  * 
- * <pre>
+ * 
  * package sample;
  * 
  * public class Test {
  * 
- * 	public int value;
- * 	public long value2;
+ * public int value; public long value2;
  * 
- * 	public Test() {
+ * public Test() {
  * 
- * 		super();
- * 	}
+ * super(); }
  * 
- * 	public one() {
+ * public one() {
  * 
- * 		return 1;
- * 	}
- * }
- * </pre>
+ * return 1; } }
+ * 
  * 
  * </blockquote>
  *
@@ -230,19 +207,9 @@ public class ClassFileWriter {
 	 * <p>
 	 * For example, the following object writes a synthetic attribute:
 	 *
-	 * <pre>
-	 * ConstPoolWriter cpw = ...;
-	 * final int tag = cpw.addUtf8Info("Synthetic");
-	 * AttributeWriter aw = new AttributeWriter() {
-	 *     public int size() {
-	 *         return 1;
-	 *     }
-	 *     public void write(DataOutputStream out) throws java.io.IOException {
-	 *         out.writeShort(tag);
-	 *         out.writeInt(0);
-	 *     }
-	 * };
-	 * </pre>
+	 * 
+	 * ConstPoolWriter cpw = ...; final int tag = cpw.addUtf8Info("Synthetic"); AttributeWriter aw = new AttributeWriter() { public int size() { return 1; } public void write(DataOutputStream out) throws java.io.IOException { out.writeShort(tag); out.writeInt(0); } };
+	 * 
 	 */
 	public static interface AttributeWriter {
 

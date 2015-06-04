@@ -29,8 +29,7 @@ public interface UnivariateIntegrator {
 
 	/**
 	 * Get the actual relative accuracy.
-	 * 
-	 * @return the accuracy
+	 * accuracy
 	 */
 	double getRelativeAccuracy();
 
@@ -83,15 +82,13 @@ public interface UnivariateIntegrator {
 
 	/**
 	 * Get the number of function evaluations of the last run of the integrator.
-	 * 
-	 * @return number of function evaluations
+	 * evaluations
 	 */
 	int getEvaluations();
 
 	/**
 	 * Get the number of iterations of the last run of the integrator.
-	 * 
-	 * @return number of iterations
+	 * iterations
 	 */
 	int getIterations();
 }

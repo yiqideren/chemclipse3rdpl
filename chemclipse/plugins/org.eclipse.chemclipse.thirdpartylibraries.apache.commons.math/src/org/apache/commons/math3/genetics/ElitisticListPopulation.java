@@ -114,8 +114,7 @@ public class ElitisticListPopulation extends ListPopulation {
 
 	/**
 	 * Access the elitism rate.
-	 * 
-	 * @return the elitism rate
+	 * rate
 	 */
 	public double getElitismRate() {
 

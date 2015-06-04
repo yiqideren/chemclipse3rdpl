@@ -26,8 +26,7 @@ public interface DifferentiableMultivariateVectorFunction extends MultivariateVe
 
 	/**
 	 * Returns the jacobian function.
-	 * 
-	 * @return the jacobian function
+	 * function
 	 */
 	MultivariateMatrixFunction jacobian();
 }

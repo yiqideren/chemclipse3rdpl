@@ -35,7 +35,8 @@
  * <p>
  * The first case, G-stop, is the most common one. A typical use case is when an ODE must be solved up to some target state is reached, with a known value of the state but an unknown occurrence time. As an example, if we want to monitor a chemical reaction up to some predefined concentration for the first substance, we can use the following switching function setting:
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -94,14 +95,12 @@
  * 
  * public double g(double t, double[] y) {
  * 
- * 	return y[0] - targetConcentration;
- * }
+ * return y[0] - targetConcentration; }
  * 
  * public int eventOccurred(double t, double[] y) {
  * 
- * 	return STOP;
- * }
- * </pre>
+ * return STOP; }
+ * 
  * 
  * </p>
  *
@@ -109,7 +108,8 @@
  * The second case, change state vector or derivatives is encountered when dealing with discontinuous dynamical models. A typical case would be the motion of a spacecraft when thrusters are fired for orbital maneuvers. The acceleration is smooth as long as no maneuver are performed, depending only on gravity, drag, third body attraction, radiation pressure. Firing a thruster introduces a discontinuity that must be handled appropriately by the integrator. In such a case, we would use a switching
  * function setting similar to this:
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -168,21 +168,20 @@
  * 
  * public double g(double t, double[] y) {
  * 
- * 	return (t - tManeuverStart) &amp; lowast(t - tManeuverStop);
- * }
+ * return (t - tManeuverStart) &amp; lowast(t - tManeuverStop); }
  * 
  * public int eventOccurred(double t, double[] y) {
  * 
- * 	return RESET_DERIVATIVES;
- * }
- * </pre>
+ * return RESET_DERIVATIVES; }
+ * 
  * 
  * </p>
  *
  * <p>
  * The third case is useful mainly for monitoring purposes, a simple example is:
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -241,15 +240,12 @@
  * 
  * public double g(double t, double[] y) {
  * 
- * 	return y[0] - y[1];
- * }
+ * return y[0] - y[1]; }
  * 
  * public int eventOccurred(double t, double[] y) {
  * 
- * 	logger.log(&quot;y0(t) and y1(t) curves cross at t = &quot; + t);
- * 	return CONTINUE;
- * }
- * </pre>
+ * logger.log(&quot;y0(t) and y1(t) curves cross at t = &quot; + t); return CONTINUE; }
+ * 
  * 
  * </p>
  *

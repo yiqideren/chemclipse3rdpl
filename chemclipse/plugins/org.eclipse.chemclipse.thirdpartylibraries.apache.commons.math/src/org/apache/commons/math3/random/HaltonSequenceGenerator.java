@@ -25,13 +25,13 @@ import org.apache.commons.math3.util.MathUtils;
  * <p>
  * A Halton sequence is a low-discrepancy sequence generating points in the interval [0, 1] according to
  * 
- * <pre>
- *   H(n) = d_0 / b + d_1 / b^2 .... d_j / b^j+1
  * 
- *   with
+ * H(n) = d_0 / b + d_1 / b^2 .... d_j / b^j+1
  * 
- *   n = d_j * b^j-1 + ... d_1 * b + d_0 * b^0
- * </pre>
+ * with
+ * 
+ * n = d_j * b^j-1 + ... d_1 * b + d_0 * b^0
+ * 
  * 
  * For higher dimensions, subsequent prime numbers are used as base, e.g. { 2, 3, 5 } for a Halton sequence in R^3.
  * <p>
@@ -130,9 +130,7 @@ public class HaltonSequenceGenerator implements RandomVectorGenerator {
 	/**
 	 * Performs scrambling of digit {@code d_j} according to the formula:
 	 * 
-	 * <pre>
-	 *   ( weight_i * d_j ) mod base
-	 * </pre>
+	 * ( weight_i * d_j ) mod base
 	 * 
 	 * Implementations can override this method to do a different scrambling.
 	 *

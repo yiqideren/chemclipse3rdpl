@@ -218,10 +218,8 @@ public class SparseFieldVector<T extends FieldElement<T>> implements FieldVector
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception NullArgumentException
-	 *                if d is null
+	 * {@inheritDoc} NullArgumentException
+	 * if d is null
 	 */
 	public FieldVector<T> append(T d) throws NullArgumentException {
 
@@ -405,9 +403,9 @@ public class SparseFieldVector<T extends FieldElement<T>> implements FieldVector
 
 	/**
 	 * Optimized method to compute outer product when both vectors are sparse.
+	 * v
+	 * vector with which outer product should be computed
 	 * 
-	 * @param v
-	 *            vector with which outer product should be computed
 	 * @return the matrix outer product between instance and v
 	 */
 	public FieldMatrix<T> outerProduct(SparseFieldVector<T> v) {
@@ -455,10 +453,8 @@ public class SparseFieldVector<T extends FieldElement<T>> implements FieldVector
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception NullArgumentException
-	 *                if value is null
+	 * {@inheritDoc} NullArgumentException
+	 * if value is null
 	 */
 	public void set(T value) {
 
@@ -469,10 +465,8 @@ public class SparseFieldVector<T extends FieldElement<T>> implements FieldVector
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @exception NullArgumentException
-	 *                if value is null
+	 * {@inheritDoc} NullArgumentException
+	 * if value is null
 	 */
 	public void setEntry(int index, T value) throws NullArgumentException, OutOfRangeException {
 
@@ -494,9 +488,9 @@ public class SparseFieldVector<T extends FieldElement<T>> implements FieldVector
 
 	/**
 	 * Optimized method to compute {@code this} minus {@code v}.
+	 * v
+	 * vector to be subtracted
 	 * 
-	 * @param v
-	 *            vector to be subtracted
 	 * @return {@code this - v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}.

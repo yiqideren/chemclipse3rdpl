@@ -13,10 +13,15 @@
  */
 package javassist;
 
-import javassist.bytecode.*;
-import javassist.compiler.Javac;
-import javassist.compiler.CompileError;
 import javassist.CtMethod.ConstParameter;
+import javassist.bytecode.AccessFlag;
+import javassist.bytecode.Bytecode;
+import javassist.bytecode.ConstPool;
+import javassist.bytecode.ExceptionsAttribute;
+import javassist.bytecode.FieldInfo;
+import javassist.bytecode.MethodInfo;
+import javassist.compiler.CompileError;
+import javassist.compiler.Javac;
 
 /**
  * A collection of static methods for creating a <code>CtMethod</code>.
@@ -31,9 +36,8 @@ public class CtNewMethod {
 	 * The source code must include not only the method body
 	 * but the whole declaration, for example,
 	 *
-	 * <pre>
-	 * &quot;public Object id(Object obj) { return obj; }&quot;
-	 * </pre>
+	 * }&quot;
+	 * 
 	 *
 	 * @param src
 	 *            the source text.
@@ -50,9 +54,8 @@ public class CtNewMethod {
 	 * The source code must include not only the method body
 	 * but the whole declaration, for example,
 	 *
-	 * <pre>
-	 * &quot;public Object id(Object obj) { return obj; }&quot;
-	 * </pre>
+	 * }&quot;
+	 * 
 	 *
 	 * <p>
 	 * If the source code includes <code>$proceed()</code>, then it is compiled into a method call on the specified object.
@@ -307,7 +310,6 @@ public class CtNewMethod {
 	 * <p>
 	 * The following method is an example of the created method.
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -332,34 +334,7 @@ public class CtNewMethod {
 	 * 
 	 * 
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * int f(int p, int q) {
-	 * 
-	 * 	return super.f(p, q);
-	 * }
-	 * </pre>
+	 * int f(int p, int q) { }
 	 *
 	 * <p>
 	 * The name of the created method can be changed by <code>setName()</code>.
@@ -421,27 +396,20 @@ public class CtNewMethod {
 	 * <p>
 	 * The method specified by <code>body</code> must have this singature:
 	 *
-	 * <pre>
-	 * Object method(Object[] params, &lt;type&gt; cvalue)
-	 * </pre>
+	 * cvalue)
+	 * 
 	 *
 	 * <p>
 	 * The type of the <code>cvalue</code> depends on <code>constParam</code>. If <code>constParam</code> is <code>null</code>, the signature must be:
 	 *
-	 * <pre>
-	 * Object method(Object[] params)
-	 * </pre>
+	 * params)
+	 * 
 	 *
 	 * <p>
 	 * The method body copied from <code>body</code> is wrapped in parameter-conversion code, which converts parameters specified by <code>parameterTypes</code> into an array of <code>Object</code>. The returned value is also converted from the <code>Object</code> type to the type specified by <code>returnType</code>. Thus, the resulting method body is as follows:
 	 *
-	 * <pre>
-	 * Object[] params = new Object[] { p0, p1, ... };
-	 * &lt;<i>type</i>&gt; cvalue = &lt;<i>constant-value</i>&gt;;
-	 *  <i>... copied method body ...</i>
-	 * Object result = &lt;<i>returned value</i>&gt;
-	 * return (<i>&lt;returnType&gt;</i>)result;
-	 * </pre>
+	 * }; &lt;<i>type</i>&gt; cvalue = &lt;<i>constant-value</i>&gt;; <i>... copied method body ...</i> Object result = &lt;<i>returned value</i>&gt; return (<i>&lt;returnType&gt;</i>)result;
+	 * 
 	 *
 	 * <p>
 	 * The variables <code>p0</code>, <code>p2</code>, ... represent formal parameters of the created method. The value of <code>cvalue</code> is specified by <code>constParam</code>.
@@ -452,22 +420,12 @@ public class CtNewMethod {
 	 * <p>
 	 * <i>Example:</i>
 	 *
-	 * <pre>
-	 * ClassPool pool = ... ;
-	 * CtClass vec = pool.makeClass("intVector");
-	 * vec.setSuperclass(pool.get("java.util.Vector"));
-	 * CtMethod addMethod = pool.getMethod("Sample", "add0");
+	 * ; CtClass vec = pool.makeClass("intVector"); vec.setSuperclass(pool.get("java.util.Vector")); CtMethod addMethod = pool.getMethod("Sample", "add0"); }; CtMethod m = CtNewMethod.wrapped(CtClass.voidType, "add", argTypes, null, addMethod, null, vec); vec.addMethod(m);
 	 * 
-	 * CtClass[] argTypes = { CtClass.intType };
-	 * CtMethod m = CtNewMethod.wrapped(CtClass.voidType, "add", argTypes,
-	 *                                  null, addMethod, null, vec);
-	 * vec.addMethod(m);
-	 * </pre>
 	 *
 	 * <p>
 	 * where the class <code>Sample</code> is as follows:
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -494,41 +452,12 @@ public class CtNewMethod {
 	 * 
 	 * 
 	 * 
+	 * public class Sample extends java.util.Vector { { super.addElement(args[0]); return null; } }
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * public class Sample extends java.util.Vector {
-	 * 
-	 * 	public Object add0(Object[] args) {
-	 * 
-	 * 		super.addElement(args[0]);
-	 * 		return null;
-	 * 	}
-	 * }
-	 * </pre>
 	 *
 	 * <p>
 	 * This program produces a class <code>intVector</code>:
 	 *
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -555,39 +484,8 @@ public class CtNewMethod {
 	 * 
 	 * 
 	 * 
+	 * public class intVector extends java.util.Vector { { Object[]{p0}; // begin of the copied body super.addElement(args[0]); Object result = null; // end } }
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * public class intVector extends java.util.Vector {
-	 * 
-	 * 	public void add(int p0) {
-	 * 
-	 * 		Object[] args = new Object[]{p0};
-	 * 		// begin of the copied body
-	 * 		super.addElement(args[0]);
-	 * 		Object result = null;
-	 * 		// end
-	 * 	}
-	 * }
-	 * </pre>
 	 *
 	 * <p>
 	 * Note that the type of the parameter to <code>add()</code> depends only on the value of <code>argTypes</code> passed to <code>CtNewMethod.wrapped()</code>. Thus, it is easy to modify this program to produce a <code>StringVector</code> class, which is a vector containing only <code>String</code> objects, and other vector classes.

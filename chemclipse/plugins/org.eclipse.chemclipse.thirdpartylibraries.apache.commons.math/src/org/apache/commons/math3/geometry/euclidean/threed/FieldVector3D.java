@@ -48,9 +48,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	/**
 	 * Simple constructor.
 	 * Build a vector from its coordinates
+	 * x
+	 * abscissa
 	 * 
-	 * @param x
-	 *            abscissa
 	 * @param y
 	 *            ordinate
 	 * @param z
@@ -69,9 +69,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	/**
 	 * Simple constructor.
 	 * Build a vector from its coordinates
+	 * v
+	 * coordinates array
 	 * 
-	 * @param v
-	 *            coordinates array
 	 * @exception DimensionMismatchException
 	 *                if array does not have 3 elements
 	 * @see #toArray()
@@ -89,10 +89,10 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	/**
 	 * Simple constructor.
 	 * Build a vector from its azimuthal coordinates
+	 * alpha
+	 * azimuth (&alpha;) around Z
+	 * (0 is +X, &pi;/2 is +Y, &pi; is -X and 3&pi;/2 is -Y)
 	 * 
-	 * @param alpha
-	 *            azimuth (&alpha;) around Z
-	 *            (0 is +X, &pi;/2 is +Y, &pi; is -X and 3&pi;/2 is -Y)
 	 * @param delta
 	 *            elevation (&delta;) above (XY) plane, from -&pi;/2 to +&pi;/2
 	 * @see #getAlpha()
@@ -110,9 +110,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Multiplicative constructor
 	 * Build a vector from another one and a scale factor.
 	 * The vector built will be a * u
+	 * a
+	 * scale factor
 	 * 
-	 * @param a
-	 *            scale factor
 	 * @param u
 	 *            base (unscaled) vector
 	 */
@@ -127,9 +127,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Multiplicative constructor
 	 * Build a vector from another one and a scale factor.
 	 * The vector built will be a * u
+	 * a
+	 * scale factor
 	 * 
-	 * @param a
-	 *            scale factor
 	 * @param u
 	 *            base (unscaled) vector
 	 */
@@ -144,9 +144,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Multiplicative constructor
 	 * Build a vector from another one and a scale factor.
 	 * The vector built will be a * u
+	 * a
+	 * scale factor
 	 * 
-	 * @param a
-	 *            scale factor
 	 * @param u
 	 *            base (unscaled) vector
 	 */
@@ -161,9 +161,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from two other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -183,9 +183,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from two other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -205,9 +205,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from two other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -227,9 +227,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from three other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -253,9 +253,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from three other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -279,9 +279,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from three other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -305,9 +305,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from four other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3 + a4 * u4
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -335,9 +335,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from four other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3 + a4 * u4
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -365,9 +365,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * Linear constructor
 	 * Build a vector from four other ones and corresponding scale factors.
 	 * The vector built will be a1 * u1 + a2 * u2 + a3 * u3 + a4 * u4
+	 * a1
+	 * first scale factor
 	 * 
-	 * @param a1
-	 *            first scale factor
 	 * @param u1
 	 *            first base (unscaled) vector
 	 * @param a2
@@ -393,8 +393,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the abscissa of the vector.
+	 * vector
 	 * 
-	 * @return abscissa of the vector
 	 * @see #FieldVector3D(RealFieldElement, RealFieldElement, RealFieldElement)
 	 */
 	public T getX() {
@@ -404,8 +404,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the ordinate of the vector.
+	 * vector
 	 * 
-	 * @return ordinate of the vector
 	 * @see #FieldVector3D(RealFieldElement, RealFieldElement, RealFieldElement)
 	 */
 	public T getY() {
@@ -415,8 +415,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the height of the vector.
+	 * vector
 	 * 
-	 * @return height of the vector
 	 * @see #FieldVector3D(RealFieldElement, RealFieldElement, RealFieldElement)
 	 */
 	public T getZ() {
@@ -426,8 +426,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the vector coordinates as a dimension 3 array.
+	 * coordinates
 	 * 
-	 * @return vector coordinates
 	 * @see #FieldVector3D(RealFieldElement[])
 	 */
 	public T[] toArray() {
@@ -441,8 +441,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Convert to a constant vector without derivatives.
-	 * 
-	 * @return a constant vector
+	 * vector
 	 */
 	public Vector3D toVector3D() {
 
@@ -451,8 +450,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the L<sub>1</sub> norm for the vector.
-	 * 
-	 * @return L<sub>1</sub> norm for the vector
+	 * vector
 	 */
 	public T getNorm1() {
 
@@ -461,8 +459,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the L<sub>2</sub> norm for the vector.
-	 * 
-	 * @return Euclidean norm for the vector
+	 * vector
 	 */
 	public T getNorm() {
 
@@ -472,8 +469,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the square of the norm for the vector.
-	 * 
-	 * @return square of the Euclidean norm for the vector
+	 * vector
 	 */
 	public T getNormSq() {
 
@@ -483,8 +479,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the L<sub>&infin;</sub> norm for the vector.
-	 * 
-	 * @return L<sub>&infin;</sub> norm for the vector
+	 * vector
 	 */
 	public T getNormInf() {
 
@@ -508,8 +503,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the azimuth of the vector.
+	 * +&pi;
 	 * 
-	 * @return azimuth (&alpha;) of the vector, between -&pi; and +&pi;
 	 * @see #FieldVector3D(RealFieldElement, RealFieldElement)
 	 */
 	public T getAlpha() {
@@ -519,8 +514,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the elevation of the vector.
+	 * +&pi;/2
 	 * 
-	 * @return elevation (&delta;) of the vector, between -&pi;/2 and +&pi;/2
 	 * @see #FieldVector3D(RealFieldElement, RealFieldElement)
 	 */
 	public T getDelta() {
@@ -530,9 +525,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a vector to the instance.
+	 * v
+	 * vector to add
 	 * 
-	 * @param v
-	 *            vector to add
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> add(final FieldVector3D<T> v) {
@@ -542,9 +537,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a vector to the instance.
+	 * v
+	 * vector to add
 	 * 
-	 * @param v
-	 *            vector to add
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> add(final Vector3D v) {
@@ -554,9 +549,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a scaled vector to the instance.
+	 * factor
+	 * scale factor to apply to v before adding it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before adding it
 	 * @param v
 	 *            vector to add
 	 * @return a new vector
@@ -568,9 +563,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a scaled vector to the instance.
+	 * factor
+	 * scale factor to apply to v before adding it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before adding it
 	 * @param v
 	 *            vector to add
 	 * @return a new vector
@@ -582,9 +577,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a scaled vector to the instance.
+	 * factor
+	 * scale factor to apply to v before adding it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before adding it
 	 * @param v
 	 *            vector to add
 	 * @return a new vector
@@ -596,9 +591,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Add a scaled vector to the instance.
+	 * factor
+	 * scale factor to apply to v before adding it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before adding it
 	 * @param v
 	 *            vector to add
 	 * @return a new vector
@@ -610,9 +605,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a vector from the instance.
+	 * v
+	 * vector to subtract
 	 * 
-	 * @param v
-	 *            vector to subtract
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> subtract(final FieldVector3D<T> v) {
@@ -622,9 +617,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a vector from the instance.
+	 * v
+	 * vector to subtract
 	 * 
-	 * @param v
-	 *            vector to subtract
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> subtract(final Vector3D v) {
@@ -634,9 +629,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a scaled vector from the instance.
+	 * factor
+	 * scale factor to apply to v before subtracting it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before subtracting it
 	 * @param v
 	 *            vector to subtract
 	 * @return a new vector
@@ -648,9 +643,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a scaled vector from the instance.
+	 * factor
+	 * scale factor to apply to v before subtracting it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before subtracting it
 	 * @param v
 	 *            vector to subtract
 	 * @return a new vector
@@ -662,9 +657,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a scaled vector from the instance.
+	 * factor
+	 * scale factor to apply to v before subtracting it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before subtracting it
 	 * @param v
 	 *            vector to subtract
 	 * @return a new vector
@@ -676,9 +671,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Subtract a scaled vector from the instance.
+	 * factor
+	 * scale factor to apply to v before subtracting it
 	 * 
-	 * @param factor
-	 *            scale factor to apply to v before subtracting it
 	 * @param v
 	 *            vector to subtract
 	 * @return a new vector
@@ -690,8 +685,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get a normalized vector aligned with the instance.
+	 * vector
 	 * 
-	 * @return a new normalized vector
 	 * @exception MathArithmeticException
 	 *                if the norm is zero
 	 */
@@ -709,17 +704,15 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * There are an infinite number of normalized vectors orthogonal to the instance. This method picks up one of them almost arbitrarily. It is useful when one needs to compute a reference frame with one of the axes in a predefined direction. The following example shows how to build a frame having the k axis aligned with the known vector u :
 	 * 
-	 * <pre>
 	 * <code>
 	 *   Vector3D k = u.normalize();
 	 *   Vector3D i = k.orthogonal();
 	 *   Vector3D j = Vector3D.crossProduct(k, i);
 	 * </code>
-	 * </pre>
 	 * 
 	 * </p>
+	 * instance
 	 * 
-	 * @return a new normalized vector orthogonal to the instance
 	 * @exception MathArithmeticException
 	 *                if the norm of the instance is null
 	 */
@@ -746,9 +739,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * This method computes the angular separation between two vectors using the dot product for well separated vectors and the cross product for almost aligned vectors. This allows to have a good accuracy in all cases, even for vectors very close to each other.
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -782,9 +775,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * This method computes the angular separation between two vectors using the dot product for well separated vectors and the cross product for almost aligned vectors. This allows to have a good accuracy in all cases, even for vectors very close to each other.
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -818,9 +811,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * This method computes the angular separation between two vectors using the dot product for well separated vectors and the cross product for almost aligned vectors. This allows to have a good accuracy in all cases, even for vectors very close to each other.
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -836,8 +829,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get the opposite of the instance.
-	 * 
-	 * @return a new vector which is opposite to the instance
+	 * instance
 	 */
 	public FieldVector3D<T> negate() {
 
@@ -846,9 +838,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Multiply the instance by a scalar.
+	 * a
+	 * scalar
 	 * 
-	 * @param a
-	 *            scalar
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> scalarMultiply(final T a) {
@@ -858,9 +850,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Multiply the instance by a scalar.
+	 * a
+	 * scalar
 	 * 
-	 * @param a
-	 *            scalar
 	 * @return a new vector
 	 */
 	public FieldVector3D<T> scalarMultiply(final double a) {
@@ -870,8 +862,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Returns true if any coordinate of this vector is NaN; false otherwise
-	 * 
-	 * @return true if any coordinate of this vector is NaN; false otherwise
+	 * otherwise
 	 */
 	public boolean isNaN() {
 
@@ -881,9 +872,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	/**
 	 * Returns true if any coordinate of this vector is infinite and none are NaN;
 	 * false otherwise
-	 * 
-	 * @return true if any coordinate of this vector is infinite and none are NaN;
-	 *         false otherwise
+	 * NaN;
+	 * false otherwise
 	 */
 	public boolean isInfinite() {
 
@@ -945,8 +935,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * The implementation uses specific multiplication and addition algorithms to preserve accuracy and reduce cancellation effects. It should be very accurate even for nearly orthogonal vectors.
 	 * </p>
+	 * double)
 	 * 
-	 * @see MathArrays#linearCombination(double, double, double, double, double, double)
 	 * @param v
 	 *            second vector
 	 * @return the dot product this.v
@@ -961,8 +951,8 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * The implementation uses specific multiplication and addition algorithms to preserve accuracy and reduce cancellation effects. It should be very accurate even for nearly orthogonal vectors.
 	 * </p>
+	 * double)
 	 * 
-	 * @see MathArrays#linearCombination(double, double, double, double, double, double)
 	 * @param v
 	 *            second vector
 	 * @return the dot product this.v
@@ -974,9 +964,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the cross-product of the instance with another vector.
+	 * v
+	 * other vector
 	 * 
-	 * @param v
-	 *            other vector
 	 * @return the cross product this ^ v as a new Vector3D
 	 */
 	public FieldVector3D<T> crossProduct(final FieldVector3D<T> v) {
@@ -986,9 +976,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the cross-product of the instance with another vector.
+	 * v
+	 * other vector
 	 * 
-	 * @param v
-	 *            other vector
 	 * @return the cross product this ^ v as a new Vector3D
 	 */
 	public FieldVector3D<T> crossProduct(final Vector3D v) {
@@ -1001,9 +991,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNorm1()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>1</sub> norm
 	 */
 	public T distance1(final FieldVector3D<T> v) {
@@ -1019,9 +1009,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNorm1()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>1</sub> norm
 	 */
 	public T distance1(final Vector3D v) {
@@ -1037,9 +1027,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>2</sub> norm
 	 */
 	public T distance(final FieldVector3D<T> v) {
@@ -1055,9 +1045,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>2</sub> norm
 	 */
 	public T distance(final Vector3D v) {
@@ -1073,9 +1063,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>&infin;</sub> norm
 	 */
 	public T distanceInf(final FieldVector3D<T> v) {
@@ -1103,9 +1093,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the distance between the instance and p according to the L<sub>&infin;</sub> norm
 	 */
 	public T distanceInf(final Vector3D v) {
@@ -1133,9 +1123,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the square of the distance between the instance and p
 	 */
 	public T distanceSq(final FieldVector3D<T> v) {
@@ -1151,9 +1141,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>q.subtract(p).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * v
+	 * second vector
 	 * 
-	 * @param v
-	 *            second vector
 	 * @return the square of the distance between the instance and p
 	 */
 	public T distanceSq(final Vector3D v) {
@@ -1166,9 +1156,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the dot-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1182,9 +1172,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the dot-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1198,9 +1188,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the dot-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1214,9 +1204,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the cross-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1230,9 +1220,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the cross-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1246,9 +1236,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Compute the cross-product of two vectors.
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1265,9 +1255,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm1()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1284,9 +1274,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm1()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1303,9 +1293,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm1()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1322,9 +1312,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1341,9 +1331,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1360,9 +1350,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNorm()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1379,9 +1369,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1398,9 +1388,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1417,9 +1407,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormInf()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1436,9 +1426,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1455,9 +1445,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1474,9 +1464,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 	 * <p>
 	 * Calling this method is equivalent to calling: <code>v1.subtract(v2).getNormSq()</code> except that no intermediate vector is built
 	 * </p>
+	 * v1
+	 * first vector
 	 * 
-	 * @param v1
-	 *            first vector
 	 * @param v2
 	 *            second vector
 	 * @param <T>
@@ -1490,8 +1480,7 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get a string representation of this vector.
-	 * 
-	 * @return a string representation of this vector
+	 * vector
 	 */
 	@Override
 	public String toString() {
@@ -1501,9 +1490,9 @@ public class FieldVector3D<T extends RealFieldElement<T>> implements Serializabl
 
 	/**
 	 * Get a string representation of this vector.
+	 * format
+	 * the custom format for components
 	 * 
-	 * @param format
-	 *            the custom format for components
 	 * @return a string representation of this vector
 	 */
 	public String toString(final NumberFormat format) {

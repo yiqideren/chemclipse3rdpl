@@ -25,9 +25,9 @@ import javassist.bytecode.ClassFilePrinter;
  * <p>
  * For example,
  * 
- * <pre>
+ * 
  * % java javassist.tools.Dump foo.class
- * </pre>
+ * 
  *
  * <p>
  * prints the contents of the constant pool and the list of methods and fields.

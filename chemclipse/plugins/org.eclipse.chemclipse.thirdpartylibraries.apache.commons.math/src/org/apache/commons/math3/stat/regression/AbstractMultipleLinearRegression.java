@@ -84,13 +84,7 @@ public abstract class AbstractMultipleLinearRegression implements MultipleLinear
 	 * <p>
 	 * Assumes that rows are concatenated with y values first in each row. For example, an input <code>data</code> array containing the sequence of values (1, 2, 3, 4, 5, 6, 7, 8, 9) with <code>nobs = 3</code> and <code>nvars = 2</code> creates a regression dataset with two independent variables, as below:
 	 * 
-	 * <pre>
-	 *   y   x[0]  x[1]
-	 *   --------------
-	 *   1     2     3
-	 *   4     5     6
-	 *   7     8     9
-	 * </pre>
+	 * y x[0] x[1] -------------- 1 2 3 4 5 6 7 8 9
 	 * 
 	 * </p>
 	 * <p>
@@ -176,28 +170,24 @@ public abstract class AbstractMultipleLinearRegression implements MultipleLinear
 	 * observation, with columns corresponding to independent variables.
 	 * For example, if
 	 * 
-	 * <pre>
 	 * <code> x = new double[][] {{1, 2}, {3, 4}, {5, 6}} </code>
-	 * </pre>
 	 * 
 	 * then <code>setXSampleData(x) </code> results in a model with two independent
 	 * variables and 3 observations:
 	 * 
-	 * <pre>
-	 *   x[0]  x[1]
-	 *   ----------
-	 *     1    2
-	 *     3    4
-	 *     5    6
-	 * </pre>
+	 * x[0] x[1]
+	 * ----------
+	 * 1 2
+	 * 3 4
+	 * 5 6
 	 * 
 	 * </p>
 	 * <p>
 	 * Note that there is no need to add an initial unitary column (column of 1's) when specifying a model including an intercept term.
 	 * </p>
+	 * x
+	 * the rectangular array representing the x sample
 	 * 
-	 * @param x
-	 *            the rectangular array representing the x sample
 	 * @throws NullArgumentException
 	 *             if x is null
 	 * @throws NoDataException
@@ -394,9 +384,7 @@ public abstract class AbstractMultipleLinearRegression implements MultipleLinear
 	 * </p>
 	 * Uses the formula
 	 * 
-	 * <pre>
 	 * var(u) = u &middot; u / (n - k)
-	 * </pre>
 	 * 
 	 * where n and k are the row and column dimensions of the design
 	 * matrix X.
@@ -414,9 +402,8 @@ public abstract class AbstractMultipleLinearRegression implements MultipleLinear
 	 * Calculates the residuals of multiple linear regression in matrix
 	 * notation.
 	 *
-	 * <pre>
-	 * u = y - X * b
-	 * </pre>
+	 * b
+	 * 
 	 *
 	 * @return The residuals [n,1] matrix
 	 */

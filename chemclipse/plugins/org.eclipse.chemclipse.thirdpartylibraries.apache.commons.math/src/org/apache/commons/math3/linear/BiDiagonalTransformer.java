@@ -44,9 +44,8 @@ class BiDiagonalTransformer {
 
 	/**
 	 * Build the transformation to bi-diagonal shape of a matrix.
-	 * 
-	 * @param matrix
-	 *            the matrix to transform.
+	 * matrix
+	 * the matrix to transform.
 	 */
 	public BiDiagonalTransformer(RealMatrix matrix) {
 
@@ -72,8 +71,7 @@ class BiDiagonalTransformer {
 	 * <p>
 	 * U is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
-	 * 
-	 * @return the U matrix
+	 * matrix
 	 */
 	public RealMatrix getU() {
 
@@ -116,8 +114,7 @@ class BiDiagonalTransformer {
 
 	/**
 	 * Returns the bi-diagonal matrix B of the transform.
-	 * 
-	 * @return the B matrix
+	 * matrix
 	 */
 	public RealMatrix getB() {
 
@@ -148,8 +145,7 @@ class BiDiagonalTransformer {
 	 * <p>
 	 * V is an orthogonal matrix, i.e. its transpose is also its inverse.
 	 * </p>
-	 * 
-	 * @return the V matrix
+	 * matrix
 	 */
 	public RealMatrix getV() {
 
@@ -195,8 +191,7 @@ class BiDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the main diagonal elements of the B matrix
+	 * matrix
 	 */
 	double[][] getHouseholderVectorsRef() {
 
@@ -208,8 +203,7 @@ class BiDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the main diagonal elements of the B matrix
+	 * matrix
 	 */
 	double[] getMainDiagonalRef() {
 
@@ -221,8 +215,7 @@ class BiDiagonalTransformer {
 	 * <p>
 	 * Note that since this class is only intended for internal use, it returns directly a reference to its internal arrays, not a copy.
 	 * </p>
-	 * 
-	 * @return the secondary diagonal elements of the B matrix
+	 * matrix
 	 */
 	double[] getSecondaryDiagonalRef() {
 
@@ -231,8 +224,7 @@ class BiDiagonalTransformer {
 
 	/**
 	 * Check if the matrix is transformed to upper bi-diagonal.
-	 * 
-	 * @return true if the matrix is transformed to upper bi-diagonal
+	 * bi-diagonal
 	 */
 	boolean isUpperBiDiagonal() {
 

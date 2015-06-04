@@ -120,9 +120,7 @@ public abstract class AbstractRandomGenerator implements RandomGenerator {
 	 * <p>
 	 * The default implementation provided here returns
 	 * 
-	 * <pre>
 	 * <code>(int) (nextDouble() * Integer.MAX_VALUE)</code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -140,9 +138,7 @@ public abstract class AbstractRandomGenerator implements RandomGenerator {
 	 * <p>
 	 * The default implementation returns
 	 * 
-	 * <pre>
 	 * <code>(int) (nextDouble() * n</code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -169,9 +165,7 @@ public abstract class AbstractRandomGenerator implements RandomGenerator {
 	 * <p>
 	 * The default implementation returns
 	 * 
-	 * <pre>
 	 * <code>(long) (nextDouble() * Long.MAX_VALUE)</code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -188,9 +182,7 @@ public abstract class AbstractRandomGenerator implements RandomGenerator {
 	 * <p>
 	 * The default implementation returns
 	 * 
-	 * <pre>
 	 * <code>nextDouble() <= 0.5</code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -208,9 +200,7 @@ public abstract class AbstractRandomGenerator implements RandomGenerator {
 	 * <p>
 	 * The default implementation returns
 	 * 
-	 * <pre>
 	 * <code>(float) nextDouble() </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *

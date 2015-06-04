@@ -83,9 +83,9 @@ public class DiskGenerator implements SupportBallGenerator<Euclidean2D, Vector2D
 
 	/**
 	 * Compute a dimension 3 minor, when 3<sup>d</sup> column is known to be filled with 1.0.
+	 * c1
+	 * first column
 	 * 
-	 * @param c1
-	 *            first column
 	 * @param c2
 	 *            second column
 	 * @return value of the minor computed has an exact fraction

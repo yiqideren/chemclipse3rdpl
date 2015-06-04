@@ -44,14 +44,12 @@ public class MatrixUtils {
 
 	/**
 	 * The default format for {@link RealMatrix} objects.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static final RealMatrixFormat DEFAULT_FORMAT = RealMatrixFormat.getInstance();
 	/**
 	 * A format for {@link RealMatrix} objects compatible with octave.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static final RealMatrixFormat OCTAVE_FORMAT = new RealMatrixFormat("[", "]", "", "", "; ", ", ");
 
@@ -71,9 +69,9 @@ public class MatrixUtils {
 	 * <p>
 	 * The matrix elements are all set to 0.0.
 	 * </p>
+	 * rows
+	 * number of rows of the matrix
 	 * 
-	 * @param rows
-	 *            number of rows of the matrix
 	 * @param columns
 	 *            number of columns of the matrix
 	 * @return RealMatrix with specified dimensions
@@ -92,9 +90,9 @@ public class MatrixUtils {
 	 * <p>
 	 * The matrix elements are all set to field.getZero().
 	 * </p>
+	 * <T>
+	 * the type of the field elements
 	 * 
-	 * @param <T>
-	 *            the type of the field elements
 	 * @param field
 	 *            field to which the matrix elements belong
 	 * @param rows
@@ -150,9 +148,9 @@ public class MatrixUtils {
 	 * <p>
 	 * The input array is copied, not referenced.
 	 * </p>
+	 * <T>
+	 * the type of the field elements
 	 * 
-	 * @param <T>
-	 *            the type of the field elements
 	 * @param data
 	 *            input array
 	 * @return a matrix containing the values of the array.
@@ -669,9 +667,9 @@ public class MatrixUtils {
 
 	/**
 	 * Convert a {@link FieldMatrix}/{@link Fraction} matrix to a {@link RealMatrix}.
+	 * m
+	 * Matrix to convert.
 	 * 
-	 * @param m
-	 *            Matrix to convert.
 	 * @return the converted matrix.
 	 */
 	public static Array2DRowRealMatrix fractionMatrixToRealMatrix(final FieldMatrix<Fraction> m) {
@@ -777,28 +775,21 @@ public class MatrixUtils {
 	 * <p>
 	 * The following example shows how a simple class with a name and a real vector should be written:
 	 * 
-	 * <pre>
 	 * <code>
 	 * public class NamedVector implements Serializable {
-	 * 
-	 *     private final String name;
+name;
 	 *     private final transient RealVector coefficients;
-	 * 
-	 *     // omitted constructors, getters ...
-	 * 
-	 *     private void writeObject(ObjectOutputStream oos) throws IOException {
+...
+{
 	 *         oos.defaultWriteObject();  // takes care of name field
 	 *         MatrixUtils.serializeRealVector(coefficients, oos);
 	 *     }
-	 * 
-	 *     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+{
 	 *         ois.defaultReadObject();  // takes care of name field
 	 *         MatrixUtils.deserializeRealVector(this, "coefficients", ois);
 	 *     }
-	 * 
-	 * }
+}
 	 * </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -824,9 +815,9 @@ public class MatrixUtils {
 	 * <p>
 	 * This method is intended to be called from within a private <code>readObject</code> method (after a call to <code>ois.defaultReadObject()</code>) in a class that has a {@link RealVector} field, which should be declared <code>transient</code>. This way, the default handling does not deserialize the vector (the {@link RealVector} interface is not serializable by default) but this method does deserialize it specifically.
 	 * </p>
+	 * instance
+	 * instance in which the field must be set up
 	 * 
-	 * @param instance
-	 *            instance in which the field must be set up
 	 * @param fieldName
 	 *            name of the field within the class (may be private and final)
 	 * @param ois
@@ -871,28 +862,21 @@ public class MatrixUtils {
 	 * <p>
 	 * The following example shows how a simple class with a name and a real matrix should be written:
 	 * 
-	 * <pre>
 	 * <code>
 	 * public class NamedMatrix implements Serializable {
-	 * 
-	 *     private final String name;
+name;
 	 *     private final transient RealMatrix coefficients;
-	 * 
-	 *     // omitted constructors, getters ...
-	 * 
-	 *     private void writeObject(ObjectOutputStream oos) throws IOException {
+...
+{
 	 *         oos.defaultWriteObject();  // takes care of name field
 	 *         MatrixUtils.serializeRealMatrix(coefficients, oos);
 	 *     }
-	 * 
-	 *     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+{
 	 *         ois.defaultReadObject();  // takes care of name field
 	 *         MatrixUtils.deserializeRealMatrix(this, "coefficients", ois);
 	 *     }
-	 * 
-	 * }
+}
 	 * </code>
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -922,9 +906,9 @@ public class MatrixUtils {
 	 * <p>
 	 * This method is intended to be called from within a private <code>readObject</code> method (after a call to <code>ois.defaultReadObject()</code>) in a class that has a {@link RealMatrix} field, which should be declared <code>transient</code>. This way, the default handling does not deserialize the matrix (the {@link RealMatrix} interface is not serializable by default) but this method does deserialize it specifically.
 	 * </p>
+	 * instance
+	 * instance in which the field must be set up
 	 * 
-	 * @param instance
-	 *            instance in which the field must be set up
 	 * @param fieldName
 	 *            name of the field within the class (may be private and final)
 	 * @param ois
@@ -970,9 +954,9 @@ public class MatrixUtils {
 	 * <p>
 	 * This method is called to solve systems of equations which are of the lower triangular form. The matrix {@link RealMatrix} is assumed, though not checked, to be in lower triangular form. The vector {@link RealVector} is overwritten with the solution. The matrix is checked that it is square and its dimensions match the length of the vector.
 	 * </p>
+	 * rm
+	 * RealMatrix which is lower triangular
 	 * 
-	 * @param rm
-	 *            RealMatrix which is lower triangular
 	 * @param b
 	 *            RealVector this is overwritten
 	 * @throws DimensionMismatchException
@@ -1011,9 +995,9 @@ public class MatrixUtils {
 	 * <p>
 	 * This method is called to solve systems of equations which are of the lower triangular form. The matrix {@link RealMatrix} is assumed, though not checked, to be in upper triangular form. The vector {@link RealVector} is overwritten with the solution. The matrix is checked that it is square and its dimensions match the length of the vector.
 	 * </p>
+	 * rm
+	 * RealMatrix which is upper triangular
 	 * 
-	 * @param rm
-	 *            RealMatrix which is upper triangular
 	 * @param b
 	 *            RealVector this is overwritten
 	 * @throws DimensionMismatchException

@@ -28,12 +28,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * This method has been published (whithout the continuous output that was added by Shampine in 1986) in the following article :
  * 
- * <pre>
- *  A family of embedded Runge-Kutta formulae
- *  J. R. Dormand and P. J. Prince
- *  Journal of Computational and Applied Mathematics
- *  volume 6, no 1, 1980, pp. 19-26
- * </pre>
+ * 
+ * A family of embedded Runge-Kutta formulae J. R. Dormand and P. J. Prince Journal of Computational and Applied Mathematics volume 6, no 1, 1980, pp. 19-26
+ * 
  * 
  * </p>
  *
@@ -66,11 +63,11 @@ public class DormandPrince54Integrator extends EmbeddedRungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build a fifth order Dormand-Prince integrator with the given step bounds
+	 * minStep
+	 * minimal step (sign is irrelevant, regardless of
+	 * integration direction, forward or backward), the last step can
+	 * be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (sign is irrelevant, regardless of
-	 *            integration direction, forward or backward), the last step can
-	 *            be smaller than this
 	 * @param maxStep
 	 *            maximal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can
@@ -88,11 +85,11 @@ public class DormandPrince54Integrator extends EmbeddedRungeKuttaIntegrator {
 	/**
 	 * Simple constructor.
 	 * Build a fifth order Dormand-Prince integrator with the given step bounds
+	 * minStep
+	 * minimal step (sign is irrelevant, regardless of
+	 * integration direction, forward or backward), the last step can
+	 * be smaller than this
 	 * 
-	 * @param minStep
-	 *            minimal step (sign is irrelevant, regardless of
-	 *            integration direction, forward or backward), the last step can
-	 *            be smaller than this
 	 * @param maxStep
 	 *            maximal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can

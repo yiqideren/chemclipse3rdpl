@@ -56,9 +56,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The circle is oriented in the trigonometric direction around pole.
 	 * </p>
+	 * pole
+	 * circle pole
 	 * 
-	 * @param pole
-	 *            circle pole
 	 * @param tolerance
 	 *            tolerance below which close sub-arcs are merged together
 	 */
@@ -73,9 +73,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The circle is oriented from first to second point using the path smaller than \( \pi \).
 	 * </p>
+	 * first
+	 * first point contained in the great circle
 	 * 
-	 * @param first
-	 *            first point contained in the great circle
 	 * @param second
 	 *            second point contained in the great circle
 	 * @param tolerance
@@ -92,9 +92,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The circle is oriented in the trigonometric direction around center.
 	 * </p>
+	 * pole
+	 * circle pole
 	 * 
-	 * @param pole
-	 *            circle pole
 	 * @param x
 	 *            first axis in the equator plane
 	 * @param y
@@ -115,9 +115,8 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The created instance is completely independent from the original instance, it is a deep copy.
 	 * </p>
-	 * 
-	 * @param circle
-	 *            circle to copy
+	 * circle
+	 * circle to copy
 	 */
 	public Circle(final Circle circle) {
 
@@ -135,9 +134,8 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The circle is oriented in the trigonometric direction around pole.
 	 * </p>
-	 * 
-	 * @param newPole
-	 *            circle pole
+	 * newPole
+	 * circle pole
 	 */
 	public void reset(final Vector3D newPole) {
 
@@ -161,8 +159,7 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * Get a circle with reversed orientation with respect to the instance. A new object is built, the instance is untouched.
 	 * </p>
-	 * 
-	 * @return a new circle, with orientation opposite to the instance orientation
+	 * orientation
 	 */
 	public Circle getReverse() {
 
@@ -182,9 +179,7 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see #getPhase(Vector3D)
+	 * {@inheritDoc} #getPhase(Vector3D)
 	 */
 	public S1Point toSubSpace(final Point<Sphere2D> point) {
 
@@ -196,9 +191,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The direction may not belong to the circle as the phase is computed for the meridian plane between the circle pole and the direction.
 	 * </p>
+	 * direction
+	 * direction for which phase is requested
 	 * 
-	 * @param direction
-	 *            direction for which phase is requested
 	 * @return phase angle of the direction around the circle
 	 * @see #toSubSpace(Point)
 	 */
@@ -208,9 +203,7 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see #getPointAt(double)
+	 * {@inheritDoc} #getPointAt(double)
 	 */
 	public S2Point toSpace(final Point<Sphere1D> point) {
 
@@ -219,9 +212,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 
 	/**
 	 * Get a circle point from its phase around the circle.
+	 * alpha
+	 * phase around the circle
 	 * 
-	 * @param alpha
-	 *            phase around the circle
 	 * @return circle point on the sphere
 	 * @see #toSpace(Point)
 	 * @see #getXAxis()
@@ -238,8 +231,8 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * This method returns the same value as {@link #getPointAt(double)
 	 * getPointAt(0.0)} but it does not do any computation and always return the same instance.
 	 * </p>
+	 * circle
 	 * 
-	 * @return an arbitrary x axis on the circle
 	 * @see #getPointAt(double)
 	 * @see #getYAxis()
 	 * @see #getPole()
@@ -255,8 +248,8 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * This method returns the same value as {@link #getPointAt(double)
 	 * getPointAt(0.5 * FastMath.PI)} but it does not do any computation and always return the same instance.
 	 * </p>
+	 * circle
 	 * 
-	 * @return an arbitrary y axis point on the circle
 	 * @see #getPointAt(double)
 	 * @see #getXAxis()
 	 * @see #getPole()
@@ -271,8 +264,8 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * As the circle is a great circle, the pole does <em>not</em> belong to it.
 	 * </p>
+	 * circle
 	 * 
-	 * @return pole of the circle
 	 * @see #getXAxis()
 	 * @see #getYAxis()
 	 */
@@ -283,9 +276,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 
 	/**
 	 * Get the arc of the instance that lies inside the other circle.
+	 * other
+	 * other circle
 	 * 
-	 * @param other
-	 *            other circle
 	 * @return arc of the instance that lies inside the other circle
 	 */
 	public Arc getInsideArc(final Circle other) {
@@ -303,8 +296,7 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 
 	/**
 	 * Build a region covering the whole space.
-	 * 
-	 * @return a region containing the instance (really a {@link SphericalPolygonsSet SphericalPolygonsSet} instance)
+	 * instance)
 	 */
 	public SphericalPolygonsSet wholeSpace() {
 
@@ -312,9 +304,7 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see #getOffset(Vector3D)
+	 * {@inheritDoc} #getOffset(Vector3D)
 	 */
 	public double getOffset(final Point<Sphere2D> point) {
 
@@ -326,9 +316,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	 * <p>
 	 * The offset is defined as the angular distance between the circle center and the direction minus the circle radius. It is therefore 0 on the circle, positive for directions outside of the cone delimited by the circle, and negative inside the cone.
 	 * </p>
+	 * direction
+	 * direction to check
 	 * 
-	 * @param direction
-	 *            direction to check
 	 * @return offset of the direction
 	 * @see #getOffset(Point)
 	 */
@@ -347,9 +337,9 @@ public class Circle implements Hyperplane<Sphere2D>, Embedding<Sphere2D, Sphere1
 	/**
 	 * Get a {@link org.apache.commons.math3.geometry.partitioning.Transform
 	 * Transform} embedding a 3D rotation.
+	 * rotation
+	 * rotation to use
 	 * 
-	 * @param rotation
-	 *            rotation to use
 	 * @return a new transform that can be applied to either {@link Point Point}, {@link Circle Line} or {@link org.apache.commons.math3.geometry.partitioning.SubHyperplane
 	 *         SubHyperplane} instances
 	 */

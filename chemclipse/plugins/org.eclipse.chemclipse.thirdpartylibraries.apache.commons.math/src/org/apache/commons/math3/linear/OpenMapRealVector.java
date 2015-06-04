@@ -295,9 +295,9 @@ public class OpenMapRealVector extends SparseRealVector implements Serializable 
 
 	/**
 	 * Optimized method to append a OpenMapRealVector.
+	 * v
+	 * vector to append
 	 * 
-	 * @param v
-	 *            vector to append
 	 * @return The result of appending {@code v} to self
 	 */
 	public OpenMapRealVector append(OpenMapRealVector v) {
@@ -336,9 +336,7 @@ public class OpenMapRealVector extends SparseRealVector implements Serializable 
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 2.1
+	 * {@inheritDoc} 2.1
 	 */
 	@Override
 	public OpenMapRealVector copy() {

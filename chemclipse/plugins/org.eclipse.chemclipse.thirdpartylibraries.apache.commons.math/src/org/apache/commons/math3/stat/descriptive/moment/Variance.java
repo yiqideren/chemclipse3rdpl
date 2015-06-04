@@ -276,18 +276,14 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * Uses the formula
 	 * 
-	 * <pre>
-	 *   &Sigma;(weights[i]*(values[i] - weightedMean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
-	 * </pre>
+	 * &Sigma;(weights[i]*(values[i] - weightedMean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
 	 * 
 	 * where weightedMean is the weighted mean
 	 * </p>
 	 * <p>
 	 * This formula will not return the same result as the unweighted variance when all weights are equal, unless all weights are equal to 1. The formula assumes that weights are to be treated as "expansion values," as will be the case if for example the weights represent frequency counts. To normalize weights so that the denominator in the variance computation equals the length of the input vector minus one, use
 	 * 
-	 * <pre>
-	 *   <code>evaluate(values, MathArrays.normalizeArray(weights, values.length)); </code>
-	 * </pre>
+	 * <code>evaluate(values, MathArrays.normalizeArray(weights, values.length)); </code>
 	 * <p>
 	 * Returns 0 for a single-value (i.e. length = 1) sample.
 	 * </p>
@@ -346,18 +342,14 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * Uses the formula
 	 * 
-	 * <pre>
-	 *   &Sigma;(weights[i]*(values[i] - weightedMean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
-	 * </pre>
+	 * &Sigma;(weights[i]*(values[i] - weightedMean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
 	 * 
 	 * where weightedMean is the weighted mean
 	 * </p>
 	 * <p>
 	 * This formula will not return the same result as the unweighted variance when all weights are equal, unless all weights are equal to 1. The formula assumes that weights are to be treated as "expansion values," as will be the case if for example the weights represent frequency counts. To normalize weights so that the denominator in the variance computation equals the length of the input vector minus one, use
 	 * 
-	 * <pre>
-	 *   <code>evaluate(values, MathArrays.normalizeArray(weights, values.length)); </code>
-	 * </pre>
+	 * <code>evaluate(values, MathArrays.normalizeArray(weights, values.length)); </code>
 	 * <p>
 	 * Returns 0 for a single-value (i.e. length = 1) sample.
 	 * </p>
@@ -490,9 +482,7 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * Uses the formula
 	 * 
-	 * <pre>
-	 *   &Sigma;(weights[i]*(values[i] - mean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
-	 * </pre>
+	 * &Sigma;(weights[i]*(values[i] - mean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
 	 * 
 	 * </p>
 	 * <p>
@@ -501,9 +491,7 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * This formula will not return the same result as the unweighted variance when all weights are equal, unless all weights are equal to 1. The formula assumes that weights are to be treated as "expansion values," as will be the case if for example the weights represent frequency counts. To normalize weights so that the denominator in the variance computation equals the length of the input vector minus one, use
 	 * 
-	 * <pre>
-	 *   <code>evaluate(values, MathArrays.normalizeArray(weights, values.length), mean); </code>
-	 * </pre>
+	 * <code>evaluate(values, MathArrays.normalizeArray(weights, values.length), mean); </code>
 	 * <p>
 	 * Returns 0 for a single-value (i.e. length = 1) sample.
 	 * </p>
@@ -574,9 +562,7 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * Uses the formula
 	 * 
-	 * <pre>
-	 *   &Sigma;(weights[i]*(values[i] - mean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
-	 * </pre>
+	 * &Sigma;(weights[i]*(values[i] - mean)<sup>2</sup>)/(&Sigma;(weights[i]) - 1)
 	 * 
 	 * </p>
 	 * <p>
@@ -585,9 +571,7 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
 	 * <p>
 	 * This formula will not return the same result as the unweighted variance when all weights are equal, unless all weights are equal to 1. The formula assumes that weights are to be treated as "expansion values," as will be the case if for example the weights represent frequency counts. To normalize weights so that the denominator in the variance computation equals the length of the input vector minus one, use
 	 * 
-	 * <pre>
-	 *   <code>evaluate(values, MathArrays.normalizeArray(weights, values.length), mean); </code>
-	 * </pre>
+	 * <code>evaluate(values, MathArrays.normalizeArray(weights, values.length), mean); </code>
 	 * <p>
 	 * Returns 0 for a single-value (i.e. length = 1) sample.
 	 * </p>

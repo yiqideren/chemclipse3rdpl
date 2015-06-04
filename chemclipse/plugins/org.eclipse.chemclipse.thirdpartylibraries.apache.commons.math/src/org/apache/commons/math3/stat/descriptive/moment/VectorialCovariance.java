@@ -41,9 +41,9 @@ public class VectorialCovariance implements Serializable {
 
 	/**
 	 * Constructs a VectorialCovariance.
+	 * dimension
+	 * vectors dimension
 	 * 
-	 * @param dimension
-	 *            vectors dimension
 	 * @param isBiasCorrected
 	 *            if true, computed the unbiased sample covariance,
 	 *            otherwise computes the biased population covariance
@@ -58,9 +58,9 @@ public class VectorialCovariance implements Serializable {
 
 	/**
 	 * Add a new vector to the sample.
+	 * v
+	 * vector to add
 	 * 
-	 * @param v
-	 *            vector to add
 	 * @throws DimensionMismatchException
 	 *             if the vector does not have the right dimension
 	 */
@@ -81,8 +81,7 @@ public class VectorialCovariance implements Serializable {
 
 	/**
 	 * Get the covariance matrix.
-	 * 
-	 * @return covariance matrix
+	 * matrix
 	 */
 	public RealMatrix getResult() {
 
@@ -104,8 +103,7 @@ public class VectorialCovariance implements Serializable {
 
 	/**
 	 * Get the number of vectors in the sample.
-	 * 
-	 * @return number of vectors in the sample
+	 * sample
 	 */
 	public long getN() {
 

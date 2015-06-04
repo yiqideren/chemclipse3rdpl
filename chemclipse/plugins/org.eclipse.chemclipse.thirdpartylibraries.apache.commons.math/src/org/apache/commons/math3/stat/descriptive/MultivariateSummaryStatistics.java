@@ -82,9 +82,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Construct a MultivariateSummaryStatistics instance
+	 * k
+	 * dimension of the data
 	 * 
-	 * @param k
-	 *            dimension of the data
 	 * @param isCovarianceBiasCorrected
 	 *            if true, the unbiased sample
 	 *            covariance is computed, otherwise the biased population covariance
@@ -140,8 +140,7 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Returns the dimension of the data
-	 * 
-	 * @return The dimension of the data
+	 * data
 	 */
 	public int getDimension() {
 
@@ -150,8 +149,7 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Returns the number of available values
-	 * 
-	 * @return The number of available values
+	 * values
 	 */
 	public long getN() {
 
@@ -160,9 +158,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Returns an array of the results of a statistic.
+	 * stats
+	 * univariate statistic array
 	 * 
-	 * @param stats
-	 *            univariate statistic array
 	 * @return results array
 	 */
 	private double[] getResults(StorelessUnivariateStatistic[] stats) {
@@ -287,8 +285,7 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 	 * Generates a text report displaying
 	 * summary statistics from values that
 	 * have been added.
-	 * 
-	 * @return String with line feeds displaying statistics
+	 * statistics
 	 */
 	@Override
 	public String toString() {
@@ -311,9 +308,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Append a text representation of an array to a buffer.
+	 * buffer
+	 * buffer to fill
 	 * 
-	 * @param buffer
-	 *            buffer to fill
 	 * @param data
 	 *            data array
 	 * @param prefix
@@ -355,9 +352,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Returns true iff <code>object</code> is a <code>MultivariateSummaryStatistics</code> instance and all statistics have the same values as this.
+	 * object
+	 * the object to test equality against.
 	 * 
-	 * @param object
-	 *            the object to test equality against.
 	 * @return true if object equals this
 	 */
 	@Override
@@ -397,9 +394,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 	// Getters and setters for statistics implementations
 	/**
 	 * Sets statistics implementations.
+	 * newImpl
+	 * new implementations for statistics
 	 * 
-	 * @param newImpl
-	 *            new implementations for statistics
 	 * @param oldImpl
 	 *            old implementations for statistics
 	 * @throws DimensionMismatchException
@@ -649,9 +646,8 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Throws MathIllegalStateException if the statistic is not empty.
-	 * 
-	 * @throws MathIllegalStateException
-	 *             if n > 0.
+	 * MathIllegalStateException
+	 * if n > 0.
 	 */
 	private void checkEmpty() throws MathIllegalStateException {
 
@@ -662,9 +658,9 @@ public class MultivariateSummaryStatistics implements StatisticalMultivariateSum
 
 	/**
 	 * Throws DimensionMismatchException if dimension != k.
+	 * dimension
+	 * dimension to check
 	 * 
-	 * @param dimension
-	 *            dimension to check
 	 * @throws DimensionMismatchException
 	 *             if dimension != k
 	 */

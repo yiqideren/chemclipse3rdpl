@@ -105,8 +105,7 @@ public abstract class AbstractLeastSquaresOptimizer extends JacobianMultivariate
 	 * Get a Chi-Square-like value assuming the N residuals follow N
 	 * distinct normal distributions centered on 0 and whose variances are
 	 * the reciprocal of the weights.
-	 * 
-	 * @return chi-square value
+	 * value
 	 */
 	public double getChiSquare() {
 

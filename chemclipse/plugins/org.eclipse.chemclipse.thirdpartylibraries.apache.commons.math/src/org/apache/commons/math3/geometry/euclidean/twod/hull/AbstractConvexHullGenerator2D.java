@@ -70,8 +70,7 @@ abstract class AbstractConvexHullGenerator2D implements ConvexHullGenerator2D {
 
 	/**
 	 * Get the tolerance below which points are considered identical.
-	 * 
-	 * @return the tolerance below which points are considered identical
+	 * identical
 	 */
 	public double getTolerance() {
 
@@ -80,8 +79,7 @@ abstract class AbstractConvexHullGenerator2D implements ConvexHullGenerator2D {
 
 	/**
 	 * Returns if collinear points on the hull will be added as hull vertices.
-	 * 
-	 * @return {@code true} if collinear points are added as hull vertices, or {@code false} if only extreme points are present.
+	 * present.
 	 */
 	public boolean isIncludeCollinearPoints() {
 
@@ -109,9 +107,9 @@ abstract class AbstractConvexHullGenerator2D implements ConvexHullGenerator2D {
 
 	/**
 	 * Find the convex hull vertices from the set of input points.
+	 * points
+	 * the set of input points
 	 * 
-	 * @param points
-	 *            the set of input points
 	 * @return the convex hull vertices in CCW winding
 	 */
 	protected abstract Collection<Vector2D> findHullVertices(Collection<Vector2D> points);

@@ -60,9 +60,9 @@ public class LinearConstraint implements Serializable {
 	 * <li>c<sub>1</sub>x<sub>1</sub> + ... c<sub>n</sub>x<sub>n</sub> >= v</li>
 	 * </ul>
 	 * </p>
+	 * coefficients
+	 * The coefficients of the constraint (left hand side)
 	 * 
-	 * @param coefficients
-	 *            The coefficients of the constraint (left hand side)
 	 * @param relationship
 	 *            The type of (in)equality used in the constraint
 	 * @param value
@@ -83,9 +83,9 @@ public class LinearConstraint implements Serializable {
 	 * <li>c<sub>1</sub>x<sub>1</sub> + ... c<sub>n</sub>x<sub>n</sub> >= v</li>
 	 * </ul>
 	 * </p>
+	 * coefficients
+	 * The coefficients of the constraint (left hand side)
 	 * 
-	 * @param coefficients
-	 *            The coefficients of the constraint (left hand side)
 	 * @param relationship
 	 *            The type of (in)equality used in the constraint
 	 * @param value
@@ -108,9 +108,9 @@ public class LinearConstraint implements Serializable {
 	 * <li>l<sub>1</sub>x<sub>1</sub> + ... l<sub>n</sub>x<sub>n</sub> + l<sub>cst</sub> >= r<sub>1</sub>x<sub>1</sub> + ... r<sub>n</sub>x<sub>n</sub> + r<sub>cst</sub></li>
 	 * </ul>
 	 * </p>
+	 * lhsCoefficients
+	 * The coefficients of the linear expression on the left hand side of the constraint
 	 * 
-	 * @param lhsCoefficients
-	 *            The coefficients of the linear expression on the left hand side of the constraint
 	 * @param lhsConstant
 	 *            The constant term of the linear expression on the left hand side of the constraint
 	 * @param relationship
@@ -141,9 +141,9 @@ public class LinearConstraint implements Serializable {
 	 * <li>l<sub>1</sub>x<sub>1</sub> + ... l<sub>n</sub>x<sub>n</sub> + l<sub>cst</sub> >= r<sub>1</sub>x<sub>1</sub> + ... r<sub>n</sub>x<sub>n</sub> + r<sub>cst</sub></li>
 	 * </ul>
 	 * </p>
+	 * lhsCoefficients
+	 * The coefficients of the linear expression on the left hand side of the constraint
 	 * 
-	 * @param lhsCoefficients
-	 *            The coefficients of the linear expression on the left hand side of the constraint
 	 * @param lhsConstant
 	 *            The constant term of the linear expression on the left hand side of the constraint
 	 * @param relationship
@@ -211,9 +211,9 @@ public class LinearConstraint implements Serializable {
 
 	/**
 	 * Serialize the instance.
+	 * oos
+	 * stream where object should be written
 	 * 
-	 * @param oos
-	 *            stream where object should be written
 	 * @throws IOException
 	 *             if object cannot be written to stream
 	 */
@@ -225,9 +225,9 @@ public class LinearConstraint implements Serializable {
 
 	/**
 	 * Deserialize the instance.
+	 * ois
+	 * stream from which the object should be read
 	 * 
-	 * @param ois
-	 *            stream from which the object should be read
 	 * @throws ClassNotFoundException
 	 *             if a class in the stream cannot be found
 	 * @throws IOException

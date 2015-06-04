@@ -49,9 +49,9 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Create a new genetic algorithm.
+	 * crossoverPolicy
+	 * The {@link CrossoverPolicy}
 	 * 
-	 * @param crossoverPolicy
-	 *            The {@link CrossoverPolicy}
 	 * @param crossoverRate
 	 *            The crossover rate as a percentage (0-1 inclusive)
 	 * @param mutationPolicy
@@ -170,8 +170,7 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Returns the crossover policy.
-	 * 
-	 * @return crossover policy
+	 * policy
 	 */
 	public CrossoverPolicy getCrossoverPolicy() {
 
@@ -180,8 +179,7 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Returns the crossover rate.
-	 * 
-	 * @return crossover rate
+	 * rate
 	 */
 	public double getCrossoverRate() {
 
@@ -190,8 +188,7 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Returns the mutation policy.
-	 * 
-	 * @return mutation policy
+	 * policy
 	 */
 	public MutationPolicy getMutationPolicy() {
 
@@ -200,8 +197,7 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Returns the mutation rate.
-	 * 
-	 * @return mutation rate
+	 * rate
 	 */
 	public double getMutationRate() {
 
@@ -210,8 +206,7 @@ public class GeneticAlgorithm {
 
 	/**
 	 * Returns the selection policy.
-	 * 
-	 * @return selection policy
+	 * policy
 	 */
 	public SelectionPolicy getSelectionPolicy() {
 

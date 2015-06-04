@@ -143,8 +143,7 @@ public class Combinations implements Iterable<int[]> {
 	 * <li>{@code DimensionMismatchException} if the array lengths are not equal to {@code k},</li>
 	 * <li>{@code OutOfRangeException} if an element of the array is not within the interval [0, {@code n}).</li>
 	 * </ul>
-	 * 
-	 * @return a lexicographic comparator.
+	 * comparator.
 	 */
 	public Comparator<int[]> comparator() {
 

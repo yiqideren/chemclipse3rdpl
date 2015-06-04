@@ -74,9 +74,8 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Create an instance with a custom number format for components.
-	 * 
-	 * @param format
-	 *            the custom format for components.
+	 * format
+	 * the custom format for components.
 	 */
 	protected VectorFormat(final NumberFormat format) {
 
@@ -85,9 +84,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Create an instance with custom prefix, suffix and separator.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -101,9 +100,9 @@ public abstract class VectorFormat<S extends Space> {
 	/**
 	 * Create an instance with custom prefix, suffix, separator and format
 	 * for components.
+	 * prefix
+	 * prefix to use instead of the default "{"
 	 * 
-	 * @param prefix
-	 *            prefix to use instead of the default "{"
 	 * @param suffix
 	 *            suffix to use instead of the default "}"
 	 * @param separator
@@ -127,8 +126,7 @@ public abstract class VectorFormat<S extends Space> {
 	 * <p>
 	 * This is the same set as the {@link NumberFormat} set.
 	 * </p>
-	 * 
-	 * @return available point/vector format locales.
+	 * locales.
 	 */
 	public static Locale[] getAvailableLocales() {
 
@@ -137,8 +135,7 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Get the format prefix.
-	 * 
-	 * @return format prefix.
+	 * prefix.
 	 */
 	public String getPrefix() {
 
@@ -147,8 +144,7 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Get the format suffix.
-	 * 
-	 * @return format suffix.
+	 * suffix.
 	 */
 	public String getSuffix() {
 
@@ -157,8 +153,7 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Get the format separator between components.
-	 * 
-	 * @return format separator.
+	 * separator.
 	 */
 	public String getSeparator() {
 
@@ -167,8 +162,7 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Get the components format.
-	 * 
-	 * @return components format.
+	 * format.
 	 */
 	public NumberFormat getFormat() {
 
@@ -177,9 +171,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Formats a {@link Vector} object to produce a string.
+	 * vector
+	 * the object to format.
 	 * 
-	 * @param vector
-	 *            the object to format.
 	 * @return a formatted string.
 	 */
 	public String format(Vector<S> vector) {
@@ -189,9 +183,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Formats a {@link Vector} object to produce a string.
+	 * vector
+	 * the object to format.
 	 * 
-	 * @param vector
-	 *            the object to format.
 	 * @param toAppendTo
 	 *            where the text is to be appended
 	 * @param pos
@@ -203,9 +197,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Formats the coordinates of a {@link Vector} to produce a string.
+	 * toAppendTo
+	 * where the text is to be appended
 	 * 
-	 * @param toAppendTo
-	 *            where the text is to be appended
 	 * @param pos
 	 *            On input: an alignment field, if desired. On output: the
 	 *            offsets of the alignment field
@@ -233,9 +227,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Parses a string to produce a {@link Vector} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @return the parsed {@link Vector} object.
 	 * @throws MathParseException
 	 *             if the beginning of the specified string
@@ -245,9 +239,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Parses a string to produce a {@link Vector} object.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter.
 	 * @return the parsed {@link Vector} object.
@@ -256,9 +250,9 @@ public abstract class VectorFormat<S extends Space> {
 
 	/**
 	 * Parses a string to produce an array of coordinates.
+	 * dimension
+	 * dimension of the space
 	 * 
-	 * @param dimension
-	 *            dimension of the space
 	 * @param source
 	 *            the string to parse
 	 * @param pos

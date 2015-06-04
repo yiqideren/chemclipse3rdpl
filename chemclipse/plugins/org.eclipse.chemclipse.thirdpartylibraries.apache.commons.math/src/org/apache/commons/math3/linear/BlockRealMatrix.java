@@ -97,9 +97,7 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 	 * <p>
 	 * Calling this constructor is equivalent to call:
 	 * 
-	 * <pre>
 	 * matrix = new BlockRealMatrix(rawData.length, rawData[0].length, toBlocksLayout(rawData), false);
-	 * </pre>
 	 * 
 	 * </p>
 	 *
@@ -179,9 +177,9 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 	 * <p>
 	 * This method creates an array in blocks layout from an input array in raw layout. It can be used to provide the array argument of the {@link #BlockRealMatrix(int, int, double[][], boolean)} constructor.
 	 * </p>
+	 * rawData
+	 * Data array in raw layout.
 	 * 
-	 * @param rawData
-	 *            Data array in raw layout.
 	 * @return a new data array containing the same entries but in blocks layout.
 	 * @throws DimensionMismatchException
 	 *             if {@code rawData} is not rectangular.
@@ -232,9 +230,9 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 	 * <p>
 	 * This method can be used to create the array argument of the {@link #BlockRealMatrix(int, int, double[][], boolean)} constructor.
 	 * </p>
+	 * rows
+	 * Number of rows in the new matrix.
 	 * 
-	 * @param rows
-	 *            Number of rows in the new matrix.
 	 * @param columns
 	 *            Number of columns in the new matrix.
 	 * @return a new data array in blocks layout.
@@ -681,9 +679,9 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 	 * <p>
 	 * This method can be called only when the specified part fits in both blocks, no verification is done here.
 	 * </p>
+	 * srcBlock
+	 * source block
 	 * 
-	 * @param srcBlock
-	 *            source block
 	 * @param srcWidth
 	 *            source block width ({@link #BLOCK_SIZE} or smaller)
 	 * @param srcStartRow
@@ -1451,9 +1449,9 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 
 	/**
 	 * Get the height of a block.
+	 * blockRow
+	 * row index (in block sense) of the block
 	 * 
-	 * @param blockRow
-	 *            row index (in block sense) of the block
 	 * @return height (number of rows) of the block
 	 */
 	private int blockHeight(final int blockRow) {
@@ -1463,9 +1461,9 @@ public class BlockRealMatrix extends AbstractRealMatrix implements Serializable 
 
 	/**
 	 * Get the width of a block.
+	 * blockColumn
+	 * column index (in block sense) of the block
 	 * 
-	 * @param blockColumn
-	 *            column index (in block sense) of the block
 	 * @return width (number of columns) of the block
 	 */
 	private int blockWidth(final int blockColumn) {

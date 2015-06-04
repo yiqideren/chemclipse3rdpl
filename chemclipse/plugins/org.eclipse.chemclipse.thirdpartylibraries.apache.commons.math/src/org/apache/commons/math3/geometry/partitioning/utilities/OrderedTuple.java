@@ -87,9 +87,8 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Build an ordered T-uple from its components.
-	 * 
-	 * @param components
-	 *            double components of the T-uple
+	 * components
+	 * double components of the T-uple
 	 */
 	public OrderedTuple(final double... components) {
 
@@ -134,10 +133,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Encode the T-uple with a given offset.
-	 * 
-	 * @param minOffset
-	 *            minimal scale of the offset to add to all
-	 *            components (must be greater than the MSBs of all components)
+	 * minOffset
+	 * minimal scale of the offset to add to all
+	 * components (must be greater than the MSBs of all components)
 	 */
 	private void encode(final int minOffset) {
 
@@ -173,15 +171,12 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Compares this ordered T-uple with the specified object.
-	 * 
 	 * <p>
 	 * The ordering method is detailed in the general description of the class. Its main property is to be consistent with distance: geometrically close T-uples stay close to each other when stored in a sorted collection using this comparison method.
 	 * </p>
-	 * 
 	 * <p>
 	 * T-uples with negative infinite, positive infinite are sorted logically.
 	 * </p>
-	 * 
 	 * <p>
 	 * Some arbitrary choices have been made to handle specific cases. The rationale for these choices is to keep <em>normal</em> and consistent T-uples together.
 	 * </p>
@@ -190,9 +185,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 	 * <li>instances with {@code Double.NaN} components are sorted after all other ones (evan after instances with positive infinite components</li>
 	 * <li>instances with both positive and negative infinite components are considered as if they had {@code Double.NaN} components</li>
 	 * </ul>
+	 * ot
+	 * T-uple to compare instance with
 	 * 
-	 * @param ot
-	 *            T-uple to compare instance with
 	 * @return a negative integer if the instance is less than the
 	 *         object, zero if they are equal, or a positive integer if the
 	 *         instance is greater than the object
@@ -269,8 +264,7 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Get the components array.
-	 * 
-	 * @return array containing the T-uple components
+	 * components
 	 */
 	public double[] getComponents() {
 
@@ -279,9 +273,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Extract the sign from the bits of a double.
+	 * bits
+	 * binary representation of the double
 	 * 
-	 * @param bits
-	 *            binary representation of the double
 	 * @return sign bit (zero if positive, non zero if negative)
 	 */
 	private static long sign(final long bits) {
@@ -291,9 +285,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Extract the exponent from the bits of a double.
+	 * bits
+	 * binary representation of the double
 	 * 
-	 * @param bits
-	 *            binary representation of the double
 	 * @return exponent
 	 */
 	private static int exponent(final long bits) {
@@ -303,9 +297,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Extract the mantissa from the bits of a double.
+	 * bits
+	 * binary representation of the double
 	 * 
-	 * @param bits
-	 *            binary representation of the double
 	 * @return mantissa
 	 */
 	private static long mantissa(final long bits) {
@@ -316,9 +310,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Compute the most significant bit of a long.
+	 * l
+	 * long from which the most significant bit is requested
 	 * 
-	 * @param l
-	 *            long from which the most significant bit is requested
 	 * @return scale of the most significant bit of {@code l},
 	 *         or 0 if {@code l} is zero
 	 * @see #computeLSB
@@ -342,9 +336,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Compute the least significant bit of a long.
+	 * l
+	 * long from which the least significant bit is requested
 	 * 
-	 * @param l
-	 *            long from which the least significant bit is requested
 	 * @return scale of the least significant bit of {@code l},
 	 *         or 63 if {@code l} is zero
 	 * @see #computeMSB
@@ -368,9 +362,9 @@ public class OrderedTuple implements Comparable<OrderedTuple> {
 
 	/**
 	 * Get a bit from the mantissa of a double.
+	 * i
+	 * index of the component
 	 * 
-	 * @param i
-	 *            index of the component
 	 * @param k
 	 *            scale of the requested bit
 	 * @return the specified bit (either 0 or 1), after the offset has

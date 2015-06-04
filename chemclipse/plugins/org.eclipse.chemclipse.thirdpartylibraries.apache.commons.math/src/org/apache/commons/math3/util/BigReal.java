@@ -50,9 +50,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a BigDecimal.
-	 * 
-	 * @param val
-	 *            value of the instance
+	 * val
+	 * value of the instance
 	 */
 	public BigReal(BigDecimal val) {
 
@@ -61,9 +60,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a BigInteger.
-	 * 
-	 * @param val
-	 *            value of the instance
+	 * val
+	 * value of the instance
 	 */
 	public BigReal(BigInteger val) {
 
@@ -72,9 +70,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from an unscaled BigInteger.
+	 * unscaledVal
+	 * unscaled value
 	 * 
-	 * @param unscaledVal
-	 *            unscaled value
 	 * @param scale
 	 *            scale to use
 	 */
@@ -85,9 +83,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from an unscaled BigInteger.
+	 * unscaledVal
+	 * unscaled value
 	 * 
-	 * @param unscaledVal
-	 *            unscaled value
 	 * @param scale
 	 *            scale to use
 	 * @param mc
@@ -100,9 +98,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a BigInteger.
+	 * val
+	 * value of the instance
 	 * 
-	 * @param val
-	 *            value of the instance
 	 * @param mc
 	 *            context to use
 	 */
@@ -113,9 +111,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a characters representation.
-	 * 
-	 * @param in
-	 *            character representation of the value
+	 * in
+	 * character representation of the value
 	 */
 	public BigReal(char[] in) {
 
@@ -124,9 +121,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a characters representation.
+	 * in
+	 * character representation of the value
 	 * 
-	 * @param in
-	 *            character representation of the value
 	 * @param offset
 	 *            offset of the first character to analyze
 	 * @param len
@@ -139,9 +136,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a characters representation.
+	 * in
+	 * character representation of the value
 	 * 
-	 * @param in
-	 *            character representation of the value
 	 * @param offset
 	 *            offset of the first character to analyze
 	 * @param len
@@ -156,9 +153,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a characters representation.
+	 * in
+	 * character representation of the value
 	 * 
-	 * @param in
-	 *            character representation of the value
 	 * @param mc
 	 *            context to use
 	 */
@@ -169,9 +166,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a double.
-	 * 
-	 * @param val
-	 *            value of the instance
+	 * val
+	 * value of the instance
 	 */
 	public BigReal(double val) {
 
@@ -180,9 +176,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a double.
+	 * val
+	 * value of the instance
 	 * 
-	 * @param val
-	 *            value of the instance
 	 * @param mc
 	 *            context to use
 	 */
@@ -193,9 +189,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from an int.
-	 * 
-	 * @param val
-	 *            value of the instance
+	 * val
+	 * value of the instance
 	 */
 	public BigReal(int val) {
 
@@ -204,9 +199,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from an int.
+	 * val
+	 * value of the instance
 	 * 
-	 * @param val
-	 *            value of the instance
 	 * @param mc
 	 *            context to use
 	 */
@@ -217,9 +212,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a long.
-	 * 
-	 * @param val
-	 *            value of the instance
+	 * val
+	 * value of the instance
 	 */
 	public BigReal(long val) {
 
@@ -228,9 +222,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a long.
+	 * val
+	 * value of the instance
 	 * 
-	 * @param val
-	 *            value of the instance
 	 * @param mc
 	 *            context to use
 	 */
@@ -241,9 +235,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a String representation.
-	 * 
-	 * @param val
-	 *            character representation of the value
+	 * val
+	 * character representation of the value
 	 */
 	public BigReal(String val) {
 
@@ -252,9 +245,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Build an instance from a String representation.
+	 * val
+	 * character representation of the value
 	 * 
-	 * @param val
-	 *            character representation of the value
 	 * @param mc
 	 *            context to use
 	 */
@@ -265,9 +258,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/***
 	 * Gets the rounding mode for division operations
-	 * The default is {@code RoundingMode.HALF_UP}
+	 * The default is {@code RoundingMode.HALF_UP} mode.
 	 * 
-	 * @return the rounding mode.
 	 * @since 2.1
 	 */
 	public RoundingMode getRoundingMode() {
@@ -277,9 +269,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/***
 	 * Sets the rounding mode for decimal divisions.
+	 * roundingMode
+	 * rounding mode for decimal divisions
 	 * 
-	 * @param roundingMode
-	 *            rounding mode for decimal divisions
 	 * @since 2.1
 	 */
 	public void setRoundingMode(RoundingMode roundingMode) {
@@ -290,8 +282,8 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 	/***
 	 * Sets the scale for division operations.
 	 * The default is 64
+	 * scale
 	 * 
-	 * @return the scale
 	 * @since 2.1
 	 */
 	public int getScale() {
@@ -301,9 +293,9 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/***
 	 * Sets the scale for division operations.
+	 * scale
+	 * scale for division operations
 	 * 
-	 * @param scale
-	 *            scale for division operations
 	 * @since 2.1
 	 */
 	public void setScale(int scale) {
@@ -381,8 +373,7 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Get the double value corresponding to the instance.
-	 * 
-	 * @return double value corresponding to the instance
+	 * instance
 	 */
 	public double doubleValue() {
 
@@ -391,8 +382,7 @@ public class BigReal implements FieldElement<BigReal>, Comparable<BigReal>, Seri
 
 	/**
 	 * Get the BigDecimal value corresponding to the instance.
-	 * 
-	 * @return BigDecimal value corresponding to the instance
+	 * instance
 	 */
 	public BigDecimal bigDecimalValue() {
 

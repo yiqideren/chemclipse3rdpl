@@ -117,10 +117,9 @@ public enum LocalizedFormats implements Localizable {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param sourceFormat
-	 *            source English format to use when no
-	 *            localized version is available
+	 * sourceFormat
+	 * source English format to use when no
+	 * localized version is available
 	 */
 	private LocalizedFormats(final String sourceFormat) {
 

@@ -49,8 +49,7 @@ public class SimpleUnivariateValueChecker extends AbstractConvergenceChecker<Uni
 
 	/**
 	 * Build an instance with default thresholds.
-	 * 
-	 * @deprecated See {@link AbstractConvergenceChecker#AbstractConvergenceChecker()}
+	 * AbstractConvergenceChecker#AbstractConvergenceChecker()}
 	 */
 	@Deprecated
 	public SimpleUnivariateValueChecker() {

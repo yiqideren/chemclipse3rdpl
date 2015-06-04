@@ -116,8 +116,7 @@ public class CMAESOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimize
 	 * diagonalOnly = 1 means keeping the covariance matrix always diagonal and
 	 * this setting also exhibits linear space complexity. This can be
 	 * particularly useful for dimension > 100.
-	 * 
-	 * @see <a href="http://hal.archives-ouvertes.fr/inria-00287367/en">A Simple Modification in CMA-ES</a>
+	 * CMA-ES</a>
 	 */
 	private int diagonalOnly = 0;
 	/** Number of objective variables/problem dimension */
@@ -394,8 +393,7 @@ public class CMAESOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimize
 	 * values are more likely to find a local optimum close to the initial
 	 * guess).
 	 * Too small values might however lead to early termination.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static class Sigma implements OptimizationData {
 
@@ -437,8 +435,7 @@ public class CMAESOptimizer extends BaseAbstractMultivariateSimpleBoundsOptimize
 	 * Increasing the population size improves global search properties
 	 * at the expense of speed (which in general decreases at most
 	 * linearly with increasing population size).
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static class PopulationSize implements OptimizationData {
 

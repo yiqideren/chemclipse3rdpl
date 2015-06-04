@@ -42,9 +42,9 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 
 	/**
 	 * Build a sub-hyperplane from an hyperplane and a region.
+	 * hyperplane
+	 * underlying hyperplane
 	 * 
-	 * @param hyperplane
-	 *            underlying hyperplane
 	 * @param remainingRegion
 	 *            remaining region of the hyperplane
 	 */
@@ -56,9 +56,9 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 
 	/**
 	 * Build a sub-hyperplane from an hyperplane and a region.
+	 * hyper
+	 * underlying hyperplane
 	 * 
-	 * @param hyper
-	 *            underlying hyperplane
 	 * @param remaining
 	 *            remaining region of the hyperplane
 	 * @return a new sub-hyperplane
@@ -73,8 +73,7 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 
 	/**
 	 * Get the underlying hyperplane.
-	 * 
-	 * @return underlying hyperplane
+	 * hyperplane
 	 */
 	public Hyperplane<S> getHyperplane() {
 
@@ -86,8 +85,7 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 	 * <p>
 	 * The returned region is expressed in the canonical hyperplane frame and has the hyperplane dimension. For example a chopped hyperplane in the 3D euclidean is a 2D plane and the corresponding region is a convex 2D polygon.
 	 * </p>
-	 * 
-	 * @return remaining region of the hyperplane
+	 * hyperplane
 	 */
 	public Region<T> getRemainingRegion() {
 
@@ -113,9 +111,9 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 	 * <p>
 	 * The instance must be a (D-1)-dimension sub-hyperplane with respect to the transform <em>not</em> a (D-2)-dimension sub-hyperplane the transform knows how to transform by itself. The transform will consist in transforming first the hyperplane and then the all region using the various methods provided by the transform.
 	 * </p>
+	 * transform
+	 * D-dimension transform to apply
 	 * 
-	 * @param transform
-	 *            D-dimension transform to apply
 	 * @return the transformed instance
 	 */
 	public AbstractSubHyperplane<S, T> applyTransform(final Transform<S, T> transform) {
@@ -143,9 +141,9 @@ public abstract class AbstractSubHyperplane<S extends Space, T extends Space> im
 
 	/**
 	 * Recursively transform a BSP-tree from a sub-hyperplane.
+	 * node
+	 * current BSP tree node
 	 * 
-	 * @param node
-	 *            current BSP tree node
 	 * @param transformed
 	 *            image of the instance hyperplane by the transform
 	 * @param transform

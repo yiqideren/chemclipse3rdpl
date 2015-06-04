@@ -25,31 +25,20 @@ import javassist.bytecode.ConstPool;
  * <p>
  * The following code snippet is an example of use of this class:
  *
- * <pre>
- * ConstPool pool = ...;
- * output = new ByteArrayOutputStream();
- * writer = new AnnotationsWriter(output, pool);
  * 
- * writer.numAnnotations(1);
- * writer.annotation("Author", 2);
- * writer.memberValuePair("name");      // element_value_pair
- * writer.constValueIndex("chiba");
- * writer.memberValuePair("address");   // element_value_pair
- * writer.constValueIndex("tokyo");
+ * ConstPool pool = ...; output = new ByteArrayOutputStream(); writer = new AnnotationsWriter(output, pool);
  * 
- * writer.close();
- * byte[] attribute_info = output.toByteArray();
- * AnnotationsAttribute anno
- *     = new AnnotationsAttribute(pool, AnnotationsAttribute.visibleTag,
- *                                attribute_info);
- * </pre>
+ * writer.numAnnotations(1); writer.annotation("Author", 2); writer.memberValuePair("name"); // element_value_pair writer.constValueIndex("chiba"); writer.memberValuePair("address"); // element_value_pair writer.constValueIndex("tokyo");
+ * 
+ * writer.close(); byte[] attribute_info = output.toByteArray(); AnnotationsAttribute anno = new AnnotationsAttribute(pool, AnnotationsAttribute.visibleTag, attribute_info);
+ * 
  *
  * <p>
  * The code snippet above generates the annotation attribute corresponding to this annotation:
  *
- * <pre>
+ * 
  * &nbsp;@Author(name = "chiba", address = "tokyo")
- * </pre>
+ * 
  *
  * @see javassist.bytecode.AnnotationsAttribute
  * @see javassist.bytecode.ParameterAnnotationsAttribute

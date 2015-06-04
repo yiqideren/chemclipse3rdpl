@@ -29,7 +29,8 @@ import java.io.ObjectOutputStream;
  * <p>
  * To obtain a class metaobject, calls <code>_getClass()</code> on a reflective object. For example,
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -78,7 +79,7 @@ import java.io.ObjectOutputStream;
  * 
  * 
  * ClassMetaobject cm = ((Metalevel)reflectiveObject)._getClass();
- * </pre>
+ * 
  *
  * @see javassist.tools.reflect.Metaobject
  * @see javassist.tools.reflect.Metalevel
@@ -100,9 +101,9 @@ public class ClassMetaobject implements Serializable {
 	 * <p>
 	 * If true, it is loaded by:
 	 * 
-	 * <pre>
+	 * 
 	 * Thread.currentThread().getContextClassLoader().loadClass()
-	 * </pre>
+	 * 
 	 * <p>
 	 * If false, it is loaded by <code>Class.forName()</code>. The default value is false.
 	 */

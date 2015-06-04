@@ -27,11 +27,11 @@ import javassist.bytecode.stackmap.BasicBlock;
  * To obtain the control flow graph, do the following:
  * </p>
  *
- * <pre>
+ * 
  * CtMethod m = ...
  * ControlFlow cf = new ControlFlow(m);
  * Block[] blocks = cf.basicBlocks();
- * </pre>
+ * 
  *
  * <p>
  * <code>blocks</code> is an array of basic blocks in that method body.

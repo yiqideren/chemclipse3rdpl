@@ -32,7 +32,8 @@ import org.apache.commons.math3.exception.OutOfRangeException;
  * methods, this allows to use the <i>fluent API</i> style, like this:
  * </p>
  * 
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -90,7 +91,7 @@ import org.apache.commons.math3.exception.OutOfRangeException;
  * 
  * 
  * RealVector result = v.mapAddToSelf(3.0).mapTanToSelf().mapSquareToSelf();
- * </pre>
+ * 
  * <p>
  * Note that as almost all operations on {@link FieldElement} throw {@link NullArgumentException} when operating on a null element, it is the responsibility of <code>FieldVector</code> implementations to make sure no null elements are inserted into the vector. This must be done in all constructors and all setters.
  * <p>
@@ -103,23 +104,21 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Get the type of field elements of the vector.
-	 * 
-	 * @return type of field elements of the vector
+	 * vector
 	 */
 	Field<T> getField();
 
 	/**
 	 * Returns a (deep) copy of this.
-	 * 
-	 * @return vector copy
+	 * copy
 	 */
 	FieldVector<T> copy();
 
 	/**
 	 * Compute the sum of {@code this} and {@code v}.
+	 * v
+	 * vector to be added
 	 * 
-	 * @param v
-	 *            vector to be added
 	 * @return {@code this + v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -128,9 +127,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Compute {@code this} minus {@code v}.
+	 * v
+	 * vector to be subtracted
 	 * 
-	 * @param v
-	 *            vector to be subtracted
 	 * @return {@code this - v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -139,9 +138,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Map an addition operation to each entry.
+	 * d
+	 * value to be added to each entry
 	 * 
-	 * @param d
-	 *            value to be added to each entry
 	 * @return {@code this + d}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -153,9 +152,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The instance <strong>is</strong> changed by this method.
 	 * </p>
+	 * d
+	 * value to be added to each entry
 	 * 
-	 * @param d
-	 *            value to be added to each entry
 	 * @return for convenience, return {@code this}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -164,9 +163,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Map a subtraction operation to each entry.
+	 * d
+	 * value to be subtracted to each entry
 	 * 
-	 * @param d
-	 *            value to be subtracted to each entry
 	 * @return {@code this - d}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}
@@ -178,9 +177,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The instance <strong>is</strong> changed by this method.
 	 * </p>
+	 * d
+	 * value to be subtracted to each entry
 	 * 
-	 * @param d
-	 *            value to be subtracted to each entry
 	 * @return for convenience, return {@code this}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}
@@ -189,9 +188,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Map a multiplication operation to each entry.
+	 * d
+	 * value to multiply all entries by
 	 * 
-	 * @param d
-	 *            value to multiply all entries by
 	 * @return {@code this * d}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -203,9 +202,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The instance <strong>is</strong> changed by this method.
 	 * </p>
+	 * d
+	 * value to multiply all entries by
 	 * 
-	 * @param d
-	 *            value to multiply all entries by
 	 * @return for convenience, return {@code this}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -214,9 +213,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Map a division operation to each entry.
+	 * d
+	 * value to divide all entries by
 	 * 
-	 * @param d
-	 *            value to divide all entries by
 	 * @return {@code this / d}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -230,9 +229,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The instance <strong>is</strong> changed by this method.
 	 * </p>
+	 * d
+	 * value to divide all entries by
 	 * 
-	 * @param d
-	 *            value to divide all entries by
 	 * @return for convenience, return {@code this}
 	 * @throws NullArgumentException
 	 *             if {@code d} is {@code null}.
@@ -243,8 +242,8 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Map the 1/x function to each entry.
+	 * entry.
 	 * 
-	 * @return a vector containing the result of applying the function to each entry.
 	 * @throws MathArithmeticException
 	 *             if one of the entries is zero.
 	 */
@@ -255,8 +254,8 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The instance <strong>is</strong> changed by this method.
 	 * </p>
+	 * this}
 	 * 
-	 * @return for convenience, return {@code this}
 	 * @throws MathArithmeticException
 	 *             if one of the entries is zero.
 	 */
@@ -264,9 +263,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Element-by-element multiplication.
+	 * v
+	 * vector by which instance elements must be multiplied
 	 * 
-	 * @param v
-	 *            vector by which instance elements must be multiplied
 	 * @return a vector containing {@code this[i] * v[i]} for all {@code i}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -275,9 +274,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Element-by-element division.
+	 * v
+	 * vector by which instance elements must be divided
 	 * 
-	 * @param v
-	 *            vector by which instance elements must be divided
 	 * @return a vector containing {@code this[i] / v[i]} for all {@code i}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -288,8 +287,8 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Returns vector entries as a T array.
+	 * entries
 	 * 
-	 * @return T array of entries
 	 * @deprecated as of 3.1, to be removed in 4.0. Please use the {@link #toArray()} method instead.
 	 */
 	@Deprecated
@@ -297,9 +296,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Compute the dot product.
+	 * v
+	 * vector with which dot product should be computed
 	 * 
-	 * @param v
-	 *            vector with which dot product should be computed
 	 * @return the scalar dot product of {@code this} and {@code v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -308,9 +307,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Find the orthogonal projection of this vector onto another vector.
+	 * v
+	 * vector onto which {@code this} must be projected
 	 * 
-	 * @param v
-	 *            vector onto which {@code this} must be projected
 	 * @return projection of {@code this} onto {@code v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -321,9 +320,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Compute the outer product.
+	 * v
+	 * vector with which outer product should be computed
 	 * 
-	 * @param v
-	 *            vector with which outer product should be computed
 	 * @return the matrix outer product between instance and v
 	 */
 	FieldMatrix<T> outerProduct(FieldVector<T> v);
@@ -342,9 +341,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Set a single element.
+	 * index
+	 * element index.
 	 * 
-	 * @param index
-	 *            element index.
 	 * @param value
 	 *            new value for the element.
 	 * @throws OutOfRangeException
@@ -355,34 +354,33 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Returns the size of the vector.
-	 * 
-	 * @return size
+	 * size
 	 */
 	int getDimension();
 
 	/**
 	 * Construct a vector by appending a vector to this vector.
+	 * v
+	 * vector to append to this one.
 	 * 
-	 * @param v
-	 *            vector to append to this one.
 	 * @return a new vector
 	 */
 	FieldVector<T> append(FieldVector<T> v);
 
 	/**
 	 * Construct a vector by appending a T to this vector.
+	 * d
+	 * T to append.
 	 * 
-	 * @param d
-	 *            T to append.
 	 * @return a new vector
 	 */
 	FieldVector<T> append(T d);
 
 	/**
 	 * Get a subvector from consecutive elements.
+	 * index
+	 * index of first element.
 	 * 
-	 * @param index
-	 *            index of first element.
 	 * @param n
 	 *            number of elements to be retrieved.
 	 * @return a vector containing n elements.
@@ -395,9 +393,9 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Set a set of consecutive elements.
+	 * index
+	 * index of first element to be set.
 	 * 
-	 * @param index
-	 *            index of first element to be set.
 	 * @param v
 	 *            vector containing the values to set.
 	 * @throws OutOfRangeException
@@ -407,9 +405,8 @@ public interface FieldVector<T extends FieldElement<T>> {
 
 	/**
 	 * Set all elements to a single value.
-	 * 
-	 * @param value
-	 *            single value to set for all elements
+	 * value
+	 * single value to set for all elements
 	 */
 	void set(T value);
 
@@ -418,8 +415,7 @@ public interface FieldVector<T extends FieldElement<T>> {
 	 * <p>
 	 * The array is independent from vector data, it's elements are copied.
 	 * </p>
-	 * 
-	 * @return array containing a copy of vector elements
+	 * elements
 	 */
 	T[] toArray();
 }

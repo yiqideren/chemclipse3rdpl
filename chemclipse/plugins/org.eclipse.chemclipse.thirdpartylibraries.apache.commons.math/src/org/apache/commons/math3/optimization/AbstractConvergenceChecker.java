@@ -30,17 +30,15 @@ public abstract class AbstractConvergenceChecker<PAIR> implements ConvergenceChe
 
 	/**
 	 * Default relative threshold.
-	 * 
-	 * @deprecated in 3.1 (to be removed in 4.0) because this value is too small
-	 *             to be useful as a default (cf. MATH-798).
+	 * small
+	 * to be useful as a default (cf. MATH-798).
 	 */
 	@Deprecated
 	private static final double DEFAULT_RELATIVE_THRESHOLD = 100 * Precision.EPSILON;
 	/**
 	 * Default absolute threshold.
-	 * 
-	 * @deprecated in 3.1 (to be removed in 4.0) because this value is too small
-	 *             to be useful as a default (cf. MATH-798).
+	 * small
+	 * to be useful as a default (cf. MATH-798).
 	 */
 	@Deprecated
 	private static final double DEFAULT_ABSOLUTE_THRESHOLD = 100 * Precision.SAFE_MIN;
@@ -55,12 +53,11 @@ public abstract class AbstractConvergenceChecker<PAIR> implements ConvergenceChe
 
 	/**
 	 * Build an instance with default thresholds.
-	 * 
-	 * @deprecated in 3.1 (to be removed in 4.0). Convergence thresholds are
-	 *             problem-dependent. As this class is intended for users who want to set
-	 *             their own convergence criterion instead of relying on an algorithm's
-	 *             default procedure, they should also set the thresholds appropriately
-	 *             (cf. MATH-798).
+	 * are
+	 * problem-dependent. As this class is intended for users who want to set
+	 * their own convergence criterion instead of relying on an algorithm's
+	 * default procedure, they should also set the thresholds appropriately
+	 * (cf. MATH-798).
 	 */
 	@Deprecated
 	public AbstractConvergenceChecker() {

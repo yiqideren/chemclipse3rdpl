@@ -503,9 +503,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Compute the sum of {@code this} and {@code v}.
+	 * v
+	 * vector to be added
 	 * 
-	 * @param v
-	 *            vector to be added
 	 * @return {@code this + v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -537,9 +537,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Compute {@code this} minus {@code v}.
+	 * v
+	 * vector to be subtracted
 	 * 
-	 * @param v
-	 *            vector to be subtracted
 	 * @return {@code this - v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -678,9 +678,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Element-by-element multiplication.
+	 * v
+	 * vector by which instance elements must be multiplied
 	 * 
-	 * @param v
-	 *            vector by which instance elements must be multiplied
 	 * @return a vector containing {@code this[i] * v[i]} for all {@code i}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -716,9 +716,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Element-by-element division.
+	 * v
+	 * vector by which instance elements must be divided
 	 * 
-	 * @param v
-	 *            vector by which instance elements must be divided
 	 * @return a vector containing {@code this[i] / v[i]} for all {@code i}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -750,8 +750,7 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 	 * <p>
 	 * Does not make a fresh copy of the underlying data.
 	 * </p>
-	 * 
-	 * @return array of entries
+	 * entries
 	 */
 	public T[] getDataRef() {
 
@@ -775,9 +774,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Compute the dot product.
+	 * v
+	 * vector with which dot product should be computed
 	 * 
-	 * @param v
-	 *            vector with which dot product should be computed
 	 * @return the scalar dot product of {@code this} and {@code v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -800,9 +799,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Find the orthogonal projection of this vector onto another vector.
+	 * v
+	 * vector onto which {@code this} must be projected
 	 * 
-	 * @param v
-	 *            vector onto which {@code this} must be projected
 	 * @return projection of {@code this} onto {@code v}
 	 * @throws DimensionMismatchException
 	 *             if {@code v} is not the same size as {@code this}
@@ -834,9 +833,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Compute the outer product.
+	 * v
+	 * vector with which outer product should be computed
 	 * 
-	 * @param v
-	 *            vector with which outer product should be computed
 	 * @return the matrix outer product between instance and v
 	 */
 	public FieldMatrix<T> outerProduct(ArrayFieldVector<T> v) {
@@ -876,9 +875,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Construct a vector by appending a vector to this vector.
+	 * v
+	 * vector to append to this one.
 	 * 
-	 * @param v
-	 *            vector to append to this one.
 	 * @return a new vector
 	 */
 	public ArrayFieldVector<T> append(ArrayFieldVector<T> v) {
@@ -972,9 +971,9 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 
 	/**
 	 * Check if instance and specified vectors have the same dimension.
+	 * v
+	 * vector to compare instance with
 	 * 
-	 * @param v
-	 *            vector to compare instance with
 	 * @exception DimensionMismatchException
 	 *                if the vectors do not
 	 *                have the same dimensions
@@ -1216,8 +1215,7 @@ public class ArrayFieldVector<T extends FieldElement<T>> implements FieldVector<
 	 * <p>
 	 * All NaN values have the same hash code.
 	 * </p>
-	 * 
-	 * @return a hash code value for this object
+	 * object
 	 */
 	@Override
 	public int hashCode() {

@@ -30,9 +30,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * These algorithms perform integration with stepsize control, which means the user does not specify the integration step but rather a tolerance on error. The error threshold is computed as
  * 
- * <pre>
+ * 
  * threshold_i = absTol_i + relTol_i * max(abs(ym), abs(ym + 1))
- * </pre>
+ * 
  * 
  * where absTol_i is the absolute tolerance for component i of the state vector and relTol_i is the relative tolerance for the same component. The user can also use only two scalar values absTol and relTol which will be used for all components.
  * </p>
@@ -44,9 +44,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * If the estimated error for ym+1 is such that
  * 
- * <pre>
+ * 
  * sqrt((sum(errEst_i / threshold_i) &circ; 2) / n) &lt; 1
- * </pre>
+ * 
  *
  * (where n is the main set dimension) then the step is accepted, otherwise the step is rejected and a new attempt is made with a new stepsize.
  * </p>
@@ -76,9 +76,9 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 	/**
 	 * Build an integrator with the given stepsize bounds.
 	 * The default step handler does nothing.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param minStep
 	 *            minimal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can
@@ -102,9 +102,9 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 	/**
 	 * Build an integrator with the given stepsize bounds.
 	 * The default step handler does nothing.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param minStep
 	 *            minimal step (sign is irrelevant, regardless of
 	 *            integration direction, forward or backward), the last step can
@@ -130,10 +130,10 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 	 * <p>
 	 * A side effect of this method is to also reset the initial step so it will be automatically computed by the integrator if {@link #setInitialStepSize(double) setInitialStepSize} is not called by the user.
 	 * </p>
+	 * minimalStep
+	 * minimal step (must be positive even for backward
+	 * integration), the last step can be smaller than this
 	 * 
-	 * @param minimalStep
-	 *            minimal step (must be positive even for backward
-	 *            integration), the last step can be smaller than this
 	 * @param maximalStep
 	 *            maximal step (must be positive even for backward
 	 *            integration)
@@ -158,10 +158,10 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 	 * <p>
 	 * A side effect of this method is to also reset the initial step so it will be automatically computed by the integrator if {@link #setInitialStepSize(double) setInitialStepSize} is not called by the user.
 	 * </p>
+	 * minimalStep
+	 * minimal step (must be positive even for backward
+	 * integration), the last step can be smaller than this
 	 * 
-	 * @param minimalStep
-	 *            minimal step (must be positive even for backward
-	 *            integration), the last step can be smaller than this
 	 * @param maximalStep
 	 *            maximal step (must be positive even for backward
 	 *            integration)
@@ -186,12 +186,11 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 	 * <p>
 	 * This method allows the user to specify an initial positive step size instead of letting the integrator guess it by itself. If this method is not called before integration is started, the initial step size will be estimated by the integrator.
 	 * </p>
-	 * 
-	 * @param initialStepSize
-	 *            initial step size to use (must be positive even
-	 *            for backward integration ; providing a negative value or a value
-	 *            outside of the min/max step interval will lead the integrator to
-	 *            ignore the value and compute the initial step size by itself)
+	 * initialStepSize
+	 * initial step size to use (must be positive even
+	 * for backward integration ; providing a negative value or a value
+	 * outside of the min/max step interval will lead the integrator to
+	 * ignore the value and compute the initial step size by itself)
 	 */
 	public void setInitialStepSize(final double initialStepSize) {
 
@@ -218,9 +217,9 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 
 	/**
 	 * Initialize the integration step.
+	 * forward
+	 * forward integration indicator
 	 * 
-	 * @param forward
-	 *            forward integration indicator
 	 * @param order
 	 *            order of the method
 	 * @param scale
@@ -294,9 +293,9 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 
 	/**
 	 * Filter the integration step.
+	 * h
+	 * signed step
 	 * 
-	 * @param h
-	 *            signed step
 	 * @param forward
 	 *            forward integration indicator
 	 * @param acceptSmall
@@ -345,8 +344,7 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 
 	/**
 	 * Get the minimal step.
-	 * 
-	 * @return minimal step
+	 * step
 	 */
 	public double getMinStep() {
 
@@ -355,8 +353,7 @@ public abstract class AdaptiveStepsizeIntegrator extends AbstractIntegrator {
 
 	/**
 	 * Get the maximal step.
-	 * 
-	 * @return maximal step
+	 * step
 	 */
 	public double getMaxStep() {
 

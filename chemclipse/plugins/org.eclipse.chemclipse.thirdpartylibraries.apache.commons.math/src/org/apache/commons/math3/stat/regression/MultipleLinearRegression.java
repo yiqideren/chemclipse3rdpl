@@ -17,9 +17,9 @@ package org.apache.commons.math3.stat.regression;
 /**
  * The multiple linear regression can be represented in matrix-notation.
  * 
- * <pre>
+ * 
  * y = X * b + u
- * </pre>
+ * 
  * 
  * where y is an <code>n-vector</code> <b>regressand</b>, X is a <code>[n,k]</code> matrix whose <code>k</code> columns are called
  * <b>regressors</b>, b is <code>k-vector</code> of <b>regression parameters</b> and <code>u</code> is an <code>n-vector</code> of <b>error terms</b> or <b>residuals</b>.

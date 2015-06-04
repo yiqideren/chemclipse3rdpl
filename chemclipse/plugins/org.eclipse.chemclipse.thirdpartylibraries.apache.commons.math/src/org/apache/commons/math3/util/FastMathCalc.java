@@ -68,9 +68,9 @@ class FastMathCalc {
 
 	/**
 	 * Build the sine and cosine tables.
+	 * SINE_TABLE_A
+	 * table of the most significant part of the sines
 	 * 
-	 * @param SINE_TABLE_A
-	 *            table of the most significant part of the sines
 	 * @param SINE_TABLE_B
 	 *            table of the least significant part of the sines
 	 * @param COSINE_TABLE_A
@@ -167,9 +167,9 @@ class FastMathCalc {
 	/**
 	 * For x between 0 and pi/4 compute cosine using Talor series
 	 * cos(x) = 1 - x^2/2! + x^4/4! ...
+	 * x
+	 * number from which cosine is requested
 	 * 
-	 * @param x
-	 *            number from which cosine is requested
 	 * @param result
 	 *            placeholder where to put the result in extended precision
 	 *            (may be null)
@@ -210,9 +210,9 @@ class FastMathCalc {
 	/**
 	 * For x between 0 and pi/4 compute sine using Taylor expansion:
 	 * sin(x) = x - x^3/3! + x^5/5! - x^7/7! ...
+	 * x
+	 * number from which sine is requested
 	 * 
-	 * @param x
-	 *            number from which sine is requested
 	 * @param result
 	 *            placeholder where to put the result in extended precision
 	 *            (may be null)
@@ -252,9 +252,9 @@ class FastMathCalc {
 
 	/**
 	 * For x between 0 and 1, returns exp(x), uses extended precision
+	 * x
+	 * argument of exponential
 	 * 
-	 * @param x
-	 *            argument of exponential
 	 * @param result
 	 *            placeholder where to place exp(x) split in two terms
 	 *            for extra precision (i.e. exp(x) = result[0] + result[1]
@@ -288,9 +288,9 @@ class FastMathCalc {
 	/**
 	 * Compute split[0], split[1] such that their sum is equal to d,
 	 * and split[0] has its 30 least significant bits as zero.
+	 * d
+	 * number to split
 	 * 
-	 * @param d
-	 *            number to split
 	 * @param split
 	 *            placeholder where to place the result
 	 */
@@ -309,10 +309,9 @@ class FastMathCalc {
 
 	/**
 	 * Recompute a split.
-	 * 
-	 * @param a
-	 *            input/out array containing the split, changed
-	 *            on output
+	 * a
+	 * input/out array containing the split, changed
+	 * on output
 	 */
 	private static void resplit(final double a[]) {
 
@@ -331,9 +330,9 @@ class FastMathCalc {
 
 	/**
 	 * Multiply two numbers in split form.
+	 * a
+	 * first term of multiplication
 	 * 
-	 * @param a
-	 *            first term of multiplication
 	 * @param b
 	 *            second term of multiplication
 	 * @param ans
@@ -349,9 +348,9 @@ class FastMathCalc {
 
 	/**
 	 * Add two numbers in split form.
+	 * a
+	 * first term of addition
 	 * 
-	 * @param a
-	 *            first term of addition
 	 * @param b
 	 *            second term of addition
 	 * @param ans
@@ -380,9 +379,9 @@ class FastMathCalc {
 	 * computing 1 - (c+d)(x+y) we can compute an error and
 	 * add that back in. This is done carefully so that terms
 	 * of similar size are subtracted first.
+	 * in
+	 * initial number, in split form
 	 * 
-	 * @param in
-	 *            initial number, in split form
 	 * @param result
 	 *            placeholder where to put the result
 	 */
@@ -413,9 +412,9 @@ class FastMathCalc {
 
 	/**
 	 * Compute (a[0] + a[1]) * (b[0] + b[1]) in extended precision.
+	 * a
+	 * first term of the multiplication
 	 * 
-	 * @param a
-	 *            first term of the multiplication
 	 * @param b
 	 *            second term of the multiplication
 	 * @param result
@@ -465,9 +464,9 @@ class FastMathCalc {
 
 	/**
 	 * Compute exp(p) for a integer p in extended precision.
+	 * p
+	 * integer whose exponential is requested
 	 * 
-	 * @param p
-	 *            integer whose exponential is requested
 	 * @param result
 	 *            placeholder where to put the result in extended precision
 	 * @return exp(p) in standard precision (equal to result[0] + result[1])
@@ -524,9 +523,9 @@ class FastMathCalc {
 	 * Transform xi for input to the above function by setting
 	 * x = (xi-1)/(xi+1). Input to the polynomial is x^2, then
 	 * the result is multiplied by x.
+	 * xi
+	 * number from which log is requested
 	 * 
-	 * @param xi
-	 *            number from which log is requested
 	 * @return log(xi)
 	 */
 	static double[] slowLog(double xi) {
@@ -567,9 +566,9 @@ class FastMathCalc {
 
 	/**
 	 * Print an array.
+	 * out
+	 * text output stream where output should be printed
 	 * 
-	 * @param out
-	 *            text output stream where output should be printed
 	 * @param name
 	 *            array name
 	 * @param expectedLen
@@ -595,9 +594,9 @@ class FastMathCalc {
 
 	/**
 	 * Print an array.
+	 * out
+	 * text output stream where output should be printed
 	 * 
-	 * @param out
-	 *            text output stream where output should be printed
 	 * @param name
 	 *            array name
 	 * @param expectedLen
@@ -618,9 +617,9 @@ class FastMathCalc {
 
 	/**
 	 * Format a double.
+	 * d
+	 * double number to format
 	 * 
-	 * @param d
-	 *            double number to format
 	 * @return formatted number
 	 */
 	static String format(double d) {
@@ -634,9 +633,9 @@ class FastMathCalc {
 
 	/**
 	 * Check two lengths are equal.
+	 * expectedLen
+	 * expected length
 	 * 
-	 * @param expectedLen
-	 *            expected length
 	 * @param actual
 	 *            actual length
 	 * @exception DimensionMismatchException

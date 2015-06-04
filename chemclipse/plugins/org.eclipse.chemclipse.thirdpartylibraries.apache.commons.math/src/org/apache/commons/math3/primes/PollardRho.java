@@ -35,9 +35,9 @@ class PollardRho {
 
 	/**
 	 * Factorization using Pollard's rho algorithm.
+	 * n
+	 * number to factors, must be &gt; 0
 	 * 
-	 * @param n
-	 *            number to factors, must be &gt; 0
 	 * @return the list of prime factors of n.
 	 */
 	public static List<Integer> primeFactors(int n) {

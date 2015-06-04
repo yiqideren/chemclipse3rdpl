@@ -199,10 +199,8 @@ public class FastMath {
 	/**
 	 * Compute the square root of a number.
 	 * <p>
-	 * <b>Note:</b> this implementation currently delegates to {@link Math#sqrt}
+	 * <b>Note:</b> this implementation currently delegates to {@link Math#sqrt} a number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return square root of a
 	 */
 	public static double sqrt(final double a) {
@@ -212,9 +210,9 @@ public class FastMath {
 
 	/**
 	 * Compute the hyperbolic cosine of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return hyperbolic cosine of x
 	 */
 	public static double cosh(double x) {
@@ -275,9 +273,9 @@ public class FastMath {
 
 	/**
 	 * Compute the hyperbolic sine of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return hyperbolic sine of x
 	 */
 	public static double sinh(double x) {
@@ -380,9 +378,9 @@ public class FastMath {
 
 	/**
 	 * Compute the hyperbolic tangent of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return hyperbolic tangent of x
 	 */
 	public static double tanh(double x) {
@@ -481,9 +479,9 @@ public class FastMath {
 
 	/**
 	 * Compute the inverse hyperbolic cosine of a number.
+	 * a
+	 * number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return inverse hyperbolic cosine of a
 	 */
 	public static double acosh(final double a) {
@@ -493,9 +491,9 @@ public class FastMath {
 
 	/**
 	 * Compute the inverse hyperbolic sine of a number.
+	 * a
+	 * number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return inverse hyperbolic sine of a
 	 */
 	public static double asinh(double a) {
@@ -525,9 +523,9 @@ public class FastMath {
 
 	/**
 	 * Compute the inverse hyperbolic tangent of a number.
+	 * a
+	 * number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return inverse hyperbolic tangent of a
 	 */
 	public static double atanh(double a) {
@@ -558,9 +556,9 @@ public class FastMath {
 	/**
 	 * Compute the signum of a number.
 	 * The signum is -1 for negative numbers, +1 for positive numbers and 0 otherwise
+	 * a
+	 * number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return -1.0, -0.0, +0.0, +1.0 or NaN depending on sign of a
 	 */
 	public static double signum(final double a) {
@@ -571,9 +569,9 @@ public class FastMath {
 	/**
 	 * Compute the signum of a number.
 	 * The signum is -1 for negative numbers, +1 for positive numbers and 0 otherwise
+	 * a
+	 * number on which evaluation is done
 	 * 
-	 * @param a
-	 *            number on which evaluation is done
 	 * @return -1.0, -0.0, +0.0, +1.0 or NaN depending on sign of a
 	 */
 	public static float signum(final float a) {
@@ -583,9 +581,9 @@ public class FastMath {
 
 	/**
 	 * Compute next number towards positive infinity.
+	 * a
+	 * number to which neighbor should be computed
 	 * 
-	 * @param a
-	 *            number to which neighbor should be computed
 	 * @return neighbor of a towards positive infinity
 	 */
 	public static double nextUp(final double a) {
@@ -595,9 +593,9 @@ public class FastMath {
 
 	/**
 	 * Compute next number towards positive infinity.
+	 * a
+	 * number to which neighbor should be computed
 	 * 
-	 * @param a
-	 *            number to which neighbor should be computed
 	 * @return neighbor of a towards positive infinity
 	 */
 	public static float nextUp(final float a) {
@@ -607,9 +605,9 @@ public class FastMath {
 
 	/**
 	 * Compute next number towards negative infinity.
+	 * a
+	 * number to which neighbor should be computed
 	 * 
-	 * @param a
-	 *            number to which neighbor should be computed
 	 * @return neighbor of a towards negative infinity
 	 * @since 3.4
 	 */
@@ -620,9 +618,9 @@ public class FastMath {
 
 	/**
 	 * Compute next number towards negative infinity.
+	 * a
+	 * number to which neighbor should be computed
 	 * 
-	 * @param a
-	 *            number to which neighbor should be computed
 	 * @return neighbor of a towards negative infinity
 	 * @since 3.4
 	 */
@@ -634,9 +632,7 @@ public class FastMath {
 	/**
 	 * Returns a pseudo-random number between 0.0 and 1.0.
 	 * <p>
-	 * <b>Note:</b> this implementation currently delegates to {@link Math#random}
-	 * 
-	 * @return a random number between 0.0 and 1.0
+	 * <b>Note:</b> this implementation currently delegates to {@link Math#random} 1.0
 	 */
 	public static double random() {
 
@@ -671,9 +667,9 @@ public class FastMath {
 
 	/**
 	 * Internal helper method for exponential function.
+	 * x
+	 * original argument of the exponential function
 	 * 
-	 * @param x
-	 *            original argument of the exponential function
 	 * @param extra
 	 *            extra bits of precision on input (To Be Confirmed)
 	 * @param hiPrec
@@ -790,9 +786,9 @@ public class FastMath {
 
 	/**
 	 * Compute exp(x) - 1
+	 * x
+	 * number to compute shifted exponential
 	 * 
-	 * @param x
-	 *            number to compute shifted exponential
 	 * @return exp(x) - 1
 	 */
 	public static double expm1(double x) {
@@ -802,9 +798,9 @@ public class FastMath {
 
 	/**
 	 * Internal helper method for expm1
+	 * x
+	 * number to compute shifted exponential
 	 * 
-	 * @param x
-	 *            number to compute shifted exponential
 	 * @param hiPrecOut
 	 *            receive high precision result for -1.0 < x < 1.0
 	 * @return exp(x) - 1
@@ -940,9 +936,9 @@ public class FastMath {
 
 	/**
 	 * Internal helper method for natural logarithm function.
+	 * x
+	 * original argument of the natural logarithm function
 	 * 
-	 * @param x
-	 *            original argument of the natural logarithm function
 	 * @param hiPrec
 	 *            extra bits of precision on output (To Be Confirmed)
 	 * @return log(x)
@@ -1176,9 +1172,9 @@ public class FastMath {
 
 	/**
 	 * Compute the base 10 logarithm.
+	 * x
+	 * a number
 	 * 
-	 * @param x
-	 *            a number
 	 * @return log10(x)
 	 */
 	public static double log10(final double x) {
@@ -1420,9 +1416,9 @@ public class FastMath {
 	/**
 	 * Computes sin(x) - x, where |x| < 1/16.
 	 * Use a Remez polynomial approximation.
+	 * x
+	 * a number smaller than 1/16
 	 * 
-	 * @param x
-	 *            a number smaller than 1/16
 	 * @return sin(x) - x
 	 */
 	private static double polySine(final double x) {
@@ -1441,9 +1437,9 @@ public class FastMath {
 	/**
 	 * Computes cos(x) - 1, where |x| < 1/16.
 	 * Use a Remez polynomial approximation.
+	 * x
+	 * a number smaller than 1/16
 	 * 
-	 * @param x
-	 *            a number smaller than 1/16
 	 * @return cos(x) - 1
 	 */
 	private static double polyCosine(double x) {
@@ -1460,9 +1456,9 @@ public class FastMath {
 	/**
 	 * Compute sine over the first quadrant (0 < x < pi/2).
 	 * Use combination of table lookup and rational polynomial expansion.
+	 * xa
+	 * number from which sine is requested
 	 * 
-	 * @param xa
-	 *            number from which sine is requested
 	 * @param xb
 	 *            extra bits for x (may be 0.0)
 	 * @return sin(xa + xb)
@@ -1566,9 +1562,9 @@ public class FastMath {
 	/**
 	 * Compute cosine in the first quadrant by subtracting input from PI/2 and
 	 * then calling sinQ. This is more accurate as the input approaches PI/2.
+	 * xa
+	 * number from which cosine is requested
 	 * 
-	 * @param xa
-	 *            number from which cosine is requested
 	 * @param xb
 	 *            extra bits for x (may be 0.0)
 	 * @return cos(xa + xb)
@@ -1586,9 +1582,9 @@ public class FastMath {
 	/**
 	 * Compute tangent (or cotangent) over the first quadrant. 0 < x < pi/2
 	 * Use combination of table lookup and rational polynomial expansion.
+	 * xa
+	 * number from which sine is requested
 	 * 
-	 * @param xa
-	 *            number from which sine is requested
 	 * @param xb
 	 *            extra bits for x (may be 0.0)
 	 * @param cotanFlag
@@ -2067,9 +2063,9 @@ public class FastMath {
 
 	/**
 	 * Arctangent function
+	 * x
+	 * a number
 	 * 
-	 * @param x
-	 *            a number
 	 * @return atan(x)
 	 */
 	public static double atan(double x) {
@@ -2079,9 +2075,9 @@ public class FastMath {
 
 	/**
 	 * Internal helper function to compute arctangent.
+	 * xa
+	 * number from which arctangent is requested
 	 * 
-	 * @param xa
-	 *            number from which arctangent is requested
 	 * @param xb
 	 *            extra bits for x (may be 0.0)
 	 * @param leftPlane
@@ -2207,9 +2203,9 @@ public class FastMath {
 
 	/**
 	 * Two arguments arctangent function
+	 * y
+	 * ordinate
 	 * 
-	 * @param y
-	 *            ordinate
 	 * @param x
 	 *            abscissa
 	 * @return phase angle of point (x,y) between {@code -PI} and {@code PI}
@@ -2308,9 +2304,9 @@ public class FastMath {
 
 	/**
 	 * Compute the arc sine of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return arc sine of x
 	 */
 	public static double asin(double x) {
@@ -2371,9 +2367,9 @@ public class FastMath {
 
 	/**
 	 * Compute the arc cosine of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return arc cosine of x
 	 */
 	public static double acos(double x) {
@@ -2438,9 +2434,9 @@ public class FastMath {
 
 	/**
 	 * Compute the cubic root of a number.
+	 * x
+	 * number on which evaluation is done
 	 * 
-	 * @param x
-	 *            number on which evaluation is done
 	 * @return cubic root of x
 	 */
 	public static double cbrt(double x) {
@@ -2508,9 +2504,9 @@ public class FastMath {
 
 	/**
 	 * Convert degrees to radians, with error of less than 0.5 ULP
+	 * x
+	 * angle in degrees
 	 * 
-	 * @param x
-	 *            angle in degrees
 	 * @return x converted into radians
 	 */
 	public static double toRadians(double x) {
@@ -2532,9 +2528,9 @@ public class FastMath {
 
 	/**
 	 * Convert radians to degrees, with error of less than 0.5 ULP
+	 * x
+	 * angle in radians
 	 * 
-	 * @param x
-	 *            angle in radians
 	 * @return x converted into degrees
 	 */
 	public static double toDegrees(double x) {
@@ -2552,9 +2548,9 @@ public class FastMath {
 
 	/**
 	 * Absolute value.
+	 * x
+	 * number from which absolute value is requested
 	 * 
-	 * @param x
-	 *            number from which absolute value is requested
 	 * @return abs(x)
 	 */
 	public static int abs(final int x) {
@@ -2565,9 +2561,9 @@ public class FastMath {
 
 	/**
 	 * Absolute value.
+	 * x
+	 * number from which absolute value is requested
 	 * 
-	 * @param x
-	 *            number from which absolute value is requested
 	 * @return abs(x)
 	 */
 	public static long abs(final long x) {
@@ -2582,9 +2578,9 @@ public class FastMath {
 
 	/**
 	 * Absolute value.
+	 * x
+	 * number from which absolute value is requested
 	 * 
-	 * @param x
-	 *            number from which absolute value is requested
 	 * @return abs(x)
 	 */
 	public static float abs(final float x) {
@@ -2594,9 +2590,9 @@ public class FastMath {
 
 	/**
 	 * Absolute value.
+	 * x
+	 * number from which absolute value is requested
 	 * 
-	 * @param x
-	 *            number from which absolute value is requested
 	 * @return abs(x)
 	 */
 	public static double abs(double x) {
@@ -2606,9 +2602,9 @@ public class FastMath {
 
 	/**
 	 * Compute least significant bit (Unit in Last Position) for a number.
+	 * x
+	 * number from which ulp is requested
 	 * 
-	 * @param x
-	 *            number from which ulp is requested
 	 * @return ulp(x)
 	 */
 	public static double ulp(double x) {
@@ -2621,9 +2617,9 @@ public class FastMath {
 
 	/**
 	 * Compute least significant bit (Unit in Last Position) for a number.
+	 * x
+	 * number from which ulp is requested
 	 * 
-	 * @param x
-	 *            number from which ulp is requested
 	 * @return ulp(x)
 	 */
 	public static float ulp(float x) {
@@ -2636,9 +2632,9 @@ public class FastMath {
 
 	/**
 	 * Multiply a double number by a power of 2.
+	 * d
+	 * number to multiply
 	 * 
-	 * @param d
-	 *            number to multiply
 	 * @param n
 	 *            power of 2
 	 * @return d &times; 2<sup>n</sup>
@@ -2712,9 +2708,9 @@ public class FastMath {
 
 	/**
 	 * Multiply a float number by a power of 2.
+	 * f
+	 * number to multiply
 	 * 
-	 * @param f
-	 *            number to multiply
 	 * @param n
 	 *            power of 2
 	 * @return f &times; 2<sup>n</sup>
@@ -2895,9 +2891,9 @@ public class FastMath {
 
 	/**
 	 * Get the largest whole number smaller than x.
+	 * x
+	 * number from which floor is requested
 	 * 
-	 * @param x
-	 *            number from which floor is requested
 	 * @return a double number f such that f is an integer f <= x < f + 1.0
 	 */
 	public static double floor(double x) {
@@ -2921,9 +2917,9 @@ public class FastMath {
 
 	/**
 	 * Get the smallest whole number larger than x.
+	 * x
+	 * number from which ceil is requested
 	 * 
-	 * @param x
-	 *            number from which ceil is requested
 	 * @return a double number c such that c is an integer c - 1.0 < x <= c
 	 */
 	public static double ceil(double x) {
@@ -2945,9 +2941,9 @@ public class FastMath {
 
 	/**
 	 * Get the whole number that is the nearest to x, or the even one if x is exactly half way between two integers.
+	 * x
+	 * number from which nearest whole number is requested
 	 * 
-	 * @param x
-	 *            number from which nearest whole number is requested
 	 * @return a double number r such that r is an integer r - 0.5 <= x <= r + 0.5
 	 */
 	public static double rint(double x) {
@@ -2970,9 +2966,9 @@ public class FastMath {
 
 	/**
 	 * Get the closest long to x.
+	 * x
+	 * number from which closest long is requested
 	 * 
-	 * @param x
-	 *            number from which closest long is requested
 	 * @return closest long to x
 	 */
 	public static long round(double x) {
@@ -2982,9 +2978,9 @@ public class FastMath {
 
 	/**
 	 * Get the closest int to x.
+	 * x
+	 * number from which closest int is requested
 	 * 
-	 * @param x
-	 *            number from which closest int is requested
 	 * @return closest int to x
 	 */
 	public static int round(final float x) {
@@ -2994,9 +2990,9 @@ public class FastMath {
 
 	/**
 	 * Compute the minimum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return a if a is lesser or equal to b, b otherwise
@@ -3008,9 +3004,9 @@ public class FastMath {
 
 	/**
 	 * Compute the minimum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return a if a is lesser or equal to b, b otherwise
@@ -3022,9 +3018,9 @@ public class FastMath {
 
 	/**
 	 * Compute the minimum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return a if a is lesser or equal to b, b otherwise
@@ -3052,9 +3048,9 @@ public class FastMath {
 
 	/**
 	 * Compute the minimum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return a if a is lesser or equal to b, b otherwise
@@ -3082,9 +3078,9 @@ public class FastMath {
 
 	/**
 	 * Compute the maximum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return b if a is lesser or equal to b, a otherwise
@@ -3096,9 +3092,9 @@ public class FastMath {
 
 	/**
 	 * Compute the maximum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return b if a is lesser or equal to b, a otherwise
@@ -3110,9 +3106,9 @@ public class FastMath {
 
 	/**
 	 * Compute the maximum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return b if a is lesser or equal to b, a otherwise
@@ -3140,9 +3136,9 @@ public class FastMath {
 
 	/**
 	 * Compute the maximum of two values
+	 * a
+	 * first value
 	 * 
-	 * @param a
-	 *            first value
 	 * @param b
 	 *            second value
 	 * @return b if a is lesser or equal to b, a otherwise
@@ -3226,10 +3222,8 @@ public class FastMath {
 	 * <li>If the dividend is a zero and the divisor is finite, the result equals the dividend.</li>
 	 * </ul>
 	 * <p>
-	 * <b>Note:</b> this implementation currently delegates to {@link StrictMath#IEEEremainder}
+	 * <b>Note:</b> this implementation currently delegates to {@link StrictMath#IEEEremainder} dividend the number to be divided
 	 * 
-	 * @param dividend
-	 *            the number to be divided
 	 * @param divisor
 	 *            the number by which to divide
 	 * @return the remainder, rounded
@@ -3241,9 +3235,9 @@ public class FastMath {
 
 	/**
 	 * Convert a long to interger, detecting overflows
+	 * n
+	 * number to convert to int
 	 * 
-	 * @param n
-	 *            number to convert to int
 	 * @return integer with same valie as n if no overflows occur
 	 * @exception MathArithmeticException
 	 *                if n cannot fit into an int
@@ -3259,9 +3253,9 @@ public class FastMath {
 
 	/**
 	 * Increment a number, detecting overflows.
+	 * n
+	 * number to increment
 	 * 
-	 * @param n
-	 *            number to increment
 	 * @return n+1 if no overflows occur
 	 * @exception MathArithmeticException
 	 *                if an overflow occurs
@@ -3277,9 +3271,9 @@ public class FastMath {
 
 	/**
 	 * Increment a number, detecting overflows.
+	 * n
+	 * number to increment
 	 * 
-	 * @param n
-	 *            number to increment
 	 * @return n+1 if no overflows occur
 	 * @exception MathArithmeticException
 	 *                if an overflow occurs
@@ -3295,9 +3289,9 @@ public class FastMath {
 
 	/**
 	 * Decrement a number, detecting overflows.
+	 * n
+	 * number to decrement
 	 * 
-	 * @param n
-	 *            number to decrement
 	 * @return n-1 if no overflows occur
 	 * @exception MathArithmeticException
 	 *                if an overflow occurs
@@ -3313,9 +3307,9 @@ public class FastMath {
 
 	/**
 	 * Decrement a number, detecting overflows.
+	 * n
+	 * number to decrement
 	 * 
-	 * @param n
-	 *            number to decrement
 	 * @return n-1 if no overflows occur
 	 * @exception MathArithmeticException
 	 *                if an overflow occurs
@@ -3331,9 +3325,9 @@ public class FastMath {
 
 	/**
 	 * Add two numbers, detecting overflows.
+	 * a
+	 * first number to add
 	 * 
-	 * @param a
-	 *            first number to add
 	 * @param b
 	 *            second number to add
 	 * @return a+b if no overflows occur
@@ -3354,9 +3348,9 @@ public class FastMath {
 
 	/**
 	 * Add two numbers, detecting overflows.
+	 * a
+	 * first number to add
 	 * 
-	 * @param a
-	 *            first number to add
 	 * @param b
 	 *            second number to add
 	 * @return a+b if no overflows occur
@@ -3377,9 +3371,9 @@ public class FastMath {
 
 	/**
 	 * Subtract two numbers, detecting overflows.
+	 * a
+	 * first number
 	 * 
-	 * @param a
-	 *            first number
 	 * @param b
 	 *            second number to subtract from a
 	 * @return a-b if no overflows occur
@@ -3400,9 +3394,9 @@ public class FastMath {
 
 	/**
 	 * Subtract two numbers, detecting overflows.
+	 * a
+	 * first number
 	 * 
-	 * @param a
-	 *            first number
 	 * @param b
 	 *            second number to subtract from a
 	 * @return a-b if no overflows occur
@@ -3423,9 +3417,9 @@ public class FastMath {
 
 	/**
 	 * Multiply two numbers, detecting overflows.
+	 * a
+	 * first number to multiply
 	 * 
-	 * @param a
-	 *            first number to multiply
 	 * @param b
 	 *            second number to multiply
 	 * @return a*b if no overflows occur
@@ -3443,9 +3437,9 @@ public class FastMath {
 
 	/**
 	 * Multiply two numbers, detecting overflows.
+	 * a
+	 * first number to multiply
 	 * 
-	 * @param a
-	 *            first number to multiply
 	 * @param b
 	 *            second number to multiply
 	 * @return a*b if no overflows occur
@@ -3466,9 +3460,9 @@ public class FastMath {
 	 * <p>
 	 * This methods returns the same value as integer division when a and b are same signs, but returns a different value when they are opposite (i.e. q is negative).
 	 * </p>
+	 * a
+	 * dividend
 	 * 
-	 * @param a
-	 *            dividend
 	 * @param b
 	 *            divisor
 	 * @return q such that a = q b + r with 0 <= r < b if b > 0 and b < r <= 0 if b > 0
@@ -3497,9 +3491,9 @@ public class FastMath {
 	 * <p>
 	 * This methods returns the same value as integer division when a and b are same signs, but returns a different value when they are opposite (i.e. q is negative).
 	 * </p>
+	 * a
+	 * dividend
 	 * 
-	 * @param a
-	 *            dividend
 	 * @param b
 	 *            divisor
 	 * @return q such that a = q b + r with 0 <= r < b if b > 0 and b < r <= 0 if b > 0
@@ -3528,9 +3522,9 @@ public class FastMath {
 	 * <p>
 	 * This methods returns the same value as integer modulo when a and b are same signs, but returns a different value when they are opposite (i.e. q is negative).
 	 * </p>
+	 * a
+	 * dividend
 	 * 
-	 * @param a
-	 *            dividend
 	 * @param b
 	 *            divisor
 	 * @return r such that a = q b + r with 0 <= r < b if b > 0 and b < r <= 0 if b > 0
@@ -3559,9 +3553,9 @@ public class FastMath {
 	 * <p>
 	 * This methods returns the same value as integer modulo when a and b are same signs, but returns a different value when they are opposite (i.e. q is negative).
 	 * </p>
+	 * a
+	 * dividend
 	 * 
-	 * @param a
-	 *            dividend
 	 * @param b
 	 *            divisor
 	 * @return r such that a = q b + r with 0 <= r < b if b > 0 and b < r <= 0 if b > 0
@@ -3638,9 +3632,9 @@ public class FastMath {
 	 * <p>
 	 * For double numbers of the form 2<sup>x</sup>, the unbiased exponent is exactly x.
 	 * </p>
+	 * d
+	 * number from which exponent is requested
 	 * 
-	 * @param d
-	 *            number from which exponent is requested
 	 * @return exponent for d in IEEE754 representation, without bias
 	 */
 	public static int getExponent(final double d) {
@@ -3654,9 +3648,9 @@ public class FastMath {
 	 * <p>
 	 * For float numbers of the form 2<sup>x</sup>, the unbiased exponent is exactly x.
 	 * </p>
+	 * f
+	 * number from which exponent is requested
 	 * 
-	 * @param f
-	 *            number from which exponent is requested
 	 * @return exponent for d in IEEE754 representation, without bias
 	 */
 	public static int getExponent(final float f) {
@@ -3670,9 +3664,8 @@ public class FastMath {
 	 * <p>
 	 * used to generate the preset arrays originally.
 	 * </p>
-	 * 
-	 * @param a
-	 *            unused
+	 * a
+	 * unused
 	 */
 	public static void main(String[] a) {
 

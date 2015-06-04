@@ -33,9 +33,9 @@ public interface FixedStepHandler {
 	 * <p>
 	 * This method is called once at the start of the integration. It may be used by the step handler to initialize some internal data if needed.
 	 * </p>
+	 * t0
+	 * start value of the independent <i>time</i> variable
 	 * 
-	 * @param t0
-	 *            start value of the independent <i>time</i> variable
 	 * @param y0
 	 *            array containing the start value of the state vector
 	 * @param t
@@ -45,9 +45,9 @@ public interface FixedStepHandler {
 
 	/**
 	 * Handle the last accepted step
+	 * t
+	 * time of the current step
 	 * 
-	 * @param t
-	 *            time of the current step
 	 * @param y
 	 *            state vector at t. For efficiency purposes, the {@link StepNormalizer} class reuses the same array on each call, so if
 	 *            the instance wants to keep it across all calls (for example to

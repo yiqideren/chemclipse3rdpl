@@ -39,9 +39,8 @@ public class Cluster<T extends Clusterable<T>> implements Serializable {
 
 	/**
 	 * Build a cluster centered at a specified point.
-	 * 
-	 * @param center
-	 *            the point which is to be the center of this cluster
+	 * center
+	 * the point which is to be the center of this cluster
 	 */
 	public Cluster(final T center) {
 
@@ -51,9 +50,8 @@ public class Cluster<T extends Clusterable<T>> implements Serializable {
 
 	/**
 	 * Add a point to this cluster.
-	 * 
-	 * @param point
-	 *            point to add
+	 * point
+	 * point to add
 	 */
 	public void addPoint(final T point) {
 
@@ -62,8 +60,7 @@ public class Cluster<T extends Clusterable<T>> implements Serializable {
 
 	/**
 	 * Get the points contained in the cluster.
-	 * 
-	 * @return points contained in the cluster
+	 * cluster
 	 */
 	public List<T> getPoints() {
 
@@ -72,8 +69,7 @@ public class Cluster<T extends Clusterable<T>> implements Serializable {
 
 	/**
 	 * Get the point chosen to be the center of this cluster.
-	 * 
-	 * @return chosen cluster center
+	 * center
 	 */
 	public T getCenter() {
 

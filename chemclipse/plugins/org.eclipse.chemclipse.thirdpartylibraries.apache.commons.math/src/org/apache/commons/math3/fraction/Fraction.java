@@ -72,9 +72,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Create a fraction given the double value.
+	 * value
+	 * the double value to convert to a fraction.
 	 * 
-	 * @param value
-	 *            the double value to convert to a fraction.
 	 * @throws FractionConversionException
 	 *             if the continued fraction failed to
 	 *             converge.
@@ -92,9 +92,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	 * <li><a href="http://mathworld.wolfram.com/ContinuedFraction.html"> Continued Fraction</a> equations (11) and (22)-(26)</li>
 	 * </ul>
 	 * </p>
+	 * value
+	 * the double value to convert to a fraction.
 	 * 
-	 * @param value
-	 *            the double value to convert to a fraction.
 	 * @param epsilon
 	 *            maximum error allowed. The resulting fraction is within {@code epsilon} of {@code value}, in absolute terms.
 	 * @param maxIterations
@@ -116,9 +116,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	 * <li><a href="http://mathworld.wolfram.com/ContinuedFraction.html"> Continued Fraction</a> equations (11) and (22)-(26)</li>
 	 * </ul>
 	 * </p>
+	 * value
+	 * the double value to convert to a fraction.
 	 * 
-	 * @param value
-	 *            the double value to convert to a fraction.
 	 * @param maxDenominator
 	 *            The maximum allowed value for denominator
 	 * @throws FractionConversionException
@@ -221,9 +221,8 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Create a fraction from an int.
 	 * The fraction is num / 1.
-	 * 
-	 * @param num
-	 *            the numerator.
+	 * num
+	 * the numerator.
 	 */
 	public Fraction(int num) {
 
@@ -233,9 +232,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Create a fraction given the numerator and denominator. The fraction is
 	 * reduced to lowest terms.
+	 * num
+	 * the numerator.
 	 * 
-	 * @param num
-	 *            the numerator.
 	 * @param den
 	 *            the denominator.
 	 * @throws MathArithmeticException
@@ -270,8 +269,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Returns the absolute value of this fraction.
-	 * 
-	 * @return the absolute value.
+	 * value.
 	 */
 	public Fraction abs() {
 
@@ -286,9 +284,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Compares this object to another based on size.
+	 * object
+	 * the object to compare to
 	 * 
-	 * @param object
-	 *            the object to compare to
 	 * @return -1 if this is less than {@code object}, +1 if this is greater
 	 *         than {@code object}, 0 if they are equal.
 	 */
@@ -302,8 +300,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Gets the fraction as a {@code double}. This calculates the fraction as
 	 * the numerator divided by denominator.
-	 * 
-	 * @return the fraction as a {@code double}
+	 * double}
 	 */
 	@Override
 	public double doubleValue() {
@@ -315,9 +312,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	 * Test for the equality of two fractions. If the lowest term
 	 * numerator and denominators are the same for both fractions, the two
 	 * fractions are considered to be equal.
+	 * other
+	 * fraction to test for equality to this fraction
 	 * 
-	 * @param other
-	 *            fraction to test for equality to this fraction
 	 * @return true if two fractions are equal, false if object is {@code null}, not an instance of {@link Fraction}, or not equal
 	 *         to this fraction instance.
 	 */
@@ -339,8 +336,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Gets the fraction as a {@code float}. This calculates the fraction as
 	 * the numerator divided by denominator.
-	 * 
-	 * @return the fraction as a {@code float}
+	 * float}
 	 */
 	@Override
 	public float floatValue() {
@@ -350,8 +346,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Access the denominator.
-	 * 
-	 * @return the denominator.
+	 * denominator.
 	 */
 	public int getDenominator() {
 
@@ -360,8 +355,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Access the numerator.
-	 * 
-	 * @return the numerator.
+	 * numerator.
 	 */
 	public int getNumerator() {
 
@@ -370,8 +364,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Gets a hashCode for the fraction.
-	 * 
-	 * @return a hash code value for this object
+	 * object
 	 */
 	@Override
 	public int hashCode() {
@@ -382,8 +375,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Gets the fraction as an {@code int}. This returns the whole number part
 	 * of the fraction.
-	 * 
-	 * @return the whole number fraction part
+	 * part
 	 */
 	@Override
 	public int intValue() {
@@ -394,8 +386,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 	/**
 	 * Gets the fraction as a {@code long}. This returns the whole number part
 	 * of the fraction.
-	 * 
-	 * @return the whole number fraction part
+	 * part
 	 */
 	@Override
 	public long longValue() {
@@ -405,8 +396,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Return the additive inverse of this fraction.
-	 * 
-	 * @return the negation of this fraction.
+	 * fraction.
 	 */
 	public Fraction negate() {
 
@@ -418,8 +408,7 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Return the multiplicative inverse of this fraction.
-	 * 
-	 * @return the reciprocal fraction
+	 * fraction
 	 */
 	public Fraction reciprocal() {
 
@@ -446,9 +435,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Add an integer to the fraction.
+	 * i
+	 * the {@code integer} to add.
 	 * 
-	 * @param i
-	 *            the {@code integer} to add.
 	 * @return this + i
 	 */
 	public Fraction add(final int i) {
@@ -477,9 +466,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Subtract an integer from the fraction.
+	 * i
+	 * the {@code integer} to subtract.
 	 * 
-	 * @param i
-	 *            the {@code integer} to subtract.
 	 * @return this - i
 	 */
 	public Fraction subtract(final int i) {
@@ -570,9 +559,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Multiply the fraction by an integer.
+	 * i
+	 * the {@code integer} to multiply by.
 	 * 
-	 * @param i
-	 *            the {@code integer} to multiply by.
 	 * @return this * i
 	 */
 	public Fraction multiply(final int i) {
@@ -608,9 +597,9 @@ public class Fraction extends Number implements FieldElement<Fraction>, Comparab
 
 	/**
 	 * Divide the fraction by an integer.
+	 * i
+	 * the {@code integer} to divide by.
 	 * 
-	 * @param i
-	 *            the {@code integer} to divide by.
 	 * @return this * i
 	 */
 	public Fraction divide(final int i) {

@@ -620,11 +620,9 @@ public class Precision {
 	 * Computes a number {@code delta} close to {@code originalDelta} with
 	 * the property that
 	 * 
-	 * <pre>
 	 * <code>
 	 *   x + delta - x
 	 * </code>
-	 * </pre>
 	 * 
 	 * is exactly machine-representable.
 	 * This is useful when computing numerical derivatives, in order to reduce

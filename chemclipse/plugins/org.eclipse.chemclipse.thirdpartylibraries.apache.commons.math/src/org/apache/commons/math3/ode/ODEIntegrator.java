@@ -32,8 +32,7 @@ public interface ODEIntegrator {
 
 	/**
 	 * Get the name of the method.
-	 * 
-	 * @return name of the method
+	 * method
 	 */
 	String getName();
 
@@ -42,9 +41,9 @@ public interface ODEIntegrator {
 	 * <p>
 	 * The handler will be called by the integrator for each accepted step.
 	 * </p>
+	 * handler
+	 * handler for the accepted steps
 	 * 
-	 * @param handler
-	 *            handler for the accepted steps
 	 * @see #getStepHandlers()
 	 * @see #clearStepHandlers()
 	 * @since 2.0
@@ -53,8 +52,8 @@ public interface ODEIntegrator {
 
 	/**
 	 * Get all the step handlers that have been added to the integrator.
+	 * handlers
 	 * 
-	 * @return an unmodifiable collection of the added events handlers
 	 * @see #addStepHandler(StepHandler)
 	 * @see #clearStepHandlers()
 	 * @since 2.0
@@ -63,8 +62,8 @@ public interface ODEIntegrator {
 
 	/**
 	 * Remove all the step handlers that have been added to the integrator.
+	 * #addStepHandler(StepHandler)
 	 * 
-	 * @see #addStepHandler(StepHandler)
 	 * @see #getStepHandlers()
 	 * @since 2.0
 	 */
@@ -74,9 +73,9 @@ public interface ODEIntegrator {
 	 * Add an event handler to the integrator.
 	 * Uses a default {@link UnivariateSolver} with an absolute accuracy equal to the given convergence threshold,
 	 * as root-finding algorithm to detect the state events.
+	 * handler
+	 * event handler
 	 * 
-	 * @param handler
-	 *            event handler
 	 * @param maxCheckInterval
 	 *            maximal time interval between switching
 	 *            function checks (this interval prevents missing sign changes in
@@ -93,9 +92,9 @@ public interface ODEIntegrator {
 
 	/**
 	 * Add an event handler to the integrator.
+	 * handler
+	 * event handler
 	 * 
-	 * @param handler
-	 *            event handler
 	 * @param maxCheckInterval
 	 *            maximal time interval between switching
 	 *            function checks (this interval prevents missing sign changes in
@@ -115,8 +114,8 @@ public interface ODEIntegrator {
 
 	/**
 	 * Get all the event handlers that have been added to the integrator.
+	 * handlers
 	 * 
-	 * @return an unmodifiable collection of the added events handlers
 	 * @see #addEventHandler(EventHandler, double, double, int)
 	 * @see #clearEventHandlers()
 	 */
@@ -124,8 +123,8 @@ public interface ODEIntegrator {
 
 	/**
 	 * Remove all the event handlers that have been added to the integrator.
+	 * int)
 	 * 
-	 * @see #addEventHandler(EventHandler, double, double, int)
 	 * @see #getEventHandlers()
 	 */
 	void clearEventHandlers();
@@ -139,8 +138,7 @@ public interface ODEIntegrator {
 	 * <p>
 	 * The result is undefined if the method is called outside of calls to <code>integrate</code>.
 	 * </p>
-	 * 
-	 * @return current value of the step start time t<sub>i</sub>
+	 * t<sub>i</sub>
 	 */
 	double getCurrentStepStart();
 
@@ -153,8 +151,7 @@ public interface ODEIntegrator {
 	 * <p>
 	 * The result is undefined if the method is called outside of calls to <code>integrate</code>.
 	 * </p>
-	 * 
-	 * @return current signed value of the stepsize
+	 * stepsize
 	 */
 	double getCurrentSignedStepsize();
 
@@ -163,18 +160,16 @@ public interface ODEIntegrator {
 	 * <p>
 	 * The purpose of this method is to avoid infinite loops which can occur for example when stringent error constraints are set or when lots of discrete events are triggered, thus leading to many rejected steps.
 	 * </p>
-	 * 
-	 * @param maxEvaluations
-	 *            maximal number of function evaluations (negative
-	 *            values are silently converted to maximal integer value, thus representing
-	 *            almost unlimited evaluations)
+	 * maxEvaluations
+	 * maximal number of function evaluations (negative
+	 * values are silently converted to maximal integer value, thus representing
+	 * almost unlimited evaluations)
 	 */
 	void setMaxEvaluations(int maxEvaluations);
 
 	/**
 	 * Get the maximal number of functions evaluations.
-	 * 
-	 * @return maximal number of functions evaluations
+	 * evaluations
 	 */
 	int getMaxEvaluations();
 
@@ -183,8 +178,7 @@ public interface ODEIntegrator {
 	 * <p>
 	 * The number of evaluations corresponds to the last call to the <code>integrate</code> method. It is 0 if the method has not been called yet.
 	 * </p>
-	 * 
-	 * @return number of evaluations of the differential equations function
+	 * function
 	 */
 	int getEvaluations();
 }

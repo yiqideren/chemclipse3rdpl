@@ -45,9 +45,9 @@ class CompiledClass {
  * <p>
  * For example,
  * 
- * <pre>
+ * 
  * % java Compiler Dog -m MetaDog -c CMetaDog Cat -m MetaCat Cow
- * </pre>
+ * 
  *
  * <p>
  * modifies class files <code>Dog.class</code>, <code>Cat.class</code>, and <code>Cow.class</code>. The metaobject of a Dog object is a MetaDog object and the class metaobject is a CMetaDog object. The metaobject of a Cat object is a MetaCat object but the class metaobject is a default one. Cow objects are not reflective.

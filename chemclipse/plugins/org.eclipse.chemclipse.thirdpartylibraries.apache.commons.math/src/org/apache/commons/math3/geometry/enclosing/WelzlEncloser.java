@@ -43,9 +43,9 @@ public class WelzlEncloser<S extends Space, P extends Point<S>> implements Enclo
 
 	/**
 	 * Simple constructor.
+	 * tolerance
+	 * below which points are consider to be identical
 	 * 
-	 * @param tolerance
-	 *            below which points are consider to be identical
 	 * @param generator
 	 *            generator for balls on support
 	 */
@@ -68,9 +68,9 @@ public class WelzlEncloser<S extends Space, P extends Point<S>> implements Enclo
 
 	/**
 	 * Compute enclosing ball using Gärtner's pivoting heuristic.
+	 * points
+	 * points to be enclosed
 	 * 
-	 * @param points
-	 *            points to be enclosed
 	 * @return enclosing ball
 	 */
 	private EnclosingBall<S, P> pivotingBall(final Iterable<P> points) {
@@ -107,9 +107,9 @@ public class WelzlEncloser<S extends Space, P extends Point<S>> implements Enclo
 
 	/**
 	 * Compute enclosing ball using Welzl's move to front heuristic.
+	 * extreme
+	 * subset of extreme points
 	 * 
-	 * @param extreme
-	 *            subset of extreme points
 	 * @param nbExtreme
 	 *            number of extreme points to consider
 	 * @param support
@@ -143,9 +143,9 @@ public class WelzlEncloser<S extends Space, P extends Point<S>> implements Enclo
 
 	/**
 	 * Select the point farthest to the current ball.
+	 * points
+	 * points to be enclosed
 	 * 
-	 * @param points
-	 *            points to be enclosed
 	 * @param ball
 	 *            current ball
 	 * @return farthest point

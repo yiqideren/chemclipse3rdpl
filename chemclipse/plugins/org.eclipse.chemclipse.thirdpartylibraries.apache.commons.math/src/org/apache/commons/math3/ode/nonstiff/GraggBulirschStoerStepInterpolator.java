@@ -97,9 +97,9 @@ class GraggBulirschStoerStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Simple constructor.
+	 * y
+	 * reference to the integrator array holding the current state
 	 * 
-	 * @param y
-	 *            reference to the integrator array holding the current state
 	 * @param y0Dot
 	 *            reference to the integrator array holding the slope
 	 *            at the beginning of the step
@@ -131,11 +131,10 @@ class GraggBulirschStoerStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Copy constructor.
-	 * 
-	 * @param interpolator
-	 *            interpolator to copy from. The copy is a deep
-	 *            copy: its arrays are separated from the original arrays of the
-	 *            instance
+	 * interpolator
+	 * interpolator to copy from. The copy is a deep
+	 * copy: its arrays are separated from the original arrays of the
+	 * instance
 	 */
 	public GraggBulirschStoerStepInterpolator(final GraggBulirschStoerStepInterpolator interpolator) {
 
@@ -165,9 +164,8 @@ class GraggBulirschStoerStepInterpolator extends AbstractStepInterpolator {
 	 * Reallocate the internal tables.
 	 * Reallocate the internal tables in order to be able to handle
 	 * interpolation polynomials up to the given degree
-	 * 
-	 * @param maxDegree
-	 *            maximal degree to handle
+	 * maxDegree
+	 * maximal degree to handle
 	 */
 	private void resetTables(final int maxDegree) {
 
@@ -215,9 +213,9 @@ class GraggBulirschStoerStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Compute the interpolation coefficients for dense output.
+	 * mu
+	 * degree of the interpolation polynomial
 	 * 
-	 * @param mu
-	 *            degree of the interpolation polynomial
 	 * @param h
 	 *            current step
 	 */
@@ -265,9 +263,9 @@ class GraggBulirschStoerStepInterpolator extends AbstractStepInterpolator {
 
 	/**
 	 * Estimate interpolation error.
+	 * scale
+	 * scaling array
 	 * 
-	 * @param scale
-	 *            scaling array
 	 * @return estimate of the interpolation error
 	 */
 	public double estimateError(final double[] scale) {

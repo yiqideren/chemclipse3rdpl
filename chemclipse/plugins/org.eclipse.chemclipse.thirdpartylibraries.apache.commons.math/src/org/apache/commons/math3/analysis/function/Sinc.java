@@ -26,12 +26,12 @@ import org.apache.commons.math3.util.FastMath;
  * <a href="http://en.wikipedia.org/wiki/Sinc_function">Sinc</a> function,
  * defined by
  * 
- * <pre>
+ * 
  * <code>
  *   sinc(x) = 1            if x = 0,
  *             sin(x) / x   otherwise.
  * </code>
- * </pre>
+ * 
  *
  * @since 3.0
  */
@@ -42,19 +42,13 @@ public class Sinc implements UnivariateDifferentiableFunction, DifferentiableUni
 	 * <p>
 	 * The Taylor series for sinc even order derivatives are:
 	 * 
-	 * <pre>
-	 * d^(2n)sinc/dx^(2n)     = Sum_(k>=0) (-1)^(n+k) / ((2k)!(2n+2k+1)) x^(2k)
-	 *                        = (-1)^n     [ 1/(2n+1) - x^2/(4n+6) + x^4/(48n+120) - x^6/(1440n+5040) + O(x^8) ]
-	 * </pre>
+	 * d^(2n)sinc/dx^(2n) = Sum_(k>=0) (-1)^(n+k) / ((2k)!(2n+2k+1)) x^(2k) = (-1)^n [ 1/(2n+1) - x^2/(4n+6) + x^4/(48n+120) - x^6/(1440n+5040) + O(x^8) ]
 	 * 
 	 * </p>
 	 * <p>
 	 * The Taylor series for sinc odd order derivatives are:
 	 * 
-	 * <pre>
-	 * d^(2n+1)sinc/dx^(2n+1) = Sum_(k>=0) (-1)^(n+k+1) / ((2k+1)!(2n+2k+3)) x^(2k+1)
-	 *                        = (-1)^(n+1) [ x/(2n+3) - x^3/(12n+30) + x^5/(240n+840) - x^7/(10080n+45360) + O(x^9) ]
-	 * </pre>
+	 * d^(2n+1)sinc/dx^(2n+1) = Sum_(k>=0) (-1)^(n+k+1) / ((2k+1)!(2n+2k+3)) x^(2k+1) = (-1)^(n+1) [ x/(2n+3) - x^3/(12n+30) + x^5/(240n+840) - x^7/(10080n+45360) + O(x^9) ]
 	 * 
 	 * </p>
 	 * <p>
@@ -99,9 +93,7 @@ public class Sinc implements UnivariateDifferentiableFunction, DifferentiableUni
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated as of 3.1, replaced by {@link #value(DerivativeStructure)}
+	 * {@inheritDoc} #value(DerivativeStructure)}
 	 */
 	@Deprecated
 	public UnivariateFunction derivative() {
@@ -110,9 +102,7 @@ public class Sinc implements UnivariateDifferentiableFunction, DifferentiableUni
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public DerivativeStructure value(final DerivativeStructure t) throws DimensionMismatchException {
 

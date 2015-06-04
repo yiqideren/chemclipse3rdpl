@@ -68,9 +68,8 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Build an instance.
-	 * 
-	 * @param name
-	 *            name of the method
+	 * name
+	 * name of the method
 	 */
 	public AbstractIntegrator(final String name) {
 
@@ -177,9 +176,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Prepare the start of an integration.
+	 * t0
+	 * start value of the independent <i>time</i> variable
 	 * 
-	 * @param t0
-	 *            start value of the independent <i>time</i> variable
 	 * @param y0
 	 *            array containing the start value of the state vector
 	 * @param t
@@ -200,9 +199,8 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Set the equations.
-	 * 
-	 * @param equations
-	 *            equations to set
+	 * equations
+	 * equations to set
 	 */
 	protected void setEquations(final ExpandableStatefulODE equations) {
 
@@ -211,8 +209,8 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Get the differential equations to integrate.
+	 * integrate
 	 * 
-	 * @return differential equations to integrate
 	 * @since 3.2
 	 */
 	protected ExpandableStatefulODE getExpandable() {
@@ -222,8 +220,8 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Get the evaluations counter.
+	 * counter
 	 * 
-	 * @return evaluations counter
 	 * @since 3.2
 	 */
 	protected Incrementor getEvaluationsCounter() {
@@ -262,9 +260,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 	 * <p>
 	 * Since this method stores some internal state variables made available in its public interface during integration ({@link #getCurrentSignedStepsize()}), it is <em>not</em> thread-safe.
 	 * </p>
+	 * equations
+	 * complete set of differential equations to integrate
 	 * 
-	 * @param equations
-	 *            complete set of differential equations to integrate
 	 * @param t
 	 *            target time for the integration
 	 *            (can be set to a value smaller than <code>t0</code> for backward integration)
@@ -282,9 +280,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Compute the derivatives and check the number of evaluations.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 * @param yDot
@@ -305,9 +303,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 	 * <p>
 	 * This method must be called by integrators with the value {@code false} before they start integration, so a proper lazy initialization is done automatically on the first step.
 	 * </p>
+	 * stateInitialized
+	 * new value for the flag
 	 * 
-	 * @param stateInitialized
-	 *            new value for the flag
 	 * @since 2.2
 	 */
 	protected void setStateInitialized(final boolean stateInitialized) {
@@ -317,9 +315,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Accept a step, triggering events and step handlers.
+	 * interpolator
+	 * step interpolator
 	 * 
-	 * @param interpolator
-	 *            step interpolator
 	 * @param y
 	 *            state vector at step end time, must be reset if an event
 	 *            asks for resetting or if an events stops integration during the step
@@ -440,9 +438,9 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
 
 	/**
 	 * Check the integration span.
+	 * equations
+	 * set of differential equations
 	 * 
-	 * @param equations
-	 *            set of differential equations
 	 * @param t
 	 *            target time for the integration
 	 * @exception NumberIsTooSmallException

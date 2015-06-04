@@ -41,9 +41,9 @@ public abstract class AbstractUnivariateStatistic implements UnivariateStatistic
 	 * <p>
 	 * The stored value is a copy of the parameter array, not the array itself.
 	 * </p>
+	 * values
+	 * data array to store (may be null to remove stored data)
 	 * 
-	 * @param values
-	 *            data array to store (may be null to remove stored data)
 	 * @see #evaluate()
 	 */
 	public void setData(final double[] values) {
@@ -53,8 +53,7 @@ public abstract class AbstractUnivariateStatistic implements UnivariateStatistic
 
 	/**
 	 * Get a copy of the stored data array.
-	 * 
-	 * @return copy of the stored data array (may be null)
+	 * null)
 	 */
 	public double[] getData() {
 
@@ -63,8 +62,7 @@ public abstract class AbstractUnivariateStatistic implements UnivariateStatistic
 
 	/**
 	 * Get a reference to the stored data array.
-	 * 
-	 * @return reference to the stored data array (may be null)
+	 * null)
 	 */
 	protected double[] getDataRef() {
 
@@ -108,8 +106,8 @@ public abstract class AbstractUnivariateStatistic implements UnivariateStatistic
 	 * <p>
 	 * The stored array is the one which was set by previous calls to {@link #setData(double[])}.
 	 * </p>
+	 * data
 	 * 
-	 * @return the value of the statistic applied to the stored data
 	 * @throws MathIllegalArgumentException
 	 *             if the stored data array is null
 	 */

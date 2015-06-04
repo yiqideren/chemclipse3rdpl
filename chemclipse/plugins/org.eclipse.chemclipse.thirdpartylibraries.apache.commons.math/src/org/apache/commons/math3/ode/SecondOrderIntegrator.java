@@ -32,9 +32,9 @@ public interface SecondOrderIntegrator extends ODEIntegrator {
 
 	/**
 	 * Integrate the differential equations up to the given time
+	 * equations
+	 * differential equations to integrate
 	 * 
-	 * @param equations
-	 *            differential equations to integrate
 	 * @param t0
 	 *            initial time
 	 * @param y0

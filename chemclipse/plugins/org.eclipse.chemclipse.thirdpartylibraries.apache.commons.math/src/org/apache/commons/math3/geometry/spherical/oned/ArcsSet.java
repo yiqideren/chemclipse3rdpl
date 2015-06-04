@@ -46,9 +46,8 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Build an arcs set representing the whole circle.
-	 * 
-	 * @param tolerance
-	 *            tolerance below which close sub-arcs are merged together
+	 * tolerance
+	 * tolerance below which close sub-arcs are merged together
 	 */
 	public ArcsSet(final double tolerance) {
 
@@ -60,9 +59,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * If either {@code lower} is equals to {@code upper} or the interval exceeds \( 2 \pi \), the arc is considered to be the full circle and its initial defining boundaries will be forgotten. {@code lower} is not allowed to be greater than {@code upper} (an exception is thrown in this case).
 	 * </p>
+	 * lower
+	 * lower bound of the arc
 	 * 
-	 * @param lower
-	 *            lower bound of the arc
 	 * @param upper
 	 *            upper bound of the arc
 	 * @param tolerance
@@ -80,9 +79,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the arcs set
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the arcs set
 	 * @param tolerance
 	 *            tolerance below which close sub-arcs are merged together
 	 * @exception InconsistentStateAt2PiWrapping
@@ -108,9 +107,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements
 	 * @param tolerance
 	 *            tolerance below which close sub-arcs are merged together
 	 * @exception InconsistentStateAt2PiWrapping
@@ -125,9 +124,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Build an inside/outside tree representing a single arc.
+	 * lower
+	 * lower angular bound of the arc
 	 * 
-	 * @param lower
-	 *            lower angular bound of the arc
 	 * @param upper
 	 *            upper angular bound of the arc
 	 * @param tolerance
@@ -161,10 +160,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check consistency.
-	 * 
-	 * @exception InconsistentStateAt2PiWrapping
-	 *                if the tree leaf nodes are not
-	 *                consistent across the \( 0, 2 \pi \) crossing
+	 * InconsistentStateAt2PiWrapping
+	 * if the tree leaf nodes are not
+	 * consistent across the \( 0, 2 \pi \) crossing
 	 */
 	private void check2PiConsistency() throws InconsistentStateAt2PiWrapping {
 
@@ -184,9 +182,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the first leaf node of a tree.
+	 * root
+	 * tree root
 	 * 
-	 * @param root
-	 *            tree root
 	 * @return first leaf node (i.e. node corresponding to the region just after 0.0 radians)
 	 */
 	private BSPTree<Sphere1D> getFirstLeaf(final BSPTree<Sphere1D> root) {
@@ -204,9 +202,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the last leaf node of a tree.
+	 * root
+	 * tree root
 	 * 
-	 * @param root
-	 *            tree root
 	 * @return last leaf node (i.e. node corresponding to the region just before \( 2 \pi \) radians)
 	 */
 	private BSPTree<Sphere1D> getLastLeaf(final BSPTree<Sphere1D> root) {
@@ -224,9 +222,8 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the node corresponding to the first arc start.
-	 * 
-	 * @return smallest internal node (i.e. first after 0.0 radians, in trigonometric direction),
-	 *         or null if there are no internal nodes (i.e. the set is either empty or covers the full circle)
+	 * direction),
+	 * or null if there are no internal nodes (i.e. the set is either empty or covers the full circle)
 	 */
 	private BSPTree<Sphere1D> getFirstArcStart() {
 
@@ -246,9 +243,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check if an internal node corresponds to the start angle of an arc.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the node corresponds to the start angle of an arc
 	 */
 	private boolean isArcStart(final BSPTree<Sphere1D> node) {
@@ -268,9 +265,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check if an internal node corresponds to the end angle of an arc.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the node corresponds to the end angle of an arc
 	 */
 	private boolean isArcEnd(final BSPTree<Sphere1D> node) {
@@ -290,9 +287,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the next internal node.
+	 * node
+	 * current internal node
 	 * 
-	 * @param node
-	 *            current internal node
 	 * @return next internal node in trigonometric order, or null
 	 *         if this is the last internal node
 	 */
@@ -311,9 +308,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the previous internal node.
+	 * node
+	 * current internal node
 	 * 
-	 * @param node
-	 *            current internal node
 	 * @return previous internal node in trigonometric order, or null
 	 *         if this is the first internal node
 	 */
@@ -332,9 +329,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Find the leaf node just before an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return leaf node just before the internal node
 	 */
 	private BSPTree<Sphere1D> leafBefore(BSPTree<Sphere1D> node) {
@@ -348,9 +345,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Find the leaf node just after an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return leaf node just after the internal node
 	 */
 	private BSPTree<Sphere1D> leafAfter(BSPTree<Sphere1D> node) {
@@ -364,9 +361,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check if a node is the child before its parent in trigonometric order.
+	 * node
+	 * child node considered
 	 * 
-	 * @param node
-	 *            child node considered
 	 * @return true is the node has a parent end is before it in trigonometric order
 	 */
 	private boolean isBeforeParent(final BSPTree<Sphere1D> node) {
@@ -381,9 +378,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check if a node is the child after its parent in trigonometric order.
+	 * node
+	 * child node considered
 	 * 
-	 * @param node
-	 *            child node considered
 	 * @return true is the node has a parent end is after it in trigonometric order
 	 */
 	private boolean isAfterParent(final BSPTree<Sphere1D> node) {
@@ -398,9 +395,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Find the child node just before an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return child node just before the internal node
 	 */
 	private BSPTree<Sphere1D> childBefore(BSPTree<Sphere1D> node) {
@@ -416,9 +413,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Find the child node just after an internal node.
+	 * node
+	 * internal node at which the sub-tree starts
 	 * 
-	 * @param node
-	 *            internal node at which the sub-tree starts
 	 * @return child node just after the internal node
 	 */
 	private BSPTree<Sphere1D> childAfter(BSPTree<Sphere1D> node) {
@@ -434,9 +431,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Check if an internal node has a direct limit angle.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return true if the limit angle is direct
 	 */
 	private boolean isDirect(final BSPTree<Sphere1D> node) {
@@ -446,9 +443,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Get the limit angle of an internal node.
+	 * node
+	 * internal node to check
 	 * 
-	 * @param node
-	 *            internal node to check
 	 * @return limit angle
 	 */
 	private double getAngle(final BSPTree<Sphere1D> node) {
@@ -491,9 +488,7 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.3
+	 * {@inheritDoc} 3.3
 	 */
 	@Override
 	public BoundaryProjection<Sphere1D> projectToBoundary(final Point<Sphere1D> point) {
@@ -571,8 +566,7 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * This method builds this arcs set as an ordered list of {@link Arc Arc} elements. An empty tree will build an empty list while a tree representing the whole circle will build a one element list with bounds set to \( 0 and 2 \pi \).
 	 * </p>
-	 * 
-	 * @return a new ordered list containing {@link Arc Arc} elements
+	 * elements
 	 */
 	public List<Arc> asList() {
 
@@ -700,9 +694,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * The {@link Side#MINUS} side of the arc is the one covered by the arc.
 	 * </p>
+	 * arc
+	 * arc to check instance against
 	 * 
-	 * @param arc
-	 *            arc to check instance against
 	 * @return one of {@link Side#PLUS}, {@link Side#MINUS}, {@link Side#BOTH} or {@link Side#HYPER}
 	 */
 	public Side side(final Arc arc) {
@@ -739,9 +733,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Split the instance in two parts by an arc.
+	 * arc
+	 * splitting arc
 	 * 
-	 * @param arc
-	 *            splitting arc
 	 * @return an object containing both the part of the instance
 	 *         on the plus side of the arc and the part of the
 	 *         instance on the minus side of the arc
@@ -811,9 +805,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 
 	/**
 	 * Add an arc limit to a BSP tree under construction.
+	 * tree
+	 * BSP tree under construction
 	 * 
-	 * @param tree
-	 *            BSP tree under construction
 	 * @param alpha
 	 *            arc limit
 	 * @param isStart
@@ -838,9 +832,9 @@ public class ArcsSet extends AbstractRegion<Sphere1D, Sphere1D> implements Itera
 	 * <p>
 	 * As per construction, the list of limit angles is known to have an even number of entries, with start angles at even indices and end angles at odd indices.
 	 * </p>
+	 * limits
+	 * limit angles of the split part
 	 * 
-	 * @param limits
-	 *            limit angles of the split part
 	 * @return split part (may be null)
 	 */
 	private ArcsSet createSplitPart(final List<Double> limits) {

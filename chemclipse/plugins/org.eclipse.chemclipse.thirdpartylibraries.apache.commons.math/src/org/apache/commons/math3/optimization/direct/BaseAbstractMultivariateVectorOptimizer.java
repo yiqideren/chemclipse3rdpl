@@ -67,8 +67,7 @@ public abstract class BaseAbstractMultivariateVectorOptimizer<FUNC extends Multi
 	/**
 	 * Simple constructor with default settings.
 	 * The convergence check is set to a {@link SimpleVectorValueChecker}.
-	 * 
-	 * @deprecated See {@link SimpleVectorValueChecker#SimpleVectorValueChecker()}
+	 * SimpleVectorValueChecker#SimpleVectorValueChecker()}
 	 */
 	@Deprecated
 	protected BaseAbstractMultivariateVectorOptimizer() {

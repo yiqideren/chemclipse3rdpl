@@ -32,21 +32,17 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * We define scaled derivatives s<sub>i</sub>(n) at step n as:
  * 
- * <pre>
- * s<sub>1</sub>(n) = h y'<sub>n</sub> for first derivative
- * s<sub>2</sub>(n) = h<sup>2</sup>/2 y''<sub>n</sub> for second derivative
- * s<sub>3</sub>(n) = h<sup>3</sup>/6 y'''<sub>n</sub> for third derivative
- * ...
- * s<sub>k</sub>(n) = h<sup>k</sup>/k! y<sup>(k)</sup><sub>n</sub> for k<sup>th</sup> derivative
- * </pre>
+ * 
+ * s<sub>1</sub>(n) = h y'<sub>n</sub> for first derivative s<sub>2</sub>(n) = h<sup>2</sup>/2 y''<sub>n</sub> for second derivative s<sub>3</sub>(n) = h<sup>3</sup>/6 y'''<sub>n</sub> for third derivative ... s<sub>k</sub>(n) = h<sup>k</sup>/k! y<sup>(k)</sup><sub>n</sub> for k<sup>th</sup> derivative
+ * 
  * 
  * </p>
  * <p>
  * Rather than storing several previous steps separately, this implementation uses the Nordsieck vector with higher degrees scaled derivatives all taken at the same step (y<sub>n</sub>, s<sub>1</sub>(n) and r<sub>n</sub>) where r<sub>n</sub> is defined as:
  * 
- * <pre>
+ * 
  * r<sub>n</sub> = [ s<sub>2</sub>(n), s<sub>3</sub>(n) ... s<sub>k</sub>(n) ]<sup>T</sup>
- * </pre>
+ * 
  * 
  * (we omit the k index in the notation for clarity)
  * </p>
@@ -90,9 +86,9 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 	 * <p>
 	 * The default max growth factor is set to a quite low value: 2<sup>1/order</sup>.
 	 * </p>
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param nSteps
 	 *            number of steps of the multistep method
 	 *            (excluding the one being computed)
@@ -134,9 +130,9 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 	 * <p>
 	 * The default max growth factor is set to a quite low value: 2<sup>1/order</sup>.
 	 * </p>
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param nSteps
 	 *            number of steps of the multistep method
 	 *            (excluding the one being computed)
@@ -167,8 +163,7 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Get the starter integrator.
-	 * 
-	 * @return starter integrator
+	 * integrator
 	 */
 	public ODEIntegrator getStarterIntegrator() {
 
@@ -180,9 +175,8 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 	 * <p>
 	 * The various step and event handlers for this starter integrator will be managed automatically by the multi-step integrator. Any user configuration for these elements will be cleared before use.
 	 * </p>
-	 * 
-	 * @param starterIntegrator
-	 *            starter integrator
+	 * starterIntegrator
+	 * starter integrator
 	 */
 	public void setStarterIntegrator(FirstOrderIntegrator starterIntegrator) {
 
@@ -195,9 +189,9 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 	 * This method computes one step using the underlying starter integrator, and initializes the Nordsieck vector at step start. The starter integrator purpose is only to establish initial conditions, it does not really change time by itself. The top level multistep integrator remains in charge of handling time propagation and events handling as it will starts its own computation right from the beginning. In a sense, the starter integrator can be seen as a dummy one and so it will never trigger
 	 * any user event nor call any user step handler.
 	 * </p>
+	 * t0
+	 * initial time
 	 * 
-	 * @param t0
-	 *            initial time
 	 * @param y0
 	 *            initial value of the state vector at t0
 	 * @param t
@@ -252,9 +246,9 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Initialize the high order scaled derivatives at step start.
+	 * h
+	 * step size to use for scaling
 	 * 
-	 * @param h
-	 *            step size to use for scaling
 	 * @param t
 	 *            first steps times
 	 * @param y
@@ -268,8 +262,7 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Get the minimal reduction factor for stepsize control.
-	 * 
-	 * @return minimal reduction factor
+	 * factor
 	 */
 	public double getMinReduction() {
 
@@ -278,9 +271,8 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Set the minimal reduction factor for stepsize control.
-	 * 
-	 * @param minReduction
-	 *            minimal reduction factor
+	 * minReduction
+	 * minimal reduction factor
 	 */
 	public void setMinReduction(final double minReduction) {
 
@@ -289,8 +281,7 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Get the maximal growth factor for stepsize control.
-	 * 
-	 * @return maximal growth factor
+	 * factor
 	 */
 	public double getMaxGrowth() {
 
@@ -299,9 +290,8 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Set the maximal growth factor for stepsize control.
-	 * 
-	 * @param maxGrowth
-	 *            maximal growth factor
+	 * maxGrowth
+	 * maximal growth factor
 	 */
 	public void setMaxGrowth(final double maxGrowth) {
 
@@ -310,8 +300,7 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Get the safety factor for stepsize control.
-	 * 
-	 * @return safety factor
+	 * factor
 	 */
 	public double getSafety() {
 
@@ -320,9 +309,8 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Set the safety factor for stepsize control.
-	 * 
-	 * @param safety
-	 *            safety factor
+	 * safety
+	 * safety factor
 	 */
 	public void setSafety(final double safety) {
 
@@ -331,9 +319,9 @@ public abstract class MultistepIntegrator extends AdaptiveStepsizeIntegrator {
 
 	/**
 	 * Compute step grow/shrink factor according to normalized error.
+	 * error
+	 * normalized error of the current step
 	 * 
-	 * @param error
-	 *            normalized error of the current step
 	 * @return grow/shrink factor for next step
 	 */
 	protected double computeStepGrowShrinkFactor(final double error) {

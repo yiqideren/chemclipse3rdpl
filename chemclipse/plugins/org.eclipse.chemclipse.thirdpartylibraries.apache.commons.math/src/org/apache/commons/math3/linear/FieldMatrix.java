@@ -245,19 +245,13 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * Example:<br>
 	 * Starting with
 	 *
-	 * <pre>
-	 * 1  2  3  4
-	 * 5  6  7  8
-	 * 9  0  1  2
-	 * </pre>
+	 * 4 5 6 7 8 9 0 1 2
+	 * 
 	 *
 	 * and <code>subMatrix = {{3, 4} {5,6}}</code>, invoking <code>setSubMatrix(subMatrix,1,1))</code> will result in
 	 *
-	 * <pre>
-	 * 1  2  3  4
-	 * 5  3  4  8
-	 * 9  5  6  2
-	 * </pre>
+	 * 4 5 3 4 8 9 5 6 2
+	 * 
 	 *
 	 * </p>
 	 *
@@ -566,9 +560,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor, int, int, int, int)
@@ -590,9 +584,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor, int, int, int, int)
@@ -614,9 +608,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -650,9 +644,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Row order starts at upper left and iterating through all elements of a row from left to right before going to the leftmost element of the next row.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -686,9 +680,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
@@ -710,9 +704,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
@@ -734,9 +728,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -770,9 +764,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * Column order starts at upper left and iterating through all elements of a column from top to bottom before going to the topmost element of the next column.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -806,9 +800,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
@@ -830,9 +824,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixPreservingVisitor)
 	 * @see #walkInRowOrder(FieldMatrixChangingVisitor, int, int, int, int)
@@ -854,9 +848,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow
@@ -890,9 +884,9 @@ public interface FieldMatrix<T extends FieldElement<T>> extends AnyMatrix {
 	 * <p>
 	 * The fastest walking order depends on the exact matrix class. It may be different from traditional row or column orders.
 	 * </p>
+	 * visitor
+	 * visitor used to process all matrix entries
 	 * 
-	 * @param visitor
-	 *            visitor used to process all matrix entries
 	 * @param startRow
 	 *            Initial row index
 	 * @param endRow

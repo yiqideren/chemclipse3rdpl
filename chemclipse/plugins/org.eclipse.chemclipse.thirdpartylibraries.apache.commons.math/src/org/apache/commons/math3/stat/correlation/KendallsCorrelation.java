@@ -32,9 +32,9 @@ import java.util.Comparator;
  * <p>
  * Kendall's Tau-b is defined as:
  * 
- * <pre>
+ * 
  * tau<sub>b</sub> = (n<sub>c</sub> - n<sub>d</sub>) / sqrt((n<sub>0</sub> - n<sub>1</sub>) * (n<sub>0</sub> - n<sub>2</sub>))
- * </pre>
+ * 
  * <p>
  * where:
  * <ul>

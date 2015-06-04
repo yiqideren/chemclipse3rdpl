@@ -141,9 +141,9 @@ public class JacobianMatrices {
 
 	/**
 	 * Register the variational equations for the Jacobians matrices to the expandable set.
+	 * expandable
+	 * expandable set into which variational equations should be registered
 	 * 
-	 * @param expandable
-	 *            expandable set into which variational equations should be registered
 	 * @throws DimensionMismatchException
 	 *             if the dimension of the partial state does not
 	 *             match the selected equations set dimension
@@ -166,9 +166,8 @@ public class JacobianMatrices {
 
 	/**
 	 * Add a parameter Jacobian provider.
-	 * 
-	 * @param provider
-	 *            the parameter Jacobian provider to compute exactly the parameter Jacobian matrix
+	 * provider
+	 * the parameter Jacobian provider to compute exactly the parameter Jacobian matrix
 	 */
 	public void addParameterJacobianProvider(final ParameterJacobianProvider provider) {
 
@@ -177,9 +176,8 @@ public class JacobianMatrices {
 
 	/**
 	 * Set a parameter Jacobian provider.
-	 * 
-	 * @param parameterizedOde
-	 *            the parameterized ODE to compute the parameter Jacobian matrix using finite differences
+	 * parameterizedOde
+	 * the parameterized ODE to compute the parameter Jacobian matrix using finite differences
 	 */
 	public void setParameterizedODE(final ParameterizedODE parameterizedOde) {
 
@@ -199,9 +197,9 @@ public class JacobianMatrices {
 	 * <p>
 	 * A zero value for such a step doesn't enable to compute the parameter Jacobian matrix.
 	 * </p>
+	 * parameter
+	 * parameter to consider for Jacobian processing
 	 * 
-	 * @param parameter
-	 *            parameter to consider for Jacobian processing
 	 * @param hP
 	 *            step for Jacobian finite difference computation w.r.t. the specified parameter
 	 * @see ParameterizedODE
@@ -225,9 +223,9 @@ public class JacobianMatrices {
 	 * <p>
 	 * If this method is not called, the initial value of the Jacobian matrix with respect to state is set to identity.
 	 * </p>
+	 * dYdY0
+	 * initial Jacobian matrix w.r.t. state
 	 * 
-	 * @param dYdY0
-	 *            initial Jacobian matrix w.r.t. state
 	 * @exception DimensionMismatchException
 	 *                if matrix dimensions are incorrect
 	 */
@@ -252,9 +250,9 @@ public class JacobianMatrices {
 	 * <p>
 	 * If this method is not called for some parameter, the initial value of the column of the Jacobian matrix with respect to this parameter is set to zero.
 	 * </p>
+	 * pName
+	 * parameter name
 	 * 
-	 * @param pName
-	 *            parameter name
 	 * @param dYdP
 	 *            initial Jacobian column vector with respect to the parameter
 	 * @exception UnknownParameterException
@@ -283,9 +281,8 @@ public class JacobianMatrices {
 
 	/**
 	 * Get the current value of the Jacobian matrix with respect to state.
-	 * 
-	 * @param dYdY0
-	 *            current Jacobian matrix with respect to state.
+	 * dYdY0
+	 * current Jacobian matrix with respect to state.
 	 */
 	public void getCurrentMainSetJacobian(final double[][] dYdY0) {
 
@@ -300,9 +297,9 @@ public class JacobianMatrices {
 
 	/**
 	 * Get the current value of the Jacobian matrix with respect to one parameter.
+	 * pName
+	 * name of the parameter for the computed Jacobian matrix
 	 * 
-	 * @param pName
-	 *            name of the parameter for the computed Jacobian matrix
 	 * @param dYdP
 	 *            current Jacobian matrix with respect to the named parameter
 	 */
@@ -322,9 +319,9 @@ public class JacobianMatrices {
 
 	/**
 	 * Check array dimensions.
+	 * expected
+	 * expected dimension
 	 * 
-	 * @param expected
-	 *            expected dimension
 	 * @param array
 	 *            (may be null if expected is 0)
 	 * @throws DimensionMismatchException
@@ -473,8 +470,7 @@ public class JacobianMatrices {
 
 	/**
 	 * Special exception for equations mismatch.
-	 * 
-	 * @since 3.1
+	 * 3.1
 	 */
 	public static class MismatchedEquations extends MathIllegalArgumentException {
 

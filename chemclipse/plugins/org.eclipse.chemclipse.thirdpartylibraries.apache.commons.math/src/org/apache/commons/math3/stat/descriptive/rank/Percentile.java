@@ -109,9 +109,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * <li>default NaN strategy: {@link NaNStrategy#REMOVED}</li>
 	 * <li>a Kth Selector : {@link KthSelector}</li>
 	 * </ul>
+	 * quantile
+	 * the quantile
 	 * 
-	 * @param quantile
-	 *            the quantile
 	 * @throws MathIllegalArgumentException
 	 *             if p is not greater than 0 and less
 	 *             than or equal to 100
@@ -202,9 +202,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * <p>
 	 * The stored array is the one which was set by previous calls to {@link #setData(double[])}
 	 * </p>
+	 * p
+	 * the percentile value to compute
 	 * 
-	 * @param p
-	 *            the percentile value to compute
 	 * @return the value of the statistic applied to the stored data
 	 * @throws MathIllegalArgumentException
 	 *             if p is not a valid quantile value
@@ -330,10 +330,8 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	/**
 	 * Select a pivot index as the median of three
 	 * <p>
-	 * <b>Note:</b> With the effect of allowing {@link KthSelector} to be set on {@link Percentile} instances(thus indirectly {@link PivotingStrategy}) this method wont take effect any more and hence is unsupported.
+	 * <b>Note:</b> With the effect of allowing {@link KthSelector} to be set on {@link Percentile} instances(thus indirectly {@link PivotingStrategy}) this method wont take effect any more and hence is unsupported. work data array
 	 * 
-	 * @param work
-	 *            data array
 	 * @param begin
 	 *            index of the first element of the slice
 	 * @param end
@@ -392,9 +390,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 
 	/**
 	 * Copies source to dest.
+	 * source
+	 * Percentile to copy
 	 * 
-	 * @param source
-	 *            Percentile to copy
 	 * @param dest
 	 *            Percentile to copy to
 	 * @exception MathUnsupportedOperationException
@@ -457,9 +455,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	/**
 	 * Make a copy of the array for the slice defined by array part from
 	 * [begin, begin+length)
+	 * values
+	 * the input array
 	 * 
-	 * @param values
-	 *            the input array
 	 * @param begin
 	 *            start index of the array to include
 	 * @param length
@@ -475,9 +473,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	/**
 	 * Replace every occurrence of a given value with a replacement value in a
 	 * copied slice of array defined by array part from [begin, begin+length).
+	 * values
+	 * the input array
 	 * 
-	 * @param values
-	 *            the input array
 	 * @param begin
 	 *            start index of the array to include
 	 * @param length
@@ -500,9 +498,9 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	/**
 	 * Remove the occurrence of a given value in a copied slice of array
 	 * defined by the array part from [begin, begin+length).
+	 * values
+	 * the input array
 	 * 
-	 * @param values
-	 *            the input array
 	 * @param begin
 	 *            start index of the array to include
 	 * @param length
@@ -582,7 +580,6 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * This method is intended to be used as part of a fluent-type builder pattern. Building finely tune instances should be done as follows:
 	 * </p>
 	 * 
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -611,42 +608,13 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * 
 	 * 
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
-	 * </pre>
+	 * Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
 	 * <p>
 	 * If any of the {@code withXxx} method is omitted, the default value for the corresponding customization parameter will be used.
 	 * </p>
+	 * newEstimationType
+	 * estimation type for the new instance
 	 * 
-	 * @param newEstimationType
-	 *            estimation type for the new instance
 	 * @return a new instance, with changed estimation type
 	 * @throws NullArgumentException
 	 *             when newEstimationType is null
@@ -658,8 +626,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 
 	/**
 	 * Get the {@link NaNStrategy NaN Handling} strategy used for computation.
-	 * 
-	 * @return {@code NaN Handling} strategy set during construction
+	 * construction
 	 */
 	public NaNStrategy getNaNStrategy() {
 
@@ -672,7 +639,6 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * This method is intended to be used as part of a fluent-type builder pattern. Building finely tune instances should be done as follows:
 	 * </p>
 	 * 
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -701,42 +667,13 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * 
 	 * 
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
-	 * </pre>
+	 * Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(kthSelector);
 	 * <p>
 	 * If any of the {@code withXxx} method is omitted, the default value for the corresponding customization parameter will be used.
 	 * </p>
+	 * newNaNStrategy
+	 * NaN strategy for the new instance
 	 * 
-	 * @param newNaNStrategy
-	 *            NaN strategy for the new instance
 	 * @return a new instance, with changed NaN handling strategy
 	 * @throws NullArgumentException
 	 *             when newNaNStrategy is null
@@ -748,8 +685,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 
 	/**
 	 * Get the {@link KthSelector kthSelector} used for computation.
-	 * 
-	 * @return the {@code kthSelector} set
+	 * set
 	 */
 	public KthSelector getKthSelector() {
 
@@ -758,8 +694,7 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 
 	/**
 	 * Get the {@link PivotingStrategyInterface} used in KthSelector for computation.
-	 * 
-	 * @return the pivoting strategy set
+	 * set
 	 */
 	public PivotingStrategyInterface getPivotingStrategy() {
 
@@ -772,7 +707,6 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * This method is intended to be used as part of a fluent-type builder pattern. Building finely tune instances should be done as follows:
 	 * </p>
 	 * 
-	 * <pre>
 	 * 
 	 * 
 	 * 
@@ -801,42 +735,13 @@ public class Percentile extends AbstractUnivariateStatistic implements Serializa
 	 * 
 	 * 
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * Percentile customized = new Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(newKthSelector);
-	 * </pre>
+	 * Percentile(quantile).withEstimationType(estimationType).withNaNStrategy(nanStrategy).withKthSelector(newKthSelector);
 	 * <p>
 	 * If any of the {@code withXxx} method is omitted, the default value for the corresponding customization parameter will be used.
 	 * </p>
+	 * newKthSelector
+	 * KthSelector for the new instance
 	 * 
-	 * @param newKthSelector
-	 *            KthSelector for the new instance
 	 * @return a new instance, with changed KthSelector
 	 * @throws NullArgumentException
 	 *             when newKthSelector is null

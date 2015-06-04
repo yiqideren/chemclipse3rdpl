@@ -321,8 +321,7 @@ public class LeastSquaresFactory {
 
 	/**
 	 * A private, "field" immutable (not "real" immutable) implementation of {@link LeastSquaresProblem}.
-	 * 
-	 * @since 3.3
+	 * 3.3
 	 */
 	private static class LocalLeastSquaresProblem extends AbstractOptimizationProblem<Evaluation> implements LeastSquaresProblem {
 

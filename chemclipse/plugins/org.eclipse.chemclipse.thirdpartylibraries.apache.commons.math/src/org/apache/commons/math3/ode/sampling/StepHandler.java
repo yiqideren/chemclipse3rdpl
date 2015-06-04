@@ -36,9 +36,9 @@ public interface StepHandler {
 	 * <p>
 	 * This method is called once at the start of the integration. It may be used by the step handler to initialize some internal data if needed.
 	 * </p>
+	 * t0
+	 * start value of the independent <i>time</i> variable
 	 * 
-	 * @param t0
-	 *            start value of the independent <i>time</i> variable
 	 * @param y0
 	 *            array containing the start value of the state vector
 	 * @param t
@@ -48,17 +48,17 @@ public interface StepHandler {
 
 	/**
 	 * Handle the last accepted step
+	 * interpolator
+	 * interpolator for the last accepted step. For
+	 * efficiency purposes, the various integrators reuse the same
+	 * object on each call, so if the instance wants to keep it across
+	 * all calls (for example to provide at the end of the integration a
+	 * continuous model valid throughout the integration range, as the {@link org.apache.commons.math3.ode.ContinuousOutputModel
+	 * ContinuousOutputModel} class does), it should build a local copy
+	 * using the clone method of the interpolator and store this copy.
+	 * Keeping only a reference to the interpolator and reusing it will
+	 * result in unpredictable behavior (potentially crashing the application).
 	 * 
-	 * @param interpolator
-	 *            interpolator for the last accepted step. For
-	 *            efficiency purposes, the various integrators reuse the same
-	 *            object on each call, so if the instance wants to keep it across
-	 *            all calls (for example to provide at the end of the integration a
-	 *            continuous model valid throughout the integration range, as the {@link org.apache.commons.math3.ode.ContinuousOutputModel
-	 *            ContinuousOutputModel} class does), it should build a local copy
-	 *            using the clone method of the interpolator and store this copy.
-	 *            Keeping only a reference to the interpolator and reusing it will
-	 *            result in unpredictable behavior (potentially crashing the application).
 	 * @param isLast
 	 *            true if the step is the last one
 	 * @exception MaxCountExceededException

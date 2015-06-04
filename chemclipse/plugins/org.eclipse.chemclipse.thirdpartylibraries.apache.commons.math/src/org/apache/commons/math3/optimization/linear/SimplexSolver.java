@@ -49,9 +49,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
 
 	/**
 	 * Build a simplex solver with a specified accepted amount of error
+	 * epsilon
+	 * the amount of error to accept for algorithm convergence
 	 * 
-	 * @param epsilon
-	 *            the amount of error to accept for algorithm convergence
 	 * @param maxUlps
 	 *            amount of error to accept in floating point comparisons
 	 */
@@ -63,9 +63,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
 
 	/**
 	 * Returns the column with the most negative coefficient in the objective function row.
+	 * tableau
+	 * simple tableau for the problem
 	 * 
-	 * @param tableau
-	 *            simple tableau for the problem
 	 * @return column with the most negative coefficient
 	 */
 	private Integer getPivotColumn(SimplexTableau tableau) {
@@ -86,9 +86,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
 
 	/**
 	 * Returns the row with the minimum ratio as given by the minimum ratio test (MRT).
+	 * tableau
+	 * simple tableau for the problem
 	 * 
-	 * @param tableau
-	 *            simple tableau for the problem
 	 * @param col
 	 *            the column to test the ratio of. See {@link #getPivotColumn(SimplexTableau)}
 	 * @return row with the minimum ratio
@@ -162,9 +162,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
 
 	/**
 	 * Runs one iteration of the Simplex method on the given model.
+	 * tableau
+	 * simple tableau for the problem
 	 * 
-	 * @param tableau
-	 *            simple tableau for the problem
 	 * @throws MaxCountExceededException
 	 *             if the maximal iteration count has been exceeded
 	 * @throws UnboundedSolutionException
@@ -192,9 +192,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
 
 	/**
 	 * Solves Phase 1 of the Simplex method.
+	 * tableau
+	 * simple tableau for the problem
 	 * 
-	 * @param tableau
-	 *            simple tableau for the problem
 	 * @throws MaxCountExceededException
 	 *             if the maximal iteration count has been exceeded
 	 * @throws UnboundedSolutionException

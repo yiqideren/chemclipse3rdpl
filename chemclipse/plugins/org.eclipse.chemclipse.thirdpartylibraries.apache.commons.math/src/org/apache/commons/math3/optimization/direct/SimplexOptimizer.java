@@ -68,8 +68,7 @@ public class SimplexOptimizer extends BaseAbstractMultivariateOptimizer<Multivar
 	/**
 	 * Constructor using a default {@link SimpleValueChecker convergence
 	 * checker}.
-	 * 
-	 * @deprecated See {@link SimpleValueChecker#SimpleValueChecker()}
+	 * SimpleValueChecker#SimpleValueChecker()}
 	 */
 	@Deprecated
 	public SimplexOptimizer() {

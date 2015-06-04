@@ -49,9 +49,8 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * both the numerator and denominator.
-	 * 
-	 * @param format
-	 *            the custom format for both the numerator and denominator.
+	 * format
+	 * the custom format for both the numerator and denominator.
 	 */
 	protected AbstractFormat(final NumberFormat format) {
 
@@ -61,9 +60,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 	/**
 	 * Create an improper formatting instance with a custom number format for
 	 * the numerator and a custom number format for the denominator.
+	 * numeratorFormat
+	 * the custom format for the numerator.
 	 * 
-	 * @param numeratorFormat
-	 *            the custom format for the numerator.
 	 * @param denominatorFormat
 	 *            the custom format for the denominator.
 	 */
@@ -76,8 +75,7 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 	/**
 	 * Create a default number format. The default number format is based on {@link NumberFormat#getNumberInstance(java.util.Locale)}. The only
 	 * customization is the maximum number of BigFraction digits, which is set to 0.
-	 * 
-	 * @return the default number format.
+	 * format.
 	 */
 	protected static NumberFormat getDefaultNumberFormat() {
 
@@ -87,9 +85,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 	/**
 	 * Create a default number format. The default number format is based on {@link NumberFormat#getNumberInstance(java.util.Locale)}. The only
 	 * customization is the maximum number of BigFraction digits, which is set to 0.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the default number format specific to the given locale.
 	 */
 	protected static NumberFormat getDefaultNumberFormat(final Locale locale) {
@@ -102,8 +100,7 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Access the denominator format.
-	 * 
-	 * @return the denominator format.
+	 * format.
 	 */
 	public NumberFormat getDenominatorFormat() {
 
@@ -112,8 +109,7 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Access the numerator format.
-	 * 
-	 * @return the numerator format.
+	 * format.
 	 */
 	public NumberFormat getNumeratorFormat() {
 
@@ -122,9 +118,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Modify the denominator format.
+	 * format
+	 * the new denominator format value.
 	 * 
-	 * @param format
-	 *            the new denominator format value.
 	 * @throws NullArgumentException
 	 *             if {@code format} is {@code null}.
 	 */
@@ -138,9 +134,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Modify the numerator format.
+	 * format
+	 * the new numerator format value.
 	 * 
-	 * @param format
-	 *            the new numerator format value.
 	 * @throws NullArgumentException
 	 *             if {@code format} is {@code null}.
 	 */
@@ -154,9 +150,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Parses <code>source</code> until a non-whitespace character is found.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter. On output, <code>pos</code> holds the index of the next non-whitespace character.
 	 */
@@ -168,9 +164,9 @@ public abstract class AbstractFormat extends NumberFormat implements Serializabl
 
 	/**
 	 * Parses <code>source</code> until a non-whitespace character is found.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param pos
 	 *            input/output parsing parameter.
 	 * @return the first non-whitespace character.

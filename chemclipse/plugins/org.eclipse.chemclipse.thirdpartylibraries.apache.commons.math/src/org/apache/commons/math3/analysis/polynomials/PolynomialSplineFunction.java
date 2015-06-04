@@ -166,9 +166,7 @@ public class PolynomialSplineFunction implements UnivariateDifferentiableFunctio
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @since 3.1
+	 * {@inheritDoc} 3.1
 	 */
 	public DerivativeStructure value(final DerivativeStructure t) {
 

@@ -149,9 +149,8 @@ public class PolynomialFunction implements UnivariateDifferentiableFunction, Dif
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} 3.1
 	 * 
-	 * @since 3.1
 	 * @throws NoDataException
 	 *             if {@code coefficients} is empty.
 	 * @throws NullArgumentException

@@ -66,9 +66,9 @@ public class FieldHermiteInterpolator<T extends FieldElement<T>> {
 	 * <p>
 	 * The point abscissae for all calls <em>must</em> be different.
 	 * </p>
+	 * x
+	 * abscissa of the sample point
 	 * 
-	 * @param x
-	 *            abscissa of the sample point
 	 * @param value
 	 *            value and derivatives of the sample point
 	 *            (if only one row is passed, it is the value, if two rows are
@@ -122,9 +122,9 @@ public class FieldHermiteInterpolator<T extends FieldElement<T>> {
 
 	/**
 	 * Interpolate value at a specified abscissa.
+	 * x
+	 * interpolation abscissa
 	 * 
-	 * @param x
-	 *            interpolation abscissa
 	 * @return interpolated value
 	 * @exception NoDataException
 	 *                if sample is empty
@@ -153,9 +153,9 @@ public class FieldHermiteInterpolator<T extends FieldElement<T>> {
 
 	/**
 	 * Interpolate value and first derivatives at a specified abscissa.
+	 * x
+	 * interpolation abscissa
 	 * 
-	 * @param x
-	 *            interpolation abscissa
 	 * @param order
 	 *            maximum derivation order
 	 * @return interpolated value and derivatives (value in row 0,

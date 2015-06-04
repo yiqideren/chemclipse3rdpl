@@ -71,58 +71,10 @@ final class SnappyFramed {
 	 * 0xa282ead8 (using wraparound as normal for unsigned integers). This is
 	 * equivalent to the following C code:
 	 * 
-	 * <pre>
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * uint32_t mask_checksum(uint32_t x) {
 	 * 
-	 * 	return ((x &gt;&gt; 15) | (x &lt;&lt; 17)) + 0xa282ead8;
+	 * return ((x &gt;&gt; 15) | (x &lt;&lt; 17)) + 0xa282ead8;
 	 * }
-	 * </pre>
 	 */
 	public static int mask(int crc) {
 

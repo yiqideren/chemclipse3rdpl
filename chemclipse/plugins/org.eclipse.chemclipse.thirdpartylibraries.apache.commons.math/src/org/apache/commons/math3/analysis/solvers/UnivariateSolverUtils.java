@@ -92,11 +92,11 @@ public class UnivariateSolverUtils {
 	/**
 	 * Force a root found by a non-bracketing solver to lie on a specified side,
 	 * as if the solver was a bracketing one.
+	 * maxEval
+	 * maximal number of new evaluations of the function
+	 * (evaluations already done for finding the root should have already been subtracted
+	 * from this number)
 	 * 
-	 * @param maxEval
-	 *            maximal number of new evaluations of the function
-	 *            (evaluations already done for finding the root should have already been subtracted
-	 *            from this number)
 	 * @param f
 	 *            function to solve
 	 * @param bracketing
@@ -202,9 +202,9 @@ public class UnivariateSolverUtils {
 
 	/**
 	 * This method simply calls {@link #bracket(UnivariateFunction, double, double, double, double, double, int) bracket(function, initial, lowerBound, upperBound, q, r, maximumIterations)} with {@code q} and {@code r} set to 1.0.
+	 * function
+	 * Function.
 	 * 
-	 * @param function
-	 *            Function.
 	 * @param initial
 	 *            Initial midpoint of interval being expanded to
 	 *            bracket a root.
@@ -258,9 +258,9 @@ public class UnivariateSolverUtils {
 	 * As an example, if we consider the trivial function {@code f(x) = 1 - x} and use {@code initial = 4}, {@code r = 1}, {@code q = 2}, the algorithm will compute {@code f(4-2) = f(2) = -1} and {@code f(4+2) = f(6) = -5} for {@code k = 1}, then {@code f(4-4) = f(0) = +1} and {@code f(4+4) = f(8) = -7} for {@code k = 2}. Then it will return the interval {@code [0, 2]} as the smallest one known to be bracketing the root. As shown by this example, the initial value (here {@code 4}) may lie
 	 * outside of the returned bracketing interval.
 	 * </p>
+	 * function
+	 * function to check
 	 * 
-	 * @param function
-	 *            function to check
 	 * @param initial
 	 *            Initial midpoint of interval being expanded to
 	 *            bracket a root.

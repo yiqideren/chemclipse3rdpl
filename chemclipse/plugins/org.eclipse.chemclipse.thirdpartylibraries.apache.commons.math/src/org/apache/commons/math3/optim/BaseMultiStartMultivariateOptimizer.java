@@ -60,9 +60,9 @@ public abstract class BaseMultiStartMultivariateOptimizer<PAIR> extends BaseMult
 	 * Note that if there are bounds constraints (see {@link #getLowerBound()} and {@link #getUpperBound()}), then a simple rejection algorithm is used at each restart. This implies that the random vector generator should have a good probability to generate vectors in the bounded domain, otherwise the rejection algorithm will hit the {@link #getMaxEvaluations()} count without generating a proper restart point. Users must be take great care of the <a
 	 * href="http://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a>.
 	 * </p>
+	 * optimizer
+	 * Single-start optimizer to wrap.
 	 * 
-	 * @param optimizer
-	 *            Single-start optimizer to wrap.
 	 * @param starts
 	 *            Number of starts to perform. If {@code starts == 1},
 	 *            the {@link #optimize(OptimizationData[]) optimize} will return the

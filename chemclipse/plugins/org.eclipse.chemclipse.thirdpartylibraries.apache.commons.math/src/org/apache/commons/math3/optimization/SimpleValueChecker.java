@@ -47,8 +47,7 @@ public class SimpleValueChecker extends AbstractConvergenceChecker<PointValuePai
 
 	/**
 	 * Build an instance with default thresholds.
-	 * 
-	 * @deprecated See {@link AbstractConvergenceChecker#AbstractConvergenceChecker()}
+	 * AbstractConvergenceChecker#AbstractConvergenceChecker()}
 	 */
 	@Deprecated
 	public SimpleValueChecker() {

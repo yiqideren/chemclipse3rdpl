@@ -53,9 +53,8 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Build an expandable set from its primary ODE set.
-	 * 
-	 * @param primary
-	 *            the primary set of differential equations to be integrated.
+	 * primary
+	 * the primary set of differential equations to be integrated.
 	 */
 	public ExpandableStatefulODE(final FirstOrderDifferentialEquations primary) {
 
@@ -70,8 +69,7 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get the primary set of differential equations.
-	 * 
-	 * @return primary set of differential equations
+	 * equations
 	 */
 	public FirstOrderDifferentialEquations getPrimary() {
 
@@ -83,8 +81,7 @@ public class ExpandableStatefulODE {
 	 * <p>
 	 * The complete set of equations correspond to the primary set plus all secondary sets.
 	 * </p>
-	 * 
-	 * @return dimension of the complete set of equations
+	 * equations
 	 */
 	public int getTotalDimension() {
 
@@ -100,9 +97,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get the current time derivative of the complete state vector.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the complete state vector
 	 * @param yDot
@@ -128,9 +125,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Add a set of secondary equations to be integrated along with the primary set.
+	 * secondary
+	 * secondary equations set
 	 * 
-	 * @param secondary
-	 *            secondary equations set
 	 * @return index of the secondary equation in the expanded state
 	 */
 	public int addSecondaryEquations(final SecondaryEquations secondary) {
@@ -150,8 +147,8 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get an equations mapper for the primary equations set.
+	 * set
 	 * 
-	 * @return mapper for the primary set
 	 * @see #getSecondaryMappers()
 	 */
 	public EquationsMapper getPrimaryMapper() {
@@ -161,8 +158,8 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get the equations mappers for the secondary equations sets.
+	 * sets
 	 * 
-	 * @return equations mappers for the secondary equations sets
 	 * @see #getPrimaryMapper()
 	 */
 	public EquationsMapper[] getSecondaryMappers() {
@@ -176,9 +173,8 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Set current time.
-	 * 
-	 * @param time
-	 *            current time
+	 * time
+	 * current time
 	 */
 	public void setTime(final double time) {
 
@@ -187,8 +183,7 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get current time.
-	 * 
-	 * @return current time
+	 * time
 	 */
 	public double getTime() {
 
@@ -197,9 +192,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Set primary part of the current state.
+	 * primaryState
+	 * primary part of the current state
 	 * 
-	 * @param primaryState
-	 *            primary part of the current state
 	 * @throws DimensionMismatchException
 	 *             if the dimension of the array does not
 	 *             match the primary set
@@ -216,8 +211,7 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get primary part of the current state.
-	 * 
-	 * @return primary part of the current state
+	 * state
 	 */
 	public double[] getPrimaryState() {
 
@@ -226,8 +220,7 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get primary part of the current state derivative.
-	 * 
-	 * @return primary part of the current state derivative
+	 * derivative
 	 */
 	public double[] getPrimaryStateDot() {
 
@@ -236,9 +229,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Set secondary part of the current state.
+	 * index
+	 * index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param index
-	 *            index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * @param secondaryState
 	 *            secondary part of the current state
 	 * @throws DimensionMismatchException
@@ -259,9 +252,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get secondary part of the current state.
+	 * index
+	 * index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param index
-	 *            index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * @return secondary part of the current state
 	 */
 	public double[] getSecondaryState(final int index) {
@@ -271,9 +264,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get secondary part of the current state derivative.
+	 * index
+	 * index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * 
-	 * @param index
-	 *            index of the part to set as returned by {@link #addSecondaryEquations(SecondaryEquations)}
 	 * @return secondary part of the current state derivative
 	 */
 	public double[] getSecondaryStateDot(final int index) {
@@ -283,9 +276,9 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Set the complete current state.
+	 * completeState
+	 * complete current state to copy data from
 	 * 
-	 * @param completeState
-	 *            complete current state to copy data from
 	 * @throws DimensionMismatchException
 	 *             if the dimension of the complete state does not
 	 *             match the complete equations sets dimension
@@ -305,8 +298,8 @@ public class ExpandableStatefulODE {
 
 	/**
 	 * Get the complete current state.
+	 * state
 	 * 
-	 * @return complete current state
 	 * @throws DimensionMismatchException
 	 *             if the dimension of the complete state does not
 	 *             match the complete equations sets dimension

@@ -31,9 +31,9 @@ public class NotARotationMatrixException extends MathIllegalArgumentException {
 	/**
 	 * Simple constructor.
 	 * Build an exception by translating and formating a message
+	 * specifier
+	 * format specifier (to be translated)
 	 * 
-	 * @param specifier
-	 *            format specifier (to be translated)
 	 * @param parts
 	 *            to insert in the format (no translation)
 	 * @since 2.2

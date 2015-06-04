@@ -159,8 +159,7 @@ public class KMeansPlusPlusClusterer<T extends Clusterable> extends Clusterer<T>
 
 	/**
 	 * Return the number of clusters this instance will use.
-	 * 
-	 * @return the number of clusters
+	 * clusters
 	 */
 	public int getK() {
 
@@ -169,8 +168,7 @@ public class KMeansPlusPlusClusterer<T extends Clusterable> extends Clusterer<T>
 
 	/**
 	 * Returns the maximum number of iterations this instance will use.
-	 * 
-	 * @return the maximum number of iterations, or -1 if no maximum is set
+	 * set
 	 */
 	public int getMaxIterations() {
 
@@ -179,8 +177,7 @@ public class KMeansPlusPlusClusterer<T extends Clusterable> extends Clusterer<T>
 
 	/**
 	 * Returns the random generator this instance will use.
-	 * 
-	 * @return the random generator
+	 * generator
 	 */
 	public RandomGenerator getRandomGenerator() {
 
@@ -189,8 +186,7 @@ public class KMeansPlusPlusClusterer<T extends Clusterable> extends Clusterer<T>
 
 	/**
 	 * Returns the {@link EmptyClusterStrategy} used by this instance.
-	 * 
-	 * @return the {@link EmptyClusterStrategy}
+	 * EmptyClusterStrategy}
 	 */
 	public EmptyClusterStrategy getEmptyClusterStrategy() {
 

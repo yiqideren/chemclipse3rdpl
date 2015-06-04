@@ -45,9 +45,9 @@ public interface Embedding<S extends Space, T extends Space> {
 
 	/**
 	 * Transform a space point into a sub-space point.
+	 * point
+	 * n-dimension point of the space
 	 * 
-	 * @param point
-	 *            n-dimension point of the space
 	 * @return (n-1)-dimension point of the sub-space corresponding to
 	 *         the specified space point
 	 * @see #toSpace
@@ -56,9 +56,9 @@ public interface Embedding<S extends Space, T extends Space> {
 
 	/**
 	 * Transform a sub-space point into a space point.
+	 * point
+	 * (n-1)-dimension point of the sub-space
 	 * 
-	 * @param point
-	 *            (n-1)-dimension point of the sub-space
 	 * @return n-dimension point of the space corresponding to the
 	 *         specified sub-space point
 	 * @see #toSubSpace

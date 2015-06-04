@@ -25,8 +25,8 @@ public interface Parameterizable {
 
 	/**
 	 * Get the names of the supported parameters.
+	 * names
 	 * 
-	 * @return parameters names
 	 * @see #isSupported(String)
 	 */
 	Collection<String> getParametersNames();
@@ -36,9 +36,9 @@ public interface Parameterizable {
 	 * <p>
 	 * Supported parameters are those listed by {@link #getParametersNames()}.
 	 * </p>
+	 * name
+	 * parameter name to check
 	 * 
-	 * @param name
-	 *            parameter name to check
 	 * @return true if the parameter is supported
 	 * @see #getParametersNames()
 	 */

@@ -43,9 +43,8 @@ public class NodesSet<S extends Space> implements Iterable<BSPTree<S>> {
 
 	/**
 	 * Add a node if not already known.
-	 * 
-	 * @param node
-	 *            node to add
+	 * node
+	 * node to add
 	 */
 	public void add(final BSPTree<S> node) {
 
@@ -61,9 +60,8 @@ public class NodesSet<S extends Space> implements Iterable<BSPTree<S>> {
 
 	/**
 	 * Add nodes if they are not already known.
-	 * 
-	 * @param iterator
-	 *            nodes iterator
+	 * iterator
+	 * nodes iterator
 	 */
 	public void addAll(final Iterable<BSPTree<S>> iterator) {
 

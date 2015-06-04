@@ -31,9 +31,9 @@ public class Interval {
 
 	/**
 	 * Simple constructor.
+	 * lower
+	 * lower bound of the interval
 	 * 
-	 * @param lower
-	 *            lower bound of the interval
 	 * @param upper
 	 *            upper bound of the interval
 	 */
@@ -45,8 +45,8 @@ public class Interval {
 
 	/**
 	 * Get the lower bound of the interval.
+	 * interval
 	 * 
-	 * @return lower bound of the interval
 	 * @since 3.1
 	 */
 	public double getInf() {
@@ -56,8 +56,8 @@ public class Interval {
 
 	/**
 	 * Get the lower bound of the interval.
+	 * interval
 	 * 
-	 * @return lower bound of the interval
 	 * @deprecated as of 3.1, replaced by {@link #getInf()}
 	 */
 	@Deprecated
@@ -68,8 +68,8 @@ public class Interval {
 
 	/**
 	 * Get the upper bound of the interval.
+	 * interval
 	 * 
-	 * @return upper bound of the interval
 	 * @since 3.1
 	 */
 	public double getSup() {
@@ -79,8 +79,8 @@ public class Interval {
 
 	/**
 	 * Get the upper bound of the interval.
+	 * interval
 	 * 
-	 * @return upper bound of the interval
 	 * @deprecated as of 3.1, replaced by {@link #getSup()}
 	 */
 	@Deprecated
@@ -91,8 +91,8 @@ public class Interval {
 
 	/**
 	 * Get the size of the interval.
+	 * interval
 	 * 
-	 * @return size of the interval
 	 * @since 3.1
 	 */
 	public double getSize() {
@@ -102,8 +102,8 @@ public class Interval {
 
 	/**
 	 * Get the length of the interval.
+	 * interval
 	 * 
-	 * @return length of the interval
 	 * @deprecated as of 3.1, replaced by {@link #getSize()}
 	 */
 	@Deprecated
@@ -114,8 +114,8 @@ public class Interval {
 
 	/**
 	 * Get the barycenter of the interval.
+	 * interval
 	 * 
-	 * @return barycenter of the interval
 	 * @since 3.1
 	 */
 	public double getBarycenter() {
@@ -125,8 +125,8 @@ public class Interval {
 
 	/**
 	 * Get the midpoint of the interval.
+	 * interval
 	 * 
-	 * @return midpoint of the interval
 	 * @deprecated as of 3.1, replaced by {@link #getBarycenter()}
 	 */
 	@Deprecated
@@ -137,9 +137,9 @@ public class Interval {
 
 	/**
 	 * Check a point with respect to the interval.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @param tolerance
 	 *            tolerance below which points are considered to
 	 *            belong to the boundary

@@ -35,8 +35,7 @@ public class CompositeFormat {
 	/**
 	 * Create a default number format. The default number format is based on {@link NumberFormat#getInstance()} with the only customizing that the
 	 * maximum number of fraction digits is set to 10.
-	 * 
-	 * @return the default number format.
+	 * format.
 	 */
 	public static NumberFormat getDefaultNumberFormat() {
 
@@ -46,9 +45,9 @@ public class CompositeFormat {
 	/**
 	 * Create a default number format. The default number format is based on {@link NumberFormat#getInstance(java.util.Locale)} with the only
 	 * customizing that the maximum number of fraction digits is set to 10.
+	 * locale
+	 * the specific locale used by the format.
 	 * 
-	 * @param locale
-	 *            the specific locale used by the format.
 	 * @return the default number format specific to the given locale.
 	 */
 	public static NumberFormat getDefaultNumberFormat(final Locale locale) {
@@ -162,9 +161,9 @@ public class CompositeFormat {
 
 	/**
 	 * Parse <code>source</code> for an expected fixed string.
+	 * source
+	 * the string to parse
 	 * 
-	 * @param source
-	 *            the string to parse
 	 * @param expected
 	 *            expected string
 	 * @param pos

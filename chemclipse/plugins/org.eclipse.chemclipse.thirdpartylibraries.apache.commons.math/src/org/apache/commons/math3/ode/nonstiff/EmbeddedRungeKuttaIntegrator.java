@@ -28,16 +28,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * These methods are embedded explicit Runge-Kutta methods with two sets of coefficients allowing to estimate the error, their Butcher arrays are as follows :
  * 
- * <pre>
- *    0  |
- *   c2  | a21
- *   c3  | a31  a32
- *   ... |        ...
- *   cs  | as1  as2  ...  ass-1
- *       |--------------------------
- *       |  b1   b2  ...   bs-1  bs
- *       |  b'1  b'2 ...   b's-1 b's
- * </pre>
+ * 
+ * 0 | c2 | a21 c3 | a31 a32 ... | ... cs | as1 as2 ... ass-1 |-------------------------- | b1 b2 ... bs-1 bs | b'1 b'2 ... b's-1 b's
+ * 
  * 
  * </p>
  *
@@ -75,9 +68,9 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Build a Runge-Kutta integrator with the given Butcher array.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param fsal
 	 *            indicate that the method is an <i>fsal</i>
 	 * @param c
@@ -118,9 +111,9 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Build a Runge-Kutta integrator with the given Butcher array.
+	 * name
+	 * name of the method
 	 * 
-	 * @param name
-	 *            name of the method
 	 * @param fsal
 	 *            indicate that the method is an <i>fsal</i>
 	 * @param c
@@ -159,15 +152,13 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Get the order of the method.
-	 * 
-	 * @return order of the method
+	 * method
 	 */
 	public abstract int getOrder();
 
 	/**
 	 * Get the safety factor for stepsize control.
-	 * 
-	 * @return safety factor
+	 * factor
 	 */
 	public double getSafety() {
 
@@ -176,9 +167,8 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Set the safety factor for stepsize control.
-	 * 
-	 * @param safety
-	 *            safety factor
+	 * safety
+	 * safety factor
 	 */
 	public void setSafety(final double safety) {
 
@@ -304,8 +294,7 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Get the minimal reduction factor for stepsize control.
-	 * 
-	 * @return minimal reduction factor
+	 * factor
 	 */
 	public double getMinReduction() {
 
@@ -314,9 +303,8 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Set the minimal reduction factor for stepsize control.
-	 * 
-	 * @param minReduction
-	 *            minimal reduction factor
+	 * minReduction
+	 * minimal reduction factor
 	 */
 	public void setMinReduction(final double minReduction) {
 
@@ -325,8 +313,7 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Get the maximal growth factor for stepsize control.
-	 * 
-	 * @return maximal growth factor
+	 * factor
 	 */
 	public double getMaxGrowth() {
 
@@ -335,9 +322,8 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Set the maximal growth factor for stepsize control.
-	 * 
-	 * @param maxGrowth
-	 *            maximal growth factor
+	 * maxGrowth
+	 * maximal growth factor
 	 */
 	public void setMaxGrowth(final double maxGrowth) {
 
@@ -346,9 +332,9 @@ public abstract class EmbeddedRungeKuttaIntegrator extends AdaptiveStepsizeInteg
 
 	/**
 	 * Compute the error ratio.
+	 * yDotK
+	 * derivatives computed during the first stages
 	 * 
-	 * @param yDotK
-	 *            derivatives computed during the first stages
 	 * @param y0
 	 *            estimate of the step at the start of the step
 	 * @param y1

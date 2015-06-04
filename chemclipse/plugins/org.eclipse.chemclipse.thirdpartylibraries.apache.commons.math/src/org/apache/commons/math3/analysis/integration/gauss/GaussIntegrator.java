@@ -112,9 +112,9 @@ public class GaussIntegrator {
 	/**
 	 * Gets the integration point at the given index.
 	 * The index must be in the valid range but no check is performed.
+	 * index
+	 * index of the integration point
 	 * 
-	 * @param index
-	 *            index of the integration point
 	 * @return the integration point.
 	 */
 	public double getPoint(int index) {
@@ -125,9 +125,9 @@ public class GaussIntegrator {
 	/**
 	 * Gets the weight of the integration point at the given index.
 	 * The index must be in the valid range but no check is performed.
+	 * index
+	 * index of the integration point
 	 * 
-	 * @param index
-	 *            index of the integration point
 	 * @return the weight.
 	 */
 	public double getWeight(int index) {

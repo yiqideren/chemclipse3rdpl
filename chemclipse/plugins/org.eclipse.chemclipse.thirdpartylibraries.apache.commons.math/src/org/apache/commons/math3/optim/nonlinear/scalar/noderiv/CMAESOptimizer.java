@@ -94,8 +94,7 @@ public class CMAESOptimizer extends MultivariateOptimizer {
 	 * diagonalOnly = 1 means keeping the covariance matrix always diagonal and
 	 * this setting also exhibits linear space complexity. This can be
 	 * particularly useful for dimension > 100.
-	 * 
-	 * @see <a href="http://hal.archives-ouvertes.fr/inria-00287367/en">A Simple Modification in CMA-ES</a>
+	 * CMA-ES</a>
 	 */
 	private int diagonalOnly;
 	/** Number of objective variables/problem dimension */

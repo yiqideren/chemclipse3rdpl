@@ -856,9 +856,9 @@ public final class ArithmeticUtils {
 	 * <p>
 	 * The preconditions are {@code 0 <= k <= n } (otherwise {@code NotPositiveException} is thrown)
 	 * </p>
+	 * n
+	 * the size of the set
 	 * 
-	 * @param n
-	 *            the size of the set
 	 * @param k
 	 *            the number of non-empty subsets
 	 * @return {@code S(n,k)}

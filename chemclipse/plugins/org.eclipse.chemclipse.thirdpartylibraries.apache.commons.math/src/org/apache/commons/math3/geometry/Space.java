@@ -28,15 +28,14 @@ public interface Space extends Serializable {
 
 	/**
 	 * Get the dimension of the space.
-	 * 
-	 * @return dimension of the space
+	 * space
 	 */
 	int getDimension();
 
 	/**
 	 * Get the n-1 dimension subspace of this space.
+	 * space
 	 * 
-	 * @return n-1 dimension sub-space of this space
 	 * @see #getDimension()
 	 * @exception MathUnsupportedOperationException
 	 *                for dimension-1 spaces

@@ -34,16 +34,15 @@ public interface SecondaryEquations {
 
 	/**
 	 * Get the dimension of the secondary state parameters.
-	 * 
-	 * @return dimension of the secondary state parameters
+	 * parameters
 	 */
 	int getDimension();
 
 	/**
 	 * Compute the derivatives related to the secondary state parameters.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param primary
 	 *            array containing the current value of the primary state vector
 	 * @param primaryDot

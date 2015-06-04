@@ -65,9 +65,9 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 
 	/**
 	 * Calculates the LU-decomposition of the given matrix.
+	 * matrix
+	 * The matrix to decompose.
 	 * 
-	 * @param matrix
-	 *            The matrix to decompose.
 	 * @throws NonSquareMatrixException
 	 *             if matrix is not square
 	 */
@@ -147,8 +147,7 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 	 * <p>
 	 * L is a lower-triangular matrix
 	 * </p>
-	 * 
-	 * @return the L matrix (or null if decomposed matrix is singular)
+	 * singular)
 	 */
 	public FieldMatrix<T> getL() {
 
@@ -171,8 +170,7 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 	 * <p>
 	 * U is an upper-triangular matrix
 	 * </p>
-	 * 
-	 * @return the U matrix (or null if decomposed matrix is singular)
+	 * singular)
 	 */
 	public FieldMatrix<T> getU() {
 
@@ -198,8 +196,8 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 	 * The positions of the 1 elements are given by the {@link #getPivot()
 	 * pivot permutation vector}.
 	 * </p>
+	 * singular)
 	 * 
-	 * @return the P rows permutation matrix (or null if decomposed matrix is singular)
 	 * @see #getPivot()
 	 */
 	public FieldMatrix<T> getP() {
@@ -216,8 +214,8 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 
 	/**
 	 * Returns the pivot permutation vector.
+	 * vector
 	 * 
-	 * @return the pivot permutation vector
 	 * @see #getP()
 	 */
 	public int[] getPivot() {
@@ -227,8 +225,7 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 
 	/**
 	 * Return the determinant of the matrix.
-	 * 
-	 * @return determinant of the matrix
+	 * matrix
 	 */
 	public T getDeterminant() {
 
@@ -246,8 +243,7 @@ public class FieldLUDecomposition<T extends FieldElement<T>> {
 
 	/**
 	 * Get a solver for finding the A &times; X = B solution in exact linear sense.
-	 * 
-	 * @return a solver
+	 * solver
 	 */
 	public FieldDecompositionSolver<T> getSolver() {
 

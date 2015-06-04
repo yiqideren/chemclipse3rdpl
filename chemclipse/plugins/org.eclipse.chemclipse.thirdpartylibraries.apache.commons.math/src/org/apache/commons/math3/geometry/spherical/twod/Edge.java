@@ -41,9 +41,9 @@ public class Edge {
 
 	/**
 	 * Build an edge not contained in any node yet.
+	 * start
+	 * start vertex
 	 * 
-	 * @param start
-	 *            start vertex
 	 * @param end
 	 *            end vertex
 	 * @param length
@@ -64,8 +64,7 @@ public class Edge {
 
 	/**
 	 * Get start vertex.
-	 * 
-	 * @return start vertex
+	 * vertex
 	 */
 	public Vertex getStart() {
 
@@ -74,8 +73,7 @@ public class Edge {
 
 	/**
 	 * Get end vertex.
-	 * 
-	 * @return end vertex
+	 * vertex
 	 */
 	public Vertex getEnd() {
 
@@ -84,8 +82,7 @@ public class Edge {
 
 	/**
 	 * Get the length of the arc.
-	 * 
-	 * @return length of the arc (can be greater than \( \pi \))
+	 * \))
 	 */
 	public double getLength() {
 
@@ -94,8 +91,7 @@ public class Edge {
 
 	/**
 	 * Get the circle supporting this edge.
-	 * 
-	 * @return circle supporting this edge
+	 * edge
 	 */
 	public Circle getCircle() {
 
@@ -107,9 +103,9 @@ public class Edge {
 	 * <p>
 	 * The angle along the edge should normally be between 0 and {@link #getLength()} in order to remain within edge limits. However, there are no checks on the value of the angle, so user can rebuild the full circle on which an edge is defined if they want.
 	 * </p>
+	 * alpha
+	 * angle along the edge, counted from {@link #getStart()}
 	 * 
-	 * @param alpha
-	 *            angle along the edge, counted from {@link #getStart()}
 	 * @return an intermediate point
 	 */
 	public Vector3D getPointAt(final double alpha) {
@@ -119,9 +115,8 @@ public class Edge {
 
 	/**
 	 * Connect the instance with a following edge.
-	 * 
-	 * @param next
-	 *            edge following the instance
+	 * next
+	 * edge following the instance
 	 */
 	void setNextEdge(final Edge next) {
 
@@ -135,9 +130,9 @@ public class Edge {
 	 * <p>
 	 * Once split, this edge is not referenced anymore by the vertices, it is replaced by the two or three sub-edges and intermediate splitting vertices are introduced to connect these sub-edges together.
 	 * </p>
+	 * splitCircle
+	 * circle splitting the edge in several parts
 	 * 
-	 * @param splitCircle
-	 *            circle splitting the edge in several parts
 	 * @param outsideList
 	 *            list where to put parts that are outside of the split circle
 	 * @param insideList
@@ -198,9 +193,9 @@ public class Edge {
 	 * <p>
 	 * If the length of the sub-edge to add is smaller than the {@link Circle#getTolerance()} tolerance of the support circle, it will be ignored.
 	 * </p>
+	 * subStart
+	 * start of the sub-edge
 	 * 
-	 * @param subStart
-	 *            start of the sub-edge
 	 * @param subEnd
 	 *            end of the sub-edge
 	 * @param subLength

@@ -944,9 +944,9 @@ public final class StatUtils {
 	/**
 	 * Private helper method.
 	 * Assumes parameters have been validated.
+	 * values
+	 * input data
 	 * 
-	 * @param values
-	 *            input data
 	 * @param begin
 	 *            index (0-based) of the first array element to include
 	 * @param length

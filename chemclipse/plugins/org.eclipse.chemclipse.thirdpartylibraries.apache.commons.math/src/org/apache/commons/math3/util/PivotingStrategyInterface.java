@@ -29,9 +29,9 @@ public interface PivotingStrategyInterface {
 	/**
 	 * Find pivot index of the array so that partition and K<sup>th</sup>
 	 * element selection can be made
+	 * work
+	 * data array
 	 * 
-	 * @param work
-	 *            data array
 	 * @param begin
 	 *            index of the first element of the slice
 	 * @param end

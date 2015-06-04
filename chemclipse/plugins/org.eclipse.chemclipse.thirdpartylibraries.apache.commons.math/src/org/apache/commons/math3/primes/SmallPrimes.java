@@ -45,9 +45,9 @@ class SmallPrimes {
 
 	/**
 	 * Extract small factors.
+	 * n
+	 * the number to factor, must be &gt; 0.
 	 * 
-	 * @param n
-	 *            the number to factor, must be &gt; 0.
 	 * @param factors
 	 *            the list where to add the factors.
 	 * @return the part of n which remains to be factored, it is either a prime or a semi-prime
@@ -65,9 +65,9 @@ class SmallPrimes {
 
 	/**
 	 * Extract factors in the range <code>PRIME_LAST+2</code> to <code>maxFactors</code>.
+	 * n
+	 * the number to factorize, must be >= PRIME_LAST+2 and must not contain any factor below PRIME_LAST+2
 	 * 
-	 * @param n
-	 *            the number to factorize, must be >= PRIME_LAST+2 and must not contain any factor below PRIME_LAST+2
 	 * @param maxFactor
 	 *            the upper bound of trial division: if it is reached, the method gives up and returns n.
 	 * @param factors
@@ -100,9 +100,9 @@ class SmallPrimes {
 
 	/**
 	 * Factorization by trial division.
+	 * n
+	 * the number to factor
 	 * 
-	 * @param n
-	 *            the number to factor
 	 * @return the list of prime factors of n
 	 */
 	public static List<Integer> trialDivision(int n) {

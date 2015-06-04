@@ -32,8 +32,7 @@ public class TDistribution extends AbstractRealDistribution {
 
 	/**
 	 * Default inverse cumulative probability accuracy.
-	 * 
-	 * @since 2.1
+	 * 2.1
 	 */
 	public static final double DEFAULT_INVERSE_ABSOLUTE_ACCURACY = 1e-9;
 	/** Serializable version identifier */

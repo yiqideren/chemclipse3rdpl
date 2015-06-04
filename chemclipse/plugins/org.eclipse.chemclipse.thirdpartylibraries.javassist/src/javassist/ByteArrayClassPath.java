@@ -25,11 +25,9 @@ import java.net.MalformedURLException;
  * <p>
  * For example, if you want to convert a byte array <code>b</code> into a <code>CtClass</code> object representing the class with a name <code>classname</code>, then do as following:
  *
- * <pre>
- * ClassPool cp = ClassPool.getDefault();
- * cp.insertClassPath(new ByteArrayClassPath(classname, b));
- * CtClass cc = cp.get(classname);
- * </pre>
+ * 
+ * ClassPool cp = ClassPool.getDefault(); cp.insertClassPath(new ByteArrayClassPath(classname, b)); CtClass cc = cp.get(classname);
+ * 
  *
  * <p>
  * The <code>ClassPool</code> object <code>cp</code> uses the created <code>ByteArrayClassPath</code> object as the source of the class file.

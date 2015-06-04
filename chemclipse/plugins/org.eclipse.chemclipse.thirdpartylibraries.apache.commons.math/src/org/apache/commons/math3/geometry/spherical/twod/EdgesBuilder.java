@@ -47,9 +47,9 @@ class EdgesBuilder implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Simple constructor.
+	 * root
+	 * tree root
 	 * 
-	 * @param root
-	 *            tree root
 	 * @param tolerance
 	 *            below which points are consider to be identical
 	 */
@@ -88,9 +88,9 @@ class EdgesBuilder implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Add the contribution of a boundary edge.
+	 * sub
+	 * boundary facet
 	 * 
-	 * @param sub
-	 *            boundary facet
 	 * @param reversed
 	 *            if true, the facet has the inside on its plus side
 	 * @param node
@@ -118,9 +118,9 @@ class EdgesBuilder implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Get the edge that should naturally follow another one.
+	 * previous
+	 * edge to be continued
 	 * 
-	 * @param previous
-	 *            edge to be continued
 	 * @return other edge, starting where the previous one ends (they
 	 *         have not been connected yet)
 	 * @exception MathIllegalStateException
@@ -160,8 +160,8 @@ class EdgesBuilder implements BSPTreeVisitor<Sphere2D> {
 
 	/**
 	 * Get the boundary edges.
+	 * edges
 	 * 
-	 * @return boundary edges
 	 * @exception MathIllegalStateException
 	 *                if there is not a single other edge
 	 */

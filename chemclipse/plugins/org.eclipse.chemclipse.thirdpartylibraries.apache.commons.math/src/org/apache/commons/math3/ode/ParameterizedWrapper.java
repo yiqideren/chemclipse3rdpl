@@ -32,9 +32,8 @@ class ParameterizedWrapper implements ParameterizedODE {
 
 	/**
 	 * Simple constructor.
-	 * 
-	 * @param ode
-	 *            original first order differential equations
+	 * ode
+	 * original first order differential equations
 	 */
 	public ParameterizedWrapper(final FirstOrderDifferentialEquations ode) {
 
@@ -43,8 +42,7 @@ class ParameterizedWrapper implements ParameterizedODE {
 
 	/**
 	 * Get the dimension of the underlying FODE.
-	 * 
-	 * @return dimension of the underlying FODE
+	 * FODE
 	 */
 	public int getDimension() {
 
@@ -53,9 +51,9 @@ class ParameterizedWrapper implements ParameterizedODE {
 
 	/**
 	 * Get the current time derivative of the state vector of the underlying FODE.
+	 * t
+	 * current value of the independent <I>time</I> variable
 	 * 
-	 * @param t
-	 *            current value of the independent <I>time</I> variable
 	 * @param y
 	 *            array containing the current value of the state vector
 	 * @param yDot

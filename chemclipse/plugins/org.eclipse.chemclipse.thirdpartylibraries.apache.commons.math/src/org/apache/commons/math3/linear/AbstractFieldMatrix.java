@@ -54,9 +54,8 @@ public abstract class AbstractFieldMatrix<T extends FieldElement<T>> implements 
 
 	/**
 	 * Creates a matrix with no data
-	 * 
-	 * @param field
-	 *            field to which the elements belong
+	 * field
+	 * field to which the elements belong
 	 */
 	protected AbstractFieldMatrix(final Field<T> field) {
 
@@ -138,9 +137,9 @@ public abstract class AbstractFieldMatrix<T extends FieldElement<T>> implements 
 	 * <p>
 	 * Complete arrays are filled with field.getZero()
 	 * </p>
+	 * <T>
+	 * Type of the field elements
 	 * 
-	 * @param <T>
-	 *            Type of the field elements
 	 * @param field
 	 *            field to which array elements belong
 	 * @param rows
@@ -162,9 +161,9 @@ public abstract class AbstractFieldMatrix<T extends FieldElement<T>> implements 
 	 * <p>
 	 * Arrays are filled with field.getZero()
 	 * </p>
+	 * <T>
+	 * the type of the field elements
 	 * 
-	 * @param <T>
-	 *            the type of the field elements
 	 * @param field
 	 *            field to which array elements belong
 	 * @param length
@@ -868,8 +867,7 @@ public abstract class AbstractFieldMatrix<T extends FieldElement<T>> implements 
 
 	/**
 	 * Get a string representation for this matrix.
-	 * 
-	 * @return a string representation for this matrix
+	 * matrix
 	 */
 	@Override
 	public String toString() {

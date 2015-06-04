@@ -36,9 +36,9 @@ public class URLClassPath implements ClassPath {
 	 * <p>
 	 * This search path is used only if a requested class name starts with the name specified by <code>packageName</code>. If <code>packageName</code> is "org.javassist." and a requested class is "org.javassist.test.Main", then the given URL is used for loading that class. The <code>URLClassPath</code> obtains a class file from:
 	 *
-	 * <pre>
+	 * 
 	 * http://www.javassist.org:80/java/classes/org/javassist/test/Main.class
-	 * </pre>
+	 * 
 	 *
 	 * <p>
 	 * Here, we assume that <code>host</code> is "www.javassist.org", <code>port</code> is 80, and <code>directory</code> is "/java/classes/".

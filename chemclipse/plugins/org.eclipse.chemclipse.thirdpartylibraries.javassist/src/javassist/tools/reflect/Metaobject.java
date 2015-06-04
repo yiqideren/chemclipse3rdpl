@@ -31,7 +31,8 @@ import java.io.ObjectOutputStream;
  * <p>
  * To obtain a metaobject, calls <code>_getMetaobject()</code> on a reflective object. For example,
  *
- * <pre>
+ * 
+ * 
  * 
  * 
  * 
@@ -80,7 +81,7 @@ import java.io.ObjectOutputStream;
  * 
  * 
  * Metaobject m = ((Metalevel)reflectiveObject)._getMetaobject();
- * </pre>
+ * 
  *
  * @see javassist.tools.reflect.ClassMetaobject
  * @see javassist.tools.reflect.Metalevel
@@ -251,7 +252,8 @@ public class Metaobject implements Serializable {
 	 * <p>
 	 * Note: this method is not invoked if the base-level method is invoked by a constructor in the super class. For example,
 	 *
-	 * <pre>
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
@@ -301,28 +303,22 @@ public class Metaobject implements Serializable {
 	 * 
 	 * abstract class A {
 	 * 
-	 * 	abstract void initialize();
+	 * abstract void initialize();
 	 * 
-	 * 	A() {
+	 * A() {
 	 * 
-	 * 		initialize(); // not intercepted
-	 * 	}
-	 * }
+	 * initialize(); // not intercepted } }
 	 * 
 	 * class B extends A {
 	 * 
-	 * 	void initialize() {
+	 * void initialize() {
 	 * 
-	 * 		System.out.println(&quot;initialize()&quot;);
-	 * 	}
+	 * System.out.println(&quot;initialize()&quot;); }
 	 * 
-	 * 	B() {
+	 * B() {
 	 * 
-	 * 		super();
-	 * 		initialize(); // intercepted
-	 * 	}
-	 * }
-	 * </pre>
+	 * super(); initialize(); // intercepted } }
+	 * 
 	 *
 	 * <p>
 	 * if an instance of B is created, the invocation of initialize() in B is intercepted only once. The first invocation by the constructor in A is not intercepted. This is because the link between a base-level object and a metaobject is not created until the execution of a constructor of the super class finishes.

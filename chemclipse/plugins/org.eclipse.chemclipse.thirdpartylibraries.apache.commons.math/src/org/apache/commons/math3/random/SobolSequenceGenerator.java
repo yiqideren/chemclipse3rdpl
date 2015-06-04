@@ -121,11 +121,7 @@ public class SobolSequenceGenerator implements RandomVectorGenerator {
 	 * </ul>
 	 * Example:
 	 * 
-	 * <pre>
-	 * d       s       a       m_i
-	 * 2       1       0       1
-	 * 3       2       1       1 3
-	 * </pre>
+	 * d s a m_i 2 1 0 1 3 2 1 1 3
 	 * <p>
 	 * The input stream <i>must</i> be an ASCII text containing one valid direction vector per line.
 	 *

@@ -308,9 +308,9 @@ public class Network implements Iterable<Neuron>, Serializable {
 
 	/**
 	 * Retrieves the neurons in the neighbourhood of any neuron in the {@code neurons} list.
+	 * neurons
+	 * Neurons for which to retrieve the neighbours.
 	 * 
-	 * @param neurons
-	 *            Neurons for which to retrieve the neighbours.
 	 * @return the list of neighbours.
 	 * @see #getNeighbours(Iterable,Iterable)
 	 */

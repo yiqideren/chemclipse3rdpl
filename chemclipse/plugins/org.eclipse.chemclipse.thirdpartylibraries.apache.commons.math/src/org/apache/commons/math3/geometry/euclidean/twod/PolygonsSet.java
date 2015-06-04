@@ -48,9 +48,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Build a polygons set representing the whole plane.
+	 * tolerance
+	 * tolerance below which points are considered identical
 	 * 
-	 * @param tolerance
-	 *            tolerance below which points are considered identical
 	 * @since 3.3
 	 */
 	public PolygonsSet(final double tolerance) {
@@ -67,9 +67,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * This constructor is aimed at expert use, as building the tree may be a difficult task. It is not intended for general use and for performances reasons does not check thoroughly its input, as this would require walking the full tree each time. Failing to provide a tree with the proper attributes, <em>will</em> therefore generate problems like {@link NullPointerException} or {@link ClassCastException} only later on. This limitation is known and explains why this constructor is for expert
 	 * use only. The caller does have the responsibility to provided correct arguments.
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @since 3.3
@@ -92,10 +92,10 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @param tolerance
 	 *            tolerance below which points are considered identical
 	 * @since 3.3
@@ -107,9 +107,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Build a parallellepipedic box.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -144,10 +144,10 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * Polygons with thin pikes or dents are inherently difficult to handle because they involve lines with almost opposite directions at some vertices. Polygons whose vertices come from some physical measurement with noise are also difficult because an edge that should be straight may be broken in lots of different pieces with almost equal directions. In both cases, computing the lines intersections is not numerically robust due to the almost 0 or almost &pi; angle. Such cases need to carefully
 	 * adjust the {@code hyperplaneThickness} parameter. A too small value would often lead to completely wrong polygons with large area wrongly identified as inside or outside. Large values are often much safer. As a rule of thumb, a value slightly below the size of the most accurate detail needed is a good value for the {@code hyperplaneThickness} parameter.
 	 * </p>
+	 * hyperplaneThickness
+	 * tolerance below which points are considered to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are considered to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param vertices
 	 *            vertices of the simple loop boundary
 	 */
@@ -158,8 +158,7 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Build a polygons set representing the whole real line.
-	 * 
-	 * @deprecated as of 3.3, replaced with {@link #PolygonsSet(double)}
+	 * #PolygonsSet(double)}
 	 */
 	@Deprecated
 	public PolygonsSet() {
@@ -172,9 +171,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * The leaf nodes of the BSP tree <em>must</em> have a {@code Boolean} attribute representing the inside status of the corresponding cell (true for inside cells, false for outside cells). In order to avoid building too many small objects, it is recommended to use the predefined constants {@code Boolean.TRUE} and {@code Boolean.FALSE}
 	 * </p>
+	 * tree
+	 * inside/outside BSP tree representing the region
 	 * 
-	 * @param tree
-	 *            inside/outside BSP tree representing the region
 	 * @deprecated as of 3.3, replaced with {@link #PolygonsSet(BSPTree, double)}
 	 */
 	@Deprecated
@@ -196,10 +195,10 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * If the boundary is empty, the region will represent the whole space.
 	 * </p>
+	 * boundary
+	 * collection of boundary elements, as a
+	 * collection of {@link SubHyperplane SubHyperplane} objects
 	 * 
-	 * @param boundary
-	 *            collection of boundary elements, as a
-	 *            collection of {@link SubHyperplane SubHyperplane} objects
 	 * @deprecated as of 3.3, replaced with {@link #PolygonsSet(Collection, double)}
 	 */
 	@Deprecated
@@ -210,9 +209,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Build a parallellepipedic box.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -229,9 +228,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Create a list of hyperplanes representing the boundary of a box.
+	 * xMin
+	 * low bound along the x direction
 	 * 
-	 * @param xMin
-	 *            low bound along the x direction
 	 * @param xMax
 	 *            high bound along the x direction
 	 * @param yMin
@@ -267,10 +266,10 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * For cases where this simple constructor applies, it is expected to be numerically more robust than the {@link #PolygonsSet(Collection) general
 	 * constructor} using {@link SubHyperplane subhyperplanes}.
 	 * </p>
+	 * hyperplaneThickness
+	 * tolerance below which points are consider to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are consider to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param vertices
 	 *            vertices of the simple loop boundary
 	 * @return the BSP tree of the input vertices
@@ -317,10 +316,10 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Recursively build a tree by inserting cut sub-hyperplanes.
+	 * hyperplaneThickness
+	 * tolerance below which points are consider to
+	 * belong to the hyperplane (which is therefore more a slab)
 	 * 
-	 * @param hyperplaneThickness
-	 *            tolerance below which points are consider to
-	 *            belong to the hyperplane (which is therefore more a slab)
 	 * @param node
 	 *            current tree node (it is a leaf node at the beginning
 	 *            of the call)
@@ -709,10 +708,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * All line segments in the various loops have the inside of the region on their left side and the outside on their right side when moving in the underlying line direction. This means that closed loops surrounding finite areas obey the direct trigonometric orientation.
 	 * </p>
-	 * 
-	 * @return vertices of the polygon, organized as oriented boundary
-	 *         loops with the open loops first (the returned value is guaranteed
-	 *         to be non-null)
+	 * boundary
+	 * loops with the open loops first (the returned value is guaranteed
+	 * to be non-null)
 	 */
 	public Vector2D[][] getVertices() {
 
@@ -796,9 +794,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Connect the segments using only natural follower information.
+	 * segments
+	 * segments complete segments list
 	 * 
-	 * @param segments
-	 *            segments complete segments list
 	 * @return number of connections performed
 	 */
 	private int naturalFollowerConnections(final List<ConnectableSegment> segments) {
@@ -824,9 +822,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Connect the segments resulting from a line splitting a straight edge.
+	 * segments
+	 * segments complete segments list
 	 * 
-	 * @param segments
-	 *            segments complete segments list
 	 * @return number of connections performed
 	 */
 	private int splitEdgeConnections(final List<ConnectableSegment> segments) {
@@ -855,9 +853,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * This connection heuristic should be used last, as it relies only on a fuzzy distance criterion.
 	 * </p>
+	 * segments
+	 * segments complete segments list
 	 * 
-	 * @param segments
-	 *            segments complete segments list
 	 * @return number of connections performed
 	 */
 	private int closeVerticesConnections(final List<ConnectableSegment> segments) {
@@ -890,9 +888,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Get first unprocessed segment from a list.
+	 * segments
+	 * segments list
 	 * 
-	 * @param segments
-	 *            segments list
 	 * @return first segment that has not been processed yet
 	 *         or null if all segments have been processed
 	 */
@@ -911,9 +909,9 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 	 * <p>
 	 * The segment put in the loop will be marked as processed.
 	 * </p>
+	 * defining
+	 * segment used to define the loop
 	 * 
-	 * @param defining
-	 *            segment used to define the loop
 	 * @return loop containing the segment (may be null if the loop is a
 	 *         degenerated infinitely thin 2 points loop
 	 */
@@ -951,9 +949,8 @@ public class PolygonsSet extends AbstractRegion<Euclidean2D, Euclidean1D> {
 
 	/**
 	 * Filter out spurious vertices on straight lines (at machine precision).
-	 * 
-	 * @param loop
-	 *            segments loop to filter (will be modified in-place)
+	 * loop
+	 * segments loop to filter (will be modified in-place)
 	 */
 	private void filterSpuriousVertices(final List<Segment> loop) {
 

@@ -48,10 +48,9 @@ import org.apache.commons.math3.util.FastMath;
  * <p>
  * If A is not symmetric, then the eigenvalue matrix D is block diagonal with the real eigenvalues in 1-by-1 blocks and any complex eigenvalues, lambda + i*mu, in 2-by-2 blocks:
  * 
- * <pre>
- *    [lambda, mu    ]
- *    [   -mu, lambda]
- * </pre>
+ * 
+ * [lambda, mu ] [ -mu, lambda]
+ * 
  * 
  * The columns of V represent the eigenvectors in the sense that A*V = V*D, i.e. A.multiply(V) equals V.multiply(D). The matrix V may be badly conditioned, or even singular, so the validity of the equation A = V*D*inverse(V) depends upon the condition of V.
  * </p>

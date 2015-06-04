@@ -43,9 +43,9 @@ public class Arc {
 	 * <p>
 	 * If either {@code lower} is equals to {@code upper} or the interval exceeds \( 2 \pi \), the arc is considered to be the full circle and its initial defining boundaries will be forgotten. {@code lower} is not allowed to be greater than {@code upper} (an exception is thrown in this case). {@code lower} will be canonicalized between 0 and \( 2 \pi \), and upper shifted accordingly, so the {@link #getInf()} and {@link #getSup()} may not return the value used at instance construction.
 	 * </p>
+	 * lower
+	 * lower angular bound of the arc
 	 * 
-	 * @param lower
-	 *            lower angular bound of the arc
 	 * @param upper
 	 *            upper angular bound of the arc
 	 * @param tolerance
@@ -72,9 +72,8 @@ public class Arc {
 
 	/**
 	 * Get the lower angular bound of the arc.
-	 * 
-	 * @return lower angular bound of the arc,
-	 *         always between 0 and \( 2 \pi \)
+	 * arc,
+	 * always between 0 and \( 2 \pi \)
 	 */
 	public double getInf() {
 
@@ -83,9 +82,8 @@ public class Arc {
 
 	/**
 	 * Get the upper angular bound of the arc.
-	 * 
-	 * @return upper angular bound of the arc,
-	 *         always between {@link #getInf()} and {@link #getInf()} \( + 2 \pi \)
+	 * arc,
+	 * always between {@link #getInf()} and {@link #getInf()} \( + 2 \pi \)
 	 */
 	public double getSup() {
 
@@ -94,8 +92,7 @@ public class Arc {
 
 	/**
 	 * Get the angular size of the arc.
-	 * 
-	 * @return angular size of the arc
+	 * arc
 	 */
 	public double getSize() {
 
@@ -104,8 +101,7 @@ public class Arc {
 
 	/**
 	 * Get the barycenter of the arc.
-	 * 
-	 * @return barycenter of the arc
+	 * arc
 	 */
 	public double getBarycenter() {
 
@@ -114,8 +110,7 @@ public class Arc {
 
 	/**
 	 * Get the tolerance below which angles are considered identical.
-	 * 
-	 * @return tolerance below which angles are considered identical
+	 * identical
 	 */
 	public double getTolerance() {
 
@@ -124,9 +119,9 @@ public class Arc {
 
 	/**
 	 * Check a point with respect to the arc.
+	 * point
+	 * point to check
 	 * 
-	 * @param point
-	 *            point to check
 	 * @return a code representing the point status: either {@link Location#INSIDE}, {@link Location#OUTSIDE} or {@link Location#BOUNDARY}
 	 */
 	public Location checkPoint(final double point) {
