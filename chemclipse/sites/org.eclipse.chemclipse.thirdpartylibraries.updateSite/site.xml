@@ -6,9 +6,6 @@
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.swtchart.feature_0.9.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.swtchart.feature" version="0.9.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>
-   <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature_2.1.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature" version="2.1.0.qualifier">
-      <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
-   </feature>
    <feature url="features/org.eclipse.chemclipse.thirdpartylibraries.jna.feature_4.1.0.qualifier.jar" id="org.eclipse.chemclipse.thirdpartylibraries.jna.feature" version="4.1.0.qualifier">
       <category name="org.eclipse.chemclipse.thirdpartylibraries"/>
    </feature>

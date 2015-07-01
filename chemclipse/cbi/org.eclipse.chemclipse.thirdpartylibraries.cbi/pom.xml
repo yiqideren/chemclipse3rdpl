@@ -37,11 +37,6 @@
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
     </license>
     <license>
-      <comments>SWTXYGraph 2.1.0 (http://code.google.com/p/swt-xy-graph)</comments>
-      <name>EPL v1.0</name>
-      <url>http://www.eclipse.org/legal/epl-v10.html</url>
-    </license>
-    <license>
       <comments>OrientDB 2.0.9 (http://www.orientechnologies.com)</comments>
       <name>Apache License v2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
@@ -103,9 +98,6 @@
     <!-- SWTChart -->
     <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.swtchart</module>
     <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.swtchart.feature</module>
-    <!-- SWTXYGraph -->
-    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph</module>
-    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.swtxygraph.feature</module>
     <!-- OrientDB -->
     <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.orientdb</module>
     <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature</module>
