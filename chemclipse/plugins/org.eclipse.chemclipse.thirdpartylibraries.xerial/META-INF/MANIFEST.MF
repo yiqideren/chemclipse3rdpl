@@ -11,3 +11,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Export-Package: org.xerial.snappy,
  org.xerial.snappy.buffer
+Bundle-Vendor: ChemClipse
