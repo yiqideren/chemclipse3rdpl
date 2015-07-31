@@ -25,3 +25,4 @@ Export-Package: javassist,
  javassist.tools.rmi,
  javassist.tools.web,
  javassist.util.proxy
+Bundle-Vendor: ChemClipse
