@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xerial
+Bundle-SymbolicName: org.eclipse.chemclipse.thirdpartylibraries.xerial
+Bundle-Version: 1.1.16.qualifier
+Bundle-Activator: org.eclipse.chemclipse.thirdpartylibraries.xerial.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: org.xerial.snappy,
+ org.xerial.snappy.buffer
+Bundle-Vendor: ChemClipse

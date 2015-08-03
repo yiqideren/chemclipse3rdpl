@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!--
+	PARENT
+  -->
+  <parent>
+    <groupId>org.eclipse.chemclipse</groupId>
+    <artifactId>master</artifactId>
+    <version>BUILD-VERSION</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <!--
+	ARTIFACT
+  -->
+  <groupId>org.eclipse.chemclipse</groupId>
+  <artifactId>parent</artifactId>
+  <packaging>pom</packaging>
+  <!--
+	DESCRIPTION
+  --> 
+  <name>ChemClipse Third-Party Libraries</name>
+  <description>
+	This bundle offers several third party libraries.
+  </description>
+  <url>http://sourceforge.net/projects/chemclipse3rdpl</url>
+  <!--
+	LICENSES
+  -->  
+  <licenses>
+    <!--
+	  Plug-ins that are part of compilation.
+    -->
+    <license>
+      <comments>SWTChart 0.9.0 (http://www.swtchart.org)</comments>
+      <name>EPL v1.0</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+    <license>
+      <comments>OrientDB 2.0.9 (http://www.orientechnologies.com)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>Apache Commons Math 3.5.0 (http://commons.apache.org/math)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>JNA 4.0.0 (https://github.com/twall/jna)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>ConcurrentLinkedHashMap 1.4.0 (https://code.google.com/p/concurrentlinkedhashmap)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+    <license>
+      <comments>EJML 0.27.0 (http://ejml.org)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license> 
+    <license>
+      <comments>Javassist 3.19.0 (https://github.com/jboss-javassist/javassist/releases)</comments>
+      <name>MPL v1.1</name>
+      <url>https://www.mozilla.org/MPL/1.1</url>
+    </license>
+    <license>
+      <comments>JSR305 1.3.9 (https://code.google.com/p/jsr-305)</comments>
+      <name>BSD License</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+    </license>        
+    <license>
+      <comments>Xerial 1.1.16 (https://github.com/xerial)</comments>
+      <name>Apache License v2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>  
+  </licenses> 
+  <!--
+	DEVELOPERS
+  -->
+  <developers>
+    <developer>
+      <id>eselmeister</id>
+      <name>Philip Wenig</name>
+      <email>philip.wenig [at] openchrom.net</email>
+      <timezone>+1</timezone>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <!--
+	MODULES
+  -->
+  <modules>
+    <!-- SWTChart -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.swtchart</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.swtchart.feature</module>
+    <!-- OrientDB -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.orientdb</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.orientdb.feature</module>
+    <!-- CommonsMath -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.apache.commons.math.feature</module>
+    <!-- JNA -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.jna</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.jna.feature</module>   
+    <!-- ConcurrentLinkedHashMap -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.concurrentlinkedhashmap.feature</module>
+    <!-- EJML -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.ejml</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.ejml.feature</module>
+    <!-- Javassist -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.javassist</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.javassist.feature</module>
+    <!-- JSR305 -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.jsr305</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.jsr305.feature</module>
+    <!-- Xerial -->
+    <module>../../plugins/org.eclipse.chemclipse.thirdpartylibraries.xerial</module>
+    <module>../../features/org.eclipse.chemclipse.thirdpartylibraries.xerial.feature</module>            
+    <!-- Update Site (Selected third party libraries) -->
+    <module>../../sites/org.eclipse.chemclipse.thirdpartylibraries.updateSite</module>
+  </modules>
+</project>
