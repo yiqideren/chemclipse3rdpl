@@ -67,7 +67,7 @@ public class OLogFormatter extends Formatter {
 		synchronized(dateFormat) {
 			buffer.append(dateFormat.format(new Date()));
 		}
-		buffer.append(String.format(" %-5s ", iLevel.getName()));
+		buffer.append(String.format(" %-5.5s ", iLevel.getName()));
 		// FORMAT THE MESSAGE
 		try {
 			if(iAdditionalArgs != null)

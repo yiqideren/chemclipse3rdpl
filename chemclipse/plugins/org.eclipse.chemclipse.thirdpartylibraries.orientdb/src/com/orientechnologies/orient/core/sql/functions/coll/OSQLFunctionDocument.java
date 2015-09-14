@@ -105,15 +105,18 @@ public class OSQLFunctionDocument extends OSQLFunctionMultiValueAbstract<ODocume
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		final Map<Long, Map<Object, Object>> chunks = new HashMap<Long, Map<Object, Object>>();
-		for(Object iParameter : resultsToMerge) {
-			final Map<String, Object> container = (Map<String, Object>)((Map<Object, Object>)iParameter).get("doc");
-			chunks.put((Long)container.get("node"), (Map<Object, Object>)container.get("context"));
+		if(returnDistributedResult()) {
+			final Map<String, Map<Object, Object>> chunks = new HashMap<String, Map<Object, Object>>();
+			for(Object iParameter : resultsToMerge) {
+				final Map<String, Object> container = (Map<String, Object>)((Map<Object, Object>)iParameter).get("doc");
+				chunks.put((String)container.get("node"), (Map<Object, Object>)container.get("context"));
+			}
+			final Map<Object, Object> result = new HashMap<Object, Object>();
+			for(Map<Object, Object> chunk : chunks.values()) {
+				result.putAll(chunk);
+			}
+			return result;
 		}
-		final Map<Object, Object> result = new HashMap<Object, Object>();
-		for(Map<Object, Object> chunk : chunks.values()) {
-			result.putAll(chunk);
-		}
-		return result;
+		return resultsToMerge.get(0);
 	}
 }

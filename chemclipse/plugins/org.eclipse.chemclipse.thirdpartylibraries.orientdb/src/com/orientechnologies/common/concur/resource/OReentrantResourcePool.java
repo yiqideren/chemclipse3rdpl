@@ -18,6 +18,9 @@
 package com.orientechnologies.common.concur.resource;
 
 import com.orientechnologies.common.concur.lock.OLockException;
+import com.orientechnologies.orient.core.OOrientShutdownListener;
+import com.orientechnologies.orient.core.OOrientStartupListener;
+import com.orientechnologies.orient.core.Orient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,9 +35,9 @@ import java.util.Map;
  * @author Luca Garulli (l.garulli--at--orientechnologies.com)
  * @see OResourcePool
  */
-public class OReentrantResourcePool<K, V> extends OResourcePool<K, V> {
+public class OReentrantResourcePool<K, V> extends OResourcePool<K, V> implements OOrientStartupListener, OOrientShutdownListener {
 
-	private final ThreadLocal<Map<K, ResourceHolder<V>>> activeResources = new ThreadLocal<Map<K, ResourceHolder<V>>>();
+	private volatile ThreadLocal<Map<K, ResourceHolder<V>>> activeResources = new ThreadLocal<Map<K, ResourceHolder<V>>>();
 
 	private static final class ResourceHolder<V> {
 
@@ -50,6 +53,21 @@ public class OReentrantResourcePool<K, V> extends OResourcePool<K, V> {
 	public OReentrantResourcePool(final int maxResources, final OResourcePoolListener<K, V> listener) {
 
 		super(maxResources, listener);
+		Orient.instance().registerWeakOrientShutdownListener(this);
+		Orient.instance().registerWeakOrientStartupListener(this);
+	}
+
+	@Override
+	public void onShutdown() {
+
+		activeResources = null;
+	}
+
+	@Override
+	public void onStartup() {
+
+		if(activeResources == null)
+			activeResources = new ThreadLocal<Map<K, ResourceHolder<V>>>();
 	}
 
 	public V getResource(K key, final long maxWaitMillis, Object... additionalArgs) throws OLockException {

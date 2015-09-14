@@ -18,6 +18,7 @@
 package com.orientechnologies.orient.core.command.script;
 
 import com.orientechnologies.common.concur.resource.OPartitionedObjectPool;
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.command.OCommandExecutorAbstract;
@@ -83,7 +84,7 @@ public class OCommandExecutorFunction extends OCommandExecutorAbstract {
 						for(Entry<Object, Object> arg : iArgs.entrySet())
 							args[i++] = arg.getValue();
 					} else {
-						args = new Object[0];
+						args = OCommonConst.EMPTY_OBJECT_ARRAY;
 					}
 					result = invocableEngine.invokeFunction(parserText, args);
 				} else {

@@ -135,6 +135,12 @@ public class OIndexAbstractDelegate<T> implements OIndex<T> {
 		return delegate.getType();
 	}
 
+	@Override
+	public String getAlgorithm() {
+
+		return delegate.getAlgorithm();
+	}
+
 	public boolean isAutomatic() {
 
 		return delegate.isAutomatic();

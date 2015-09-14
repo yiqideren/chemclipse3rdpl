@@ -30,14 +30,15 @@ import com.orientechnologies.orient.core.db.record.ridbag.ORidBag;
 import com.orientechnologies.orient.core.exception.OQueryParsingException;
 import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.id.ORecordId;
-import com.orientechnologies.orient.core.metadata.schema.OProperty;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.ORecord;
 import com.orientechnologies.orient.core.record.ORecordInternal;
 import com.orientechnologies.orient.core.serialization.serializer.OStringSerializerHelper;
 import com.orientechnologies.orient.core.serialization.serializer.record.string.ORecordSerializerStringAbstract;
+import com.orientechnologies.orient.core.sql.OSQLEngine;
 import com.orientechnologies.orient.core.sql.OSQLHelper;
 import com.orientechnologies.orient.core.sql.functions.OSQLFunctionRuntime;
+import com.orientechnologies.orient.core.sql.method.OSQLMethod;
 import com.orientechnologies.orient.core.type.tree.OMVRBTreeRIDSet;
 
 import java.lang.reflect.Array;
@@ -188,7 +189,7 @@ public class ODocumentHelper {
 					return (RET)newValue;
 				} catch(ParseException pe) {
 					final String dateFormat = ((String)iValue).length() > config.dateFormat.length() ? config.dateTimeFormat : config.dateFormat;
-					throw new OQueryParsingException("Error on conversion of date '" + iValue + "' using the format: " + dateFormat);
+					throw new OQueryParsingException("Error on conversion of date '" + iValue + "' using the format: " + dateFormat, pe);
 				}
 			}
 		}
@@ -213,6 +214,7 @@ public class ODocumentHelper {
 		OIdentifiable currentRecord = value instanceof OIdentifiable ? (OIdentifiable)value : null;
 		int beginPos = iFieldName.charAt(0) == '.' ? 1 : 0;
 		int nextSeparatorPos = iFieldName.charAt(0) == '.' ? 1 : 0;
+		boolean firstInChain = true;
 		do {
 			char nextSeparator = ' ';
 			for(; nextSeparatorPos < fieldNameLength; ++nextSeparatorPos) {
@@ -408,9 +410,19 @@ public class ODocumentHelper {
 				}
 				if(fieldName.startsWith("$"))
 					value = iContext.getVariable(fieldName);
-				else if(fieldName.contains("("))
-					value = evaluateFunction(value, fieldName, iContext);
-				else {
+				else if(fieldName.contains("(")) {
+					boolean executedMethod = false;
+					if(!firstInChain && fieldName.endsWith("()")) {
+						OSQLMethod method = OSQLEngine.getInstance().getMethod(fieldName.substring(0, fieldName.length() - 2));
+						if(method != null) {
+							value = method.execute(value, currentRecord, iContext, value, new Object[]{});
+							executedMethod = true;
+						}
+					}
+					if(!executedMethod) {
+						value = evaluateFunction(value, fieldName, iContext);
+					}
+				} else {
 					final List<String> indexCondition = OStringSerializerHelper.smartSplit(fieldName, '=', ' ');
 					if(indexCondition.size() == 2) {
 						final String conditionFieldName = indexCondition.get(0);
@@ -455,6 +467,7 @@ public class ODocumentHelper {
 			else
 				currentRecord = null;
 			beginPos = ++nextSeparatorPos;
+			firstInChain = false;
 		} while(nextSeparatorPos < fieldNameLength && value != null);
 		return (RET)value;
 	}
@@ -564,7 +577,8 @@ public class ODocumentHelper {
 			return null;
 		final ODocument doc = ((ODocument)iCurrent.getRecord());
 		doc.checkForFields(iFieldName);
-		return doc._fieldValues.get(iFieldName);
+		ODocumentEntry entry = doc._fields.get(iFieldName);
+		return entry != null ? entry.value : null;
 	}
 
 	public static Object evaluateFunction(final Object currentValue, final String iFunction, final OCommandContext iContext) {
@@ -674,62 +688,63 @@ public class ODocumentHelper {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void copyFieldValue(final ODocument iCloned, final Entry<String, Object> iEntry) {
+	public static Object cloneValue(ODocument iCloned, final Object fieldValue) {
 
-		final Object fieldValue = iEntry.getValue();
 		if(fieldValue != null) {
 			if(fieldValue instanceof ODocument && !((ODocument)fieldValue).getIdentity().isValid()) {
 				// EMBEDDED DOCUMENT
-				iCloned._fieldValues.put(iEntry.getKey(), ((ODocument)fieldValue).copy());
+				return ((ODocument)fieldValue).copy();
 			} else if(fieldValue instanceof ORidBag) {
-				iCloned._fieldValues.put(iEntry.getKey(), ((ORidBag)fieldValue).copy());
+				return ((ORidBag)fieldValue).copy();
 			} else if(fieldValue instanceof ORecordLazyList) {
-				iCloned._fieldValues.put(iEntry.getKey(), ((ORecordLazyList)fieldValue).copy(iCloned));
+				return ((ORecordLazyList)fieldValue).copy(iCloned);
 			} else if(fieldValue instanceof ORecordTrackedList) {
 				final ORecordTrackedList newList = new ORecordTrackedList(iCloned);
 				newList.addAll((ORecordTrackedList)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newList);
+				return newList;
 			} else if(fieldValue instanceof OTrackedList<?>) {
 				final OTrackedList<Object> newList = new OTrackedList<Object>(iCloned);
 				newList.addAll((OTrackedList<Object>)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newList);
+				return newList;
 			} else if(fieldValue instanceof List<?>) {
-				iCloned._fieldValues.put(iEntry.getKey(), new ArrayList<Object>((List<Object>)fieldValue));
+				return new ArrayList<Object>((List<Object>)fieldValue);
 				// SETS
 			} else if(fieldValue instanceof OMVRBTreeRIDSet) {
-				iCloned._fieldValues.put(iEntry.getKey(), ((OMVRBTreeRIDSet)fieldValue).copy(iCloned));
+				return ((OMVRBTreeRIDSet)fieldValue).copy(iCloned);
 			} else if(fieldValue instanceof ORecordLazySet) {
 				final ORecordLazySet newList = new ORecordLazySet(iCloned);
 				newList.addAll((ORecordLazySet)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newList);
+				return newList;
 			} else if(fieldValue instanceof ORecordTrackedSet) {
 				final ORecordTrackedSet newList = new ORecordTrackedSet(iCloned);
 				newList.addAll((ORecordTrackedSet)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newList);
+				return newList;
 			} else if(fieldValue instanceof OTrackedSet<?>) {
 				final OTrackedSet<Object> newList = new OTrackedSet<Object>(iCloned);
 				newList.addAll((OTrackedSet<Object>)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newList);
+				return newList;
 			} else if(fieldValue instanceof Set<?>) {
-				iCloned._fieldValues.put(iEntry.getKey(), new HashSet<Object>((Set<Object>)fieldValue));
+				return new HashSet<Object>((Set<Object>)fieldValue);
 				// MAPS
 			} else if(fieldValue instanceof ORecordLazyMap) {
 				final ORecordLazyMap newMap = new ORecordLazyMap(iCloned, ((ORecordLazyMap)fieldValue).getRecordType());
 				newMap.putAll((ORecordLazyMap)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newMap);
+				return newMap;
 			} else if(fieldValue instanceof OTrackedMap) {
 				final OTrackedMap<Object> newMap = new OTrackedMap<Object>(iCloned);
 				newMap.putAll((OTrackedMap<Object>)fieldValue);
-				iCloned._fieldValues.put(iEntry.getKey(), newMap);
+				return newMap;
 			} else if(fieldValue instanceof Map<?, ?>) {
-				iCloned._fieldValues.put(iEntry.getKey(), new LinkedHashMap<String, Object>((Map<String, Object>)fieldValue));
+				return new LinkedHashMap<String, Object>((Map<String, Object>)fieldValue);
 			} else
-				iCloned._fieldValues.put(iEntry.getKey(), fieldValue);
-		} else if(iCloned.getImmutableSchemaClass() != null) {
-			final OProperty prop = iCloned.getImmutableSchemaClass().getProperty(iEntry.getKey());
-			if(prop != null && prop.isMandatory())
-				iCloned._fieldValues.put(iEntry.getKey(), fieldValue);
+				return fieldValue;
 		}
+		// else if (iCloned.getImmutableSchemaClass() != null) {
+		// final OProperty prop = iCloned.getImmutableSchemaClass().getProperty(iEntry.getKey());
+		// if (prop != null && prop.isMandatory())
+		// return fieldValue;
+		// }
+		return null;
 	}
 
 	public static boolean hasSameContentItem(final Object iCurrent, ODatabaseDocumentInternal iMyDb, final Object iOther, final ODatabaseDocumentInternal iOtherDb, RIDMapper ridMapper) {
@@ -825,14 +840,14 @@ public class ODocumentHelper {
 			});
 		else
 			iOther.checkForFields();
-		if(iCurrent._fieldValues.size() != iOther._fieldValues.size())
+		if(iCurrent.fields() != iOther.fields())
 			return false;
 		// CHECK FIELD-BY-FIELD
 		Object myFieldValue;
 		Object otherFieldValue;
-		for(Entry<String, Object> f : iCurrent._fieldValues.entrySet()) {
+		for(Entry<String, Object> f : iCurrent) {
 			myFieldValue = f.getValue();
-			otherFieldValue = iOther._fieldValues.get(f.getKey());
+			otherFieldValue = iOther._fields.get(f.getKey()).value;
 			if(myFieldValue == otherFieldValue)
 				continue;
 			// CHECK FOR NULLS
@@ -1286,7 +1301,7 @@ public class ODocumentHelper {
 
 	public static <T> T makeDbCall(final ODatabaseDocumentInternal databaseRecord, final ODbRelatedCall<T> function) {
 
-		ODatabaseRecordThreadLocal.INSTANCE.set(databaseRecord);
+		databaseRecord.activateOnCurrentThread();
 		return function.call();
 	}
 }

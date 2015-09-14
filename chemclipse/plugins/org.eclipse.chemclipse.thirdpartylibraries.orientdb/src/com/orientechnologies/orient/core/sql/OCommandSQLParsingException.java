@@ -37,6 +37,11 @@ public class OCommandSQLParsingException extends OException {
 		position = iPosition;
 	}
 
+	public OCommandSQLParsingException(final String iMessage, final Throwable cause) {
+
+		super(iMessage, cause);
+	}
+
 	public OCommandSQLParsingException(String iMessage, String iText, int iPosition) {
 
 		super(iMessage);

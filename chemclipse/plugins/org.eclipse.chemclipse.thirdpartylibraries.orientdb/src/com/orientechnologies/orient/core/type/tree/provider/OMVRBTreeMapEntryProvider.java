@@ -18,7 +18,7 @@
 package com.orientechnologies.orient.core.type.tree.provider;
 
 import com.orientechnologies.common.log.OLogManager;
-import com.orientechnologies.common.profiler.OProfilerMBean;
+import com.orientechnologies.common.profiler.OProfiler;
 import com.orientechnologies.common.serialization.types.OBinarySerializer;
 import com.orientechnologies.common.serialization.types.OBooleanSerializer;
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
@@ -43,7 +43,7 @@ public class OMVRBTreeMapEntryProvider<K, V> extends OMVRBTreeEntryDataProviderA
 	 * with previous format that does not have version number, but first value in serialized content was non-negative integer.
 	 */
 	private static final int CURRENT_VERSION = -1;
-	private static final OProfilerMBean PROFILER = Orient.instance().getProfiler();
+	private static final OProfiler PROFILER = Orient.instance().getProfiler();
 	private static final long serialVersionUID = 1L;
 	protected K[] keys;
 	protected V[] values;
@@ -260,7 +260,7 @@ public class OMVRBTreeMapEntryProvider<K, V> extends OMVRBTreeEntryDataProviderA
 				fromStreamUsingBinaryStreamSerializer(iStream);
 			return this;
 		} catch(IOException e) {
-			throw new OSerializationException("Can not unmarshall tree node with id ", e);
+			throw new OSerializationException("Cannot unmarshall tree node with id ", e);
 		} finally {
 			PROFILER.stopChrono(PROFILER.getProcessMetric("mvrbtree.entry.fromStream"), "Deserialize a MVRBTree entry", timer);
 		}

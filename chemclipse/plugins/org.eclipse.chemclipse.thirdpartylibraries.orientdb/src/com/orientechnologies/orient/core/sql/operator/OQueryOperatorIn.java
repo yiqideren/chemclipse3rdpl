@@ -71,11 +71,11 @@ public class OQueryOperatorIn extends OQueryOperatorEqualityNotNulls {
 			return null;
 		if(indexDefinition.getParamCount() == 1) {
 			final Object inKeyValue = keyParams.get(0);
-			final List<Object> inParams;
+			final Collection<Object> inParams;
 			if(inKeyValue instanceof List<?>)
-				inParams = (List<Object>)inKeyValue;
+				inParams = (Collection<Object>)inKeyValue;
 			else if(inKeyValue instanceof OSQLFilterItem)
-				inParams = (List<Object>)((OSQLFilterItem)inKeyValue).getValue(null, null, iContext);
+				inParams = (Collection<Object>)((OSQLFilterItem)inKeyValue).getValue(null, null, iContext);
 			else
 				throw new IllegalArgumentException("Key '" + inKeyValue + "' is not valid");
 			final List<Object> inKeys = new ArrayList<Object>();
@@ -96,11 +96,11 @@ public class OQueryOperatorIn extends OQueryOperatorEqualityNotNulls {
 			partialKey.addAll(keyParams);
 			partialKey.remove(keyParams.size() - 1);
 			final Object inKeyValue = keyParams.get(keyParams.size() - 1);
-			final List<Object> inParams;
+			final Collection<Object> inParams;
 			if(inKeyValue instanceof List<?>)
-				inParams = (List<Object>)inKeyValue;
+				inParams = (Collection<Object>)inKeyValue;
 			else if(inKeyValue instanceof OSQLFilterItem)
-				inParams = (List<Object>)((OSQLFilterItem)inKeyValue).getValue(null, null, iContext);
+				inParams = (Collection<Object>)((OSQLFilterItem)inKeyValue).getValue(null, null, iContext);
 			else
 				throw new IllegalArgumentException("Key '" + inKeyValue + "' is not valid");
 			final List<Object> inKeys = new ArrayList<Object>();

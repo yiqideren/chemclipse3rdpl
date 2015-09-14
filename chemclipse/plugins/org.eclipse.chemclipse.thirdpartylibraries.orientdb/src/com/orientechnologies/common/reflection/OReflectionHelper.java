@@ -88,11 +88,11 @@ public class OReflectionHelper {
 				}
 			}
 		} catch(NullPointerException x) {
-			throw new ClassNotFoundException(iPackageName + " does not appear to be " + "a valid package (Null pointer exception)");
+			throw new ClassNotFoundException(iPackageName + " does not appear to be " + "a valid package (Null pointer exception)", x);
 		} catch(UnsupportedEncodingException encex) {
-			throw new ClassNotFoundException(iPackageName + " does not appear to be " + "a valid package (Unsupported encoding)");
+			throw new ClassNotFoundException(iPackageName + " does not appear to be " + "a valid package (Unsupported encoding)", encex);
 		} catch(IOException ioex) {
-			throw new ClassNotFoundException("IOException was thrown when trying " + "to get all resources for " + iPackageName);
+			throw new ClassNotFoundException("IOException was thrown when trying " + "to get all resources for " + iPackageName, ioex);
 		}
 		// For every directory identified capture all the .class files
 		for(File directory : directories) {
@@ -135,16 +135,17 @@ public class OReflectionHelper {
 		iPackageName += "." + iDirectory.getName();
 		String className;
 		final File[] files = iDirectory.listFiles();
-		for(File file : files) {
-			if(file.isDirectory()) {
-				if(file.getName().contains("."))
-					continue;
-				classes.addAll(findClasses(file, iPackageName, iClassLoader));
-			} else if(file.getName().endsWith(CLASS_EXTENSION)) {
-				className = file.getName().substring(0, file.getName().length() - CLASS_EXTENSION.length());
-				classes.add(Class.forName(iPackageName + '.' + className, true, iClassLoader));
+		if(files != null)
+			for(File file : files) {
+				if(file.isDirectory()) {
+					if(file.getName().contains("."))
+						continue;
+					classes.addAll(findClasses(file, iPackageName, iClassLoader));
+				} else if(file.getName().endsWith(CLASS_EXTENSION)) {
+					className = file.getName().substring(0, file.getName().length() - CLASS_EXTENSION.length());
+					classes.add(Class.forName(iPackageName + '.' + className, true, iClassLoader));
+				}
 			}
-		}
 		return classes;
 	}
 

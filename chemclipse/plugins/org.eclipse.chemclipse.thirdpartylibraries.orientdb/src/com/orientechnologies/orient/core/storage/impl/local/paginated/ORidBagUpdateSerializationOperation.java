@@ -48,6 +48,8 @@ public class ORidBagUpdateSerializationOperation implements ORecordSerialization
 	@Override
 	public void execute(OAbstractPaginatedStorage paginatedStorage) {
 
+		if(changedValues.isEmpty())
+			return;
 		OSBTreeBonsai<OIdentifiable, Integer> tree = loadTree();
 		try {
 			for(Map.Entry<OIdentifiable, OSBTreeRidBag.Change> entry : changedValues.entrySet()) {

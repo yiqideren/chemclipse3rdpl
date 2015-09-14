@@ -35,18 +35,8 @@ public abstract class ONeedRetryException extends OException {
 		super();
 	}
 
-	public ONeedRetryException(String message, Throwable cause) {
-
-		super(message, cause);
-	}
-
 	public ONeedRetryException(String message) {
 
 		super(message);
-	}
-
-	public ONeedRetryException(Throwable cause) {
-
-		super(cause);
 	}
 }

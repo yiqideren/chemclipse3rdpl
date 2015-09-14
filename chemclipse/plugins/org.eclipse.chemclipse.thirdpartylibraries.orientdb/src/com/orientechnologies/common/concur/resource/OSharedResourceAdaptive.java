@@ -25,9 +25,6 @@ import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
@@ -132,7 +129,7 @@ public class OSharedResourceAdaptive {
 							Thread.currentThread().interrupt();
 						}
 					}
-					throw new OLockException("Thread interrupted while waiting for resource of class '" + getClass() + "' with timeout=" + timeout);
+					throw new OLockException("Thread interrupted while waiting for resource of class '" + getClass() + "' with timeout=" + timeout, e);
 				}
 				throwTimeoutException(lock.writeLock());
 			} else {
@@ -166,7 +163,7 @@ public class OSharedResourceAdaptive {
 							Thread.currentThread().interrupt();
 						}
 					}
-					throw new OLockException("Thread interrupted while waiting for resource of class '" + getClass() + "' with timeout=" + timeout);
+					throw new OLockException("Thread interrupted while waiting for resource of class '" + getClass() + "' with timeout=" + timeout, e);
 				}
 				throwTimeoutException(lock.readLock());
 			} else

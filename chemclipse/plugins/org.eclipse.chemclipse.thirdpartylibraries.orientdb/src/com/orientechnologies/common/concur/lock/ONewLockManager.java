@@ -172,6 +172,32 @@ public class ONewLockManager<T> {
 		return lock;
 	}
 
+	public void lockAllExclusive() {
+
+		if(useSpinLock) {
+			for(OReadersWriterSpinLock spinLock : spinLocks) {
+				spinLock.acquireWriteLock();
+			}
+		} else {
+			for(ReadWriteLock readWriteLock : locks) {
+				readWriteLock.writeLock().lock();
+			}
+		}
+	}
+
+	public void unlockAllExclusive() {
+
+		if(useSpinLock) {
+			for(OReadersWriterSpinLock spinLock : spinLocks) {
+				spinLock.releaseWriteLock();
+			}
+		} else {
+			for(ReadWriteLock readWriteLock : locks) {
+				readWriteLock.writeLock().unlock();
+			}
+		}
+	}
+
 	public boolean tryAcquireExclusiveLock(T value, long timeout) throws InterruptedException {
 
 		if(useSpinLock)

@@ -17,11 +17,11 @@
  */
 package com.orientechnologies.orient.core.db.record;
 
-import java.util.Iterator;
-
 import com.orientechnologies.common.util.OSizeable;
 
-public interface ORecordLazyMultiValue extends ODetachable, OSizeable {
+import java.util.Iterator;
+
+public interface ORecordLazyMultiValue extends OAutoConvertToRecord, ODetachable, OSizeable {
 
 	public Iterator<OIdentifiable> rawIterator();
 
@@ -39,8 +39,4 @@ public interface ORecordLazyMultiValue extends ODetachable, OSizeable {
 	 * @return
 	 */
 	public boolean convertRecords2Links();
-
-	public boolean isAutoConvertToRecord();
-
-	public void setAutoConvertToRecord(boolean convertToRecord);
 }

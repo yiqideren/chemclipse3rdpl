@@ -32,14 +32,7 @@ import java.util.Deque;
  */
 public class ORecordSerializationContext {
 
-	private static volatile ThreadLocal<Deque<ORecordSerializationContext>> SERIALIZATION_CONTEXT_STACK = new ThreadLocal<Deque<ORecordSerializationContext>>() {
-
-		@Override
-		protected Deque<ORecordSerializationContext> initialValue() {
-
-			return new ArrayDeque<ORecordSerializationContext>();
-		}
-	};
+	private static volatile ThreadLocal<Deque<ORecordSerializationContext>> SERIALIZATION_CONTEXT_STACK = new SerializationContextThreadLocal();
 	static {
 		Orient.instance().registerListener(new OOrientListenerAbstract() {
 
@@ -47,14 +40,7 @@ public class ORecordSerializationContext {
 			public void onStartup() {
 
 				if(SERIALIZATION_CONTEXT_STACK == null)
-					SERIALIZATION_CONTEXT_STACK = new ThreadLocal<Deque<ORecordSerializationContext>>() {
-
-						@Override
-						protected Deque<ORecordSerializationContext> initialValue() {
-
-							return new ArrayDeque<ORecordSerializationContext>();
-						}
-					};
+					SERIALIZATION_CONTEXT_STACK = new SerializationContextThreadLocal();
 			}
 
 			@Override
@@ -91,7 +77,7 @@ public class ORecordSerializationContext {
 
 		final Deque<ORecordSerializationContext> stack = SERIALIZATION_CONTEXT_STACK.get();
 		if(stack.isEmpty())
-			throw new IllegalStateException("Can not find current serialization context");
+			throw new IllegalStateException("Cannot find current serialization context");
 		return stack.poll();
 	}
 
@@ -104,6 +90,15 @@ public class ORecordSerializationContext {
 
 		for(ORecordSerializationOperation operation : operations) {
 			operation.execute(storage);
+		}
+	}
+
+	private static class SerializationContextThreadLocal extends ThreadLocal<Deque<ORecordSerializationContext>> {
+
+		@Override
+		protected Deque<ORecordSerializationContext> initialValue() {
+
+			return new ArrayDeque<ORecordSerializationContext>();
 		}
 	}
 }

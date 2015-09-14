@@ -19,9 +19,10 @@ package com.orientechnologies.orient.enterprise.channel;
 
 import com.orientechnologies.common.concur.lock.OAdaptiveLock;
 import com.orientechnologies.common.listener.OListenerManger;
+import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.common.profiler.OAbstractProfiler.OProfilerHookValue;
-import com.orientechnologies.common.profiler.OProfilerMBean;
-import com.orientechnologies.common.profiler.OProfilerMBean.METRIC_TYPE;
+import com.orientechnologies.common.profiler.OProfiler;
+import com.orientechnologies.common.profiler.OProfiler.METRIC_TYPE;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.config.OContextConfiguration;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
@@ -40,7 +41,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class OChannel extends OListenerManger<OChannelListener> {
 
-	private static final OProfilerMBean PROFILER = Orient.instance().getProfiler();
+	private static final OProfiler PROFILER = Orient.instance().getProfiler();
 	private static final AtomicLong metricGlobalTransmittedBytes = new AtomicLong();
 	private static final AtomicLong metricGlobalReceivedBytes = new AtomicLong();
 	private static final AtomicLong metricGlobalFlushes = new AtomicLong();
@@ -156,6 +157,7 @@ public abstract class OChannel extends OListenerManger<OChannelListener> {
 				socket = null;
 			}
 		} catch(Exception e) {
+			OLogManager.instance().debug(this, "Error during socket close", e);
 		}
 		try {
 			if(inStream != null) {
@@ -163,6 +165,7 @@ public abstract class OChannel extends OListenerManger<OChannelListener> {
 				inStream = null;
 			}
 		} catch(Exception e) {
+			OLogManager.instance().debug(this, "Error during closing of input stream", e);
 		}
 		try {
 			if(outStream != null) {
@@ -170,12 +173,13 @@ public abstract class OChannel extends OListenerManger<OChannelListener> {
 				outStream = null;
 			}
 		} catch(Exception e) {
+			OLogManager.instance().debug(this, "Error during closing of output stream", e);
 		}
 		for(OChannelListener l : getListenersCopy())
 			try {
 				l.onChannelClose(this);
 			} catch(Exception e) {
-				// IGNORE ANY EXCEPTION
+				OLogManager.instance().debug(this, "Error during closing of channel close listener", e);
 			}
 		lockRead.close();
 		lockWrite.close();

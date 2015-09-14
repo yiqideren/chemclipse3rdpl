@@ -17,9 +17,6 @@
  */
 package com.orientechnologies.orient.core.index;
 
-import java.util.Collection;
-import java.util.Set;
-
 import com.orientechnologies.common.listener.OProgressListener;
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
@@ -30,6 +27,9 @@ import com.orientechnologies.orient.core.record.ORecordInternal;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.OCommandExecutorSQLCreateIndex;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
+
+import java.util.Collection;
+import java.util.Set;
 
 public class OIndexManagerRemote extends OIndexManagerAbstract {
 
@@ -44,11 +44,9 @@ public class OIndexManagerRemote extends OIndexManagerAbstract {
 
 		String createIndexDDL;
 		if(iIndexDefinition != null)
-			createIndexDDL = iIndexDefinition.toCreateIndexDDL(iName, iType);
+			createIndexDDL = iIndexDefinition.toCreateIndexDDL(iName, iType, engine);
 		else
-			createIndexDDL = new OSimpleKeyIndexDefinition().toCreateIndexDDL(iName, iType);
-		if(engine != null)
-			createIndexDDL += " " + OCommandExecutorSQLCreateIndex.KEYWORD_ENGINE + " " + engine;
+			createIndexDDL = new OSimpleKeyIndexDefinition().toCreateIndexDDL(iName, iType, engine);
 		if(metadata != null)
 			createIndexDDL += " " + OCommandExecutorSQLCreateIndex.KEYWORD_METADATA + " " + metadata.toJSON();
 		acquireExclusiveLock();
@@ -115,11 +113,11 @@ public class OIndexManagerRemote extends OIndexManagerAbstract {
 
 	}
 
-	protected OIndex<?> getRemoteIndexInstance(boolean isMultiValueIndex, String type, String name, Set<String> clustersToIndex, OIndexDefinition indexDefinition, ORID identity, ODocument configuration) {
+	protected OIndex<?> getRemoteIndexInstance(boolean isMultiValueIndex, String type, String name, String algorithm, Set<String> clustersToIndex, OIndexDefinition indexDefinition, ORID identity, ODocument configuration) {
 
 		if(isMultiValueIndex)
-			return new OIndexRemoteMultiValue(name, type, identity, indexDefinition, configuration, clustersToIndex);
-		return new OIndexRemoteOneValue(name, type, identity, indexDefinition, configuration, clustersToIndex);
+			return new OIndexRemoteMultiValue(name, type, algorithm, identity, indexDefinition, configuration, clustersToIndex);
+		return new OIndexRemoteOneValue(name, type, algorithm, identity, indexDefinition, configuration, clustersToIndex);
 	}
 
 	@Override
@@ -135,7 +133,7 @@ public class OIndexManagerRemote extends OIndexManagerAbstract {
 					try {
 						final boolean isMultiValue = ODefaultIndexFactory.isMultiValueIndex((String)d.field(OIndexInternal.CONFIG_TYPE));
 						final OIndexInternal.IndexMetadata newIndexMetadata = OIndexAbstract.loadMetadataInternal(d, (String)d.field(OIndexInternal.CONFIG_TYPE), d.<String> field(OIndexInternal.ALGORITHM), d.<String> field(OIndexInternal.VALUE_CONTAINER_ALGORITHM));
-						addIndexInternal(getRemoteIndexInstance(isMultiValue, newIndexMetadata.getType(), newIndexMetadata.getName(), newIndexMetadata.getClustersToIndex(), newIndexMetadata.getIndexDefinition(), (ORID)d.field(OIndexAbstract.CONFIG_MAP_RID), d));
+						addIndexInternal(getRemoteIndexInstance(isMultiValue, newIndexMetadata.getType(), newIndexMetadata.getName(), newIndexMetadata.getAlgorithm(), newIndexMetadata.getClustersToIndex(), newIndexMetadata.getIndexDefinition(), (ORID)d.field(OIndexAbstract.CONFIG_MAP_RID), d));
 					} catch(Exception e) {
 						OLogManager.instance().error(this, "Error on loading of index by configuration: %s", e, d);
 					}

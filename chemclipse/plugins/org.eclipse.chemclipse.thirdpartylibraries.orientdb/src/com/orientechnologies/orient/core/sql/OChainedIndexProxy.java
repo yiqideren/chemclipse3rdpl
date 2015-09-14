@@ -19,7 +19,7 @@ package com.orientechnologies.orient.core.sql;
 
 import com.orientechnologies.common.listener.OProgressListener;
 import com.orientechnologies.common.profiler.OProfiler;
-import com.orientechnologies.common.profiler.OProfilerMBean;
+import com.orientechnologies.common.profiler.OProfilerStub;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.id.ORID;
@@ -151,7 +151,7 @@ public class OChainedIndexProxy<T> implements OIndex<T> {
 	 * 
 	 * Requirements to the base index:
 	 * <ul>
-	 * <li>Should be unique or not unique. Other types can not be used to get all documents with required links.</li>
+	 * <li>Should be unique or not unique. Other types cannot be used to get all documents with required links.</li>
 	 * <li>Should not be composite hash index. As soon as hash index does not support partial match search.</li>
 	 * <li>Composite index that ignores null values should not be used.</li>
 	 * <li>Hash index is better than tree based indexes.</li>
@@ -210,11 +210,11 @@ public class OChainedIndexProxy<T> implements OIndex<T> {
 	}
 
 	/**
-	 * Check if index can be used as base index.
+	 * Checks if index can be used as base index.
 	 * 
 	 * Requirements to the base index:
 	 * <ul>
-	 * <li>Should be unique or not unique. Other types can not be used to get all documents with required links.</li>
+	 * <li>Should be unique or not unique. Other types cannot be used to get all documents with required links.</li>
 	 * <li>Should not be composite hash index. As soon as hash index does not support partial match search.</li>
 	 * <li>Composite index that ignores null values should not be used.</li>
 	 * </ul>
@@ -274,7 +274,8 @@ public class OChainedIndexProxy<T> implements OIndex<T> {
 
 		final Object lastIndexResult = lastIndex.get(iKey);
 		final Set<OIdentifiable> result = new HashSet<OIdentifiable>();
-		result.addAll(applyTailIndexes(lastIndexResult));
+		if(lastIndexResult != null)
+			result.addAll(applyTailIndexes(lastIndexResult));
 		return (T)result;
 	}
 
@@ -376,14 +377,14 @@ public class OChainedIndexProxy<T> implements OIndex<T> {
 	}
 
 	/**
-	 * Register statistic information about usage of index in {@link OProfiler}.
+	 * Register statistic information about usage of index in {@link OProfilerStub}.
 	 * 
 	 * @param index
 	 *            which usage is registering.
 	 */
 	private void updateStatistic(OIndex<?> index) {
 
-		final OProfilerMBean profiler = Orient.instance().getProfiler();
+		final OProfiler profiler = Orient.instance().getProfiler();
 		if(profiler.isRecording()) {
 			Orient.instance().getProfiler().updateCounter(profiler.getDatabaseMetric(index.getDatabaseName(), "query.indexUsed"), "Used index in query", +1);
 			final int paramCount = index.getDefinition().getParamCount();
@@ -477,6 +478,12 @@ public class OChainedIndexProxy<T> implements OIndex<T> {
 	}
 
 	public String getType() {
+
+		throw new UnsupportedOperationException("Not allowed operation");
+	}
+
+	@Override
+	public String getAlgorithm() {
 
 		throw new UnsupportedOperationException("Not allowed operation");
 	}

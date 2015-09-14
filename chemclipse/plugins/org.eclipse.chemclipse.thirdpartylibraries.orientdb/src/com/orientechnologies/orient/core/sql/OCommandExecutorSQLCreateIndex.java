@@ -17,12 +17,7 @@
  */
 package com.orientechnologies.orient.core.sql;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
+import com.orientechnologies.common.util.OPatternConst;
 import com.orientechnologies.orient.core.collate.OCollate;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
 import com.orientechnologies.orient.core.command.OCommandRequest;
@@ -32,6 +27,8 @@ import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 import com.orientechnologies.orient.core.index.OIndex;
 import com.orientechnologies.orient.core.index.OIndexDefinition;
 import com.orientechnologies.orient.core.index.OIndexDefinitionFactory;
+import com.orientechnologies.orient.core.index.OIndexFactory;
+import com.orientechnologies.orient.core.index.OIndexes;
 import com.orientechnologies.orient.core.index.OPropertyMapIndexDefinition;
 import com.orientechnologies.orient.core.index.ORuntimeKeyIndexDefinition;
 import com.orientechnologies.orient.core.index.OSimpleKeyIndexDefinition;
@@ -39,6 +36,12 @@ import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.schema.OClassImpl;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * SQL CREATE INDEX command: Create a new index against a property.
@@ -104,7 +107,7 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 			}
 			final String props = parserText.substring(oldPos, pos).trim().substring(1);
 			List<String> propList = new ArrayList<String>();
-			Collections.addAll(propList, props.trim().split("\\s*,\\s*"));
+			Collections.addAll(propList, OPatternConst.PATTERN_COMMA_SEPARATED.split(props.trim()));
 			fields = new String[propList.size()];
 			propList.toArray(fields);
 			for(int i = 0; i < fields.length; i++) {
@@ -167,7 +170,7 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 				serializerKeyId = Byte.parseByte(word.toString());
 			} else {
 				ArrayList<OType> keyTypeList = new ArrayList<OType>();
-				for(String typeName : typesString.split("\\s*,\\s*")) {
+				for(String typeName : OPatternConst.PATTERN_COMMA_SEPARATED.split(typesString)) {
 					keyTypeList.add(OType.valueOf(typeName));
 				}
 				keyTypes = new OType[keyTypeList.size()];
@@ -202,10 +205,11 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 			}
 		}
 		if(fields == null || fields.length == 0) {
+			OIndexFactory factory = OIndexes.getFactory(indexType.toString(), null);
 			if(keyTypes != null)
-				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.toString(), new OSimpleKeyIndexDefinition(keyTypes, collatesList), null, null, metadataDoc, engine);
+				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.toString(), new OSimpleKeyIndexDefinition(keyTypes, collatesList, factory.getLastVersion()), null, null, metadataDoc, engine);
 			else if(serializerKeyId != 0) {
-				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.toString(), new ORuntimeKeyIndexDefinition(serializerKeyId), null, null, metadataDoc, engine);
+				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.toString(), new ORuntimeKeyIndexDefinition(serializerKeyId, factory.getLastVersion()), null, null, metadataDoc, engine);
 			} else
 				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.toString(), null, null, null, metadataDoc, engine);
 		} else {
@@ -213,7 +217,7 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 				idx = oClass.createIndex(indexName, indexType.toString(), null, metadataDoc, engine, fields);
 			} else {
 				final List<OType> fieldTypeList = keyTypes != null ? Arrays.asList(keyTypes) : ((OClassImpl)oClass).extractFieldTypes(fields);
-				final OIndexDefinition idxDef = OIndexDefinitionFactory.createIndexDefinition(oClass, Arrays.asList(fields), fieldTypeList, collatesList);
+				final OIndexDefinition idxDef = OIndexDefinitionFactory.createIndexDefinition(oClass, Arrays.asList(fields), fieldTypeList, collatesList, indexType.toString(), null);
 				idx = database.getMetadata().getIndexManager().createIndex(indexName, indexType.name(), idxDef, oClass.getPolymorphicClusterIds(), null, metadataDoc, engine);
 			}
 		}
@@ -223,15 +227,15 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 	}
 
 	@Override
-	public String getSyntax() {
-
-		return "CREATE INDEX <name> [ON <class-name> (prop-names [COLLATE <collate>])] <type> [<key-type>] [METADATA {JSON Index Metadata Document}]";
-	}
-
-	@Override
 	public QUORUM_TYPE getQuorumType() {
 
 		return QUORUM_TYPE.ALL;
+	}
+
+	@Override
+	public String getSyntax() {
+
+		return "CREATE INDEX <name> [ON <class-name> (prop-names [COLLATE <collate>])] <type> [<key-type>] [METADATA {JSON Index Metadata Document}]";
 	}
 
 	private OClass findClass(String part) {
@@ -241,7 +245,7 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 
 	private void checkMapIndexSpecifier(final String fieldName, final String text, final int pos) {
 
-		final String[] fieldNameParts = fieldName.split("\\s+");
+		final String[] fieldNameParts = OPatternConst.PATTERN_SPACES.split(fieldName);
 		if(fieldNameParts.length == 1)
 			return;
 		if(fieldNameParts.length == 3) {
@@ -249,7 +253,7 @@ public class OCommandExecutorSQLCreateIndex extends OCommandExecutorSQLAbstract 
 				try {
 					OPropertyMapIndexDefinition.INDEX_BY.valueOf(fieldNameParts[2].toUpperCase());
 				} catch(IllegalArgumentException iae) {
-					throw new OCommandSQLParsingException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldName + "'", text, pos);
+					throw new OCommandSQLParsingException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldName + "'", text, pos, iae);
 				}
 				return;
 			}

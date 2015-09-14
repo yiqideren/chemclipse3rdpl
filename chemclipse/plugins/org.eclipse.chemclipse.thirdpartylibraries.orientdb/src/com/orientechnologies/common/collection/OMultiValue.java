@@ -17,14 +17,14 @@
  */
 package com.orientechnologies.common.collection;
 
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.Map.Entry;
+
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.common.util.OCallable;
 import com.orientechnologies.common.util.OResettable;
 import com.orientechnologies.common.util.OSizeable;
-
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.Map.Entry;
 
 /**
  * Handles Multi-value types such as Arrays, Collections and Maps. It recognizes special Orient collections.
@@ -43,7 +43,7 @@ public class OMultiValue {
 	 */
 	public static boolean isMultiValue(final Class<?> iType) {
 
-		return OCollection.class.isAssignableFrom(iType) || Collection.class.isAssignableFrom(iType) || (iType.isArray() || Map.class.isAssignableFrom(iType) || OMultiCollectionIterator.class.isAssignableFrom(iType) || OCollection.class.isAssignableFrom(iType));
+		return OCollection.class.isAssignableFrom(iType) || Collection.class.isAssignableFrom(iType) || iType.isArray() || Map.class.isAssignableFrom(iType) || OMultiCollectionIterator.class.isAssignableFrom(iType);
 	}
 
 	/**
@@ -208,6 +208,27 @@ public class OMultiValue {
 	}
 
 	/**
+	 * Sets the value of the Multi-value object (array or collection) at iIndex
+	 * 
+	 * @param iObject
+	 *            Multi-value object (array, collection)
+	 * @param iValue
+	 *            The value to set at this specified index.
+	 * @param iIndex
+	 *            integer as the position requested
+	 */
+	public static void setValue(final Object iObject, final Object iValue, final int iIndex) {
+
+		if(iObject instanceof List<?>) {
+			((List<Object>)iObject).set(iIndex, iValue);
+		} else if(iObject.getClass().isArray()) {
+			Array.set(iObject, iIndex, iValue);
+		} else {
+			throw new IllegalArgumentException("Can only set positional indices for Lists and Arrays");
+		}
+	}
+
+	/**
 	 * Returns an <code>Iterable<Object></code> object to browse the multi-value instance (array, collection or map)
 	 * 
 	 * @param iObject
@@ -231,7 +252,7 @@ public class OMultiValue {
 				temp.add(it.next());
 			return temp;
 		}
-		return null;
+		return new OIterableObject<Object>(iObject);
 	}
 
 	/**
@@ -488,7 +509,7 @@ public class OMultiValue {
 						((OMultiCollectionIterator<?>)iToRemove).reset();
 					if(iAllOccurrences) {
 						if(iObject instanceof OCollection)
-							throw new IllegalStateException("Mutable collection can not be used to remove all occurrences.");
+							throw new IllegalStateException("Mutable collection cannot be used to remove all occurrences.");
 						final Collection<Object> collection = (Collection)iObject;
 						OMultiCollectionIterator<?> it = (OMultiCollectionIterator<?>)iToRemove;
 						batchRemove(collection, it);
@@ -667,5 +688,36 @@ public class OMultiValue {
 			}
 		}
 		return -1;
+	}
+
+	public static Object toSet(final Object o) {
+
+		if(o instanceof Set<?>)
+			return o;
+		else if(o instanceof Collection<?>)
+			return new HashSet<Object>((Collection<?>)o);
+		else if(o instanceof Map<?, ?>) {
+			final Collection values = ((Map)o).values();
+			return values instanceof Set ? values : new HashSet(values);
+		} else if(o.getClass().isArray()) {
+			final HashSet set = new HashSet();
+			int tot = Array.getLength(o);
+			for(int i = 0; i < tot; ++i) {
+				set.add(Array.get(o, i));
+			}
+			return set;
+		} else if(o instanceof OMultiValue) {
+		} else if(o instanceof Iterator<?>) {
+			final HashSet set = new HashSet();
+			while(((Iterator<?>)o).hasNext()) {
+				set.add(((Iterator<?>)o).next());
+			}
+			if(o instanceof OResettable)
+				((OResettable)o).reset();
+			return set;
+		}
+		final HashSet set = new HashSet(1);
+		set.add(o);
+		return set;
 	}
 }

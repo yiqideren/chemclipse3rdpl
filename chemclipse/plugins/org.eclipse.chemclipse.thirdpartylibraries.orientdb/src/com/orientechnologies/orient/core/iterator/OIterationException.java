@@ -23,9 +23,8 @@ public class OIterationException extends OException {
 
 	private static final long serialVersionUID = 2347493191705052402L;
 
-	public OIterationException(String message, Throwable cause) {
+	public OIterationException() {
 
-		super(message, cause);
 	}
 
 	public OIterationException(String message) {

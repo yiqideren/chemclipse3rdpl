@@ -96,17 +96,20 @@ public class OSQLFunctionAverage extends OSQLFunctionMathAbstract {
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		Number dSum = null;
-		int dTotal = 0;
-		for(Object iParameter : resultsToMerge) {
-			final Map<String, Object> item = (Map<String, Object>)iParameter;
-			if(dSum == null)
-				dSum = (Number)item.get("sum");
-			else
-				dSum = OType.increment(dSum, (Number)item.get("sum"));
-			dTotal += (Integer)item.get("total");
+		if(returnDistributedResult()) {
+			Number dSum = null;
+			int dTotal = 0;
+			for(Object iParameter : resultsToMerge) {
+				final Map<String, Object> item = (Map<String, Object>)iParameter;
+				if(dSum == null)
+					dSum = (Number)item.get("sum");
+				else
+					dSum = OType.increment(dSum, (Number)item.get("sum"));
+				dTotal += (Integer)item.get("total");
+			}
+			return computeAverage(dSum, dTotal);
 		}
-		return computeAverage(dSum, dTotal);
+		return resultsToMerge.get(0);
 	}
 
 	@Override

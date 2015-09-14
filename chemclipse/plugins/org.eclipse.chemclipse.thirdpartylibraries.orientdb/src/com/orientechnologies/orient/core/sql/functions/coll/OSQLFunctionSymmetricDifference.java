@@ -19,67 +19,47 @@ package com.orientechnologies.orient.core.sql.functions.coll;
 
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
-import com.orientechnologies.orient.core.record.impl.ODocument;
-import com.orientechnologies.orient.core.record.impl.ODocumentHelper;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
- * This function implements asymmetric difference between sets.
- *
- *
  * This operator can work as aggregate or inline. If only one argument is passed than aggregates, otherwise executes, and returns,
- * the DIFFERENCE between the collections received as parameters. Works also with no collection values.
- * 
+ * the SYMMETRIC DIFFERENCE between the collections received as parameters. Works also with no collection values.
+ *
  * @author Luca Garulli (l.garulli--at--orientechnologies.com)
- * 
+ *
  */
 public class OSQLFunctionSymmetricDifference extends OSQLFunctionMultiValueAbstract<Set<Object>> {
 
-	boolean first = true;
-
-	static class ODocumentContent {
-
-		ODocument doc;
-
-		ODocumentContent(ODocument doc) {
-
-			this.doc = doc;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-
-			if(doc.getIdentity().isPersistent() && obj instanceof ODocumentContent) {
-				return doc.equals(((ODocumentContent)obj).doc);
-			}
-			if(obj instanceof ODocument) {
-				return ODocumentHelper.hasSameContentOf(doc, null, (ODocument)obj, null, null);
-			}
-			if(obj instanceof ODocumentContent) {
-				return ODocumentHelper.hasSameContentOf(doc, null, ((ODocumentContent)obj).doc, null, null, false);
-			}
-			return false;
-		}
-
-		@Override
-		public int hashCode() {
-
-			int result = 0;
-			for(Object o : doc.fieldValues()) {
-				if(o != null) {
-					result += o.hashCode();
-				}
-			}
-			return result;
-		}
-	}
-
 	public static final String NAME = "symmetricDifference";
+	private Set<Object> rejected;
 
 	public OSQLFunctionSymmetricDifference() {
 
 		super(NAME, 1, -1);
+	}
+
+	private static void addItemToResult(Object o, Set<Object> accepted, Set<Object> rejected) {
+
+		if(!accepted.contains(o) && !rejected.contains(o)) {
+			accepted.add(o);
+		} else {
+			accepted.remove(o);
+			rejected.add(o);
+		}
+	}
+
+	private static void addItemsToResult(Collection<Object> co, Set<Object> accepted, Set<Object> rejected) {
+
+		for(Object o : co) {
+			addItemToResult(o, accepted, rejected);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -87,102 +67,32 @@ public class OSQLFunctionSymmetricDifference extends OSQLFunctionMultiValueAbstr
 
 		if(iParams[0] == null)
 			return null;
-		if(context == null) {
-			context = new HashSet<Object>();
-		}
+		Object value = iParams[0];
 		if(iParams.length == 1) {
 			// AGGREGATION MODE (STATEFUL)
-			Object value = iParams[0];
+			if(context == null) {
+				context = new HashSet<Object>();
+				rejected = new HashSet<Object>();
+			}
 			if(value instanceof Collection<?>) {
-				for(Object o : (Collection)value) {
-					if(first) {
-						if(o instanceof ODocument) {
-							context.add(o);
-						} else if(o instanceof Collection) {
-							context.addAll((Collection)o);
-						} else {
-							context.add(o);
-						}
-						first = false;
-					} else {
-						context = getDifferenceOf(context, o);
-					}
-				}
+				addItemsToResult((Collection<Object>)value, context, rejected);
+			} else {
+				addItemToResult(value, context, rejected);
 			}
 			return null;
 		} else {
 			// IN-LINE MODE (STATELESS)
-			boolean first = true;
-			for(Object o : iParams) {
-				if(first) {
-					if(o instanceof ODocument) {
-						context.add(o);
-					} else if(o instanceof Collection) {
-						context.addAll((Collection)o);
-					} else {
-						context.add(o);
-					}
-					first = false;
+			final Set<Object> result = new HashSet<Object>();
+			final Set<Object> rejected = new HashSet<Object>();
+			for(Object iParameter : iParams) {
+				if(iParameter instanceof Collection<?>) {
+					addItemsToResult((Collection<Object>)iParameter, result, rejected);
 				} else {
-					context = getDifferenceOf(context, o);
+					addItemToResult(iParameter, result, rejected);
 				}
 			}
-			return context;
+			return result;
 		}
-	}
-
-	public Set<Object> getDifferenceOf(Object first, Object second) {
-
-		final Set<Object> result = new HashSet<Object>();
-		final Set<Object> boxedResult = new HashSet<Object>();
-		if(first instanceof ODocument) {
-			boxedResult.add(new OSQLFunctionSymmetricDifference.ODocumentContent((ODocument)first));
-		} else if(first instanceof Iterable) {
-			for(Object o : (Iterable)first) {
-				if(o instanceof ODocument) {
-					boxedResult.add(new OSQLFunctionSymmetricDifference.ODocumentContent((ODocument)o));
-				} else {
-					boxedResult.add(o);
-				}
-			}
-		} else {
-			boxedResult.add(first);
-		}
-		Object next = second;
-		if(next instanceof ODocument) {
-			boxedResult.remove(new OSQLFunctionSymmetricDifference.ODocumentContent((ODocument)next));
-		} else if(next instanceof Iterable) {
-			for(Object o : (Iterable)next) {
-				if(o instanceof ODocument) {
-					ODocumentContent newItem = new ODocumentContent((ODocument)o);
-					if(boxedResult.contains(newItem)) {
-						boxedResult.remove(newItem);
-					} else {
-						boxedResult.add(newItem);
-					}
-				} else {
-					if(boxedResult.contains(o)) {
-						boxedResult.remove(o);
-					} else {
-						boxedResult.add(o);
-					}
-				}
-			}
-		} else {
-			if(boxedResult.contains(next)) {
-				boxedResult.remove(next);
-			} else {
-				boxedResult.add(next);
-			}
-		}
-		for(Object o : boxedResult) {
-			if(o instanceof OSQLFunctionSymmetricDifference.ODocumentContent) {
-				result.add(((OSQLFunctionSymmetricDifference.ODocumentContent)o).doc);
-			} else {
-				result.add(o);
-			}
-		}
-		return result;
 	}
 
 	@Override
@@ -191,6 +101,7 @@ public class OSQLFunctionSymmetricDifference extends OSQLFunctionMultiValueAbstr
 		if(returnDistributedResult()) {
 			final Map<String, Object> doc = new HashMap<String, Object>();
 			doc.put("result", context);
+			doc.put("rejected", rejected);
 			return Collections.<Object> singleton(doc);
 		} else {
 			return super.getResult();
@@ -205,20 +116,26 @@ public class OSQLFunctionSymmetricDifference extends OSQLFunctionMultiValueAbstr
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		Set<Object> result = new HashSet<Object>();
-		boolean first = true;
-		for(Object item : resultsToMerge) {
-			if(first) {
-				if(item instanceof Collection) {
-					result.addAll((Collection<?>)item);
-				} else {
-					result.add(item);
-				}
-				first = false;
-			} else {
-				result = getDifferenceOf(result, item);
+		if(returnDistributedResult()) {
+			final Set<Object> result = new HashSet<Object>();
+			final Set<Object> rejected = new HashSet<Object>();
+			for(Object item : resultsToMerge) {
+				rejected.addAll(unwrap(item, "rejected"));
 			}
+			for(Object item : resultsToMerge) {
+				addItemsToResult(unwrap(item, "result"), result, rejected);
+			}
+			return result;
 		}
-		return result;
+		return resultsToMerge.get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Set<Object> unwrap(Object obj, String field) {
+
+		final Set<Object> objAsSet = (Set<Object>)obj;
+		final Map<String, Object> objAsMap = (Map<String, Object>)objAsSet.iterator().next();
+		final Set<Object> objAsField = (Set<Object>)objAsMap.get(field);
+		return objAsField;
 	}
 }

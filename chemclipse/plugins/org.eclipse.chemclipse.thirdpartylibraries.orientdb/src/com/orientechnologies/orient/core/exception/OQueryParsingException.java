@@ -17,9 +17,9 @@
  */
 package com.orientechnologies.orient.core.exception;
 
-import com.orientechnologies.common.exception.OException;
+import com.orientechnologies.orient.core.sql.OCommandSQLParsingException;
 
-public class OQueryParsingException extends OException {
+public class OQueryParsingException extends OCommandSQLParsingException {
 
 	private String text;
 	private int position = -1;

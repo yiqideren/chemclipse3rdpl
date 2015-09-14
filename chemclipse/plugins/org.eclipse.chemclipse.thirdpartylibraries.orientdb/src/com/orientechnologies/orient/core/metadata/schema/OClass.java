@@ -24,6 +24,7 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,11 +36,11 @@ import java.util.Set;
  */
 public interface OClass extends Comparable<OClass> {
 
-	public static enum ATTRIBUTES {
-		NAME, SHORTNAME, SUPERCLASS, OVERSIZE, STRICTMODE, ADDCLUSTER, REMOVECLUSTER, CUSTOM, ABSTRACT, CLUSTERSELECTION
+	enum ATTRIBUTES {
+		NAME, SHORTNAME, SUPERCLASS, SUPERCLASSES, OVERSIZE, STRICTMODE, ADDCLUSTER, REMOVECLUSTER, CUSTOM, ABSTRACT, CLUSTERSELECTION
 	}
 
-	public static enum INDEX_TYPE {
+	enum INDEX_TYPE {
 		UNIQUE(true), NOTUNIQUE(true), FULLTEXT(true), DICTIONARY(false), PROXY(true), UNIQUE_HASH_INDEX(true), NOTUNIQUE_HASH_INDEX(true), FULLTEXT_HASH_INDEX(true), DICTIONARY_HASH_INDEX(false), SPATIAL(true);
 
 		private boolean automaticIndexable;
@@ -49,83 +50,116 @@ public interface OClass extends Comparable<OClass> {
 			automaticIndexable = iValue;
 		}
 
-		public boolean isAutomaticIndexable() {
+		boolean isAutomaticIndexable() {
 
 			return automaticIndexable;
 		}
 	}
 
-	public <T> T newInstance() throws InstantiationException, IllegalAccessException;
+	<T> T newInstance() throws InstantiationException, IllegalAccessException;
 
-	public boolean isAbstract();
+	boolean isAbstract();
 
-	public OClass setAbstract(boolean iAbstract);
+	OClass setAbstract(boolean iAbstract);
 
-	public boolean isStrictMode();
+	boolean isStrictMode();
 
-	public OClass setStrictMode(boolean iMode);
+	OClass setStrictMode(boolean iMode);
 
-	public OClass getSuperClass();
+	@Deprecated
+	OClass getSuperClass();
 
-	public OClass setSuperClass(OClass iSuperClass);
+	@Deprecated
+	OClass setSuperClass(OClass iSuperClass);
 
-	public String getName();
+	boolean hasSuperClasses();
 
-	public OClass setName(String iName);
+	List<String> getSuperClassesNames();
 
-	public String getStreamableName();
+	List<OClass> getSuperClasses();
 
-	public Collection<OProperty> declaredProperties();
+	OClass setSuperClasses(List<? extends OClass> classes);
 
-	public Collection<OProperty> properties();
+	OClass addSuperClass(OClass superClass);
 
-	public Map<String, OProperty> propertiesMap();
+	OClass removeSuperClass(OClass superClass);
 
-	public Collection<OProperty> getIndexedProperties();
+	String getName();
 
-	public OProperty getProperty(String iPropertyName);
+	OClass setName(String iName);
 
-	public OProperty createProperty(String iPropertyName, OType iType);
+	String getStreamableName();
 
-	public OProperty createProperty(String iPropertyName, OType iType, OClass iLinkedClass);
+	Collection<OProperty> declaredProperties();
 
-	public OProperty createProperty(String iPropertyName, OType iType, OType iLinkedType);
+	Collection<OProperty> properties();
 
-	public void dropProperty(String iPropertyName);
+	Map<String, OProperty> propertiesMap();
 
-	public boolean existsProperty(String iPropertyName);
+	Collection<OProperty> getIndexedProperties();
 
-	public Class<?> getJavaClass();
+	OProperty getProperty(String iPropertyName);
 
-	int getClusterForNewInstance(final ODocument doc);
+	OProperty createProperty(String iPropertyName, OType iType);
 
-	public int getDefaultClusterId();
+	OProperty createProperty(String iPropertyName, OType iType, OClass iLinkedClass);
 
-	public abstract void setDefaultClusterId(int iDefaultClusterId);
+	OProperty createProperty(String iPropertyName, OType iType, OType iLinkedType);
 
-	public int[] getClusterIds();
+	void dropProperty(String iPropertyName);
 
-	public OClass addClusterId(int iId);
+	boolean existsProperty(String iPropertyName);
 
-	public OClusterSelectionStrategy getClusterSelection();
+	Class<?> getJavaClass();
 
-	public OClass setClusterSelection(OClusterSelectionStrategy clusterSelection);
+	int getClusterForNewInstance(ODocument doc);
 
-	public OClass setClusterSelection(String iStrategyName);
+	int getDefaultClusterId();
 
-	public OClass addCluster(String iClusterName);
+	abstract void setDefaultClusterId(int iDefaultClusterId);
 
-	public OClass removeClusterId(int iId);
+	int[] getClusterIds();
 
-	public int[] getPolymorphicClusterIds();
+	OClass addClusterId(int iId);
 
-	public Collection<OClass> getBaseClasses();
+	OClusterSelectionStrategy getClusterSelection();
 
-	public Collection<OClass> getAllBaseClasses();
+	OClass setClusterSelection(OClusterSelectionStrategy clusterSelection);
 
-	public long getSize();
+	OClass setClusterSelection(String iStrategyName);
 
-	public float getClassOverSize();
+	OClass addCluster(String iClusterName);
+
+	OClass removeClusterId(int iId);
+
+	int[] getPolymorphicClusterIds();
+
+	@Deprecated
+	Collection<OClass> getBaseClasses();
+
+	@Deprecated
+	Collection<OClass> getAllBaseClasses();
+
+	/**
+	 *
+	 * @return all the subclasses (one level hierarchy only)
+	 */
+	Collection<OClass> getSubclasses();
+
+	/**
+	 *
+	 * @return all the subclass hierarchy
+	 */
+	Collection<OClass> getAllSubclasses();
+
+	/**
+	 * @return all recursively collected super classes
+	 */
+	Collection<OClass> getAllSuperClasses();
+
+	long getSize();
+
+	float getClassOverSize();
 
 	/**
 	 * Returns the oversize factor. Oversize is used to extend the record size by a factor to avoid defragmentation upon updates. 0 or
@@ -134,7 +168,7 @@ public interface OClass extends Comparable<OClass> {
 	 * @return Oversize factor
 	 * @see #setOverSize(float)
 	 */
-	public float getOverSize();
+	float getOverSize();
 
 	/**
 	 * Sets the oversize factor. Oversize is used to extend the record size by a factor to avoid defragmentation upon updates. 0 or
@@ -143,24 +177,24 @@ public interface OClass extends Comparable<OClass> {
 	 * @return Oversize factor
 	 * @see #getOverSize()
 	 */
-	public OClass setOverSize(float overSize);
+	OClass setOverSize(float overSize);
 
 	/**
 	 * Returns the number of the records of this class considering also subclasses (polymorphic).
 	 */
-	public long count();
+	long count();
 
 	/**
 	 * Returns the number of the records of this class and based on polymorphic parameter it consider or not the subclasses.
 	 */
-	public long count(boolean iPolymorphic);
+	long count(boolean iPolymorphic);
 
 	/**
 	 * Truncates all the clusters the class uses.
 	 * 
 	 * @throws IOException
 	 */
-	public void truncate() throws IOException;
+	void truncate() throws IOException;
 
 	/**
 	 * Tells if the current instance extends the passed schema class (iClass).
@@ -169,7 +203,7 @@ public interface OClass extends Comparable<OClass> {
 	 * @return true if the current instance extends the passed schema class (iClass).
 	 * @see #isSuperClassOf(OClass)
 	 */
-	public boolean isSubClassOf(String iClassName);
+	boolean isSubClassOf(String iClassName);
 
 	/**
 	 * Returns true if the current instance extends the passed schema class (iClass).
@@ -178,7 +212,7 @@ public interface OClass extends Comparable<OClass> {
 	 * @return
 	 * @see #isSuperClassOf(OClass)
 	 */
-	public boolean isSubClassOf(OClass iClass);
+	boolean isSubClassOf(OClass iClass);
 
 	/**
 	 * Returns true if the passed schema class (iClass) extends the current instance.
@@ -187,30 +221,15 @@ public interface OClass extends Comparable<OClass> {
 	 * @return Returns true if the passed schema class extends the current instance
 	 * @see #isSubClassOf(OClass)
 	 */
-	public boolean isSuperClassOf(OClass iClass);
+	boolean isSuperClassOf(OClass iClass);
 
-	public String getShortName();
+	String getShortName();
 
-	public OClass setShortName(String shortName);
+	OClass setShortName(String shortName);
 
-	public Object get(ATTRIBUTES iAttribute);
+	Object get(ATTRIBUTES iAttribute);
 
-	public OClass set(ATTRIBUTES attribute, Object iValue);
-
-	/**
-	 * Creates database index that is based on passed in field names. Given index will be added into class instance and associated
-	 * with database index.
-	 * 
-	 * @param fields
-	 *            Field names from which index will be created.
-	 * @param iName
-	 *            Database index name
-	 * @param iType
-	 *            Index type.
-	 * 
-	 * @return Class index registered inside of given class ans associated with database index.
-	 */
-	public OIndex<?> createIndex(String iName, INDEX_TYPE iType, String... fields);
+	OClass set(ATTRIBUTES attribute, Object iValue);
 
 	/**
 	 * Creates database index that is based on passed in field names. Given index will be added into class instance and associated
@@ -225,7 +244,22 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @return Class index registered inside of given class ans associated with database index.
 	 */
-	public OIndex<?> createIndex(String iName, String iType, String... fields);
+	OIndex<?> createIndex(String iName, INDEX_TYPE iType, String... fields);
+
+	/**
+	 * Creates database index that is based on passed in field names. Given index will be added into class instance and associated
+	 * with database index.
+	 * 
+	 * @param fields
+	 *            Field names from which index will be created.
+	 * @param iName
+	 *            Database index name
+	 * @param iType
+	 *            Index type.
+	 * 
+	 * @return Class index registered inside of given class ans associated with database index.
+	 */
+	OIndex<?> createIndex(String iName, String iType, String... fields);
 
 	/**
 	 * Creates database index that is based on passed in field names. Given index will be added into class instance.
@@ -241,7 +275,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @return Class index registered inside of given class ans associated with database index.
 	 */
-	public OIndex<?> createIndex(String iName, INDEX_TYPE iType, OProgressListener iProgressListener, String... fields);
+	OIndex<?> createIndex(String iName, INDEX_TYPE iType, OProgressListener iProgressListener, String... fields);
 
 	/**
 	 * Creates database index that is based on passed in field names. Given index will be added into class instance.
@@ -264,7 +298,7 @@ public interface OClass extends Comparable<OClass> {
 	 *            Field names from which index will be created. @return Class index registered inside of given class ans associated with
 	 *            database index.
 	 */
-	public OIndex<?> createIndex(String iName, String iType, OProgressListener iProgressListener, ODocument metadata, String algorithm, String... fields);
+	OIndex<?> createIndex(String iName, String iType, OProgressListener iProgressListener, ODocument metadata, String algorithm, String... fields);
 
 	/**
 	 * Creates database index that is based on passed in field names. Given index will be added into class instance.
@@ -284,7 +318,7 @@ public interface OClass extends Comparable<OClass> {
 	 *            Field names from which index will be created. @return Class index registered inside of given class ans associated with
 	 *            database index.
 	 */
-	public OIndex<?> createIndex(String iName, String iType, OProgressListener iProgressListener, ODocument metadata, String... fields);
+	OIndex<?> createIndex(String iName, String iType, OProgressListener iProgressListener, ODocument metadata, String... fields);
 
 	/**
 	 * Returns list of indexes that contain passed in fields names as their first keys. Order of fields does not matter.
@@ -301,7 +335,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @see com.orientechnologies.orient.core.index.OIndexDefinition#getParamCount()
 	 */
-	public Set<OIndex<?>> getInvolvedIndexes(Collection<String> fields);
+	Set<OIndex<?>> getInvolvedIndexes(Collection<String> fields);
 
 	/**
 	 * 
@@ -312,7 +346,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @see #getInvolvedIndexes(java.util.Collection)
 	 */
-	public Set<OIndex<?>> getInvolvedIndexes(String... fields);
+	Set<OIndex<?>> getInvolvedIndexes(String... fields);
 
 	/**
 	 * Returns list of indexes that contain passed in fields names as their first keys. Order of fields does not matter.
@@ -328,7 +362,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @see com.orientechnologies.orient.core.index.OIndexDefinition#getParamCount()
 	 */
-	public Set<OIndex<?>> getClassInvolvedIndexes(Collection<String> fields);
+	Set<OIndex<?>> getClassInvolvedIndexes(Collection<String> fields);
 
 	/**
 	 * 
@@ -339,7 +373,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @see #getClassInvolvedIndexes(java.util.Collection)
 	 */
-	public Set<OIndex<?>> getClassInvolvedIndexes(String... fields);
+	Set<OIndex<?>> getClassInvolvedIndexes(String... fields);
 
 	/**
 	 * Indicates whether given fields are contained as first key fields in class indexes. Order of fields does not matter. If there
@@ -350,7 +384,7 @@ public interface OClass extends Comparable<OClass> {
 	 * 
 	 * @return <code>true</code> if given fields are contained as first key fields in class indexes.
 	 */
-	public boolean areIndexed(Collection<String> fields);
+	boolean areIndexed(Collection<String> fields);
 
 	/**
 	 * @param fields
@@ -358,7 +392,7 @@ public interface OClass extends Comparable<OClass> {
 	 * @return <code>true</code> if given fields are contained as first key fields in class indexes.
 	 * @see #areIndexed(java.util.Collection)
 	 */
-	public boolean areIndexed(String... fields);
+	boolean areIndexed(String... fields);
 
 	/**
 	 * Returns index instance by database index name.
@@ -367,12 +401,12 @@ public interface OClass extends Comparable<OClass> {
 	 *            Database index name.
 	 * @return Index instance.
 	 */
-	public OIndex<?> getClassIndex(String iName);
+	OIndex<?> getClassIndex(String iName);
 
 	/**
 	 * @return All indexes for given class, not the inherited ones.
 	 */
-	public Set<OIndex<?>> getClassIndexes();
+	Set<OIndex<?>> getClassIndexes();
 
 	/**
 	 * Internal.
@@ -382,19 +416,28 @@ public interface OClass extends Comparable<OClass> {
 	void getClassIndexes(Collection<OIndex<?>> indexes);
 
 	/**
+	 * Internal.
+	 * 
 	 * @return All indexes for given class and its super classes.
 	 */
-	public Set<OIndex<?>> getIndexes();
+	void getIndexes(Collection<OIndex<?>> indexes);
 
-	public String getCustom(String iName);
+	/**
+	 * @return All indexes for given class and its super classes.
+	 */
+	Set<OIndex<?>> getIndexes();
 
-	public OClass setCustom(String iName, String iValue);
+	String getCustom(String iName);
 
-	public void removeCustom(String iName);
+	OClass setCustom(String iName, String iValue);
 
-	public void clearCustom();
+	void removeCustom(String iName);
 
-	public Set<String> getCustomKeys();
+	void clearCustom();
+
+	Set<String> getCustomKeys();
 
 	boolean hasClusterId(int clusterId);
+
+	boolean hasPolymorphicClusterId(int clusterId);
 }

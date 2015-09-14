@@ -73,9 +73,13 @@ public class ODatabaseHelper {
 		if(existsDatabase(database, storageType)) {
 			if(database.getURL().startsWith("remote:")) {
 				new OServerAdmin(database.getURL()).connect("root", getServerRootPassword(directory)).dropDatabase(storageType);
+				database.activateOnCurrentThread();
+				database.close();
 			} else {
 				if(database.isClosed())
 					database.open("admin", "admin");
+				else
+					database.activateOnCurrentThread();
 				database.drop();
 			}
 		}
@@ -83,6 +87,7 @@ public class ODatabaseHelper {
 
 	public static boolean existsDatabase(final ODatabase database, String storageType) throws IOException {
 
+		database.activateOnCurrentThread();
 		if(database.getURL().startsWith("remote"))
 			return new OServerAdmin(database.getURL()).connect("root", getServerRootPassword()).existsDatabase(storageType);
 		return database.exists();
@@ -97,6 +102,7 @@ public class ODatabaseHelper {
 
 	public static void freezeDatabase(final ODatabase database) throws IOException {
 
+		database.activateOnCurrentThread();
 		if(database.getURL().startsWith("remote")) {
 			final OServerAdmin serverAdmin = new OServerAdmin(database.getURL());
 			serverAdmin.connect("root", getServerRootPassword()).freezeDatabase("plocal");
@@ -108,6 +114,7 @@ public class ODatabaseHelper {
 
 	public static void releaseDatabase(final ODatabase database) throws IOException {
 
+		database.activateOnCurrentThread();
 		if(database.getURL().startsWith("remote")) {
 			final OServerAdmin serverAdmin = new OServerAdmin(database.getURL());
 			serverAdmin.connect("root", getServerRootPassword()).releaseDatabase("plocal");

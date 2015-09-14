@@ -48,11 +48,11 @@ public class OPaginatedStorageDirtyFlag {
 			if(dirtyFile.exists()) {
 				final boolean fileDeleted = dirtyFile.delete();
 				if(!fileDeleted)
-					throw new IllegalStateException("Can not delete file : " + dirtyFilePath);
+					throw new IllegalStateException("Cannot delete file : " + dirtyFilePath);
 			}
 			final boolean fileCreated = dirtyFile.createNewFile();
 			if(!fileCreated)
-				throw new IllegalStateException("Can not create file : " + dirtyFilePath);
+				throw new IllegalStateException("Cannot create file : " + dirtyFilePath);
 			dirtyFileData = new RandomAccessFile(dirtyFile, "rwd");
 			dirtyFileData.seek(0);
 			dirtyFileData.writeBoolean(true);

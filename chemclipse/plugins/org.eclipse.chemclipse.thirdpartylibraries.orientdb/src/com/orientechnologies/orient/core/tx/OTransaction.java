@@ -21,6 +21,7 @@ import com.orientechnologies.orient.core.db.ODatabase.OPERATION_MODE;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.db.record.ORecordOperation;
+import com.orientechnologies.orient.core.exception.ORecordNotFoundException;
 import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.index.OIndex;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
@@ -63,7 +64,7 @@ public interface OTransaction {
 	/**
 	 * Changes the isolation level. Default is READ_COMMITTED. When REPEATABLE_READ is set, any record read from the storage is cached
 	 * in memory to guarantee the repeatable reads. This affects the used RAM and speed (because JVM Garbage Collector job).
-	 *
+	 * 
 	 * @param iIsolationLevel
 	 *            Isolation level to set
 	 * @return Current object to allow call in chain
@@ -77,48 +78,57 @@ public interface OTransaction {
 	public void clearRecordEntries();
 
 	@Deprecated
-	public ORecord loadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache, boolean loadTombstone, final OStorage.LOCKING_STRATEGY iLockingStrategy);
+	ORecord loadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache, boolean loadTombstone, final OStorage.LOCKING_STRATEGY iLockingStrategy);
 
-	public ORecord loadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache);
+	@Deprecated
+	ORecord loadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache, boolean iUpdateCache, boolean loadTombstone, final OStorage.LOCKING_STRATEGY iLockingStrategy);
 
-	public ORecord saveRecord(ORecord iRecord, String iClusterName, OPERATION_MODE iMode, boolean iForceCreate, ORecordCallback<? extends Number> iRecordCreatedCallback, ORecordCallback<ORecordVersion> iRecordUpdatedCallback);
+	ORecord loadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache);
 
-	public void deleteRecord(ORecord iRecord, OPERATION_MODE iMode);
+	ORecord reloadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache);
 
-	public int getId();
+	ORecord reloadRecord(ORID iRid, ORecord iRecord, String iFetchPlan, boolean ignoreCache, boolean force);
 
-	public TXSTATUS getStatus();
+	ORecord loadRecordIfVersionIsNotLatest(ORID rid, ORecordVersion recordVersion, String fetchPlan, boolean ignoreCache) throws ORecordNotFoundException;
 
-	public Iterable<? extends ORecordOperation> getCurrentRecordEntries();
+	ORecord saveRecord(ORecord iRecord, String iClusterName, OPERATION_MODE iMode, boolean iForceCreate, ORecordCallback<? extends Number> iRecordCreatedCallback, ORecordCallback<ORecordVersion> iRecordUpdatedCallback);
 
-	public Iterable<? extends ORecordOperation> getAllRecordEntries();
+	void deleteRecord(ORecord iRecord, OPERATION_MODE iMode);
 
-	public List<ORecordOperation> getNewRecordEntriesByClass(OClass iClass, boolean iPolymorphic);
+	int getId();
 
-	public List<ORecordOperation> getNewRecordEntriesByClusterIds(int[] iIds);
+	TXSTATUS getStatus();
 
-	public ORecord getRecord(ORID iRid);
+	Iterable<? extends ORecordOperation> getCurrentRecordEntries();
 
-	public ORecordOperation getRecordEntry(ORID rid);
+	Iterable<? extends ORecordOperation> getAllRecordEntries();
 
-	public List<String> getInvolvedIndexes();
+	List<ORecordOperation> getNewRecordEntriesByClass(OClass iClass, boolean iPolymorphic);
 
-	public ODocument getIndexChanges();
+	List<ORecordOperation> getNewRecordEntriesByClusterIds(int[] iIds);
 
-	public void addIndexEntry(OIndex<?> delegate, final String iIndexName, final OTransactionIndexChanges.OPERATION iStatus, final Object iKey, final OIdentifiable iValue);
+	ORecord getRecord(ORID iRid);
 
-	public void clearIndexEntries();
+	ORecordOperation getRecordEntry(ORID rid);
 
-	public OTransactionIndexChanges getIndexChanges(String iName);
+	List<String> getInvolvedIndexes();
+
+	ODocument getIndexChanges();
+
+	void addIndexEntry(OIndex<?> delegate, final String iIndexName, final OTransactionIndexChanges.OPERATION iStatus, final Object iKey, final OIdentifiable iValue);
+
+	void clearIndexEntries();
+
+	OTransactionIndexChanges getIndexChanges(String iName);
 
 	/**
 	 * Tells if the transaction is active.
-	 *
+	 * 
 	 * @return
 	 */
-	public boolean isActive();
+	boolean isActive();
 
-	public boolean isUsingLog();
+	boolean isUsingLog();
 
 	/**
 	 * If you set this flag to false, you are unable to
@@ -126,37 +136,37 @@ public interface OTransaction {
 	 * <li>Rollback data changes in case of exception</li>
 	 * <li>Restore data in case of server crash</li>
 	 * </ol>
-	 *
+	 * 
 	 * So you practically unable to work in multithreaded environment and keep data consistent.
 	 */
-	public void setUsingLog(boolean useLog);
+	void setUsingLog(boolean useLog);
 
-	public void close();
+	void close();
 
 	/**
 	 * When commit in transaction is performed all new records will change their identity, but index values will contain stale links,
 	 * to fix them given method will be called for each entry. This update local transaction maps too.
-	 *
+	 * 
 	 * @param oldRid
 	 *            Record identity before commit.
 	 * @param newRid
 	 *            Record identity after commit.
 	 */
-	public void updateIdentityAfterCommit(final ORID oldRid, final ORID newRid);
+	void updateIdentityAfterCommit(final ORID oldRid, final ORID newRid);
 
-	public int amountOfNestedTxs();
+	int amountOfNestedTxs();
 
-	public boolean isLockedRecord(OIdentifiable iRecord);
+	boolean isLockedRecord(OIdentifiable iRecord);
 
 	OStorage.LOCKING_STRATEGY lockingStrategy(OIdentifiable iRecord);
 
-	public OTransaction lockRecord(OIdentifiable iRecord, OStorage.LOCKING_STRATEGY iLockingStrategy);
+	OTransaction lockRecord(OIdentifiable iRecord, OStorage.LOCKING_STRATEGY iLockingStrategy);
 
-	public OTransaction unlockRecord(OIdentifiable iRecord);
+	OTransaction unlockRecord(OIdentifiable iRecord);
 
-	public HashMap<ORID, OStorage.LOCKING_STRATEGY> getLockedRecords();
+	HashMap<ORID, OStorage.LOCKING_STRATEGY> getLockedRecords();
 
-	public int getEntryCount();
+	int getEntryCount();
 
-	public boolean hasRecordCreation();
+	boolean hasRecordCreation();
 }

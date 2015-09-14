@@ -19,171 +19,79 @@ package com.orientechnologies.common.profiler;
 
 import java.io.PrintStream;
 import java.util.Date;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Map;
 
-public class OProfiler extends OAbstractProfiler {
+import com.orientechnologies.common.profiler.OAbstractProfiler.OProfilerHookValue;
+import com.orientechnologies.common.util.OPair;
+import com.orientechnologies.common.util.OService;
 
-	protected final ConcurrentMap<String, Long> counters = new ConcurrentHashMap<String, Long>();
+public interface OProfiler extends OService {
 
-	public OProfiler() {
-
+	enum METRIC_TYPE {
+		CHRONO, COUNTER, STAT, SIZE, ENABLED, TEXT
 	}
 
-	public OProfiler(final OAbstractProfiler profiler) {
+	void updateCounter(String iStatName, String iDescription, long iPlus);
 
-		super(profiler);
-	}
+	void updateCounter(String iStatName, String iDescription, long iPlus, String iDictionary);
 
-	public void configure(final String iConfiguration) {
+	long getCounter(String iStatName);
 
-		if(iConfiguration == null || iConfiguration.length() == 0)
-			return;
-		if(isRecording())
-			stopRecording();
-		startRecording();
-	}
+	String dump();
 
-	public boolean startRecording() {
+	String dumpCounters();
 
-		if(super.startRecording()) {
-			counters.clear();
-			tips.clear();
-			return true;
-		}
-		return false;
-	}
+	OProfilerEntry getChrono(String string);
 
-	public boolean stopRecording() {
+	long startChrono();
 
-		if(super.stopRecording()) {
-			counters.clear();
-			tips.clear();
-			return true;
-		}
-		return false;
-	}
+	long stopChrono(String iName, String iDescription, long iStartTime);
 
-	public void updateCounter(final String statName, final String description, final long plus, final String metadata) {
+	long stopChrono(String iName, String iDescription, long iStartTime, String iDictionary);
 
-		if(statName == null || !isRecording())
-			return;
-		Long oldValue;
-		Long newValue;
-		do {
-			oldValue = counters.get(statName);
-			if(oldValue == null) {
-				counters.putIfAbsent(statName, 0L);
-				oldValue = counters.get(statName);
-			}
-			newValue = oldValue + plus;
-		} while(!counters.replace(statName, oldValue, newValue));
-	}
+	long stopChrono(String iName, String iDescription, long iStartTime, String iDictionary, String payload);
 
-	public long getCounter(final String statName) {
+	long stopChrono(String iName, String iDescription, long iStartTime, String iDictionary, String payload, String user);
 
-		if(statName == null || !isRecording())
-			return -1;
-		final Long stat = counters.get(statName);
-		if(stat == null)
-			return -1;
-		return stat;
-	}
+	String dumpChronos();
 
-	@Override
-	public String dump() {
+	String[] getCountersAsString();
 
-		return super.dump();
-	}
+	String[] getChronosAsString();
 
-	@Override
-	public void dump(final PrintStream out) {
+	Date getLastReset();
 
-		dumpEnvironment(out);
-	}
+	boolean isRecording();
 
-	@Override
-	public String dumpCounters() {
+	boolean startRecording();
 
-		return null;
-	}
+	boolean stopRecording();
 
-	@Override
-	public OProfilerEntry getChrono(String string) {
+	void unregisterHookValue(String string);
 
-		return null;
-	}
+	void configure(String string);
 
-	@Override
-	public long startChrono() {
+	void setAutoDump(int iNewValue);
 
-		return 0;
-	}
+	String metadataToJSON();
 
-	@Override
-	public long stopChrono(String iName, String iDescription, long iStartTime) {
+	Map<String, OPair<String, METRIC_TYPE>> getMetadata();
 
-		return 0;
-	}
+	void registerHookValue(String iName, String iDescription, METRIC_TYPE iType, OProfilerHookValue iHookValue);
 
-	@Override
-	public long stopChrono(String iName, String iDescription, long iStartTime, String iDictionary) {
+	void registerHookValue(String iName, String iDescription, METRIC_TYPE iType, OProfilerHookValue iHookValue, String iMetadataName);
 
-		return 0;
-	}
+	String getSystemMetric(String iMetricName);
 
-	@Override
-	public String dumpChronos() {
+	String getProcessMetric(String iName);
 
-		return null;
-	}
+	String getDatabaseMetric(String databaseName, String iName);
 
-	@Override
-	public String[] getCountersAsString() {
+	String toJSON(String command, String iPar1);
 
-		return null;
-	}
+	void resetRealtime(String iText);
 
-	@Override
-	public String[] getChronosAsString() {
+	void dump(PrintStream out);
 
-		return null;
-	}
-
-	@Override
-	public Date getLastReset() {
-
-		return null;
-	}
-
-	@Override
-	public void setAutoDump(int iNewValue) {
-
-	}
-
-	@Override
-	public String metadataToJSON() {
-
-		return null;
-	}
-
-	@Override
-	public String toJSON(String command, final String iPar1) {
-
-		return null;
-	}
-
-	@Override
-	public void resetRealtime(String iText) {
-
-	}
-
-	/**
-	 * Updates the metric metadata.
-	 */
-	protected void updateMetadata(final String iName, final String iDescription, final METRIC_TYPE iType) {
-
-		if(iDescription != null && dictionary.putIfAbsent(iName, iDescription) == null)
-			types.put(iName, iType);
-	}
+	int reportTip(String iMessage);
 }

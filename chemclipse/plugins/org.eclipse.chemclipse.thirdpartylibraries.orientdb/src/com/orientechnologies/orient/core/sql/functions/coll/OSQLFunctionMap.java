@@ -47,10 +47,15 @@ public class OSQLFunctionMap extends OSQLFunctionMultiValueAbstract<Map<Object, 
 			// IN LINE MODE
 			context = new HashMap<Object, Object>();
 		if(iParams.length == 1) {
-			if(iParams[0] instanceof Map<?, ?>)
+			if(iParams[0] == null)
+				return null;
+			if(iParams[0] instanceof Map<?, ?>) {
+				if(context == null)
+					// AGGREGATION MODE (STATEFULL)
+					context = new HashMap<Object, Object>();
 				// INSERT EVERY SINGLE COLLECTION ITEM
 				context.putAll((Map<Object, Object>)iParams[0]);
-			else
+			} else
 				throw new IllegalArgumentException("Map function: expected a map or pairs of parameters as key, value");
 		} else if(iParams.length % 2 != 0)
 			throw new IllegalArgumentException("Map function: expected a map or pairs of parameters as key, value");
@@ -86,7 +91,7 @@ public class OSQLFunctionMap extends OSQLFunctionMultiValueAbstract<Map<Object, 
 		return prepareResult(res);
 	}
 
-	protected Map<Object, Object> prepareResult(Map<Object, Object> res) {
+	protected Map<Object, Object> prepareResult(final Map<Object, Object> res) {
 
 		if(returnDistributedResult()) {
 			final Map<String, Object> doc = new HashMap<String, Object>();
@@ -100,17 +105,16 @@ public class OSQLFunctionMap extends OSQLFunctionMultiValueAbstract<Map<Object, 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object mergeDistributedResult(List<Object> resultsToMerge) {
+	public Object mergeDistributedResult(final List<Object> resultsToMerge) {
 
-		final Map<Long, Map<Object, Object>> chunks = new HashMap<Long, Map<Object, Object>>();
-		for(Object iParameter : resultsToMerge) {
-			final Map<String, Object> container = (Map<String, Object>)((Map<Object, Object>)iParameter).get("doc");
-			chunks.put((Long)container.get("node"), (Map<Object, Object>)container.get("context"));
+		if(returnDistributedResult()) {
+			final Map<Object, Object> result = new HashMap<Object, Object>();
+			for(Object iParameter : resultsToMerge) {
+				final Map<String, Object> container = (Map<String, Object>)((Map<Object, Object>)iParameter).get("doc");
+				result.putAll((Map<Object, Object>)container.get("context"));
+			}
+			return result;
 		}
-		final Map<Object, Object> result = new HashMap<Object, Object>();
-		for(Map<Object, Object> chunk : chunks.values()) {
-			result.putAll(chunk);
-		}
-		return result;
+		return resultsToMerge.get(0);
 	}
 }

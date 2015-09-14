@@ -73,9 +73,15 @@ public class ORecordOperation implements OSerializableStream {
 		return new StringBuilder(128).append("ORecordOperation [record=").append(record).append(", type=").append(getName(type)).append("]").toString();
 	}
 
+	public OIdentifiable setRecord(final OIdentifiable record) {
+
+		this.record = record;
+		return record;
+	}
+
 	public ORecord getRecord() {
 
-		return (ORecord)(record != null ? record.getRecord() : null);
+		return record != null ? record.getRecord() : null;
 	}
 
 	public byte[] toStream() throws OSerializationException {

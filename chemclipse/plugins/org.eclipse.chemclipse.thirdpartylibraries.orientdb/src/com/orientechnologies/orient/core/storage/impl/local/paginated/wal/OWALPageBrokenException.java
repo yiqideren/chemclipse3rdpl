@@ -29,9 +29,4 @@ public class OWALPageBrokenException extends OException {
 
 		super(message);
 	}
-
-	public OWALPageBrokenException(String message, Throwable cause) {
-
-		super(message, cause);
-	}
 }

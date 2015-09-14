@@ -17,10 +17,6 @@
  */
 package com.orientechnologies.common.concur.resource;
 
-import com.orientechnologies.common.concur.lock.OInterruptedException;
-import com.orientechnologies.common.concur.lock.OLockException;
-import com.orientechnologies.common.log.OLogManager;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,6 +25,10 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import com.orientechnologies.common.concur.lock.OInterruptedException;
+import com.orientechnologies.common.concur.lock.OLockException;
+import com.orientechnologies.common.log.OLogManager;
 
 /**
  * Generic non reentrant implementation about pool of resources. It pre-allocates a semaphore of maxResources. Resources are lazily
@@ -46,11 +46,13 @@ public class OResourcePool<K, V> {
 	protected final Queue<V> resources = new ConcurrentLinkedQueue<V>();
 	protected final Queue<V> resourcesOut = new ConcurrentLinkedQueue<V>();
 	protected final Collection<V> unmodifiableresources;
+	private final int maxResources;
 	protected OResourcePoolListener<K, V> listener;
 	protected volatile int created = 0;
 
-	public OResourcePool(final int maxResources, final OResourcePoolListener<K, V> listener) {
+	public OResourcePool(final int iMaxResources, final OResourcePoolListener<K, V> listener) {
 
+		maxResources = iMaxResources;
 		if(maxResources < 1)
 			throw new IllegalArgumentException("iMaxResource must be major than 0");
 		this.listener = listener;
@@ -63,7 +65,7 @@ public class OResourcePool<K, V> {
 		// First, get permission to take or create a resource
 		try {
 			if(!sem.tryAcquire(maxWaitMillis, TimeUnit.MILLISECONDS))
-				throw new OLockException("No more resources available in pool. Requested resource: " + key);
+				throw new OLockException("No more resources available in pool (max=" + maxResources + "). Requested resource: " + key);
 		} catch(InterruptedException e) {
 			Thread.currentThread().interrupt();
 			throw new OInterruptedException(e);
@@ -106,10 +108,15 @@ public class OResourcePool<K, V> {
 
 	public int getMaxResources() {
 
-		return sem.availablePermits();
+		return maxResources;
 	}
 
 	public int getAvailableResources() {
+
+		return sem.availablePermits();
+	}
+
+	public int getInPoolResources() {
 
 		return resources.size();
 	}

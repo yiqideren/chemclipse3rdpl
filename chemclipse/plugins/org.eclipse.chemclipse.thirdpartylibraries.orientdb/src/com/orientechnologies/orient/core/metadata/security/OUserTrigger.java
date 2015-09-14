@@ -17,9 +17,10 @@
  */
 package com.orientechnologies.orient.core.metadata.security;
 
-import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
+import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.exception.OSecurityException;
 import com.orientechnologies.orient.core.hook.ODocumentHookAbstract;
+import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.security.OSecurityManager;
 
@@ -30,9 +31,13 @@ import com.orientechnologies.orient.core.security.OSecurityManager;
  */
 public class OUserTrigger extends ODocumentHookAbstract {
 
-	public OUserTrigger() {
+	private OClass userClass;
+	private OClass roleClass;
 
-		setIncludeClasses("OUser", "ORole");
+	public OUserTrigger(ODatabaseDocument database) {
+
+		super(database);
+		setIncludeClasses(OUser.CLASS_NAME, ORole.CLASS_NAME);
 	}
 
 	public DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
@@ -43,7 +48,8 @@ public class OUserTrigger extends ODocumentHookAbstract {
 	@Override
 	public RESULT onRecordBeforeCreate(final ODocument iDocument) {
 
-		if("OUser".equalsIgnoreCase(iDocument.getClassName()))
+		init();
+		if(iDocument.getSchemaClass().isSubClassOf(userClass))
 			return encodePassword(iDocument);
 		return RESULT.RECORD_NOT_CHANGED;
 	}
@@ -51,11 +57,9 @@ public class OUserTrigger extends ODocumentHookAbstract {
 	@Override
 	public RESULT onRecordBeforeUpdate(final ODocument iDocument) {
 
-		if("OUser".equalsIgnoreCase(iDocument.getClassName())) {
-			// REMOVE THE USER FROM THE CACHE
-			final OSecurity sec = ODatabaseRecordThreadLocal.INSTANCE.get().getMetadata().getSecurity().getUnderlying();
+		init();
+		if(iDocument.getSchemaClass().isSubClassOf(userClass))
 			return encodePassword(iDocument);
-		}
 		return RESULT.RECORD_NOT_CHANGED;
 	}
 
@@ -71,5 +75,13 @@ public class OUserTrigger extends ODocumentHookAbstract {
 			return RESULT.RECORD_CHANGED;
 		}
 		return RESULT.RECORD_NOT_CHANGED;
+	}
+
+	private void init() {
+
+		if(userClass == null)
+			userClass = database.getMetadata().getSchema().getClass(OUser.CLASS_NAME);
+		if(roleClass == null)
+			roleClass = database.getMetadata().getSchema().getClass(ORole.CLASS_NAME);
 	}
 }

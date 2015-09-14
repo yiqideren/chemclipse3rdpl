@@ -17,7 +17,9 @@
  */
 package com.orientechnologies.common.profiler;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class OProfilerEntry {
 
@@ -32,6 +34,7 @@ public class OProfilerEntry {
 	public long lastExecution;
 	public String payLoad;
 	public String description;
+	public Set<String> users = new HashSet<String>();
 
 	public OProfilerEntry() {
 
@@ -63,7 +66,16 @@ public class OProfilerEntry {
 		buffer.append(String.format(Locale.ENGLISH, "\"%s\":%d,", "firstExecution", firstExecution));
 		buffer.append(String.format(Locale.ENGLISH, "\"%s\":%d", "lastExecution", lastExecution));
 		if(payLoad != null)
-			buffer.append(String.format(Locale.ENGLISH, "\"%s\":%s", "payload", payLoad));
+			buffer.append(String.format(Locale.ENGLISH, ",\"%s\":\"%s\"", "payload", payLoad));
+		buffer.append(String.format(Locale.ENGLISH, ",\"%s\": [", "users"));
+		String usersList = "";
+		int i = 0;
+		for(String user : users) {
+			buffer.append(String.format(Locale.ENGLISH, "%s\"%s\"", (i > 0) ? "," : "", user));
+			i++;
+		}
+		buffer.append(String.format(Locale.ENGLISH, "%s", usersList));
+		buffer.append(String.format(Locale.ENGLISH, "]"));
 		buffer.append('}');
 	}
 

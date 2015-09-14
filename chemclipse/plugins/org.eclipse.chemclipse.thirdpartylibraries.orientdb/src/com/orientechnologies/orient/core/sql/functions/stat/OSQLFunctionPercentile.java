@@ -17,15 +17,15 @@
  */
 package com.orientechnologies.orient.core.sql.functions.stat;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import com.orientechnologies.common.collection.OMultiValue;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.sql.functions.OSQLFunctionAbstract;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Computes the percentile for a field. Nulls are ignored in the calculation.
@@ -86,11 +86,14 @@ public class OSQLFunctionPercentile extends OSQLFunctionAbstract {
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		List<Number> dValues = new ArrayList<Number>();
-		for(Object iParameter : resultsToMerge) {
-			dValues.addAll((List<Number>)iParameter);
+		if(returnDistributedResult()) {
+			List<Number> dValues = new ArrayList<Number>();
+			for(Object iParameter : resultsToMerge) {
+				dValues.addAll((List<Number>)iParameter);
+			}
+			return this.evaluate(dValues);
 		}
-		return this.evaluate(dValues);
+		return resultsToMerge.get(0);
 	}
 
 	@Override

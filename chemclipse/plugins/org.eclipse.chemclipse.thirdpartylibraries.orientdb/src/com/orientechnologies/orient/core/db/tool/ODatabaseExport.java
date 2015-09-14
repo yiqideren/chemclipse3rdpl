@@ -313,6 +313,8 @@ public class ODatabaseExport extends ODatabaseImpExpAbstract {
 			writer.beginObject(2, true, null);
 			writer.writeAttribute(3, true, "name", index.getName());
 			writer.writeAttribute(3, true, "type", index.getType());
+			if(index.getAlgorithm() != null)
+				writer.writeAttribute(3, true, "algorithm", index.getAlgorithm());
 			if(!index.getClusters().isEmpty())
 				writer.writeAttribute(3, true, "clustersToIndex", index.getClusters());
 			if(index.getDefinition() != null) {
@@ -416,8 +418,8 @@ public class ODatabaseExport extends ODatabaseImpExpAbstract {
 					writer.writeAttribute(0, false, "oversize", cls.getClassOverSize());
 				if(cls.isStrictMode())
 					writer.writeAttribute(0, false, "strictMode", cls.isStrictMode());
-				if(cls.getSuperClass() != null)
-					writer.writeAttribute(0, false, "super-class", cls.getSuperClass().getName());
+				if(!cls.getSuperClasses().isEmpty())
+					writer.writeAttribute(0, false, "super-classes", cls.getSuperClassesNames());
 				if(cls.getShortName() != null)
 					writer.writeAttribute(0, false, "short-name", cls.getShortName());
 				if(cls.isAbstract())
@@ -457,6 +459,12 @@ public class ODatabaseExport extends ODatabaseImpExpAbstract {
 					}
 					writer.endCollection(4, true);
 				}
+				final Set<String> customKeys = cls.getCustomKeys();
+				final Map<String, String> custom = new HashMap<String, String>();
+				for(String key : customKeys)
+					custom.put(key, cls.getCustom(key));
+				if(!custom.isEmpty())
+					writer.writeAttribute(0, false, "customFields", custom);
 				writer.endObject(3, true);
 			}
 			writer.endCollection(2, true);

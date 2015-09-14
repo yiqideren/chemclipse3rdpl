@@ -17,11 +17,16 @@
  */
 package com.orientechnologies.orient.core.sql;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import com.orientechnologies.common.parser.OStringParser;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.OCommandRequestText;
 import com.orientechnologies.orient.core.command.OCommandResultListener;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.exception.OCommandExecutionException;
@@ -41,10 +46,6 @@ import com.orientechnologies.orient.core.sql.query.OSQLAsynchQuery;
 import com.orientechnologies.orient.core.sql.query.OSQLQuery;
 import com.orientechnologies.orient.core.storage.OStorage;
 import com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * SQL UPDATE command.
@@ -73,57 +74,66 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 	@SuppressWarnings("unchecked")
 	public OCommandExecutorSQLDelete parse(final OCommandRequest iRequest) {
 
-		final ODatabaseDocument database = getDatabase();
-		init((OCommandRequestText)iRequest);
-		query = null;
-		recordCount = 0;
-		if(parserTextUpperCase.endsWith(KEYWORD_UNSAFE)) {
-			unsafe = true;
-			parserText = parserText.substring(0, parserText.length() - KEYWORD_UNSAFE.length() - 1);
-			parserTextUpperCase = parserTextUpperCase.substring(0, parserTextUpperCase.length() - KEYWORD_UNSAFE.length() - 1);
-		}
-		parserRequiredKeyword(OCommandExecutorSQLDelete.KEYWORD_DELETE);
-		parserRequiredKeyword(OCommandExecutorSQLDelete.KEYWORD_FROM);
-		String subjectName = parserRequiredWord(false, "Syntax error", " =><,\r\n");
-		if(subjectName == null)
-			throwSyntaxErrorException("Invalid subject name. Expected cluster, class, index or sub-query");
-		if(OStringParser.startsWithIgnoreCase(subjectName, OCommandExecutorSQLAbstract.INDEX_PREFIX)) {
-			// INDEX
-			indexName = subjectName.substring(OCommandExecutorSQLAbstract.INDEX_PREFIX.length());
-			if(!parserIsEnded()) {
+		final OCommandRequestText textRequest = (OCommandRequestText)iRequest;
+		String queryText = textRequest.getText();
+		String originalQuery = queryText;
+		try {
+			queryText = preParse(queryText, iRequest);
+			textRequest.setText(queryText);
+			final ODatabaseDocument database = getDatabase();
+			init((OCommandRequestText)iRequest);
+			query = null;
+			recordCount = 0;
+			if(parserTextUpperCase.endsWith(KEYWORD_UNSAFE)) {
+				unsafe = true;
+				parserText = parserText.substring(0, parserText.length() - KEYWORD_UNSAFE.length() - 1);
+				parserTextUpperCase = parserTextUpperCase.substring(0, parserTextUpperCase.length() - KEYWORD_UNSAFE.length() - 1);
+			}
+			parserRequiredKeyword(OCommandExecutorSQLDelete.KEYWORD_DELETE);
+			parserRequiredKeyword(OCommandExecutorSQLDelete.KEYWORD_FROM);
+			String subjectName = parserRequiredWord(false, "Syntax error", " =><,\r\n");
+			if(subjectName == null)
+				throwSyntaxErrorException("Invalid subject name. Expected cluster, class, index or sub-query");
+			if(OStringParser.startsWithIgnoreCase(subjectName, OCommandExecutorSQLAbstract.INDEX_PREFIX)) {
+				// INDEX
+				indexName = subjectName.substring(OCommandExecutorSQLAbstract.INDEX_PREFIX.length());
+				if(!parserIsEnded()) {
+					while(!parserIsEnded()) {
+						final String word = parserGetLastWord();
+						if(word.equals(KEYWORD_LOCK))
+							lockStrategy = parseLock();
+						else if(word.equals(KEYWORD_RETURN))
+							returning = parseReturn();
+						else if(word.equals(KEYWORD_UNSAFE))
+							unsafe = true;
+						else if(word.equalsIgnoreCase(KEYWORD_WHERE))
+							compiledFilter = OSQLEngine.getInstance().parseCondition(parserText.substring(parserGetCurrentPosition()), getContext(), KEYWORD_WHERE);
+						parserNextWord(true);
+					}
+				} else
+					parserSetCurrentPosition(-1);
+			} else if(subjectName.startsWith("(")) {
+				subjectName = subjectName.trim();
+				query = database.command(new OSQLAsynchQuery<ODocument>(subjectName.substring(1, subjectName.length() - 1), this));
+			} else {
+				parserNextWord(true);
 				while(!parserIsEnded()) {
 					final String word = parserGetLastWord();
 					if(word.equals(KEYWORD_LOCK))
 						lockStrategy = parseLock();
 					else if(word.equals(KEYWORD_RETURN))
 						returning = parseReturn();
-					else if(word.equals(KEYWORD_UNSAFE))
-						unsafe = true;
-					else if(word.equalsIgnoreCase(KEYWORD_WHERE))
-						compiledFilter = OSQLEngine.getInstance().parseCondition(parserText.substring(parserGetCurrentPosition()), getContext(), KEYWORD_WHERE);
+					else {
+						parserGoBack();
+						break;
+					}
 					parserNextWord(true);
 				}
-			} else
-				parserSetCurrentPosition(-1);
-		} else if(subjectName.startsWith("(")) {
-			subjectName = subjectName.trim();
-			query = database.command(new OSQLAsynchQuery<ODocument>(subjectName.substring(1, subjectName.length() - 1), this));
-		} else {
-			parserNextWord(true);
-			while(!parserIsEnded()) {
-				final String word = parserGetLastWord();
-				if(word.equals(KEYWORD_LOCK))
-					lockStrategy = parseLock();
-				else if(word.equals(KEYWORD_RETURN))
-					returning = parseReturn();
-				else {
-					parserGoBack();
-					break;
-				}
-				parserNextWord(true);
+				final String condition = parserGetCurrentPosition() > -1 ? " " + parserText.substring(parserGetCurrentPosition()) : "";
+				query = database.command(new OSQLAsynchQuery<ODocument>("select from " + subjectName + condition, this));
 			}
-			final String condition = parserGetCurrentPosition() > -1 ? " " + parserText.substring(parserGetCurrentPosition()) : "";
-			query = database.command(new OSQLAsynchQuery<ODocument>("select from " + subjectName + condition, this));
+		} finally {
+			textRequest.setText(originalQuery);
 		}
 		return this;
 	}
@@ -136,9 +146,12 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 			allDeletedRecords = new ArrayList<ORecord>();
 		if(query != null) {
 			// AGAINST CLUSTERS AND CLASSES
+			query.setContext(getContext());
+			Object prevLockValue = query.getContext().getVariable("$locking");
 			if(lockStrategy.equals("RECORD"))
 				query.getContext().setVariable("$locking", OStorage.LOCKING_STRATEGY.EXCLUSIVE_LOCK);
 			query.execute(iArgs);
+			query.getContext().setVariable("$locking", prevLockValue);
 			if(returning.equalsIgnoreCase("COUNT"))
 				// RETURNS ONLY THE COUNT
 				return recordCount;
@@ -204,12 +217,18 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 		}
 	}
 
+	@Override
+	public long getDistributedTimeout() {
+
+		return OGlobalConfiguration.DISTRIBUTED_COMMAND_TASK_SYNCH_TIMEOUT.getValueAsLong();
+	}
+
 	/**
 	 * Deletes the current record.
 	 */
 	public boolean result(final Object iRecord) {
 
-		final ORecordAbstract record = (ORecordAbstract)iRecord;
+		final ORecordAbstract record = ((OIdentifiable)iRecord).getRecord();
 		try {
 			if(record.getIdentity().isValid()) {
 				if(returning.equalsIgnoreCase("BEFORE"))
@@ -239,15 +258,9 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 		}
 	}
 
-	@Override
-	public OCommandDistributedReplicateRequest.DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
-
-		return indexName != null || query != null ? DISTRIBUTED_EXECUTION_MODE.REPLICATE : DISTRIBUTED_EXECUTION_MODE.LOCAL;
-	}
-
 	public String getSyntax() {
 
-		return "DELETE FROM <Class>|RID|cluster:<cluster> [UNSAFE] [LOCK <NONE|RECORD>] [RETURNING <COUNT|BEFORE>] [WHERE <condition>*]";
+		return "DELETE FROM <Class>|RID|cluster:<cluster> [UNSAFE] [LOCK <NONE|RECORD>] [RETURN <COUNT|BEFORE>] [WHERE <condition>*]";
 	}
 
 	@Override
@@ -266,8 +279,7 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 	 */
 	protected String parseReturn() throws OCommandSQLParsingException {
 
-		parserNextWord(true);
-		final String returning = parserGetLastWord();
+		final String returning = parserNextWord(true);
 		if(!returning.equalsIgnoreCase("COUNT") && !returning.equalsIgnoreCase("BEFORE"))
 			throwParsingException("Invalid " + KEYWORD_RETURN + " value set to '" + returning + "' but it should be COUNT (default), BEFORE. Example: " + KEYWORD_RETURN + " BEFORE");
 		return returning;
@@ -300,5 +312,16 @@ public class OCommandExecutorSQLDelete extends OCommandExecutorSQLAbstract imple
 	public QUORUM_TYPE getQuorumType() {
 
 		return QUORUM_TYPE.WRITE;
+	}
+
+	@Override
+	public OCommandDistributedReplicateRequest.DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
+
+		return (indexName != null || query != null) && !getDatabase().getTransaction().isActive() ? DISTRIBUTED_EXECUTION_MODE.REPLICATE : DISTRIBUTED_EXECUTION_MODE.LOCAL;
+	}
+
+	public DISTRIBUTED_RESULT_MGMT getDistributedResultManagement() {
+
+		return getDistributedExecutionMode() == DISTRIBUTED_EXECUTION_MODE.LOCAL ? DISTRIBUTED_RESULT_MGMT.CHECK_FOR_EQUALS : DISTRIBUTED_RESULT_MGMT.MERGE;
 	}
 }

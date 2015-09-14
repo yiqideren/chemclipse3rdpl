@@ -17,11 +17,6 @@
  */
 package com.orientechnologies.orient.core.metadata.security;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.annotation.OAfterDeserialization;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
@@ -29,7 +24,11 @@ import com.orientechnologies.orient.core.exception.OSecurityAccessException;
 import com.orientechnologies.orient.core.exception.OSecurityException;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.security.OSecurityManager;
-import com.orientechnologies.orient.core.type.ODocumentWrapper;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Contains the user settings about security and permissions. Each user has one or more roles associated. Roles contains the
@@ -39,7 +38,7 @@ import com.orientechnologies.orient.core.type.ODocumentWrapper;
  * 
  * @see ORole
  */
-public class OUser extends ODocumentWrapper implements OSecurityUser {
+public class OUser extends OIdentity implements OSecurityUser {
 
 	public static final String ADMIN = "admin";
 	public static final String CLASS_NAME = "OUser";

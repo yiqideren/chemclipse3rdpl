@@ -26,6 +26,8 @@ import com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedSt
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -42,6 +44,7 @@ public class OLogManager {
 	private boolean warn = true;
 	private boolean error = true;
 	private Level minimumLevel = Level.SEVERE;
+	private final ConcurrentMap<String, Logger> loggersCache = new ConcurrentHashMap<String, Logger>();
 
 	protected OLogManager() {
 
@@ -98,7 +101,21 @@ public class OLogManager {
 				}
 			} catch(Throwable e) {
 			}
-			final Logger log = iRequester != null ? Logger.getLogger(iRequester.getClass().getName()) : Logger.getLogger(DEFAULT_LOG);
+			final String requesterName;
+			if(iRequester != null) {
+				requesterName = iRequester.getClass().getName();
+			} else {
+				requesterName = DEFAULT_LOG;
+			}
+			Logger log = loggersCache.get(requesterName);
+			if(log == null) {
+				log = Logger.getLogger(requesterName);
+				if(log != null) {
+					Logger oldLogger = loggersCache.putIfAbsent(requesterName, log);
+					if(oldLogger != null)
+						log = oldLogger;
+				}
+			}
 			if(log == null) {
 				// USE SYSERR
 				try {
@@ -329,11 +346,15 @@ public class OLogManager {
 			}
 		}
 		Logger log = Logger.getLogger(DEFAULT_LOG);
-		for(Handler h : log.getHandlers()) {
-			if(h.getClass().isAssignableFrom(iHandler)) {
-				h.setLevel(level);
-				break;
+		while(log != null) {
+			log.setLevel(level);
+			for(Handler h : log.getHandlers()) {
+				if(h.getClass().isAssignableFrom(iHandler)) {
+					h.setLevel(level);
+					break;
+				}
 			}
+			log = log.getParent();
 		}
 		return level;
 	}

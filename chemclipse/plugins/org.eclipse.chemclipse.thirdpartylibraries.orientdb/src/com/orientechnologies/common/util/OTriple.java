@@ -18,23 +18,16 @@
 package com.orientechnologies.common.util;
 
 /**
- * Keeps in memory the information about a hole in data segment.
+ * Structure to handle a triple of values configured as a key and a Pair as value.
  * 
  * @author Luca Garulli (l.garulli--at--orientechnologies.com)
  * 
- * @param <K>
- *            Hole size
- * @param <V>
- *            Value
- * @param <SV>
- *            Sub value
  * @see OPair
  */
-public class OTriple<K extends Comparable<K>, V, SV> implements Comparable<OTriple<K, V, SV>> {
+public class OTriple<K extends Comparable<K>, V extends Comparable<V>, SV> implements Comparable<OTriple<K, V, SV>> {
 
 	public K key;
-	public V value;
-	public SV subValue;
+	public OPair<V, SV> value;
 
 	public OTriple() {
 
@@ -48,8 +41,7 @@ public class OTriple<K extends Comparable<K>, V, SV> implements Comparable<OTrip
 	public void init(final K iKey, final V iValue, final SV iSubValue) {
 
 		key = iKey;
-		value = iValue;
-		subValue = iSubValue;
+		value = new OPair(iValue, iSubValue);
 	}
 
 	public K getKey() {
@@ -57,34 +49,28 @@ public class OTriple<K extends Comparable<K>, V, SV> implements Comparable<OTrip
 		return key;
 	}
 
-	public V getValue() {
+	public OPair<V, SV> getValue() {
 
 		return value;
 	}
 
-	public SV getSubValue() {
+	public OPair<V, SV> setValue(final OPair<V, SV> iValue) {
 
-		return subValue;
-	}
-
-	public V setValue(final V iValue) {
-
-		V oldValue = value;
+		final OPair<V, SV> oldValue = value;
 		value = iValue;
 		return oldValue;
 	}
 
-	public SV setSubValue(final SV iSubValue) {
+	public void setSubValue(final SV iSubValue) {
 
-		SV oldSubValue = subValue;
-		subValue = iSubValue;
-		return oldSubValue;
+		final OPair<V, SV> oldValue = value;
+		value.setValue(iSubValue);
 	}
 
 	@Override
 	public String toString() {
 
-		return key + ":" + value + "/" + value;
+		return key + ":" + value.getKey() + "/" + value.getValue();
 	}
 
 	@Override

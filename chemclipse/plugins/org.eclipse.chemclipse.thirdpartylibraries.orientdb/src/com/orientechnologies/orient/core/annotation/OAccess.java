@@ -31,11 +31,12 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@Deprecated
 public @interface OAccess {
 
-	public enum OAccessType {
+	enum OAccessType {
 		FIELD, PROPERTY
 	}
 
-	public OAccessType value() default OAccessType.PROPERTY;
+	OAccessType value() default OAccessType.PROPERTY;
 }

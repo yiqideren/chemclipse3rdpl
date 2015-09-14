@@ -21,12 +21,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.orientechnologies.common.directmemory.ODirectMemoryPointer;
 import com.orientechnologies.common.serialization.types.OByteSerializer;
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
 import com.orientechnologies.common.serialization.types.OLongSerializer;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
-import com.orientechnologies.orient.core.index.hashindex.local.cache.OCacheEntry;
+import com.orientechnologies.orient.core.storage.cache.OCacheEntry;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.base.ODurablePage;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.wal.OWALChangesTree;
 import com.orientechnologies.orient.core.version.ORecordVersion;
@@ -65,7 +64,7 @@ public class OClusterPage extends ODurablePage {
 		}
 	}
 
-	public int appendRecord(ORecordVersion recordVersion, byte[] record, boolean keepTombstoneVersion) throws IOException {
+	public int appendRecord(ORecordVersion recordVersion, byte[] record) throws IOException {
 
 		int freePosition = getIntValue(FREE_POSITION_OFFSET);
 		int indexesLength = getIntValue(PAGE_INDEXES_LENGTH_OFFSET);
@@ -95,19 +94,9 @@ public class OClusterPage extends ODurablePage {
 			setIntValue(FREE_SPACE_COUNTER_OFFSET, getFreeSpace() - entrySize);
 			int entryIndexPosition = PAGE_INDEXES_OFFSET + entryIndex * INDEX_ITEM_SIZE;
 			setIntValue(entryIndexPosition, freePosition);
-			byte[] serializedVersion = getBinaryValue(entryIndexPosition + OIntegerSerializer.INT_SIZE, OVersionFactory.instance().getVersionSize());
-			ORecordVersion existingRecordVersion = OVersionFactory.instance().createVersion();
-			existingRecordVersion.getSerializer().fastReadFrom(serializedVersion, 0, existingRecordVersion);
-			if(existingRecordVersion.compareTo(recordVersion) < 0) {
-				recordVersion.getSerializer().fastWriteTo(serializedVersion, 0, recordVersion);
-				setBinaryValue(entryIndexPosition + OIntegerSerializer.INT_SIZE, serializedVersion);
-			} else {
-				if(!keepTombstoneVersion) {
-					existingRecordVersion.increment();
-					existingRecordVersion.getSerializer().fastWriteTo(serializedVersion, 0, existingRecordVersion);
-					setBinaryValue(entryIndexPosition + OIntegerSerializer.INT_SIZE, serializedVersion);
-				}
-			}
+			byte[] serializedVersion = new byte[OVersionFactory.instance().getVersionSize()];
+			recordVersion.getSerializer().fastWriteTo(serializedVersion, 0, recordVersion);
+			setBinaryValue(entryIndexPosition + OIntegerSerializer.INT_SIZE, serializedVersion);
 		} else {
 			entryIndex = indexesLength;
 			setIntValue(PAGE_INDEXES_LENGTH_OFFSET, indexesLength + 1);

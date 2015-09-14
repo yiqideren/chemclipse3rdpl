@@ -18,5 +18,5 @@ package com.orientechnologies.orient.core.db;
  */
 public interface ODatabaseThreadLocalFactory {
 
-	public ODatabaseDocumentInternal getThreadDatabase();
+	ODatabaseDocumentInternal getThreadDatabase();
 }

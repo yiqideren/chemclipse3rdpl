@@ -17,11 +17,11 @@
  */
 package com.orientechnologies.common.util;
 
+import java.util.Iterator;
+import java.util.ServiceLoader;
+
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.exception.OConfigurationException;
-
-import javax.imageio.spi.ServiceRegistry;
-import java.util.Iterator;
 
 public class OClassLoaderHelper {
 
@@ -43,7 +43,7 @@ public class OClassLoaderHelper {
 		final ClassLoader origClassLoader = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader(orientClassLoader);
 		try {
-			return ServiceRegistry.lookupProviders(clazz);
+			return ServiceLoader.load(clazz).iterator();
 		} catch(Exception e) {
 			OLogManager.instance().warn(null, "Cannot lookup in service registry", e);
 			throw new OConfigurationException("Cannot lookup in service registry", e);

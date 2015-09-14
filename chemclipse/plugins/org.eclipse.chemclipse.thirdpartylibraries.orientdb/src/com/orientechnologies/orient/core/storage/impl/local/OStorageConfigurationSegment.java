@@ -106,8 +106,8 @@ public class OStorageConfigurationSegment extends OStorageConfiguration {
 				return;
 			final byte[] buffer = toStream();
 			final int len = buffer.length + OBinaryProtocol.SIZE_INT;
-			if(len > f.getFilledUpTo())
-				f.allocateSpace(len - f.getFilledUpTo());
+			if(len > f.getFileSize())
+				f.allocateSpace(len - f.getFileSize());
 			f.writeInt(0, buffer.length);
 			f.write(OBinaryProtocol.SIZE_INT, buffer);
 			if(OGlobalConfiguration.STORAGE_CONFIGURATION_SYNC_ON_UPDATE.getValueAsBoolean())

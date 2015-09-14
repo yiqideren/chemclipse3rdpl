@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.orientechnologies.orient.core.command.OBasicCommandContext;
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.orient.core.db.ODatabase;
 import com.orientechnologies.orient.core.db.ODatabase.ATTRIBUTES;
 import com.orientechnologies.orient.core.db.ODatabase.OPERATION_MODE;
@@ -34,6 +34,7 @@ import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.dictionary.ODictionary;
 import com.orientechnologies.orient.core.id.ORID;
+import com.orientechnologies.orient.core.id.ORecordId;
 import com.orientechnologies.orient.core.index.OIndex;
 import com.orientechnologies.orient.core.intent.OIntent;
 import com.orientechnologies.orient.core.iterator.ORecordIteratorClass;
@@ -41,9 +42,6 @@ import com.orientechnologies.orient.core.iterator.ORecordIteratorCluster;
 import com.orientechnologies.orient.core.metadata.OMetadata;
 import com.orientechnologies.orient.core.metadata.security.OSecurityUser;
 import com.orientechnologies.orient.core.metadata.security.OUser;
-import com.orientechnologies.orient.core.processor.OComposableProcessor;
-import com.orientechnologies.orient.core.processor.OProcessException;
-import com.orientechnologies.orient.core.processor.OProcessorManager;
 import com.orientechnologies.orient.core.record.ORecord;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
@@ -95,7 +93,7 @@ public class OScriptDocumentDatabaseWrapper {
 
 		final List<OIdentifiable> res = database.query(iQuery, convertParameters(iParameters));
 		if(res == null)
-			return new OIdentifiable[]{};
+			return OCommonConst.EMPTY_IDENTIFIABLE_ARRAY;
 		return res.toArray(new OIdentifiable[res.size()]);
 	}
 
@@ -126,26 +124,6 @@ public class OScriptDocumentDatabaseWrapper {
 		if(res instanceof List) {
 			final List<OIdentifiable> list = (List<OIdentifiable>)res;
 			return list.toArray(new OIdentifiable[list.size()]);
-		}
-		return res;
-	}
-
-	public Object process(final String iType, final String iName, final Object... iParameters) {
-
-		final OComposableProcessor process = (OComposableProcessor)OProcessorManager.getInstance().get(iType);
-		if(process == null)
-			throw new OProcessException("Process type '" + iType + "' is undefined");
-		final OBasicCommandContext context = new OBasicCommandContext();
-		if(iParameters != null) {
-			int argIdx = 0;
-			for(Object p : iParameters)
-				context.setVariable("arg" + (argIdx++), p);
-		}
-		Object res;
-		try {
-			res = process.processFromFile(iName, context, false);
-		} catch(Exception e) {
-			throw new OProcessException("Error on processing '" + iName + "' field of '" + getName() + "' block", e);
 		}
 		return res;
 	}
@@ -379,6 +357,11 @@ public class OScriptDocumentDatabaseWrapper {
 	public int getDefaultClusterId() {
 
 		return database.getDefaultClusterId();
+	}
+
+	public <RET extends ORecord> RET load(final String iRidAsString) {
+
+		return (RET)database.load(new ORecordId(iRidAsString));
 	}
 
 	public <RET extends ORecord> RET load(ORecord iRecord) {

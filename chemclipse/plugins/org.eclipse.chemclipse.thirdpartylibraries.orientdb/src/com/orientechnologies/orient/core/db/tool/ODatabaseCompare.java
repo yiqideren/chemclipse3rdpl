@@ -134,6 +134,7 @@ public class ODatabaseCompare extends ODatabaseImpExpAbstract {
 								return null;
 							if(!rid.isPersistent())
 								return null;
+							databaseDocumentTxTwo.activateOnCurrentThread();
 							final OIdentifiable result = exportImportHashTable.get(rid);
 							if(result == null)
 								return null;

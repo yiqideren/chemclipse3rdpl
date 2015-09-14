@@ -34,7 +34,6 @@ import com.orientechnologies.orient.core.serialization.serializer.stream.OStream
 import com.orientechnologies.orient.core.serialization.serializer.stream.OStreamSerializerOldRIDContainer;
 import com.orientechnologies.orient.core.serialization.serializer.stream.OStreamSerializerRID;
 import com.orientechnologies.orient.core.serialization.serializer.stream.OStreamSerializerSBTreeIndexRIDContainer;
-import com.orientechnologies.orient.core.storage.impl.local.eh.OPhysicalPositionSerializer;
 
 /**
  * This class is responsible for obtaining OBinarySerializer realization, by it's id of type of object that should be serialized.
@@ -86,7 +85,6 @@ public class OBinarySerializerFactory {
 			factory.registerSerializer(OStreamSerializerSBTreeIndexRIDContainer_1_7_9.INSTANCE, null);
 		else
 			factory.registerSerializer(OStreamSerializerSBTreeIndexRIDContainer.INSTANCE, null);
-		factory.registerSerializer(OPhysicalPositionSerializer.INSTANCE, null);
 		// STATEFUL SERIALIER
 		factory.registerSerializer(OSimpleKeySerializer.ID, OSimpleKeySerializer.class);
 		return factory;

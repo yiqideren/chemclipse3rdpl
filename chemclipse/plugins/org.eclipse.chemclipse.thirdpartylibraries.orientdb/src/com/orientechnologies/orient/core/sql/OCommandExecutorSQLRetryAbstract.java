@@ -33,12 +33,10 @@ public abstract class OCommandExecutorSQLRetryAbstract extends OCommandExecutorS
 	 */
 	protected void parseRetry() throws OCommandSQLParsingException {
 
-		parserNextWord(true);
-		retry = Integer.parseInt(parserGetLastWord());
+		retry = Integer.parseInt(parserNextWord(true));
 		String temp = parseOptionalWord(true);
 		if(temp.equals("WAIT")) {
-			parserNextWord(true);
-			wait = Integer.parseInt(parserGetLastWord());
+			wait = Integer.parseInt(parserNextWord(true));
 		} else
 			parserGoBack();
 	}

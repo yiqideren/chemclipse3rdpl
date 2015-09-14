@@ -18,7 +18,6 @@
 package com.orientechnologies.orient.core.metadata.function;
 
 import com.orientechnologies.orient.core.Orient;
-import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.hook.ODocumentHookAbstract;
 import com.orientechnologies.orient.core.record.impl.ODocument;
@@ -30,8 +29,9 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
  */
 public class OFunctionTrigger extends ODocumentHookAbstract {
 
-	public OFunctionTrigger() {
+	public OFunctionTrigger(ODatabaseDocument database) {
 
+		super(database);
 		setIncludeClasses("OFunction");
 	}
 
@@ -60,8 +60,7 @@ public class OFunctionTrigger extends ODocumentHookAbstract {
 
 	protected void reloadLibrary() {
 
-		final ODatabaseDocument db = ODatabaseRecordThreadLocal.INSTANCE.get();
-		db.getMetadata().getFunctionLibrary().load();
-		Orient.instance().getScriptManager().close(db.getName());
+		database.getMetadata().getFunctionLibrary().load();
+		Orient.instance().getScriptManager().close(database.getName());
 	}
 }

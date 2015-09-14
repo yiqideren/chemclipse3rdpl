@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import javassist.util.proxy.Proxy;
 import javassist.util.proxy.ProxyObject;
 
 import com.orientechnologies.orient.core.db.object.OLazyObjectMapInterface;
@@ -81,8 +80,8 @@ public class OObjectLazyMap<TYPE> extends HashMap<Object, Object> implements Ser
 
 		if(o instanceof OIdentifiable)
 			return underlying.containsValue((OIdentifiable)o);
-		else if(o instanceof Proxy)
-			return underlying.containsValue(OObjectEntitySerializer.getDocument((Proxy)o));
+		else if(o instanceof ProxyObject)
+			return underlying.containsValue(OObjectEntitySerializer.getDocument((ProxyObject)o));
 		return super.containsValue(o);
 	}
 

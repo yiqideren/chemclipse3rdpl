@@ -48,7 +48,6 @@ import com.orientechnologies.orient.core.sql.operator.OQueryOperatorNotEquals;
 import com.orientechnologies.orient.core.sql.query.OResultSet;
 import com.orientechnologies.orient.core.sql.query.OSQLAsynchQuery;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
-import com.orientechnologies.orient.core.storage.OStorage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,7 +71,7 @@ import java.util.Set;
  * <p>
  * <code>SELECT FROM (TRAVERSE children FROM #5:23 WHERE $depth BETWEEN 1 AND 3) WHERE city.name = 'Rome'</code>
  * </p>
- * 
+ *
  * @author Luca Garulli
  */
 @SuppressWarnings("unchecked")
@@ -89,6 +88,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 	protected int resultCount;
 	protected int serialTempRID = 0;
 	protected int skip = 0;
+	protected boolean lazyIteration = true;
 
 	private static final class IndexValuesIterator implements Iterator<OIdentifiable> {
 
@@ -163,10 +163,26 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 		return true;
 	}
 
+	public boolean isLazyIteration() {
+
+		return lazyIteration;
+	}
+
+	public void setLazyIteration(final boolean lazyIteration) {
+
+		this.lazyIteration = lazyIteration;
+	}
+
 	@Override
 	public OCommandDistributedReplicateRequest.DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
 
-		return DISTRIBUTED_EXECUTION_MODE.SHARDED;
+		return DISTRIBUTED_EXECUTION_MODE.REPLICATE;
+	}
+
+	@Override
+	public DISTRIBUTED_RESULT_MGMT getDistributedResultManagement() {
+
+		return DISTRIBUTED_RESULT_MGMT.MERGE;
 	}
 
 	/**
@@ -191,7 +207,10 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 			} else if(parsedTarget.getTargetClusters() != null)
 				searchInClusters();
 			else if(parsedTarget.getTargetRecords() != null) {
-				if(parsedTarget.getTargetRecords() instanceof OIterableRecordSource) {
+				if(!lazyIteration && parsedTarget.getTargetQuery() != null) {
+					// EXECUTE THE QUERY TO ALLOW DISTRIB EXECUTION
+					target = ((Iterable<? extends OIdentifiable>)getDatabase().command(new OCommandSQL(parsedTarget.getTargetQuery())).execute(iArgs)).iterator();
+				} else if(parsedTarget.getTargetRecords() instanceof OIterableRecordSource) {
 					target = ((OIterableRecordSource)parsedTarget.getTargetRecords()).iterator(iArgs);
 				} else {
 					target = parsedTarget.getTargetRecords().iterator();
@@ -226,7 +245,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 						d = ((OIdentifiable)d).getRecord();
 					if(limit > -1 && fetched >= limit)
 						break;
-					if(!request.getResultListener().result(d))
+					if(!pushResult(d))
 						break;
 					++fetched;
 				}
@@ -236,6 +255,16 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 		return null;
 	}
 
+	protected boolean pushResult(final Object rec) {
+
+		if(rec instanceof ORecord) {
+			final ODatabaseDocumentInternal db = ODatabaseRecordThreadLocal.INSTANCE.getIfDefined();
+			if(db != null)
+				db.getLocalCache().updateRecord((ORecord)rec);
+		}
+		return request.getResultListener().result(rec);
+	}
+
 	protected boolean handleResult(final OIdentifiable iRecord) {
 
 		if(iRecord != null) {
@@ -243,7 +272,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 			OIdentifiable identifiable = iRecord instanceof ORecord ? ((ORecord)iRecord) : iRecord.getIdentity();
 			// CALL THE LISTENER NOW
 			if(identifiable != null && request.getResultListener() != null) {
-				final boolean result = request.getResultListener().result(identifiable);
+				final boolean result = pushResult(identifiable);
 				if(!result)
 					return false;
 			}
@@ -260,8 +289,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 		boolean stop = false;
 		while(!stop) {
 			// PARSE THE KEY
-			parserNextWord(false);
-			final String letName = parserGetLastWord();
+			final String letName = parserNextWord(false);
 			parserOptionalKeyword("=");
 			parserNextWord(false, " =><,\r\n");
 			// PARSE THE VALUE
@@ -284,7 +312,6 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 	 * Parses the limit keyword if found.
 	 *
 	 * @param w
-	 *
 	 * @return the limit found as integer, or -1 if no limit is found. -1 means no limits.
 	 * @throws OCommandSQLParsingException
 	 *             if no valid limit has been found
@@ -293,8 +320,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 
 		if(!w.equals(KEYWORD_LIMIT))
 			return -1;
-		parserNextWord(true);
-		final String word = parserGetLastWord();
+		final String word = parserNextWord(true);
 		try {
 			limit = Integer.parseInt(word);
 		} catch(Exception e) {
@@ -309,7 +335,6 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 	 * Parses the skip keyword if found.
 	 *
 	 * @param w
-	 *
 	 * @return the skip found as integer, or -1 if no skip is found. -1 means no skip.
 	 * @throws OCommandSQLParsingException
 	 *             if no valid skip has been found
@@ -318,8 +343,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 
 		if(!w.equals(KEYWORD_SKIP) && !w.equals(KEYWORD_OFFSET))
 			return -1;
-		parserNextWord(true);
-		final String word = parserGetLastWord();
+		final String word = parserNextWord(true);
 		try {
 			skip = Integer.parseInt(word);
 		} catch(Exception e) {
@@ -404,13 +428,23 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 	protected void searchInClasses(final boolean iAscendentOrder) {
 
 		final OClass cls = parsedTarget.getTargetClasses().keySet().iterator().next();
+		target = searchInClasses(cls, true, iAscendentOrder);
+	}
+
+	protected Iterator<? extends OIdentifiable> searchInClasses(final OClass iCls, final boolean iPolymorphic, final boolean iAscendentOrder) {
+
 		final ODatabaseDocumentInternal database = getDatabase();
-		database.checkSecurity(ORule.ResourceGeneric.CLASS, ORole.PERMISSION_READ, cls.getName().toLowerCase());
+		database.checkSecurity(ORule.ResourceGeneric.CLASS, ORole.PERMISSION_READ, iCls.getName().toLowerCase());
 		final ORID[] range = getRange();
 		if(iAscendentOrder)
-			target = new ORecordIteratorClass<ORecord>(database, database, cls.getName(), true, request.isUseCache()).setRange(range[0], range[1]);
+			return new ORecordIteratorClass<ORecord>(database, database, iCls.getName(), iPolymorphic, isUseCache()).setRange(range[0], range[1]);
 		else
-			target = new ORecordIteratorClassDescendentOrder<ORecord>(database, database, cls.getName(), true, request.isUseCache()).setRange(range[0], range[1]);
+			return new ORecordIteratorClassDescendentOrder<ORecord>(database, database, iCls.getName(), iPolymorphic, isUseCache()).setRange(range[0], range[1]);
+	}
+
+	protected boolean isUseCache() {
+
+		return request.isUseCache();
 	}
 
 	protected void searchInClusters() {
@@ -442,7 +476,7 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 		for(int c : clusterIds)
 			clIds[i++] = c;
 		final ORID[] range = getRange();
-		target = new ORecordIteratorClusters<ORecord>(database, database, clIds, request.isUseCache()).setRange(range[0], range[1]);
+		target = new ORecordIteratorClusters<ORecord>(database, database, clIds, !isUseCache()).setRange(range[0], range[1]);
 	}
 
 	protected void applyLimitAndSkip() {
@@ -453,7 +487,10 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 			if(tempResult instanceof List<?>) {
 				final List<OIdentifiable> t = (List<OIdentifiable>)tempResult;
 				final int start = Math.min(skip, t.size());
-				final int tot = Math.min(limit + start, t.size());
+				int tot = t.size();
+				if(limit > -1) {
+					tot = Math.min(limit + start, tot);
+				}
 				for(int i = start; i < tot; ++i)
 					newList.add(t.get(i));
 				t.clear();
@@ -575,5 +612,30 @@ public abstract class OCommandExecutorSQLResultsetAbstract extends OCommandExecu
 			endRange = conditionEndRange;
 		}
 		return new ORID[]{beginRange, endRange};
+	}
+
+	public Iterator<? extends OIdentifiable> getTarget() {
+
+		return target;
+	}
+
+	public void setTarget(final Iterator<? extends OIdentifiable> target) {
+
+		this.target = target;
+	}
+
+	public void setRequest(final OSQLAsynchQuery<ODocument> request) {
+
+		this.request = request;
+	}
+
+	public void setParsedTarget(final OSQLTarget parsedTarget) {
+
+		this.parsedTarget = parsedTarget;
+	}
+
+	public void setCompiledFilter(final OSQLFilter compiledFilter) {
+
+		this.compiledFilter = compiledFilter;
 	}
 }

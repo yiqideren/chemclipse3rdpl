@@ -21,8 +21,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
-import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
-import com.googlecode.concurrentlinkedhashmap.EvictionListener;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.RemovalListener;
+import com.google.common.cache.RemovalNotification;
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.OOrientListenerAbstract;
 import com.orientechnologies.orient.core.Orient;
@@ -41,13 +43,13 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 
 	private volatile int maxPoolSize = 64;
 	private boolean closed = false;
-	private final ConcurrentLinkedHashMap<PoolIdentity, OPartitionedDatabasePool> poolStore;
-	private final EvictionListener<PoolIdentity, OPartitionedDatabasePool> evictionListener = new EvictionListener<PoolIdentity, OPartitionedDatabasePool>() {
+	private final Cache<PoolIdentity, OPartitionedDatabasePool> poolStore;
+	private final RemovalListener<PoolIdentity, OPartitionedDatabasePool> evictionListener = new RemovalListener<PoolIdentity, OPartitionedDatabasePool>() {
 
 		@Override
-		public void onEviction(PoolIdentity poolIdentity, OPartitionedDatabasePool partitionedDatabasePool) {
+		public void onRemoval(RemovalNotification<PoolIdentity, OPartitionedDatabasePool> notification) {
 
-			partitionedDatabasePool.close();
+			notification.getValue().close();
 		}
 	};
 
@@ -58,7 +60,7 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 
 	public OPartitionedDatabasePoolFactory(int capacity) {
 
-		poolStore = new ConcurrentLinkedHashMap.Builder<PoolIdentity, OPartitionedDatabasePool>().maximumWeightedCapacity(capacity).listener(evictionListener).build();
+		poolStore = CacheBuilder.newBuilder().maximumWeight(capacity).removalListener(evictionListener).build();
 		Orient.instance().registerWeakOrientStartupListener(this);
 		Orient.instance().registerWeakOrientShutdownListener(this);
 	}
@@ -78,11 +80,11 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 
 		checkForClose();
 		final PoolIdentity poolIdentity = new PoolIdentity(url, userName, userPassword);
-		OPartitionedDatabasePool pool = poolStore.get(poolIdentity);
+		OPartitionedDatabasePool pool = poolStore.getIfPresent(poolIdentity);
 		if(pool != null)
 			return pool;
 		pool = new OPartitionedDatabasePool(url, userName, userPassword, maxPoolSize);
-		final OPartitionedDatabasePool oldPool = poolStore.putIfAbsent(poolIdentity, pool);
+		final OPartitionedDatabasePool oldPool = poolStore.asMap().putIfAbsent(poolIdentity, pool);
 		if(oldPool != null)
 			return oldPool;
 		return pool;
@@ -91,7 +93,7 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 	public Collection<OPartitionedDatabasePool> getPools() {
 
 		checkForClose();
-		return Collections.unmodifiableCollection(poolStore.values());
+		return Collections.unmodifiableCollection(poolStore.asMap().values());
 	}
 
 	public void close() {
@@ -99,8 +101,8 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 		if(closed)
 			return;
 		closed = true;
-		while(!poolStore.isEmpty()) {
-			final Iterator<OPartitionedDatabasePool> poolIterator = poolStore.values().iterator();
+		while(!poolStore.asMap().isEmpty()) {
+			final Iterator<OPartitionedDatabasePool> poolIterator = poolStore.asMap().values().iterator();
 			while(poolIterator.hasNext()) {
 				final OPartitionedDatabasePool pool = poolIterator.next();
 				try {
@@ -111,9 +113,9 @@ public class OPartitionedDatabasePoolFactory extends OOrientListenerAbstract {
 				poolIterator.remove();
 			}
 		}
-		for(OPartitionedDatabasePool pool : poolStore.values())
+		for(OPartitionedDatabasePool pool : poolStore.asMap().values())
 			pool.close();
-		poolStore.clear();
+		poolStore.asMap().clear();
 	}
 
 	private void checkForClose() {

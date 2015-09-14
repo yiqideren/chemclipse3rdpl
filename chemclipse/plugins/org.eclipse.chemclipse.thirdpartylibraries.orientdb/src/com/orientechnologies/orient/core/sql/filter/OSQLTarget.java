@@ -33,7 +33,13 @@ import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.orientechnologies.orient.core.sql.OCommandSQLParsingException;
 import com.orientechnologies.orient.core.sql.OCommandSQLResultset;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Target parser.
@@ -46,7 +52,7 @@ public class OSQLTarget extends OBaseParser {
 	protected final boolean empty;
 	protected final OCommandContext context;
 	protected String targetVariable;
-	protected OCommandExecutorSQLResultsetDelegate targetQuery;
+	protected String targetQuery;
 	protected Iterable<? extends OIdentifiable> targetRecords;
 	protected Map<String, String> targetClusters;
 	protected Map<OClass, String> targetClasses;
@@ -102,7 +108,7 @@ public class OSQLTarget extends OBaseParser {
 		return targetRecords;
 	}
 
-	public OCommandExecutorSQLResultsetDelegate getTargetQuery() {
+	public String getTargetQuery() {
 
 		return targetQuery;
 	}
@@ -179,8 +185,8 @@ public class OSQLTarget extends OBaseParser {
 			context.setChild(executor.getContext());
 			if(!(executor instanceof Iterable<?>))
 				throw new OCommandSQLParsingException("Sub-query cannot be iterated because doesn't implement the Iterable interface: " + subCommand);
-			targetQuery = executor;
-			targetRecords = (Iterable<? extends OIdentifiable>)executor;
+			targetQuery = subText.toString();
+			targetRecords = executor;
 		} else if(c == OStringSerializerHelper.LIST_BEGIN) {
 			// COLLECTION OF RIDS
 			final List<String> rids = new ArrayList<String>();
@@ -203,7 +209,15 @@ public class OSQLTarget extends OBaseParser {
 					// REGISTER AS CLUSTER
 					if(targetClusters == null)
 						targetClusters = new HashMap<String, String>();
-					targetClusters.put(subjectName.substring(OCommandExecutorSQLAbstract.CLUSTER_PREFIX.length()), alias);
+					final String clusterNames = subjectName.substring(OCommandExecutorSQLAbstract.CLUSTER_PREFIX.length());
+					if(clusterNames.startsWith("[") && clusterNames.endsWith("]")) {
+						final Collection<String> clusters = new HashSet<String>(3);
+						OStringSerializerHelper.getCollection(clusterNames, 0, clusters);
+						for(String cl : clusters) {
+							targetClusters.put(cl, cl);
+						}
+					} else
+						targetClusters.put(clusterNames, alias);
 				} else if(subjectToMatch.startsWith(OCommandExecutorSQLAbstract.INDEX_PREFIX)) {
 					// REGISTER AS INDEX
 					targetIndex = subjectName.substring(OCommandExecutorSQLAbstract.INDEX_PREFIX.length());

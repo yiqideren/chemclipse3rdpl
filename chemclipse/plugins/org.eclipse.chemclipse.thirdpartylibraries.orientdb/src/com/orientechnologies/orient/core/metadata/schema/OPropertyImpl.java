@@ -75,6 +75,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 	private boolean notNull = false;
 	private String min;
 	private String max;
+	private String defaultValue;
 	private String regexp;
 	private boolean readonly;
 	private Map<String, String> customFields;
@@ -92,7 +93,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 
 	OPropertyImpl(final OClassImpl owner) {
 
-		document = new ODocument();
+		document = new ODocument().setTrackingChanges(false);
 		this.owner = owner;
 	}
 
@@ -607,6 +608,41 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 		return this;
 	}
 
+	public String getDefaultValue() {
+
+		acquireSchemaReadLock();
+		try {
+			return defaultValue;
+		} finally {
+			releaseSchemaReadLock();
+		}
+	}
+
+	public OPropertyImpl setDefaultValue(final String defaultValue) {
+
+		getDatabase().checkSecurity(ORule.ResourceGeneric.SCHEMA, ORole.PERMISSION_UPDATE);
+		acquireSchemaWriteLock();
+		try {
+			final ODatabaseDocumentInternal database = getDatabase();
+			final OStorage storage = database.getStorage();
+			if(storage instanceof OStorageProxy) {
+				final String cmd = String.format("alter property %s default %s", getFullName(), defaultValue);
+				database.command(new OCommandSQL(cmd)).execute();
+			} else if(isDistributedCommand()) {
+				final String cmd = String.format("alter property %s default %s", getFullName(), defaultValue);
+				final OCommandSQL commandSQL = new OCommandSQL(cmd);
+				commandSQL.addExcludedNode(((OAutoshardedStorage)storage).getNodeId());
+				database.command(commandSQL).execute();
+				setDefaultValueInternal(defaultValue);
+			} else {
+				setDefaultValueInternal(defaultValue);
+			}
+		} finally {
+			releaseSchemaWriteLock();
+		}
+		return this;
+	}
+
 	public String getRegexp() {
 
 		acquireSchemaReadLock();
@@ -631,7 +667,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 				final String cmd = String.format("alter property %s regexp %s", getFullName(), regexp);
 				final OCommandSQL commandSQL = new OCommandSQL(cmd);
 				commandSQL.addExcludedNode(((OAutoshardedStorage)storage).getNodeId());
-				database.command(new OCommandSQL(cmd)).execute();
+				database.command(commandSQL).execute();
 				setRegexpInternal(regexp);
 			} else
 				setRegexpInternal(regexp);
@@ -744,6 +780,8 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 				return isReadonly();
 			case MAX:
 				return getMax();
+			case DEFAULT:
+				return getDefaultValue();
 			case NAME:
 				return getName();
 			case NOTNULL:
@@ -781,6 +819,9 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 				break;
 			case MAX:
 				setMax(stringValue);
+				break;
+			case DEFAULT:
+				setDefaultValue(stringValue);
 				break;
 			case NAME:
 				setName(stringValue);
@@ -901,7 +942,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 		try {
 			if(this == obj)
 				return true;
-			if(!OProperty.class.isAssignableFrom(obj.getClass()))
+			if(obj == null || !OProperty.class.isAssignableFrom(obj.getClass()))
 				return false;
 			OProperty other = (OProperty)obj;
 			if(owner == null) {
@@ -934,6 +975,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 		mandatory = document.containsField("mandatory") ? (Boolean)document.field("mandatory") : false;
 		readonly = document.containsField("readonly") ? (Boolean)document.field("readonly") : false;
 		notNull = document.containsField("notNull") ? (Boolean)document.field("notNull") : false;
+		defaultValue = (String)(document.containsField("defaultValue") ? document.field("defaultValue") : null);
 		if(document.containsField("collate"))
 			collate = OSQLEngine.getCollate((String)document.field("collate"));
 		min = (String)(document.containsField("min") ? document.field("min") : null);
@@ -973,6 +1015,7 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 			document.field("mandatory", mandatory);
 			document.field("readonly", readonly);
 			document.field("notNull", notNull);
+			document.field("defaultValue", defaultValue);
 			document.field("min", min);
 			document.field("max", max);
 			document.field("regexp", regexp);
@@ -1078,6 +1121,18 @@ public class OPropertyImpl extends ODocumentWrapperNoClass implements OProperty 
 			checkEmbedded();
 			checkForDateFormat(min);
 			this.min = min;
+		} finally {
+			releaseSchemaWriteLock();
+		}
+	}
+
+	private void setDefaultValueInternal(final String defaultValue) {
+
+		getDatabase().checkSecurity(ORule.ResourceGeneric.SCHEMA, ORole.PERMISSION_UPDATE);
+		acquireSchemaWriteLock();
+		try {
+			checkEmbedded();
+			this.defaultValue = defaultValue;
 		} finally {
 			releaseSchemaWriteLock();
 		}

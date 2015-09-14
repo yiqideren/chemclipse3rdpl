@@ -27,9 +27,9 @@ public abstract class OTraverseAbstractProcess<T> extends OCommandProcess<OTrave
 		super(iCommand, iTarget);
 	}
 
-	public OIdentifiable drop() {
+	public OIdentifiable pop() {
 
-		command.getContext().pop();
+		command.getContext().pop(null);
 		return null;
 	}
 

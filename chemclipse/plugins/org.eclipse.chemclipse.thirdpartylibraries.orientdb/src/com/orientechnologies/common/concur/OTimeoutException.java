@@ -32,18 +32,8 @@ public class OTimeoutException extends ONeedRetryException {
 		super();
 	}
 
-	public OTimeoutException(String message, Throwable cause) {
-
-		super(message, cause);
-	}
-
-	public OTimeoutException(String message) {
+	public OTimeoutException(final String message) {
 
 		super(message);
-	}
-
-	public OTimeoutException(Throwable cause) {
-
-		super(cause);
 	}
 }

@@ -48,15 +48,17 @@ public class OIndexDefinitionFactory {
 	 * @param types
 	 *            types of indexed properties
 	 * @param collates
+	 * @param indexKind
+	 * @param algorithm
 	 * @return index definition instance
 	 */
-	public static OIndexDefinition createIndexDefinition(final OClass oClass, final List<String> fieldNames, final List<OType> types, List<OCollate> collates) {
+	public static OIndexDefinition createIndexDefinition(final OClass oClass, final List<String> fieldNames, final List<OType> types, List<OCollate> collates, String indexKind, String algorithm) {
 
 		checkTypes(oClass, fieldNames, types);
 		if(fieldNames.size() == 1)
-			return createSingleFieldIndexDefinition(oClass, fieldNames.get(0), types.get(0), collates == null ? null : collates.get(0));
+			return createSingleFieldIndexDefinition(oClass, fieldNames.get(0), types.get(0), collates == null ? null : collates.get(0), indexKind, algorithm);
 		else
-			return createMultipleFieldIndexDefinition(oClass, fieldNames, types, collates);
+			return createMultipleFieldIndexDefinition(oClass, fieldNames, types, collates, indexKind, algorithm);
 	}
 
 	/**
@@ -76,15 +78,16 @@ public class OIndexDefinitionFactory {
 		throw new IllegalArgumentException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldDefinition + '\'');
 	}
 
-	private static OIndexDefinition createMultipleFieldIndexDefinition(final OClass oClass, final List<String> fieldsToIndex, final List<OType> types, List<OCollate> collates) {
+	private static OIndexDefinition createMultipleFieldIndexDefinition(final OClass oClass, final List<String> fieldsToIndex, final List<OType> types, List<OCollate> collates, String indexKind, String algorithm) {
 
+		final OIndexFactory factory = OIndexes.getFactory(indexKind, algorithm);
 		final String className = oClass.getName();
-		final OCompositeIndexDefinition compositeIndex = new OCompositeIndexDefinition(className);
+		final OCompositeIndexDefinition compositeIndex = new OCompositeIndexDefinition(className, factory.getLastVersion());
 		for(int i = 0, fieldsToIndexSize = fieldsToIndex.size(); i < fieldsToIndexSize; i++) {
 			OCollate collate = null;
 			if(collates != null)
 				collate = collates.get(i);
-			compositeIndex.addIndex(createSingleFieldIndexDefinition(oClass, fieldsToIndex.get(i), types.get(i), collate));
+			compositeIndex.addIndex(createSingleFieldIndexDefinition(oClass, fieldsToIndex.get(i), types.get(i), collate, indexKind, algorithm));
 		}
 		return compositeIndex;
 	}
@@ -103,8 +106,9 @@ public class OIndexDefinitionFactory {
 		}
 	}
 
-	private static OIndexDefinition createSingleFieldIndexDefinition(OClass oClass, final String field, final OType type, OCollate collate) {
+	private static OIndexDefinition createSingleFieldIndexDefinition(OClass oClass, final String field, final OType type, OCollate collate, String indexKind, String algorithm) {
 
+		final OIndexFactory factory = OIndexes.getFactory(indexKind, algorithm);
 		final String fieldName = adjustFieldName(oClass, extractFieldName(field));
 		final OIndexDefinition indexDefinition;
 		final OProperty propertyToIndex = oClass.getProperty(fieldName);
@@ -155,7 +159,7 @@ public class OIndexDefinitionFactory {
 				try {
 					return OPropertyMapIndexDefinition.INDEX_BY.valueOf(fieldNameParts[2].toUpperCase());
 				} catch(IllegalArgumentException iae) {
-					throw new IllegalArgumentException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldName + '\'');
+					throw new IllegalArgumentException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldName + '\'', iae);
 				}
 		}
 		throw new IllegalArgumentException("Illegal field name format, should be '<property> [by key|value]' but was '" + fieldName + '\'');

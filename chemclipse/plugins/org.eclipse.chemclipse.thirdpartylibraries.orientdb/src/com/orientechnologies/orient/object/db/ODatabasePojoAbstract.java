@@ -29,12 +29,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.orientechnologies.orient.core.db.*;
-import com.orientechnologies.orient.core.metadata.security.OSecurityUser;
-import javassist.util.proxy.Proxy;
 import javassist.util.proxy.ProxyObject;
 
 import com.orientechnologies.orient.core.command.OCommandRequest;
+import com.orientechnologies.orient.core.db.ODatabase;
+import com.orientechnologies.orient.core.db.ODatabaseInternal;
+import com.orientechnologies.orient.core.db.ODatabaseSchemaAware;
+import com.orientechnologies.orient.core.db.ODatabaseWrapperAbstract;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.db.object.OObjectLazyMultivalueElement;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
@@ -47,7 +48,7 @@ import com.orientechnologies.orient.core.hook.ORecordHook.TYPE;
 import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.metadata.OMetadata;
 import com.orientechnologies.orient.core.metadata.schema.OType;
-import com.orientechnologies.orient.core.metadata.security.OUser;
+import com.orientechnologies.orient.core.metadata.security.OSecurityUser;
 import com.orientechnologies.orient.core.query.OQuery;
 import com.orientechnologies.orient.core.record.ORecord;
 import com.orientechnologies.orient.core.record.ORecordInternal;
@@ -353,7 +354,7 @@ public abstract class ODatabasePojoAbstract<T extends Object> extends ODatabaseW
 
 		if(iPojo instanceof ODocument)
 			return (ODocument)iPojo;
-		else if(iPojo instanceof Proxy)
+		else if(iPojo instanceof ProxyObject)
 			return ((OObjectProxyMethodHandler)((ProxyObject)iPojo).getHandler()).getDoc();
 		ODocument record = objects2Records.get(iPojo);
 		if(record == null) {

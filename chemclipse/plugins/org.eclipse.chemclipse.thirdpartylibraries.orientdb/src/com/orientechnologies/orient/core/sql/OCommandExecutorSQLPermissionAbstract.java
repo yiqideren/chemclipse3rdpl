@@ -17,6 +17,7 @@
  */
 package com.orientechnologies.orient.core.sql;
 
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.metadata.security.ORole;
 
 /**
@@ -49,5 +50,11 @@ public abstract class OCommandExecutorSQLPermissionAbstract extends OCommandExec
 			privilege = ORole.PERMISSION_NONE;
 		else
 			throw new OCommandSQLParsingException("Unrecognized privilege '" + privilegeName + "'", parserText, oldPos);
+	}
+
+	@Override
+	public long getDistributedTimeout() {
+
+		return OGlobalConfiguration.DISTRIBUTED_COMMAND_TASK_SYNCH_TIMEOUT.getValueAsLong();
 	}
 }

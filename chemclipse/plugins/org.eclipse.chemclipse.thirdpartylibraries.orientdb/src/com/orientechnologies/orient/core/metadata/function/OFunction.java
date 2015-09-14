@@ -17,10 +17,6 @@
  */
 package com.orientechnologies.orient.core.metadata.function;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.command.script.OCommandExecutorFunction;
@@ -32,6 +28,10 @@ import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.id.ORecordId;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.type.ODocumentWrapper;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Stored function. It contains language and code to execute as a function. The execute() takes parameters. The function is
@@ -152,6 +152,22 @@ public class OFunction extends ODocumentWrapper {
 					args.put(params.get(i), argValue);
 				else
 					args.put("param" + i, argValue);
+			}
+		}
+		return command.executeInContext(iContext, args);
+	}
+
+	public Object executeInContext(final OCommandContext iContext, final Map<String, Object> iArgs) {
+
+		final OCommandExecutorFunction command = new OCommandExecutorFunction();
+		command.parse(new OCommandFunction(getName()));
+		// CONVERT PARAMETERS IN A MAP
+		final Map<Object, Object> args = new LinkedHashMap<Object, Object>();
+		if(iArgs.size() > 0) {
+			// PRESERVE THE ORDER FOR PARAMETERS (ARE USED AS POSITIONAL)
+			final List<String> params = getParameters();
+			for(String p : params) {
+				args.put(p, iArgs.get(p));
 			}
 		}
 		return command.executeInContext(iContext, args);

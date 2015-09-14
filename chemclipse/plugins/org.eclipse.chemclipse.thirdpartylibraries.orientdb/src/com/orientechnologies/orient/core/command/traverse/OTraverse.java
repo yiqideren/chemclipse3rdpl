@@ -17,16 +17,17 @@
  */
 package com.orientechnologies.orient.core.command.traverse;
 
+import com.orientechnologies.orient.core.command.OCommand;
+import com.orientechnologies.orient.core.command.OCommandExecutorAbstract;
+import com.orientechnologies.orient.core.command.OCommandPredicate;
+import com.orientechnologies.orient.core.db.record.OIdentifiable;
+import com.orientechnologies.orient.core.exception.OCommandExecutionException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-import com.orientechnologies.orient.core.command.OCommand;
-import com.orientechnologies.orient.core.command.OCommandPredicate;
-import com.orientechnologies.orient.core.db.record.OIdentifiable;
-import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 
 /**
  * Base class for traversing.
@@ -43,6 +44,7 @@ public class OTraverse implements OCommand, Iterable<OIdentifiable>, Iterator<OI
 	private OIdentifiable lastTraversed;
 	private STRATEGY strategy = STRATEGY.DEPTH_FIRST;
 	private OTraverseContext context = new OTraverseContext();
+	private int maxDepth = -1;
 
 	public enum STRATEGY {
 		DEPTH_FIRST, BREADTH_FIRST
@@ -75,7 +77,7 @@ public class OTraverse implements OCommand, Iterable<OIdentifiable>, Iterator<OI
 			lastTraversed = next();
 		if(lastTraversed == null && !context.isEmpty())
 			throw new IllegalStateException("Traverse ended abnormally");
-		if(!context.checkTimeout())
+		if(!OCommandExecutorAbstract.checkInterruption(context))
 			return false;
 		// BROWSE ALL THE RECORDS
 		return lastTraversed != null;
@@ -222,5 +224,15 @@ public class OTraverse implements OCommand, Iterable<OIdentifiable>, Iterator<OI
 
 		this.strategy = strategy;
 		context.setStrategy(strategy);
+	}
+
+	public int getMaxDepth() {
+
+		return maxDepth;
+	}
+
+	public void setMaxDepth(final int maxDepth) {
+
+		this.maxDepth = maxDepth;
 	}
 }

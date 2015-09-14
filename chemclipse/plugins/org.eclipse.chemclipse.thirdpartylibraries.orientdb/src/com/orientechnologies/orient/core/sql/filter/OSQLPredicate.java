@@ -17,12 +17,19 @@
  */
 package com.orientechnologies.orient.core.sql.filter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import com.orientechnologies.common.parser.OBaseParser;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.command.OCommandPredicate;
+import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.exception.OQueryParsingException;
 import com.orientechnologies.orient.core.metadata.schema.OProperty;
-import com.orientechnologies.orient.core.record.ORecord;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.serialization.serializer.OStringSerializerHelper;
 import com.orientechnologies.orient.core.sql.OCommandExecutorSQLSelect;
@@ -32,14 +39,6 @@ import com.orientechnologies.orient.core.sql.OSQLHelper;
 import com.orientechnologies.orient.core.sql.operator.OQueryOperator;
 import com.orientechnologies.orient.core.sql.operator.OQueryOperatorNot;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * Parses text in SQL format and build a tree of conditions.
@@ -120,7 +119,7 @@ public class OSQLPredicate extends OBaseParser implements OCommandPredicate {
 		return evaluate(null, null, iContext);
 	}
 
-	public Object evaluate(final ORecord iRecord, ODocument iCurrentResult, final OCommandContext iContext) {
+	public Object evaluate(final OIdentifiable iRecord, ODocument iCurrentResult, final OCommandContext iContext) {
 
 		if(rootCondition == null)
 			return true;
@@ -234,7 +233,7 @@ public class OSQLPredicate extends OBaseParser implements OCommandPredicate {
 				// CONFIGURE COULD INSTANTIATE A NEW OBJECT: ACT AS A FACTORY
 				return op.configure(params);
 			} catch(Exception e) {
-				throw new OQueryParsingException("Syntax error using the operator '" + op.toString() + "'. Syntax is: " + op.getSyntax());
+				throw new OQueryParsingException("Syntax error using the operator '" + op.toString() + "'. Syntax is: " + op.getSyntax(), e);
 			}
 		} else
 			parserMoveCurrentPosition(+1);
@@ -336,17 +335,12 @@ public class OSQLPredicate extends OBaseParser implements OCommandPredicate {
 
 		if(parameterItems == null || iArgs == null || iArgs.size() == 0)
 			return;
-		for(Entry<Object, Object> entry : iArgs.entrySet()) {
-			if(entry.getKey() instanceof Integer)
-				parameterItems.get(((Integer)entry.getKey())).setValue(entry.setValue(entry.getValue()));
-			else {
-				String paramName = entry.getKey().toString();
-				for(OSQLFilterItemParameter value : parameterItems) {
-					if(value.getName().equalsIgnoreCase(paramName)) {
-						value.setValue(entry.getValue());
-						break;
-					}
-				}
+		for(int i = 0; i < parameterItems.size(); i++) {
+			OSQLFilterItemParameter value = parameterItems.get(i);
+			if("?".equals(value.getName())) {
+				value.setValue(iArgs.get(i));
+			} else {
+				value.setValue(iArgs.get(value.getName()));
 			}
 		}
 	}

@@ -17,6 +17,8 @@
  */
 package com.orientechnologies.orient.enterprise.channel.binary;
 
+import com.orientechnologies.orient.core.sql.query.OLiveResultListener;
+
 /**
  * Listener Interface to get called when asynchronous events are received from the remote server.
  * 
@@ -26,4 +28,8 @@ package com.orientechnologies.orient.enterprise.channel.binary;
 public interface ORemoteServerEventListener {
 
 	public void onRequest(final byte iRequestCode, Object obj);
+
+	public void registerLiveListener(Integer id, OLiveResultListener listener);
+
+	public void unregisterLiveListener(Integer id);
 }

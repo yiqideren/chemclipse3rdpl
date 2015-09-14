@@ -17,6 +17,7 @@ import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.metadata.function.OFunction;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
+import com.orientechnologies.orient.core.metadata.schema.OClassImpl;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
@@ -85,13 +86,13 @@ public class OSchedulerListenerImpl implements OSchedulerListener {
 		final ODatabaseDocument db = ODatabaseRecordThreadLocal.INSTANCE.get();
 		if(db.getMetadata().getSchema().existsClass(OScheduler.CLASSNAME))
 			return;
-		final OClass f = db.getMetadata().getSchema().createClass(OScheduler.CLASSNAME);
-		f.createProperty(OScheduler.PROP_NAME, OType.STRING).setMandatory(true).setNotNull(true);
-		f.createProperty(OScheduler.PROP_RULE, OType.STRING).setMandatory(true).setNotNull(true);
-		f.createProperty(OScheduler.PROP_ARGUMENTS, OType.EMBEDDEDMAP);
-		f.createProperty(OScheduler.PROP_STATUS, OType.STRING);
-		f.createProperty(OScheduler.PROP_FUNC, OType.LINK, db.getMetadata().getSchema().getClass(OFunction.CLASS_NAME)).setMandatory(true).setNotNull(true);
-		f.createProperty(OScheduler.PROP_STARTTIME, OType.DATETIME);
-		f.createProperty(OScheduler.PROP_STARTED, OType.BOOLEAN);
+		final OClassImpl f = (OClassImpl)db.getMetadata().getSchema().createClass(OScheduler.CLASSNAME);
+		f.createProperty(OScheduler.PROP_NAME, OType.STRING, (OType)null, false).setMandatory(true).setNotNull(true);
+		f.createProperty(OScheduler.PROP_RULE, OType.STRING, (OType)null, false).setMandatory(true).setNotNull(true);
+		f.createProperty(OScheduler.PROP_ARGUMENTS, OType.EMBEDDEDMAP, (OType)null, false);
+		f.createProperty(OScheduler.PROP_STATUS, OType.STRING, (OType)null, false);
+		f.createProperty(OScheduler.PROP_FUNC, OType.LINK, db.getMetadata().getSchema().getClass(OFunction.CLASS_NAME), false).setMandatory(true).setNotNull(true);
+		f.createProperty(OScheduler.PROP_STARTTIME, OType.DATETIME, (OType)null, false);
+		f.createProperty(OScheduler.PROP_STARTED, OType.BOOLEAN, (OType)null, false);
 	}
 }

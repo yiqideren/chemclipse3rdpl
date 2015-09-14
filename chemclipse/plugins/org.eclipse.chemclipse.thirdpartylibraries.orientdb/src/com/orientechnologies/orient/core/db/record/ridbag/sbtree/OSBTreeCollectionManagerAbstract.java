@@ -19,7 +19,8 @@ package com.orientechnologies.orient.core.db.record.ridbag.sbtree;
 
 import java.util.UUID;
 
-import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.orientechnologies.common.concur.resource.OCloseable;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
@@ -37,7 +38,7 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 	protected final int shift;
 	protected final int mask;
 	protected final Object[] locks;
-	private final ConcurrentLinkedHashMap<OBonsaiCollectionPointer, SBTreeBonsaiContainer> treeCache = new ConcurrentLinkedHashMap.Builder<OBonsaiCollectionPointer, SBTreeBonsaiContainer>().maximumWeightedCapacity(Long.MAX_VALUE).build();
+	private final Cache<OBonsaiCollectionPointer, SBTreeBonsaiContainer> treeCache = CacheBuilder.newBuilder().build();
 
 	public OSBTreeCollectionManagerAbstract() {
 
@@ -83,7 +84,7 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 		final Object lock = treesSubsetLock(collectionPointer);
 		OSBTreeBonsai<OIdentifiable, Integer> tree;
 		synchronized(lock) {
-			SBTreeBonsaiContainer container = treeCache.get(collectionPointer);
+			SBTreeBonsaiContainer container = treeCache.getIfPresent(collectionPointer);
 			if(container != null) {
 				container.usagesCounter++;
 				tree = container.tree;
@@ -104,7 +105,7 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 
 		final Object lock = treesSubsetLock(collectionPointer);
 		synchronized(lock) {
-			SBTreeBonsaiContainer container = treeCache.getQuietly(collectionPointer);
+			SBTreeBonsaiContainer container = treeCache.getIfPresent(collectionPointer);
 			assert container != null;
 			container.usagesCounter--;
 			assert container.usagesCounter >= 0;
@@ -117,11 +118,11 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 
 		final Object lock = treesSubsetLock(collectionPointer);
 		synchronized(lock) {
-			SBTreeBonsaiContainer container = treeCache.getQuietly(collectionPointer);
+			SBTreeBonsaiContainer container = treeCache.getIfPresent(collectionPointer);
 			assert container != null;
 			if(container.usagesCounter != 0)
-				throw new IllegalStateException("Can not delete SBTreeBonsai instance because it is used in other thread.");
-			treeCache.remove(collectionPointer);
+				throw new IllegalStateException("Cannot delete SBTreeBonsai instance because it is used in other thread.");
+			treeCache.asMap().remove(collectionPointer);
 		}
 	}
 
@@ -129,20 +130,20 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 
 		if(treeCache.size() <= cacheMaxSize)
 			return;
-		for(OBonsaiCollectionPointer collectionPointer : treeCache.ascendingKeySetWithLimit(evictionThreshold)) {
+		for(OBonsaiCollectionPointer collectionPointer : treeCache.asMap().keySet()) {
 			final Object treeLock = treesSubsetLock(collectionPointer);
 			synchronized(treeLock) {
-				SBTreeBonsaiContainer container = treeCache.getQuietly(collectionPointer);
+				SBTreeBonsaiContainer container = treeCache.getIfPresent(collectionPointer);
 				if(container != null && container.usagesCounter == 0)
-					treeCache.remove(collectionPointer);
+					treeCache.asMap().remove(collectionPointer);
 			}
 		}
 	}
 
 	@Override
-	public void close(boolean onDelete) {
+	public void close() {
 
-		treeCache.clear();
+		treeCache.asMap().clear();
 	}
 
 	protected abstract OSBTreeBonsai<OIdentifiable, Integer> createTree(int clusterId);
@@ -151,7 +152,7 @@ public abstract class OSBTreeCollectionManagerAbstract implements OCloseable, OS
 
 	int size() {
 
-		return treeCache.size();
+		return treeCache.asMap().size();
 	}
 
 	private Object treesSubsetLock(OBonsaiCollectionPointer collectionPointer) {

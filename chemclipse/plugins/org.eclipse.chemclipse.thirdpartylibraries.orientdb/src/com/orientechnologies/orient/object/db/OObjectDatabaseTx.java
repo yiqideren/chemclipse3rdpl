@@ -17,14 +17,24 @@
  */
 package com.orientechnologies.orient.object.db;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javassist.util.proxy.ProxyObject;
+
 import com.orientechnologies.common.collection.OMultiValue;
 import com.orientechnologies.common.log.OLogManager;
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.conflict.ORecordConflictStrategy;
 import com.orientechnologies.orient.core.db.ODatabase;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.ODatabaseInternal;
+import com.orientechnologies.orient.core.db.ODatabaseListener;
 import com.orientechnologies.orient.core.db.OUserObject2RecordHandler;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.db.object.ODatabaseObject;
@@ -60,15 +70,6 @@ import com.orientechnologies.orient.object.iterator.OObjectIteratorClass;
 import com.orientechnologies.orient.object.iterator.OObjectIteratorCluster;
 import com.orientechnologies.orient.object.metadata.OMetadataObject;
 import com.orientechnologies.orient.object.serialization.OObjectSerializerHelper;
-
-import javassist.util.proxy.Proxy;
-import javassist.util.proxy.ProxyObject;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Object Database instance. It's a wrapper to the class ODatabaseDocumentTx that handles conversion between ODocument instances and
@@ -110,7 +111,7 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 
 	public <T> T newInstance(final Class<T> iType) {
 
-		return (T)newInstance(iType.getSimpleName(), null, new Object[0]);
+		return (T)newInstance(iType.getSimpleName(), null, OCommonConst.EMPTY_OBJECT_ARRAY);
 	}
 
 	public <T> T newInstance(final Class<T> iType, Object... iArgs) {
@@ -120,7 +121,7 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 
 	public <RET> RET newInstance(String iClassName) {
 
-		return (RET)newInstance(iClassName, null, new Object[0]);
+		return (RET)newInstance(iClassName, null, OCommonConst.EMPTY_OBJECT_ARRAY);
 	}
 
 	@Override
@@ -152,6 +153,12 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 		return metadata;
 	}
 
+	@Override
+	public Iterable<ODatabaseListener> getListeners() {
+
+		return underlying.getListeners();
+	}
+
 	/**
 	 * Create a new POJO by its class name. Assure to have called the registerEntityClasses() declaring the packages that are part of
 	 * entity classes.
@@ -160,8 +167,8 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 	 */
 	public <RET extends Object> RET newInstance(final String iClassName, final Object iEnclosingClass, Object... iArgs) {
 
+		underlying.checkIfActive();
 		checkSecurity(ORule.ResourceGeneric.CLASS, ORole.PERMISSION_CREATE, iClassName);
-		((ODatabaseDocumentTx)underlying).setCurrentDatabaseInThreadLocal();
 		try {
 			Class<?> entityClass = entityManager.getEntityClass(iClassName);
 			if(entityClass != null) {
@@ -247,14 +254,20 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 
 	public <RET> RET reload(Object iPojo, final String iFetchPlan, final boolean iIgnoreCache) {
 
+		return reload(iPojo, iFetchPlan, iIgnoreCache, true);
+	}
+
+	@Override
+	public <RET> RET reload(Object iObject, String iFetchPlan, boolean iIgnoreCache, boolean force) {
+
 		checkOpeness();
-		if(iPojo == null)
+		if(iObject == null)
 			return null;
 		// GET THE ASSOCIATED DOCUMENT
-		final ODocument record = getRecordByUserObject(iPojo, true);
-		underlying.reload(record, iFetchPlan, iIgnoreCache);
-		iPojo = stream2pojo(record, iPojo, iFetchPlan, true);
-		return (RET)iPojo;
+		final ODocument record = getRecordByUserObject(iObject, true);
+		underlying.reload(record, iFetchPlan, iIgnoreCache, force);
+		iObject = stream2pojo(record, iObject, iFetchPlan, true);
+		return (RET)iObject;
 	}
 
 	public <RET> RET load(final Object iPojo, final String iFetchPlan) {
@@ -331,6 +344,13 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 	@Deprecated
 	public <RET> RET load(Object iPojo, String iFetchPlan, boolean iIgnoreCache, boolean loadTombstone, OStorage.LOCKING_STRATEGY iLockingStrategy) {
 
+		return load(iPojo, iFetchPlan, iIgnoreCache, loadTombstone, iLockingStrategy);
+	}
+
+	@Override
+	@Deprecated
+	public <RET> RET load(Object iPojo, String iFetchPlan, boolean iIgnoreCache, final boolean iUpdateCache, boolean loadTombstone, OStorage.LOCKING_STRATEGY iLockingStrategy) {
+
 		checkOpeness();
 		if(iPojo == null)
 			return null;
@@ -338,7 +358,7 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 		ODocument record = getRecordByUserObject(iPojo, true);
 		try {
 			record.setInternalStatus(ORecordElement.STATUS.UNMARSHALLING);
-			record = underlying.load(record, iFetchPlan, iIgnoreCache, loadTombstone, OStorage.LOCKING_STRATEGY.DEFAULT);
+			record = underlying.load(record, iFetchPlan, iIgnoreCache, iUpdateCache, loadTombstone, OStorage.LOCKING_STRATEGY.DEFAULT);
 			return (RET)stream2pojo(record, iPojo, iFetchPlan);
 		} finally {
 			record.setInternalStatus(ORecordElement.STATUS.LOADED);
@@ -357,18 +377,25 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 
 	public <RET> RET load(final ORID iRecordId, final String iFetchPlan, final boolean iIgnoreCache) {
 
-		return (RET)load(iRecordId, iFetchPlan, iIgnoreCache, false, OStorage.LOCKING_STRATEGY.DEFAULT);
+		return (RET)load(iRecordId, iFetchPlan, iIgnoreCache, !iIgnoreCache, false, OStorage.LOCKING_STRATEGY.DEFAULT);
 	}
 
 	@Override
 	@Deprecated
 	public <RET> RET load(ORID iRecordId, String iFetchPlan, boolean iIgnoreCache, boolean loadTombstone, OStorage.LOCKING_STRATEGY iLockingStrategy) {
 
+		return load(iRecordId, iFetchPlan, iIgnoreCache, !iIgnoreCache, loadTombstone, iLockingStrategy);
+	}
+
+	@Override
+	@Deprecated
+	public <RET> RET load(ORID iRecordId, String iFetchPlan, boolean iIgnoreCache, final boolean iUpdateCache, boolean loadTombstone, OStorage.LOCKING_STRATEGY iLockingStrategy) {
+
 		checkOpeness();
 		if(iRecordId == null)
 			return null;
 		// GET THE ASSOCIATED DOCUMENT
-		final ODocument record = (ODocument)underlying.load(iRecordId, iFetchPlan, iIgnoreCache, loadTombstone, OStorage.LOCKING_STRATEGY.DEFAULT);
+		final ODocument record = (ODocument)underlying.load(iRecordId, iFetchPlan, iIgnoreCache, iUpdateCache, loadTombstone, OStorage.LOCKING_STRATEGY.DEFAULT);
 		if(record == null)
 			return null;
 		return (RET)OObjectEntityEnhancer.getInstance().getProxiedInstance(record.getClassName(), entityManager, record, null);
@@ -704,7 +731,7 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 			iRecord = (ODocument)iRecord.load();
 		if(iReload) {
 			if(iPojo != null) {
-				if(iPojo instanceof Proxy) {
+				if(iPojo instanceof ProxyObject) {
 					((OObjectProxyMethodHandler)((ProxyObject)iPojo).getHandler()).setDoc(iRecord);
 					((OObjectProxyMethodHandler)((ProxyObject)iPojo).getHandler()).updateLoadedFieldMap(iPojo, iReload);
 					return iPojo;
@@ -712,7 +739,7 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 					return OObjectEntityEnhancer.getInstance().getProxiedInstance(iPojo.getClass(), iRecord);
 			} else
 				return OObjectEntityEnhancer.getInstance().getProxiedInstance(iRecord.getClassName(), entityManager, iRecord, null);
-		} else if(!(iPojo instanceof Proxy))
+		} else if(!(iPojo instanceof ProxyObject))
 			return OObjectEntityEnhancer.getInstance().getProxiedInstance(iPojo.getClass(), iRecord);
 		else
 			return iPojo;
@@ -756,9 +783,9 @@ public class OObjectDatabaseTx extends ODatabasePojoAbstract<Object> implements 
 	@Override
 	public ODocument getRecordByUserObject(final Object iPojo, final boolean iCreateIfNotAvailable) {
 
-		if(iPojo instanceof Proxy)
-			return OObjectEntitySerializer.getDocument((Proxy)iPojo);
-		return OObjectEntitySerializer.getDocument((Proxy)OObjectEntitySerializer.serializeObject(iPojo, this));
+		if(iPojo instanceof ProxyObject)
+			return OObjectEntitySerializer.getDocument((ProxyObject)iPojo);
+		return OObjectEntitySerializer.getDocument((ProxyObject)OObjectEntitySerializer.serializeObject(iPojo, this));
 	}
 
 	@Override

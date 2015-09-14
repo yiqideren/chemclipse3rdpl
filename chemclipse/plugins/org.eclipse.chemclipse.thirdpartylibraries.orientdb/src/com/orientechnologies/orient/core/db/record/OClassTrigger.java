@@ -12,15 +12,23 @@
  */
 package com.orientechnologies.orient.core.db.record;
 
+import java.lang.reflect.Method;
+
+import javax.script.Bindings;
+import javax.script.Invocable;
+import javax.script.ScriptContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 import com.orientechnologies.common.concur.resource.OPartitionedObjectPool;
 import com.orientechnologies.common.exception.OException;
 import com.orientechnologies.common.log.OLogManager;
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.script.OCommandScriptException;
 import com.orientechnologies.orient.core.command.script.OScriptManager;
 import com.orientechnologies.orient.core.db.ODatabase.STATUS;
-import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
-import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
+import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.exception.OConfigurationException;
 import com.orientechnologies.orient.core.hook.ODocumentHookAbstract;
@@ -28,17 +36,11 @@ import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.id.ORecordId;
 import com.orientechnologies.orient.core.metadata.function.OFunction;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
+import com.orientechnologies.orient.core.metadata.schema.OImmutableClass;
 import com.orientechnologies.orient.core.record.ORecord;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.record.impl.ODocumentInternal;
 import com.orientechnologies.orient.core.serialization.serializer.OStringSerializerHelper;
-
-import javax.script.Bindings;
-import javax.script.Invocable;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
-import java.lang.reflect.Method;
 
 /**
  * Author : henryzhao81@gmail.com Feb 19, 2013
@@ -69,8 +71,9 @@ public class OClassTrigger extends ODocumentHookAbstract {
 	public static final String ONAFTER_DELETE = "onAfterDelete";
 	public static final String PROP_AFTER_DELETE = ONAFTER_DELETE;
 
-	public OClassTrigger() {
+	public OClassTrigger(ODatabaseDocument database) {
 
+		super(database);
 	}
 
 	public DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
@@ -180,12 +183,13 @@ public class OClassTrigger extends ODocumentHookAbstract {
 
 	public RESULT onTrigger(final TYPE iType, final ORecord iRecord) {
 
-		if(ODatabaseRecordThreadLocal.INSTANCE.isDefined() && ODatabaseRecordThreadLocal.INSTANCE.get().getStatus() != STATUS.OPEN)
+		if(database.getStatus() != STATUS.OPEN)
 			return RESULT.RECORD_NOT_CHANGED;
 		if(!(iRecord instanceof ODocument))
 			return RESULT.RECORD_NOT_CHANGED;
 		final ODocument document = (ODocument)iRecord;
-		if(ODocumentInternal.getImmutableSchemaClass(document) != null && ODocumentInternal.getImmutableSchemaClass(document).isSubClassOf(CLASSNAME))
+		OImmutableClass immutableClass = ODocumentInternal.getImmutableSchemaClass(document);
+		if(immutableClass != null && immutableClass.isSubClassOf(CLASSNAME))
 			return super.onTrigger(iType, iRecord);
 		return RESULT.RECORD_NOT_CHANGED;
 	}
@@ -208,13 +212,13 @@ public class OClassTrigger extends ODocumentHookAbstract {
 				final Object[] clzMethod = this.checkMethod(fieldName);
 				if(clzMethod != null)
 					return clzMethod;
-				func = ODatabaseRecordThreadLocal.INSTANCE.get().getMetadata().getFunctionLibrary().getFunction(fieldName);
+				func = database.getMetadata().getFunctionLibrary().getFunction(fieldName);
 				if(func == null) { // check if it is rid
 					if(OStringSerializerHelper.contains(fieldName, ORID.SEPARATOR)) {
 						try {
-							ODocument funcDoc = ODatabaseRecordThreadLocal.INSTANCE.get().load(new ORecordId(fieldName));
+							ODocument funcDoc = database.load(new ORecordId(fieldName));
 							if(funcDoc != null) {
-								func = ODatabaseRecordThreadLocal.INSTANCE.get().getMetadata().getFunctionLibrary().getFunction((String)funcDoc.field("name"));
+								func = database.getMetadata().getFunctionLibrary().getFunction((String)funcDoc.field("name"));
 							}
 						} catch(Exception ex) {
 							OLogManager.instance().error(this, "illegal record id : ", ex.getMessage());
@@ -225,7 +229,7 @@ public class OClassTrigger extends ODocumentHookAbstract {
 				final Object funcProp = iDocument.field(attr);
 				if(funcProp != null) {
 					final String funcName = funcProp instanceof ODocument ? (String)((ODocument)funcProp).field("name") : funcProp.toString();
-					func = ODatabaseRecordThreadLocal.INSTANCE.get().getMetadata().getFunctionLibrary().getFunction(funcName);
+					func = database.getMetadata().getFunctionLibrary().getFunction(funcName);
 				}
 			}
 			return func;
@@ -276,13 +280,12 @@ public class OClassTrigger extends ODocumentHookAbstract {
 
 		if(func == null)
 			return RESULT.RECORD_NOT_CHANGED;
-		ODatabaseDocumentInternal db = ODatabaseRecordThreadLocal.INSTANCE.get();
 		final OScriptManager scriptManager = Orient.instance().getScriptManager();
-		final OPartitionedObjectPool.PoolEntry<ScriptEngine> entry = scriptManager.acquireDatabaseEngine(db.getName(), func.getLanguage());
+		final OPartitionedObjectPool.PoolEntry<ScriptEngine> entry = scriptManager.acquireDatabaseEngine(database.getName(), func.getLanguage());
 		final ScriptEngine scriptEngine = entry.object;
 		try {
 			final Bindings binding = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
-			scriptManager.bind(binding, (ODatabaseDocumentTx)db, null, null);
+			scriptManager.bind(binding, (ODatabaseDocumentTx)database, null, null);
 			binding.put("doc", iDocument);
 			String result = null;
 			try {
@@ -298,7 +301,7 @@ public class OClassTrigger extends ODocumentHookAbstract {
 				}
 				if(scriptEngine instanceof Invocable) {
 					final Invocable invocableEngine = (Invocable)scriptEngine;
-					Object[] EMPTY = new Object[0];
+					Object[] EMPTY = OCommonConst.EMPTY_OBJECT_ARRAY;
 					result = (String)invocableEngine.invokeFunction(func.getName(), EMPTY);
 				}
 			} catch(ScriptException e) {
@@ -316,7 +319,7 @@ public class OClassTrigger extends ODocumentHookAbstract {
 			}
 			return RESULT.valueOf(result);
 		} finally {
-			scriptManager.releaseDatabaseEngine(func.getLanguage(), db.getName(), entry);
+			scriptManager.releaseDatabaseEngine(func.getLanguage(), database.getName(), entry);
 		}
 	}
 }

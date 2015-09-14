@@ -25,7 +25,7 @@ import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.common.parser.OSystemVariableResolver;
 import com.orientechnologies.orient.core.config.OStorageFileConfiguration;
 import com.orientechnologies.orient.core.storage.fs.OFile;
-import com.orientechnologies.orient.core.storage.fs.OFileFactory;
+import com.orientechnologies.orient.core.storage.fs.OFileClassic;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.OLocalPaginatedStorage;
 
 public class OSingleFileSegment {
@@ -34,11 +34,6 @@ public class OSingleFileSegment {
 	protected OFile file;
 	protected OStorageFileConfiguration config;
 	private boolean wasSoftlyClosedAtPreviousTime = true;
-
-	public OSingleFileSegment(final String iPath, final String iType) throws IOException {
-
-		file = OFileFactory.instance().create(iType, OSystemVariableResolver.resolveSystemVariables(iPath), "rw");
-	}
 
 	public OSingleFileSegment(final OLocalPaginatedStorage iStorage, final OStorageFileConfiguration iConfig) throws IOException {
 
@@ -49,9 +44,7 @@ public class OSingleFileSegment {
 
 		config = iConfig;
 		storage = iStorage;
-		file = OFileFactory.instance().create(iType, iStorage.getVariableParser().resolveVariables(iConfig.path), iStorage.getMode());
-		file.setMaxSize((int)OFileUtils.getSizeAsNumber(iConfig.maxSize));
-		file.setIncrementSize((int)OFileUtils.getSizeAsNumber(iConfig.incrementSize));
+		file = new OFileClassic(iStorage.getVariableParser().resolveVariables(iConfig.path), iStorage.getMode());
 	}
 
 	public boolean open() throws IOException {
@@ -67,7 +60,7 @@ public class OSingleFileSegment {
 
 	public void create(final int iStartSize) throws IOException {
 
-		file.create(iStartSize);
+		file.create();
 	}
 
 	public void close() throws IOException {
@@ -100,7 +93,7 @@ public class OSingleFileSegment {
 
 	public long getFilledUpTo() {
 
-		return file.getFilledUpTo();
+		return file.getFileSize();
 	}
 
 	public OStorageFileConfiguration getConfig() {

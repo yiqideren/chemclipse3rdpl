@@ -99,8 +99,8 @@ public class OPropertyRidBagIndexDefinition extends OAbstractIndexDefinitionMult
 	}
 
 	@Override
-	public String toCreateIndexDDL(String indexName, String indexType) {
+	public String toCreateIndexDDL(String indexName, String indexType, String engine) {
 
-		return createIndexDDLWithoutFieldType(indexName, indexType).toString();
+		return createIndexDDLWithoutFieldType(indexName, indexType, engine).toString();
 	}
 }

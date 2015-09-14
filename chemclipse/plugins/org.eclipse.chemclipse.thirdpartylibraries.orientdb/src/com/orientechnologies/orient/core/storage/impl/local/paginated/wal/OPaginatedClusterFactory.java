@@ -30,11 +30,11 @@ public class OPaginatedClusterFactory {
 
 	public static final OPaginatedClusterFactory INSTANCE = new OPaginatedClusterFactory();
 
-	public OCluster createCluster(int configurationVersion, OAbstractPaginatedStorage storage) {
+	public OCluster createCluster(String name, int configurationVersion, OAbstractPaginatedStorage storage) {
 
 		if(configurationVersion >= 0 && configurationVersion < 6) {
 			throw new OStorageException("You use deprecated version of storage cluster, " + "this version is not supported in current implementation. Please do export/import or recreate database.");
 		}
-		return new OPaginatedCluster(storage);
+		return new OPaginatedCluster(name, storage);
 	}
 }

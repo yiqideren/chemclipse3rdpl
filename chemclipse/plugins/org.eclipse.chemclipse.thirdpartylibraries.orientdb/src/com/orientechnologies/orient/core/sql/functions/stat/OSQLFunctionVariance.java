@@ -104,27 +104,30 @@ public class OSQLFunctionVariance extends OSQLFunctionAbstract {
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		long dN = 0;
-		double dMean = 0;
-		Double var = null;
-		for(Object iParameter : resultsToMerge) {
-			final Map<String, Object> item = (Map<String, Object>)iParameter;
-			if(dN == 0) { // first element
-				dN = (Long)item.get("n");
-				dMean = (Double)item.get("mean");
-				var = (Double)item.get("var");
-			} else {
-				long rhsN = (Long)item.get("n");
-				double rhsMean = (Double)item.get("mean");
-				double rhsVar = (Double)item.get("var");
-				long totalN = dN + rhsN;
-				double totalMean = ((dMean * dN) + (rhsMean * rhsN)) / totalN;
-				var = (((dN * var) + (rhsN * rhsVar)) / totalN) + ((dN * rhsN) * Math.pow((rhsMean - dMean) / totalN, 2));
-				dN = totalN;
-				dMean = totalMean;
+		if(returnDistributedResult()) {
+			long dN = 0;
+			double dMean = 0;
+			Double var = null;
+			for(Object iParameter : resultsToMerge) {
+				final Map<String, Object> item = (Map<String, Object>)iParameter;
+				if(dN == 0) { // first element
+					dN = (Long)item.get("n");
+					dMean = (Double)item.get("mean");
+					var = (Double)item.get("var");
+				} else {
+					long rhsN = (Long)item.get("n");
+					double rhsMean = (Double)item.get("mean");
+					double rhsVar = (Double)item.get("var");
+					long totalN = dN + rhsN;
+					double totalMean = ((dMean * dN) + (rhsMean * rhsN)) / totalN;
+					var = (((dN * var) + (rhsN * rhsVar)) / totalN) + ((dN * rhsN) * Math.pow((rhsMean - dMean) / totalN, 2));
+					dN = totalN;
+					dMean = totalMean;
+				}
 			}
+			return var;
 		}
-		return var;
+		return resultsToMerge.get(0);
 	}
 
 	@Override

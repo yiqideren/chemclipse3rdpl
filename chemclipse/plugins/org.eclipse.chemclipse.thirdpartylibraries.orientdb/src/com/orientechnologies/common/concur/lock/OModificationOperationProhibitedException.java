@@ -37,14 +37,4 @@ public class OModificationOperationProhibitedException extends OException {
 
 		super(message);
 	}
-
-	public OModificationOperationProhibitedException(Throwable cause) {
-
-		super(cause);
-	}
-
-	public OModificationOperationProhibitedException(String message, Throwable cause) {
-
-		super(message, cause);
-	}
 }

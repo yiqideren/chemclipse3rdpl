@@ -17,11 +17,11 @@
  */
 package com.orientechnologies.orient.core.index;
 
-import java.util.List;
-
 import com.orientechnologies.orient.core.collate.OCollate;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
+
+import java.util.List;
 
 /**
  * Presentation of index that is used information and contained in document {@link com.orientechnologies.orient.core.metadata.schema.OClass} .
@@ -120,7 +120,7 @@ public interface OIndexDefinition extends OIndexCallback {
 	 */
 	void fromStream(ODocument document);
 
-	String toCreateIndexDDL(String indexName, String indexType);
+	String toCreateIndexDDL(String indexName, String indexType, String engine);
 
 	boolean isAutomatic();
 

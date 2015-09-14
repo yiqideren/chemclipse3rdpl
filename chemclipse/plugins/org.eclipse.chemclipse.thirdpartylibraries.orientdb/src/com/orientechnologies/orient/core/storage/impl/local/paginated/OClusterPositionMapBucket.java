@@ -19,11 +19,11 @@ package com.orientechnologies.orient.core.storage.impl.local.paginated;
 
 import java.io.IOException;
 
-import com.orientechnologies.common.directmemory.ODirectMemoryPointer;
 import com.orientechnologies.common.serialization.types.OByteSerializer;
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
 import com.orientechnologies.common.serialization.types.OLongSerializer;
-import com.orientechnologies.orient.core.index.hashindex.local.cache.OCacheEntry;
+import com.orientechnologies.orient.core.exception.OStorageException;
+import com.orientechnologies.orient.core.storage.cache.OCacheEntry;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.base.ODurablePage;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.wal.OWALChangesTree;
 
@@ -68,6 +68,17 @@ public class OClusterPositionMapBucket extends ODurablePage {
 		return readEntry(position);
 	}
 
+	public void set(int index, PositionEntry entry) throws IOException {
+
+		int size = getIntValue(SIZE_OFFSET);
+		if(index >= size)
+			throw new OStorageException("Provided index " + index + " is out of range.");
+		final int position = entryPosition(index);
+		if(getByteValue(position) != FILLED)
+			throw new OStorageException("Provided index " + index + " points to removed entry.");
+		updateEntry(position, entry);
+	}
+
 	private int entryPosition(int index) {
 
 		return index * ENTRY_SIZE + POSITIONS_OFFSET;
@@ -105,6 +116,14 @@ public class OClusterPositionMapBucket extends ODurablePage {
 		return new PositionEntry(pageIndex, pagePosition);
 	}
 
+	private void updateEntry(int position, PositionEntry entry) throws IOException {
+
+		position += OByteSerializer.BYTE_SIZE;
+		setLongValue(position, entry.pageIndex);
+		position += OLongSerializer.LONG_SIZE;
+		setIntValue(position, entry.recordPosition);
+	}
+
 	public boolean exists(int index) {
 
 		int size = getIntValue(SIZE_OFFSET);
@@ -114,7 +133,7 @@ public class OClusterPositionMapBucket extends ODurablePage {
 		return getByteValue(position) == FILLED;
 	}
 
-	public class PositionEntry {
+	public static class PositionEntry {
 
 		private final long pageIndex;
 		private final int recordPosition;

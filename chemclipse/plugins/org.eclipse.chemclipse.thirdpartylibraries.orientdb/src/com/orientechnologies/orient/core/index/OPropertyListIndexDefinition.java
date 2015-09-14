@@ -17,14 +17,14 @@
  */
 package com.orientechnologies.orient.core.index;
 
+import com.orientechnologies.orient.core.db.record.OMultiValueChangeEvent;
+import com.orientechnologies.orient.core.metadata.schema.OType;
+import com.orientechnologies.orient.core.record.impl.ODocument;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import com.orientechnologies.orient.core.db.record.OMultiValueChangeEvent;
-import com.orientechnologies.orient.core.metadata.schema.OType;
-import com.orientechnologies.orient.core.record.impl.ODocument;
 
 /**
  * Index implementation bound to one schema class property that presents {@link com.orientechnologies.orient.core.metadata.schema.OType#EMBEDDEDLIST}, {@link com.orientechnologies.orient.core.metadata.schema.OType#LINKLIST}, {@link com.orientechnologies.orient.core.metadata.schema.OType#LINKSET} or {@link com.orientechnologies.orient.core.metadata.schema.OType#EMBEDDEDSET} properties.
@@ -100,8 +100,8 @@ public class OPropertyListIndexDefinition extends OAbstractIndexDefinitionMultiV
 	}
 
 	@Override
-	public String toCreateIndexDDL(String indexName, String indexType) {
+	public String toCreateIndexDDL(String indexName, String indexType, String engine) {
 
-		return createIndexDDLWithoutFieldType(indexName, indexType).toString();
+		return createIndexDDLWithoutFieldType(indexName, indexType, engine).toString();
 	}
 }

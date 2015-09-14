@@ -17,7 +17,16 @@
  */
 package com.orientechnologies.orient.core.serialization.serializer.record.string;
 
-import com.orientechnologies.common.profiler.OProfilerMBean;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import com.orientechnologies.common.profiler.OProfiler;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
 import com.orientechnologies.orient.core.db.OUserObject2RecordHandler;
@@ -36,19 +45,10 @@ import com.orientechnologies.orient.core.serialization.serializer.string.OString
 import com.orientechnologies.orient.core.serialization.serializer.string.OStringSerializerEmbedded;
 import com.orientechnologies.orient.core.util.ODateHelper;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 @SuppressWarnings("serial")
 public abstract class ORecordSerializerStringAbstract implements ORecordSerializer, Serializable {
 
-	protected static final OProfilerMBean PROFILER = Orient.instance().getProfiler();
+	protected static final OProfiler PROFILER = Orient.instance().getProfiler();
 	private static final char DECIMAL_SEPARATOR = '.';
 	private static final String MAX_INTEGER_AS_STRING = String.valueOf(Integer.MAX_VALUE);
 	private static final int MAX_INTEGER_DIGITS = MAX_INTEGER_AS_STRING.length();
@@ -222,8 +222,6 @@ public abstract class ORecordSerializerStringAbstract implements ORecordSerializ
 			return OType.BINARY;
 		else if(firstChar == OStringSerializerHelper.EMBEDDED_BEGIN)
 			return OType.EMBEDDED;
-		else if(firstChar == OStringSerializerHelper.LINK)
-			return OType.LINK;
 		else if(firstChar == OStringSerializerHelper.LIST_BEGIN)
 			return OType.EMBEDDEDLIST;
 		else if(firstChar == OStringSerializerHelper.SET_BEGIN)
@@ -282,8 +280,11 @@ public abstract class ORecordSerializerStringAbstract implements ORecordSerializ
 		}
 		// CHECK IF THE DECIMAL NUMBER IS A FLOAT OR DOUBLE
 		final double dou = Double.parseDouble(iValue);
-		if(dou <= Float.MAX_VALUE || dou >= Float.MIN_VALUE)
+		if((dou <= Float.MAX_VALUE || dou >= Float.MIN_VALUE) && new Double(new Double(dou).floatValue()).doubleValue() == dou) {
 			return OType.FLOAT;
+		} else if(!new Double(dou).toString().equals(iValue)) {
+			return OType.DECIMAL;
+		}
 		return OType.DOUBLE;
 	}
 

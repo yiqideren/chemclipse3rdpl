@@ -18,7 +18,7 @@
 package com.orientechnologies.orient.core.type.tree.provider;
 
 import com.orientechnologies.common.log.OLogManager;
-import com.orientechnologies.common.profiler.OProfilerMBean;
+import com.orientechnologies.common.profiler.OProfiler;
 import com.orientechnologies.common.serialization.types.OBinarySerializer;
 import com.orientechnologies.common.serialization.types.OLongSerializer;
 import com.orientechnologies.orient.core.Orient;
@@ -105,7 +105,7 @@ public class OMVRBTreeMapProvider<K, V> extends OMVRBTreeProviderAbstract<K, V> 
 
 	public byte[] toStream() throws OSerializationException {
 
-		final OProfilerMBean profiler = Orient.instance().getProfiler();
+		final OProfiler profiler = Orient.instance().getProfiler();
 		final long timer = profiler.startChrono();
 		try {
 			stream.jump(0);
@@ -131,7 +131,7 @@ public class OMVRBTreeMapProvider<K, V> extends OMVRBTreeProviderAbstract<K, V> 
 	@SuppressWarnings("unchecked")
 	public OSerializableStream fromStream(final byte[] iStream) throws OSerializationException {
 
-		final OProfilerMBean profiler = Orient.instance().getProfiler();
+		final OProfiler profiler = Orient.instance().getProfiler();
 		final long timer = profiler.startChrono();
 		try {
 			stream.setSource(iStream);
@@ -185,7 +185,7 @@ public class OMVRBTreeMapProvider<K, V> extends OMVRBTreeProviderAbstract<K, V> 
 			return (OBinarySerializer<K>)new OSimpleKeySerializer();
 		if(streamKeySerializer instanceof OStreamSerializerLong)
 			return (OBinarySerializer<K>)OLongSerializer.INSTANCE;
-		throw new OSerializationException("Given serializer " + streamKeySerializer.getClass().getName() + " can not be converted into " + OBinarySerializer.class.getName() + ".");
+		throw new OSerializationException("Given serializer " + streamKeySerializer.getClass().getName() + " cannot be converted into " + OBinarySerializer.class.getName() + ".");
 	}
 
 	public OBinarySerializer<K> getKeySerializer() {

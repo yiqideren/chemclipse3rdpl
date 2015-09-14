@@ -17,10 +17,13 @@
  */
 package com.orientechnologies.orient.core.sql.functions;
 
+import java.util.List;
+
 import com.orientechnologies.common.collection.OMultiValue;
 import com.orientechnologies.common.parser.OBaseParser;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.command.OCommandExecutorNotFoundException;
+import com.orientechnologies.orient.core.db.record.OAutoConvertToRecord;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 import com.orientechnologies.orient.core.record.ORecord;
@@ -34,8 +37,6 @@ import com.orientechnologies.orient.core.sql.filter.OSQLFilterItemAbstract;
 import com.orientechnologies.orient.core.sql.filter.OSQLFilterItemField;
 import com.orientechnologies.orient.core.sql.filter.OSQLFilterItemVariable;
 import com.orientechnologies.orient.core.sql.filter.OSQLPredicate;
-
-import java.util.List;
 
 /**
  * Wraps function managing the binding of parameters.
@@ -113,6 +114,9 @@ public class OSQLFunctionRuntime extends OSQLFilterItemAbstract {
 				throw new OCommandExecutionException("Syntax error: function '" + function.getName() + "' needs " + (function.getMinParams() == function.getMaxParams() ? function.getMinParams() : function.getMinParams() + "-" + function.getMaxParams()) + " argument(s) while has been received " + runtimeParameters.length);
 		}
 		final Object functionResult = function.execute(iThis, iCurrentRecord, iCurrentResult, runtimeParameters, iContext);
+		if(functionResult instanceof OAutoConvertToRecord)
+			// FORCE AVOIDING TO CONVERT IN RECORD
+			((OAutoConvertToRecord)functionResult).setAutoConvertToRecord(false);
 		return transformValue(iCurrentRecord, iContext, functionResult);
 	}
 

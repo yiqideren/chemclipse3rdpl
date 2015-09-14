@@ -17,6 +17,7 @@
  */
 package com.orientechnologies.orient.core.storage.impl.memory;
 
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.orient.core.command.OCommandOutputListener;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.ODatabase;
@@ -32,6 +33,7 @@ import com.orientechnologies.orient.core.version.OSimpleVersion;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
@@ -43,9 +45,9 @@ public class ODirectMemoryStorage extends OAbstractPaginatedStorage {
 
 	private static final int ONE_KB = 1024;
 
-	public ODirectMemoryStorage(String name, String filePath, String mode) {
+	public ODirectMemoryStorage(String name, String filePath, String mode, int id) {
 
-		super(name, filePath, mode);
+		super(name, filePath, mode, id);
 		configuration = new OStorageMemoryConfiguration(this);
 	}
 
@@ -57,8 +59,12 @@ public class ODirectMemoryStorage extends OAbstractPaginatedStorage {
 				writeAheadLog = new OMemoryWriteAheadLog();
 		} else
 			writeAheadLog = null;
-		if(diskCache == null) {
-			diskCache = new ODirectMemoryOnlyDiskCache(OGlobalConfiguration.DISK_CACHE_PAGE_SIZE.getValueAsInteger() * ONE_KB);
+		final ODirectMemoryOnlyDiskCache diskCache = new ODirectMemoryOnlyDiskCache(OGlobalConfiguration.DISK_CACHE_PAGE_SIZE.getValueAsInteger() * ONE_KB, 1);
+		if(readCache == null) {
+			readCache = diskCache;
+		}
+		if(writeCache == null) {
+			writeCache = diskCache;
 		}
 	}
 
@@ -67,13 +73,13 @@ public class ODirectMemoryStorage extends OAbstractPaginatedStorage {
 
 		ORecordId recordId = new ORecordId();
 		recordId.clusterId = 0;
-		createRecord(recordId, new byte[0], new OSimpleVersion(), ORecordBytes.RECORD_TYPE, ODatabase.OPERATION_MODE.SYNCHRONOUS.ordinal(), null);
+		createRecord(recordId, OCommonConst.EMPTY_BYTE_ARRAY, new OSimpleVersion(), ORecordBytes.RECORD_TYPE, ODatabase.OPERATION_MODE.SYNCHRONOUS.ordinal(), null);
 	}
 
 	@Override
 	public boolean exists() {
 
-		return diskCache != null && diskCache.exists("default" + OPaginatedCluster.DEF_EXTENSION);
+		return readCache != null && writeCache.exists("default" + OPaginatedCluster.DEF_EXTENSION);
 	}
 
 	@Override
@@ -93,7 +99,7 @@ public class ODirectMemoryStorage extends OAbstractPaginatedStorage {
 	}
 
 	@Override
-	public void backup(OutputStream out, Map<String, Object> options, Callable<Object> callable, OCommandOutputListener iListener, int compressionLevel, int bufferSize) throws IOException {
+	public List<String> backup(OutputStream out, Map<String, Object> options, Callable<Object> callable, OCommandOutputListener iListener, int compressionLevel, int bufferSize) throws IOException {
 
 		throw new UnsupportedOperationException();
 	}

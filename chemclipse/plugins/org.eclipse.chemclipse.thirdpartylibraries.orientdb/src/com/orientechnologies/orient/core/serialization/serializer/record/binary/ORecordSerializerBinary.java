@@ -93,9 +93,12 @@ public class ORecordSerializerBinary implements ORecordSerializer {
 			OSerializationSetThreadLocal.setPartial((ODocument)iSource);
 			return container.fitBytes();
 		}
-		// SERIALIZE RECORD
-		serializerByVersion[CURRENT_RECORD_VERSION].serialize((ODocument)iSource, container, false);
-		OSerializationSetThreadLocal.removeCheck((ODocument)iSource);
+		try {
+			// SERIALIZE RECORD
+			serializerByVersion[CURRENT_RECORD_VERSION].serialize((ODocument)iSource, container, false);
+		} finally {
+			OSerializationSetThreadLocal.removeCheck((ODocument)iSource);
+		}
 		return container.fitBytes();
 	}
 

@@ -17,10 +17,10 @@
  */
 package com.orientechnologies.orient.core.command;
 
-import com.orientechnologies.common.listener.OProgressListener;
-
 import java.util.Map;
 import java.util.Set;
+
+import com.orientechnologies.common.listener.OProgressListener;
 
 /**
  * Generic GOF command pattern implementation.
@@ -38,7 +38,7 @@ public interface OCommandExecutor {
 	 * @see #execute(Map<Object, Object>...)
 	 * @return
 	 */
-	public <RET extends OCommandExecutor> RET parse(OCommandRequest iRequest);
+	<RET extends OCommandExecutor> RET parse(OCommandRequest iRequest);
 
 	/**
 	 * Execute the requested command parsed previously.
@@ -49,7 +49,7 @@ public interface OCommandExecutor {
 	 * @see #parse(OCommandRequest)
 	 * @return
 	 */
-	public Object execute(final Map<Object, Object> iArgs);
+	Object execute(final Map<Object, Object> iArgs);
 
 	/**
 	 * Set the listener invoked while the command is executing.
@@ -58,34 +58,34 @@ public interface OCommandExecutor {
 	 *            OProgressListener implementation
 	 * @return
 	 */
-	public <RET extends OCommandExecutor> RET setProgressListener(OProgressListener progressListener);
+	<RET extends OCommandExecutor> RET setProgressListener(OProgressListener progressListener);
 
-	public <RET extends OCommandExecutor> RET setLimit(int iLimit);
+	<RET extends OCommandExecutor> RET setLimit(int iLimit);
 
-	public String getFetchPlan();
+	String getFetchPlan();
 
-	public Map<Object, Object> getParameters();
+	Map<Object, Object> getParameters();
 
-	public OCommandContext getContext();
+	OCommandContext getContext();
 
-	public void setContext(OCommandContext context);
+	void setContext(OCommandContext context);
 
 	/**
 	 * Returns true if the command doesn't change the database, otherwise false.
 	 */
-	public boolean isIdempotent();
+	boolean isIdempotent();
 
 	/**
 	 * Returns the involved clusters.
 	 */
-	public Set<String> getInvolvedClusters();
+	Set<String> getInvolvedClusters();
 
 	/**
 	 * Returns the security operation type use to check about security.
 	 * 
 	 * @return
 	 */
-	public int getSecurityOperationType();
+	int getSecurityOperationType();
 
 	boolean involveSchema();
 }

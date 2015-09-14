@@ -30,7 +30,7 @@ import java.util.Set;
  * Contract of cursor is simple it iterates in some subset of index data till it reaches it's borders in such case {@link #nextEntry()} returns <code>null</code>.
  * 
  * Cursor is created as result of index query method such as {@link com.orientechnologies.orient.core.index.OIndex#iterateEntriesBetween(Object, boolean, Object, boolean, boolean)} cursor
- * instance can not be used at several threads simultaneously.
+ * instance cannot be used at several threads simultaneously.
  * 
  * @author Andrey Lomakin (a.lomakin-at-orientechnologies.com)
  * @since 4/4/14

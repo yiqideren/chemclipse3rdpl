@@ -17,15 +17,16 @@
  */
 package com.orientechnologies.orient.core.sql;
 
-import java.util.Map;
-
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.OCommandRequestText;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
+
+import java.util.Map;
 
 /**
  * SQL DROP CLASS command: Drops a class from the database. Cluster associated are removed too if are used exclusively by the
@@ -73,6 +74,12 @@ public class OCommandExecutorSQLDropClass extends OCommandExecutorSQLAbstract im
 		return QUORUM_TYPE.ALL;
 	}
 
+	@Override
+	public long getDistributedTimeout() {
+
+		return OGlobalConfiguration.DISTRIBUTED_COMMAND_TASK_SYNCH_TIMEOUT.getValueAsLong();
+	}
+
 	/**
 	 * Execute the DROP CLASS.
 	 */
@@ -91,10 +98,10 @@ public class OCommandExecutorSQLDropClass extends OCommandExecutorSQLAbstract im
 			// NOT EMPTY, CHECK IF CLASS IS OF VERTEX OR EDGES
 			if(cls.isSubClassOf("V")) {
 				// FOUND VERTEX CLASS
-				throw new OCommandExecutionException("'DROP CLASS' command cannot drop class '" + className + "' because contains Vertices. Use 'DELETE VERTEX' command first to avoid broken edges in database, or apply the 'UNSAFE' keyword to force it");
+				throw new OCommandExecutionException("'DROP CLASS' command cannot drop class '" + className + "' because it contains Vertices. Use 'DELETE VERTEX' command first to avoid broken edges in a database, or apply the 'UNSAFE' keyword to force it");
 			} else if(cls.isSubClassOf("E")) {
 				// FOUND EDGE CLASS
-				throw new OCommandExecutionException("'DROP CLASS' command cannot drop class '" + className + "' because contains Edges. Use 'DELETE EDGE' command first to avoid broken vertices in database, or apply the 'UNSAFE' keyword to force it");
+				throw new OCommandExecutionException("'DROP CLASS' command cannot drop class '" + className + "' because it contains Edges. Use 'DELETE EDGE' command first to avoid broken vertices in a database, or apply the 'UNSAFE' keyword to force it");
 			}
 		}
 		database.getMetadata().getSchema().dropClass(className);

@@ -61,4 +61,22 @@ public class OCommandExecutorSQLExplain extends OCommandExecutorSQLDelegate {
 		}
 		return report;
 	}
+
+	@Override
+	public QUORUM_TYPE getQuorumType() {
+
+		return QUORUM_TYPE.READ;
+	}
+
+	@Override
+	public DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
+
+		return DISTRIBUTED_EXECUTION_MODE.REPLICATE;
+	}
+
+	@Override
+	public DISTRIBUTED_RESULT_MGMT getDistributedResultManagement() {
+
+		return DISTRIBUTED_RESULT_MGMT.MERGE;
+	}
 }

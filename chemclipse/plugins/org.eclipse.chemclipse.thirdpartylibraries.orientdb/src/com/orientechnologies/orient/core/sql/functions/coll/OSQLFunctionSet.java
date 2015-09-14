@@ -87,16 +87,15 @@ public class OSQLFunctionSet extends OSQLFunctionMultiValueAbstract<Set<Object>>
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		final Map<Long, Collection<Object>> chunks = new HashMap<Long, Collection<Object>>();
-		for(Object iParameter : resultsToMerge) {
-			final Map<String, Object> container = (Map<String, Object>)((Collection<?>)iParameter).iterator().next();
-			chunks.put((Long)container.get("node"), (Collection<Object>)container.get("context"));
+		if(returnDistributedResult()) {
+			final Collection<Object> result = new HashSet<Object>();
+			for(Object iParameter : resultsToMerge) {
+				final Map<String, Object> container = (Map<String, Object>)((Collection<?>)iParameter).iterator().next();
+				result.addAll((Collection<?>)container.get("context"));
+			}
+			return result;
 		}
-		final Collection<Object> result = new HashSet<Object>();
-		for(Collection<Object> chunk : chunks.values()) {
-			result.addAll(chunk);
-		}
-		return result;
+		return resultsToMerge.get(0);
 	}
 
 	protected Set<Object> prepareResult(Set<Object> res) {

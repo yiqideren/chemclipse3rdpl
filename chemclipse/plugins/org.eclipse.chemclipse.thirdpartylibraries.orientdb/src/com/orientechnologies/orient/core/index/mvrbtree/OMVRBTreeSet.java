@@ -20,6 +20,8 @@ package com.orientechnologies.orient.core.index.mvrbtree;
 import com.orientechnologies.common.collection.OLazyIterator;
 import com.orientechnologies.common.collection.ONavigableMap;
 import com.orientechnologies.common.collection.ONavigableSet;
+import com.orientechnologies.common.exception.OException;
+import com.orientechnologies.orient.core.exception.ODatabaseException;
 
 import java.util.AbstractSet;
 import java.util.Collection;
@@ -436,7 +438,7 @@ public class OMVRBTreeSet<E> extends AbstractSet<E> implements ONavigableSet<E>,
 		try {
 			clone = (OMVRBTreeSet<E>)super.clone();
 		} catch(CloneNotSupportedException e) {
-			throw new InternalError();
+			throw new OException("Error during mvrbtree clone", e);
 		}
 		clone.m = new OMVRBTreeMemory<E, Object>(m);
 		return clone;

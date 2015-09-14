@@ -114,11 +114,26 @@ public final class OIndexes {
 		return engines;
 	}
 
+	public static OIndexFactory getFactory(String indexType, String algorithm) {
+
+		if(algorithm == null)
+			algorithm = ODefaultIndexFactory.SBTREE_ALGORITHM;
+		final Iterator<OIndexFactory> ite = getAllFactories();
+		while(ite.hasNext()) {
+			final OIndexFactory factory = ite.next();
+			if(factory.getTypes().contains(indexType) && factory.getAlgorithms().contains(algorithm)) {
+				return factory;
+			}
+		}
+		throw new OIndexException("Index with type " + indexType + " and algorithm " + algorithm + " does not exist.");
+	}
+
 	/**
 	 * 
 	 * 
 	 * 
 	 * @param database
+	 * @param name
 	 * @param indexType
 	 *            index type
 	 * @param algorithm
@@ -129,7 +144,7 @@ public final class OIndexes {
 	 * @throws OIndexException
 	 *             if index type does not exist
 	 */
-	public static OIndexInternal<?> createIndex(ODatabaseDocumentInternal database, String indexType, String algorithm, String valueContainerAlgorithm, ODocument metadata) throws OConfigurationException, OIndexException {
+	public static OIndexInternal<?> createIndex(ODatabaseDocumentInternal database, String name, String indexType, String algorithm, String valueContainerAlgorithm, ODocument metadata, int version) throws OConfigurationException, OIndexException {
 
 		Iterator<OIndexFactory> ite = getAllFactories();
 		boolean found = false;
@@ -144,7 +159,7 @@ public final class OIndexes {
 		while(ite.hasNext()) {
 			final OIndexFactory factory = ite.next();
 			if(factory.getTypes().contains(indexType) && factory.getAlgorithms().contains(algorithm)) {
-				return factory.createIndex(database, indexType, algorithm, valueContainerAlgorithm, metadata);
+				return factory.createIndex(name, database, indexType, algorithm, valueContainerAlgorithm, metadata, version);
 			}
 		}
 		throw new OIndexException("Index type: " + indexType + " is not supported. Types are " + OCollections.toString(getIndexTypes()));

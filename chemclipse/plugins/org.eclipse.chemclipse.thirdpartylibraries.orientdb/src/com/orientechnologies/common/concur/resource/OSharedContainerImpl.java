@@ -17,11 +17,18 @@
  */
 package com.orientechnologies.common.concur.resource;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 import com.orientechnologies.common.exception.OException;
+import com.orientechnologies.common.log.OLogManager;
 
 /**
  * Shared container that works with callbacks like closures. If the resource implements the {@link OSharedResource} interface then
@@ -63,5 +70,14 @@ public class OSharedContainerImpl implements OSharedContainer {
 			sharedResources.put(iName, value);
 		}
 		return value;
+	}
+
+	public synchronized void clearResources() {
+
+		for(Object resource : sharedResources.values()) {
+			if(resource instanceof OCloseable)
+				(((OCloseable)resource)).close();
+		}
+		sharedResources.clear();
 	}
 }

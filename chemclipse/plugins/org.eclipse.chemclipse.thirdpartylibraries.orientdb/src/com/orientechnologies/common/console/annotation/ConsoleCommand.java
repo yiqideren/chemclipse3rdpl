@@ -31,4 +31,8 @@ public @interface ConsoleCommand {
 	String description() default "";
 
 	boolean splitInWords() default true;
+
+	int priority() default 10;
+
+	String onlineHelp() default "";
 }

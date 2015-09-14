@@ -26,6 +26,7 @@ import com.orientechnologies.common.util.OCollections;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.OCommandRequestText;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 import com.orientechnologies.orient.core.index.OIndex;
@@ -111,6 +112,12 @@ public class OCommandExecutorSQLDropProperty extends OCommandExecutorSQLAbstract
 		// REMOVE THE PROPERTY
 		sourceClass.dropProperty(fieldName);
 		return null;
+	}
+
+	@Override
+	public long getDistributedTimeout() {
+
+		return OGlobalConfiguration.DISTRIBUTED_COMMAND_TASK_SYNCH_TIMEOUT.getValueAsLong();
 	}
 
 	@Override

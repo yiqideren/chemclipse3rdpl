@@ -21,7 +21,6 @@ import com.orientechnologies.orient.core.db.record.OIdentifiable;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * SQL UPDATE command.
@@ -31,12 +30,6 @@ import java.util.Set;
  */
 @SuppressWarnings("unchecked")
 public class OCommandExecutorSQLResultsetDelegate extends OCommandExecutorSQLDelegate implements OIterableRecordSource, Iterable<OIdentifiable> {
-
-	@Override
-	public Set<String> getInvolvedClusters() {
-
-		return ((OCommandExecutorSQLResultsetAbstract)delegate).getInvolvedClusters();
-	}
 
 	@Override
 	public Iterator<OIdentifiable> iterator() {

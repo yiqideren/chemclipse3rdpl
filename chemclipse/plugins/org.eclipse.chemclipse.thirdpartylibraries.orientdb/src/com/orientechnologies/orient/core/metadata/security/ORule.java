@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  * @author Andrey Lomakin (a.lomakin-at-orientechnologies.com)
@@ -47,6 +46,10 @@ public class ORule implements Serializable {
 			private static final long serialVersionUID = 1L;
 		};
 		public static ResourceGeneric RECORD_HOOK = new ResourceGeneric("RECORD_HOOK", ODatabaseSecurityResources.RECORD_HOOK) {
+
+			private static final long serialVersionUID = 1L;
+		};
+		public static ResourceGeneric SYSTEM_CLUSTERS = new ResourceGeneric("SYSTEM_CLUSTER", ODatabaseSecurityResources.SYSTEMCLUSTERS) {
 
 			private static final long serialVersionUID = 1L;
 		};

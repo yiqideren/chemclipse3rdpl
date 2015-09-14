@@ -36,7 +36,7 @@ public class OEngineMemory extends OEngineAbstract {
 	public OStorage createStorage(String url, Map<String, String> configuration) {
 
 		try {
-			return new ODirectMemoryStorage(url, url, getMode(configuration));
+			return new ODirectMemoryStorage(url, url, getMode(configuration), generateStorageId());
 		} catch(Throwable t) {
 			OLogManager.instance().error(this, "Error on opening in memory storage: " + url, t, ODatabaseException.class);
 		}

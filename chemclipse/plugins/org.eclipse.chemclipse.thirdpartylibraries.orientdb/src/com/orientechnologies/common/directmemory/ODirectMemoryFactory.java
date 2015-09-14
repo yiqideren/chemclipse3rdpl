@@ -17,7 +17,9 @@
  */
 package com.orientechnologies.common.directmemory;
 
-import com.orientechnologies.nio.OJNADirectMemory;
+import org.eclipse.core.runtime.Platform;
+
+import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 
 /**
@@ -31,7 +33,13 @@ class ODirectMemoryFactory {
 	static {
 		ODirectMemory localDirectMemory = null;
 		try {
-			if(OGlobalConfiguration.MEMORY_USE_UNSAFE.getValueAsBoolean()) {
+			boolean needToUseUnsafe = false;
+			if(Platform.getOS().contains(Platform.OS_AIX)) {
+				OLogManager.instance().warn(ODirectMemoryFactory.class, "System is running on AIX OS, automatically switch to usage of Unsafe class");
+				needToUseUnsafe = true;
+			}
+			needToUseUnsafe |= OGlobalConfiguration.MEMORY_USE_UNSAFE.getValueAsBoolean();
+			if(needToUseUnsafe) {
 				final Class<?> sunClass = Class.forName("sun.misc.Unsafe");
 				if(sunClass != null)
 					localDirectMemory = OUnsafeMemory.INSTANCE;
@@ -40,7 +48,7 @@ class ODirectMemoryFactory {
 			// ignore
 		}
 		if(localDirectMemory == null)
-			localDirectMemory = new OJNADirectMemory();
+			localDirectMemory = new OUnsafeMemory().INSTANCE;
 		directMemory = localDirectMemory;
 	}
 

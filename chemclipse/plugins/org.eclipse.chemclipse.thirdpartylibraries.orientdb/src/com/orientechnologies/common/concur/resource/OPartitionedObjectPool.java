@@ -19,26 +19,20 @@ public class OPartitionedObjectPool<T> extends OOrientListenerAbstract {
 	private static final int HASH_INCREMENT = 0x61c88647;
 	private static final int MIN_POOL_SIZE = 2;
 	private static final AtomicInteger nextHashCode = new AtomicInteger();
-	private final int maxPartitions = Runtime.getRuntime().availableProcessors() << 3;
+	private final int maxPartitions;
 	private final ObjectFactory<T> factory;
 	private final int maxSize;
-	private final ThreadLocal<Integer> threadHashCode = new ThreadLocal<Integer>() {
-
-		@Override
-		protected Integer initialValue() {
-
-			return nextHashCode();
-		}
-	};
+	private volatile ThreadLocal<Integer> threadHashCode = new ThreadHashCodeThreadLocal();
 	private final AtomicBoolean poolBusy = new AtomicBoolean();
 	private volatile PoolPartition[] partitions;
 	private volatile boolean closed = false;
 
-	public OPartitionedObjectPool(ObjectFactory factory, int maxSize) {
+	public OPartitionedObjectPool(final ObjectFactory factory, final int maxSize, final int maxPartitions) {
 
 		this.factory = factory;
 		this.maxSize = maxSize;
-		final PoolPartition[] pts = new PoolPartition[2];
+		this.maxPartitions = maxPartitions;
+		final PoolPartition[] pts = new PoolPartition[maxPartitions < 2 ? maxPartitions : 2];
 		for(int i = 0; i < pts.length; i++) {
 			final PoolPartition partition = new PoolPartition();
 			pts[i] = partition;
@@ -131,12 +125,21 @@ public class OPartitionedObjectPool<T> extends OOrientListenerAbstract {
 				factory.close(object);
 			}
 		}
+		threadHashCode = null;
+		partitions = null;
 	}
 
 	@Override
 	public void onShutdown() {
 
 		close();
+	}
+
+	@Override
+	public void onStartup() {
+
+		if(threadHashCode == null)
+			threadHashCode = new ThreadHashCodeThreadLocal();
 	}
 
 	public int getAvailableObjects() {
@@ -213,6 +216,15 @@ public class OPartitionedObjectPool<T> extends OOrientListenerAbstract {
 
 			this.partition = partition;
 			this.object = object;
+		}
+	}
+
+	private static class ThreadHashCodeThreadLocal extends ThreadLocal<Integer> {
+
+		@Override
+		protected Integer initialValue() {
+
+			return nextHashCode();
 		}
 	}
 }

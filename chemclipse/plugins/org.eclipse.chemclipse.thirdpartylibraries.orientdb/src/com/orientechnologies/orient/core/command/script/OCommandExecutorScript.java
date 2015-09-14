@@ -20,6 +20,7 @@ package com.orientechnologies.orient.core.command.script;
 import com.orientechnologies.common.collection.OMultiValue;
 import com.orientechnologies.common.concur.ONeedRetryException;
 import com.orientechnologies.common.concur.resource.OPartitionedObjectPool;
+import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandContext;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
@@ -36,21 +37,14 @@ import com.orientechnologies.orient.core.serialization.serializer.OStringSeriali
 import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.orientechnologies.orient.core.sql.OCommandSQLParsingException;
 import com.orientechnologies.orient.core.storage.ORecordDuplicatedException;
+import com.orientechnologies.orient.core.storage.impl.local.paginated.atomicoperations.OAtomicOperation;
 import com.orientechnologies.orient.core.tx.OTransaction;
 
-import javax.script.Bindings;
-import javax.script.Compilable;
-import javax.script.CompiledScript;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
+import javax.script.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Executes Script Commands.
@@ -61,6 +55,7 @@ import java.util.Map;
  */
 public class OCommandExecutorScript extends OCommandExecutorAbstract implements OCommandDistributedReplicateRequest {
 
+	private static final int MAX_DELAY = 100;
 	protected OCommandScript request;
 
 	public OCommandExecutorScript() {
@@ -88,6 +83,7 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract implements 
 
 		final String language = request.getLanguage();
 		parserText = request.getText();
+		parameters = iArgs;
 		parameters = iArgs;
 		if(language.equalsIgnoreCase("SQL"))
 			// SPECIAL CASE: EXECUTE THE COMMANDS IN SEQUENCE
@@ -172,7 +168,7 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract implements 
 						reader.readLine();
 					for(; (lastLine = reader.readLine()) != null; ++line) {
 						lastLine = lastLine.trim();
-						final List<String> lineParts = OStringSerializerHelper.smartSplit(lastLine, ';');
+						final List<String> lineParts = OStringSerializerHelper.smartSplit(lastLine, ';', true);
 						if(line == txBegunAtLine)
 							// SKIP PREVIOUS COMMAND PART AND JUMP TO THE BEGIN IF ANY
 							linePart = txBegunAtPart;
@@ -244,12 +240,14 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract implements 
 				getDatabase().getLocalCache().clear();
 				if(retry >= maxRetry)
 					throw e;
+				waitForNextRetry();
 			} catch(ORecordDuplicatedException e) {
 				// THIS CASE IS ON UPSERT
 				context.setVariable("retries", retry);
 				getDatabase().getLocalCache().clear();
 				if(retry >= maxRetry)
 					throw e;
+				waitForNextRetry();
 			} catch(ORecordNotFoundException e) {
 				// THIS CASE IS ON UPSERT
 				context.setVariable("retries", retry);
@@ -261,14 +259,37 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract implements 
 				getDatabase().getLocalCache().clear();
 				if(retry >= maxRetry)
 					throw e;
+				waitForNextRetry();
 			}
 		}
 		return lastResult;
 	}
 
+	/**
+	 * Wait before to retry
+	 */
+	protected void waitForNextRetry() {
+
+		try {
+			Thread.sleep(new Random().nextInt(MAX_DELAY - 1) + 1);
+		} catch(InterruptedException e) {
+			OLogManager.instance().error(this, "Wait was interrupted", e);
+		}
+	}
+
 	private Object executeCommand(final String lastCommand, final ODatabaseDocument db) {
 
-		return db.command(new OCommandSQL(lastCommand).setContext(getContext())).execute(parameters);
+		return db.command(new OCommandSQL(lastCommand).setContext(getContext())).execute(toMap(parameters));
+	}
+
+	private Object toMap(Object parameters) {
+
+		if(parameters instanceof SimpleBindings) {
+			HashMap<Object, Object> result = new LinkedHashMap<Object, Object>();
+			result.putAll((SimpleBindings)parameters);
+			return result;
+		}
+		return parameters;
 	}
 
 	private Object executeReturn(String lastCommand, Object lastResult) {
@@ -337,6 +358,7 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract implements 
 		try {
 			Thread.sleep(Integer.parseInt(sleepTimeInMs));
 		} catch(InterruptedException e) {
+			OLogManager.instance().error(this, "Sleep was interrupted", e);
 		}
 	}
 

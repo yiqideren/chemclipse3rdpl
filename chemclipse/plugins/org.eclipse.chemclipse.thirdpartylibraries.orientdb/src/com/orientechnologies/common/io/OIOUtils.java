@@ -17,9 +17,12 @@
  */
 package com.orientechnologies.common.io;
 
+import com.orientechnologies.common.util.OPatternConst;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -64,7 +67,7 @@ public class OIOUtils {
 		else {
 			time = time.toUpperCase(Locale.ENGLISH);
 			int pos = time.indexOf("MS");
-			final String timeAsNumber = time.replaceAll("[^\\d]", "");
+			final String timeAsNumber = OPatternConst.PATTERN_NUMBERS.matcher(time).replaceAll("");
 			if(pos > -1)
 				return Long.parseLong(timeAsNumber);
 			pos = time.indexOf("S");
@@ -111,18 +114,22 @@ public class OIOUtils {
 	public static Date getTodayWithTime(final String iTime) throws ParseException {
 
 		final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
-		final long today = System.currentTimeMillis();
-		final Date rslt = new Date();
-		rslt.setTime(today - (today % DAY) + df.parse(iTime).getTime());
-		return rslt;
+		Calendar calParsed = Calendar.getInstance();
+		calParsed.setTime(df.parse(iTime));
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR, calParsed.get(Calendar.HOUR));
+		cal.set(Calendar.MINUTE, calParsed.get(Calendar.MINUTE));
+		cal.set(Calendar.SECOND, calParsed.get(Calendar.SECOND));
+		cal.set(Calendar.MILLISECOND, 0);
+		return cal.getTime();
 	}
 
-	public static String readFileAsString(final File iFile) throws java.io.IOException {
+	public static String readFileAsString(final File iFile) throws IOException {
 
 		return readStreamAsString(new FileInputStream(iFile));
 	}
 
-	public static String readStreamAsString(final InputStream iStream) throws java.io.IOException {
+	public static String readStreamAsString(final InputStream iStream) throws IOException {
 
 		final StringBuffer fileData = new StringBuffer(1000);
 		final BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
@@ -142,7 +149,7 @@ public class OIOUtils {
 		return fileData.toString();
 	}
 
-	public static long copyStream(final InputStream in, final OutputStream out, long iMax) throws java.io.IOException {
+	public static long copyStream(final InputStream in, final OutputStream out, long iMax) throws IOException {
 
 		if(iMax < 0)
 			iMax = Long.MAX_VALUE;
@@ -252,6 +259,8 @@ public class OIOUtils {
 		if(s == null)
 			return null;
 		if(s.length() > 1 && (s.charAt(0) == '\'' && s.charAt(s.length() - 1) == '\'' || s.charAt(0) == '"' && s.charAt(s.length() - 1) == '"'))
+			return s.substring(1, s.length() - 1);
+		if(s.length() > 1 && (s.charAt(0) == '`' && s.charAt(s.length() - 1) == '`'))
 			return s.substring(1, s.length() - 1);
 		return s;
 	}

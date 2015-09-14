@@ -28,6 +28,7 @@ import java.util.UUID;
 import java.util.WeakHashMap;
 
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
+import com.orientechnologies.common.util.OCommonConst;
 import com.orientechnologies.common.util.OResettable;
 import com.orientechnologies.common.util.OSizeable;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
@@ -44,7 +45,7 @@ public class OEmbeddedRidBag implements ORidBagDelegate {
 	private byte[] serializedContent = null;
 	private boolean contentWasChanged = false;
 	private boolean deserialized = true;
-	private Object[] entries = {};
+	private Object[] entries = OCommonConst.EMPTY_OBJECT_ARRAY;
 	private int entriesLength = 0;
 	private boolean convertToRecord = true;
 	private int size = 0;
@@ -134,6 +135,18 @@ public class OEmbeddedRidBag implements ORidBagDelegate {
 	public ORecord getOwner() {
 
 		return owner;
+	}
+
+	@Override
+	public boolean contains(OIdentifiable identifiable) {
+
+		if(identifiable == null)
+			return false;
+		for(int i = 0; i < entriesLength; i++) {
+			if(identifiable.equals(entries[i]))
+				return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -420,6 +433,8 @@ public class OEmbeddedRidBag implements ORidBagDelegate {
 
 	private void addEntry(final OIdentifiable identifiable) {
 
+		if(identifiable == null)
+			throw new NullPointerException("Impossible to add a null identifiable in a ridbag");
 		if(entries.length == entriesLength) {
 			if(entriesLength == 0) {
 				final int cfgValue = OGlobalConfiguration.RID_BAG_EMBEDDED_TO_SBTREEBONSAI_THRESHOLD.getValueAsInteger();

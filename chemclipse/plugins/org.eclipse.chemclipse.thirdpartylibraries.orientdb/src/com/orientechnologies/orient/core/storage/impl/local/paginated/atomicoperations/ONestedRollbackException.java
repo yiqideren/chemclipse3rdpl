@@ -17,23 +17,13 @@
  */
 package com.orientechnologies.orient.core.storage.impl.local.paginated.atomicoperations;
 
-import com.orientechnologies.common.exception.OException;
+import com.orientechnologies.orient.core.exception.OTransactionException;
 
 /**
  * @author Andrey Lomakin (a.lomakin-at-orientechnologies.com)
  * @since 12/3/13
  */
-public class ONestedRollbackException extends OException {
-
-	public ONestedRollbackException(String message) {
-
-		super(message);
-	}
-
-	public ONestedRollbackException(Throwable cause) {
-
-		super(cause);
-	}
+public class ONestedRollbackException extends OTransactionException {
 
 	public ONestedRollbackException(String message, Throwable cause) {
 

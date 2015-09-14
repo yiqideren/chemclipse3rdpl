@@ -17,11 +17,14 @@
  */
 package com.orientechnologies.orient.core.db;
 
+import com.orientechnologies.common.exception.OException;
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
+import com.orientechnologies.orient.core.exception.OSchemaException;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
+import com.orientechnologies.orient.core.metadata.schema.OSchema;
+import com.orientechnologies.orient.core.metadata.security.OToken;
 import com.orientechnologies.orient.core.storage.OStorage;
-import com.orientechnologies.orient.core.type.tree.provider.OMVRBTreeRIDProvider;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -93,6 +96,7 @@ public class ODatabaseFactory {
 		if(instances.size() > 0) {
 			OLogManager.instance().debug(null, "Found %d databases opened during OrientDB shutdown. Assure to always close database instances after usage", instances.size());
 			for(ODatabase<?> db : new HashSet<ODatabase<?>>(instances.keySet())) {
+				db.activateOnCurrentThread();
 				if(db != null && !db.isClosed()) {
 					db.close();
 				}
@@ -112,6 +116,22 @@ public class ODatabaseFactory {
 					checkSchema((ODatabase<?>)db);
 					return db;
 				}
+
+				@Override
+				public <THISDB extends ODatabase> THISDB open(final String iUserName, final String iUserPassword) {
+
+					final THISDB db = super.open(iUserName, iUserPassword);
+					checkSchema((ODatabase<?>)db);
+					return db;
+				}
+
+				@Override
+				public <THISDB extends ODatabase> THISDB open(final OToken iToken) {
+
+					final THISDB db = super.open(iToken);
+					checkSchema((ODatabase<?>)db);
+					return db;
+				}
 			};
 		return new ODatabaseDocumentTx(url);
 	}
@@ -121,16 +141,27 @@ public class ODatabaseFactory {
 		// FORCE NON DISTRIBUTION ON CREATION
 		OScenarioThreadLocal.INSTANCE.set(OScenarioThreadLocal.RUN_MODE.RUNNING_DISTRIBUTED);
 		try {
-			iDatabase.getMetadata().getSchema().getOrCreateClass(OMVRBTreeRIDProvider.PERSISTENT_CLASS_NAME);
-			OClass vertexBaseClass = iDatabase.getMetadata().getSchema().getClass("V");
-			OClass edgeBaseClass = iDatabase.getMetadata().getSchema().getClass("E");
-			if(vertexBaseClass == null) {
-				// CREATE THE META MODEL USING THE ORIENT SCHEMA
-				vertexBaseClass = iDatabase.getMetadata().getSchema().createClass("V");
-				vertexBaseClass.setOverSize(2);
+			final OSchema schema = iDatabase.getMetadata().getSchema();
+			OClass vertexBaseClass;
+			try {
+				vertexBaseClass = schema.getOrCreateClass("V");
+			} catch(OException e) {
+				// that is possible in case of remote client connection.
+				schema.reload();
+				vertexBaseClass = schema.getOrCreateClass("V");
 			}
-			if(edgeBaseClass == null)
-				iDatabase.getMetadata().getSchema().createClass("E");
+			OClass edgeBaseClass;
+			try {
+				edgeBaseClass = schema.getOrCreateClass("E");
+			} catch(OException e) {
+				// that is possible in case of remote client connection
+				schema.reload();
+				edgeBaseClass = schema.getOrCreateClass("E");
+			}
+			assert edgeBaseClass != null;
+			assert vertexBaseClass != null;
+			if(vertexBaseClass.getOverSize() < 2)
+				vertexBaseClass.setOverSize(2);
 		} finally {
 			OScenarioThreadLocal.INSTANCE.set(OScenarioThreadLocal.RUN_MODE.DEFAULT);
 		}

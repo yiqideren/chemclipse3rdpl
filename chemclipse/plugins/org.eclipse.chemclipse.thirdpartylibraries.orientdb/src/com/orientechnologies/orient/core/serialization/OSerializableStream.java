@@ -17,9 +17,9 @@
  */
 package com.orientechnologies.orient.core.serialization;
 
-import java.io.Serializable;
-
 import com.orientechnologies.orient.core.exception.OSerializationException;
+
+import java.io.Serializable;
 
 /**
  * Base interface of serialization.

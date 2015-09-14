@@ -17,13 +17,13 @@
  */
 package com.orientechnologies.orient.core.tx;
 
-import com.orientechnologies.common.exception.OException;
+import com.orientechnologies.orient.core.exception.OTransactionException;
 
 /**
  * @author Andrey Lomakin (a.lomakin-at-orientechnologies.com)
  * @since 3/11/14
  */
-public class ORollbackException extends OException {
+public class ORollbackException extends OTransactionException {
 
 	public ORollbackException() {
 
@@ -32,15 +32,5 @@ public class ORollbackException extends OException {
 	public ORollbackException(String message) {
 
 		super(message);
-	}
-
-	public ORollbackException(Throwable cause) {
-
-		super(cause);
-	}
-
-	public ORollbackException(String message, Throwable cause) {
-
-		super(message, cause);
 	}
 }

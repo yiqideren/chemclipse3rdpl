@@ -50,9 +50,9 @@ public class OSQLMethodHash extends OAbstractSQLMethod {
 		try {
 			return OSecurityManager.digest2String(iThis.toString(), algorithm);
 		} catch(NoSuchAlgorithmException e) {
-			throw new OCommandExecutionException("hash(): algorithm '" + algorithm + "' is not supported");
+			throw new OCommandExecutionException("hash(): algorithm '" + algorithm + "' is not supported", e);
 		} catch(UnsupportedEncodingException e) {
-			throw new OCommandExecutionException("hash(): encoding 'UTF-8' is not supported");
+			throw new OCommandExecutionException("hash(): encoding 'UTF-8' is not supported", e);
 		}
 	}
 }

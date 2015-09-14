@@ -89,4 +89,13 @@ public class OQueryOperatorOr extends OQueryOperator {
 		else
 			return leftRange.compareTo(rightRange) >= 0 ? leftRange : rightRange;
 	}
+
+	@Override
+	public boolean canShortCircuit(Object l) {
+
+		if(Boolean.TRUE.equals(l)) {
+			return true;
+		}
+		return false;
+	}
 }

@@ -85,8 +85,8 @@ public class OConcurrentModificationException extends ONeedRetryException {
 			return false;
 		final OConcurrentModificationException other = (OConcurrentModificationException)obj;
 		if(recordOperation == other.recordOperation && rid.equals(other.rid)) {
-			if((databaseVersion == null && other.databaseVersion == null) || (databaseVersion.equals(other.databaseVersion)))
-				if((recordVersion == null && other.recordVersion == null) || (recordVersion.equals(other.recordVersion)))
+			if((databaseVersion == null && other.databaseVersion == null) || (databaseVersion != null && databaseVersion.equals(other.databaseVersion)))
+				if((recordVersion == null && other.recordVersion == null) || (recordVersion != null && recordVersion.equals(other.recordVersion)))
 					return true;
 		}
 		return false;

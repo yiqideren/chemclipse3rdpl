@@ -17,16 +17,16 @@
  */
 package com.orientechnologies.orient.core.sql.functions.stat;
 
+import com.orientechnologies.common.collection.OMultiValue;
+import com.orientechnologies.orient.core.command.OCommandContext;
+import com.orientechnologies.orient.core.db.record.OIdentifiable;
+import com.orientechnologies.orient.core.sql.functions.OSQLFunctionAbstract;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import com.orientechnologies.common.collection.OMultiValue;
-import com.orientechnologies.orient.core.command.OCommandContext;
-import com.orientechnologies.orient.core.db.record.OIdentifiable;
-import com.orientechnologies.orient.core.sql.functions.OSQLFunctionAbstract;
 
 /**
  * Compute the mode (or multimodal) value for a field. The scores in the field's distribution that occurs more frequently. Nulls are
@@ -85,16 +85,19 @@ public class OSQLFunctionMode extends OSQLFunctionAbstract {
 	@Override
 	public Object mergeDistributedResult(List<Object> resultsToMerge) {
 
-		Map<Object, Integer> dSeen = new HashMap<Object, Integer>();
-		int dMax = 0;
-		List<Object> dMaxElems = new ArrayList<Object>();
-		for(Object iParameter : resultsToMerge) {
-			final Map<Object, Integer> mSeen = (Map<Object, Integer>)iParameter;
-			for(Entry<Object, Integer> o : mSeen.entrySet()) {
-				dMax = this.evaluate(o.getKey(), o.getValue(), dSeen, dMaxElems, dMax);
+		if(returnDistributedResult()) {
+			Map<Object, Integer> dSeen = new HashMap<Object, Integer>();
+			int dMax = 0;
+			List<Object> dMaxElems = new ArrayList<Object>();
+			for(Object iParameter : resultsToMerge) {
+				final Map<Object, Integer> mSeen = (Map<Object, Integer>)iParameter;
+				for(Entry<Object, Integer> o : mSeen.entrySet()) {
+					dMax = this.evaluate(o.getKey(), o.getValue(), dSeen, dMaxElems, dMax);
+				}
 			}
+			return dMaxElems;
 		}
-		return dMaxElems;
+		return resultsToMerge.get(0);
 	}
 
 	private int evaluate(Object value, int times, Map<Object, Integer> iSeen, List<Object> iMaxElems, int iMax) {

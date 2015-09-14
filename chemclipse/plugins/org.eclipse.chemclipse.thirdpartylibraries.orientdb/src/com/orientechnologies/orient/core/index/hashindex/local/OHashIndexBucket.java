@@ -23,7 +23,7 @@ import com.orientechnologies.common.serialization.types.OByteSerializer;
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
 import com.orientechnologies.common.serialization.types.OLongSerializer;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
-import com.orientechnologies.orient.core.index.hashindex.local.cache.OCacheEntry;
+import com.orientechnologies.orient.core.storage.cache.OCacheEntry;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.base.ODurablePage;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.wal.OWALChangesTree;
@@ -57,8 +57,7 @@ public class OHashIndexBucket<K, V> extends ODurablePage implements Iterable<OHa
 		this.keySerializer = keySerializer;
 		this.valueSerializer = valueSerializer;
 		this.keyTypes = keyTypes;
-		setByteValue(DEPTH_OFFSET, (byte)depth);
-		setIntValue(FREE_POINTER_OFFSET, MAX_BUCKET_SIZE_BYTES);
+		init(depth);
 	}
 
 	public OHashIndexBucket(OCacheEntry cacheEntry, OBinarySerializer<K> keySerializer, OBinarySerializer<V> valueSerializer, OType[] keyTypes, OWALChangesTree changesTree) {
@@ -67,6 +66,13 @@ public class OHashIndexBucket<K, V> extends ODurablePage implements Iterable<OHa
 		this.keySerializer = keySerializer;
 		this.valueSerializer = valueSerializer;
 		this.keyTypes = keyTypes;
+	}
+
+	public void init(int depth) throws IOException {
+
+		setByteValue(DEPTH_OFFSET, (byte)depth);
+		setIntValue(FREE_POINTER_OFFSET, MAX_BUCKET_SIZE_BYTES);
+		setIntValue(SIZE_OFFSET, 0);
 	}
 
 	public Entry<K, V> find(final K key, final long hashCode) {

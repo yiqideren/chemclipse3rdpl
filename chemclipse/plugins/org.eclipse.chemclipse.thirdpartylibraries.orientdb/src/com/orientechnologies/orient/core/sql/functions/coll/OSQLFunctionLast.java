@@ -32,7 +32,6 @@ import com.orientechnologies.orient.core.sql.functions.OSQLFunctionConfigurableA
 public class OSQLFunctionLast extends OSQLFunctionConfigurableAbstract {
 
 	public static final String NAME = "last";
-	private Object last;
 
 	public OSQLFunctionLast() {
 
@@ -46,25 +45,7 @@ public class OSQLFunctionLast extends OSQLFunctionConfigurableAbstract {
 			value = ((OSQLFilterItem)value).getValue(iCurrentRecord, iCurrentResult, iContext);
 		if(OMultiValue.isMultiValue(value))
 			value = OMultiValue.getLastValue(value);
-		last = value;
 		return value;
-	}
-
-	public boolean aggregateResults() {
-
-		return false;
-	}
-
-	@Override
-	public Object getResult() {
-
-		return last;
-	}
-
-	@Override
-	public boolean filterResult() {
-
-		return false;
 	}
 
 	public String getSyntax() {

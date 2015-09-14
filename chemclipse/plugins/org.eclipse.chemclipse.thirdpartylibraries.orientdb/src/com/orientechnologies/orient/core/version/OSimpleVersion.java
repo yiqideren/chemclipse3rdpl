@@ -55,7 +55,7 @@ public final class OSimpleVersion implements ORecordVersion {
 	public void increment() {
 
 		if(isTombstone())
-			throw new IllegalStateException("Record was deleted and can not be updated.");
+			throw new IllegalStateException("Record was deleted and cannot be updated.");
 		version++;
 	}
 
@@ -63,7 +63,7 @@ public final class OSimpleVersion implements ORecordVersion {
 	public void decrement() {
 
 		if(isTombstone())
-			throw new IllegalStateException("Record was deleted and can not be updated.");
+			throw new IllegalStateException("Record was deleted and cannot be updated.");
 		version--;
 	}
 
@@ -95,7 +95,7 @@ public final class OSimpleVersion implements ORecordVersion {
 	public void convertToTombstone() {
 
 		if(isTombstone())
-			throw new IllegalStateException("Record was deleted and can not be updated.");
+			throw new IllegalStateException("Record was deleted and cannot be updated.");
 		version++;
 		version = -version;
 	}

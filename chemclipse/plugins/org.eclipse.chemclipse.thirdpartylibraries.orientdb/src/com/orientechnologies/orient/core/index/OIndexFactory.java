@@ -25,6 +25,8 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 public interface OIndexFactory {
 
+	int getLastVersion();
+
 	/**
 	 * @return List of supported indexes of this factory
 	 */
@@ -36,11 +38,13 @@ public interface OIndexFactory {
 	Set<String> getAlgorithms();
 
 	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
+	 *
+	 *
+	 *
+	 * @param name
 	 * @param database
 	 * @param indexType
 	 *            index type
@@ -50,5 +54,5 @@ public interface OIndexFactory {
 	 * @throws OConfigurationException
 	 *             if index creation failed
 	 */
-	OIndexInternal<?> createIndex(ODatabaseDocumentInternal database, String indexType, String algorithm, String valueContainerAlgorithm, ODocument metadata) throws OConfigurationException;
+	OIndexInternal<?> createIndex(String name, ODatabaseDocumentInternal database, String indexType, String algorithm, String valueContainerAlgorithm, ODocument metadata, int version) throws OConfigurationException;
 }

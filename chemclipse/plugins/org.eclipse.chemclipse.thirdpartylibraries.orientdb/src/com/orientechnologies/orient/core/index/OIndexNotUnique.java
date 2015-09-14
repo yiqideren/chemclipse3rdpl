@@ -30,9 +30,9 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
  */
 public class OIndexNotUnique extends OIndexMultiValues {
 
-	public OIndexNotUnique(String typeId, String algorithm, OIndexEngine<Set<OIdentifiable>> engine, String valueContainerAlgorithm, ODocument metadata) {
+	public OIndexNotUnique(String name, String typeId, String algorithm, OIndexEngine<Set<OIdentifiable>> engine, String valueContainerAlgorithm, ODocument metadata) {
 
-		super(typeId, algorithm, engine, valueContainerAlgorithm, metadata);
+		super(name, typeId, algorithm, engine, valueContainerAlgorithm, metadata);
 	}
 
 	public boolean canBeUsedInEqualityOperators() {

@@ -36,7 +36,7 @@ public interface OIndexEngine<V> {
 
 	void flush();
 
-	void create(String indexName, OIndexDefinition indexDefinition, String clusterIndexName, OStreamSerializer valueSerializer, boolean isAutomatic);
+	void create(OIndexDefinition indexDefinition, String clusterIndexName, OStreamSerializer valueSerializer, boolean isAutomatic);
 
 	void delete();
 
@@ -77,6 +77,8 @@ public interface OIndexEngine<V> {
 	long size(ValuesTransformer<V> transformer);
 
 	boolean hasRangeQuerySupport();
+
+	int getVersion();
 
 	interface ValuesTransformer<V> {
 

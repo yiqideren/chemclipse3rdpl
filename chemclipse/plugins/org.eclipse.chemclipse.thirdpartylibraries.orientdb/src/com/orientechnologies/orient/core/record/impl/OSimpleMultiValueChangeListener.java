@@ -17,8 +17,6 @@
  */
 package com.orientechnologies.orient.core.record.impl;
 
-import java.util.HashMap;
-
 import com.orientechnologies.orient.core.db.record.OMultiValueChangeEvent;
 import com.orientechnologies.orient.core.db.record.OMultiValueChangeListener;
 import com.orientechnologies.orient.core.db.record.OMultiValueChangeTimeLine;
@@ -39,12 +37,12 @@ final class OSimpleMultiValueChangeListener<K, V> implements OMultiValueChangeLi
    * 
    */
 	private final ODocument oDocument;
-	private final String fieldName;
+	private final ODocumentEntry entry;
 
-	OSimpleMultiValueChangeListener(ODocument oDocument, final String fieldName) {
+	OSimpleMultiValueChangeListener(ODocument oDocument, final ODocumentEntry entry) {
 
 		this.oDocument = oDocument;
-		this.fieldName = fieldName;
+		this.entry = entry;
 	}
 
 	public void onAfterRecordChanged(final OMultiValueChangeEvent<K, V> event) {
@@ -57,15 +55,11 @@ final class OSimpleMultiValueChangeListener<K, V> implements OMultiValueChangeLi
 		}
 		if(!(this.oDocument._trackingChanges && this.oDocument.getIdentity().isValid()) || this.oDocument.getInternalStatus() == STATUS.UNMARSHALLING)
 			return;
-		if(this.oDocument._fieldOriginalValues != null && this.oDocument._fieldOriginalValues.containsKey(fieldName))
+		if(entry == null || entry.isChanged())
 			return;
-		if(this.oDocument._fieldCollectionChangeTimeLines == null)
-			this.oDocument._fieldCollectionChangeTimeLines = new HashMap<String, OMultiValueChangeTimeLine<Object, Object>>();
-		OMultiValueChangeTimeLine<Object, Object> timeLine = this.oDocument._fieldCollectionChangeTimeLines.get(fieldName);
-		if(timeLine == null) {
-			timeLine = new OMultiValueChangeTimeLine<Object, Object>();
-			this.oDocument._fieldCollectionChangeTimeLines.put(fieldName, timeLine);
+		if(entry.timeLine == null) {
+			entry.timeLine = new OMultiValueChangeTimeLine<Object, Object>();
 		}
-		timeLine.addCollectionChangeEvent((OMultiValueChangeEvent<Object, Object>)event);
+		entry.timeLine.addCollectionChangeEvent((OMultiValueChangeEvent<Object, Object>)event);
 	}
 }

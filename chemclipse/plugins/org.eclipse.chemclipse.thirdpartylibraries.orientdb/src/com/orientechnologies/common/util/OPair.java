@@ -17,7 +17,12 @@
  */
 package com.orientechnologies.common.util;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
@@ -31,7 +36,7 @@ import java.util.Map.Entry;
  *            Value
  * @see OTriple
  */
-public class OPair<K extends Comparable<K>, V> implements Entry<K, V>, Comparable<OPair<K, V>> {
+public class OPair<K extends Comparable<K>, V> implements Entry<K, V>, Comparable<OPair<K, V>>, Serializable {
 
 	public K key;
 	public V value;
@@ -118,5 +123,21 @@ public class OPair<K extends Comparable<K>, V> implements Entry<K, V>, Comparabl
 	public int compareTo(final OPair<K, V> o) {
 
 		return key.compareTo(o.key);
+	}
+
+	public static <K extends Comparable<K>, V> Map<K, V> convertToMap(final List<OPair<K, V>> iValues) {
+
+		final HashMap<K, V> result = new HashMap<K, V>(iValues.size());
+		for(OPair<K, V> p : iValues)
+			result.put(p.getKey(), p.getValue());
+		return result;
+	}
+
+	public static <K extends Comparable<K>, V> List<OPair<K, V>> convertFromMap(final Map<K, V> iValues) {
+
+		final List<OPair<K, V>> result = new ArrayList<OPair<K, V>>(iValues.size());
+		for(Entry<K, V> p : iValues.entrySet())
+			result.add(new OPair<K, V>(p.getKey(), p.getValue()));
+		return result;
 	}
 }

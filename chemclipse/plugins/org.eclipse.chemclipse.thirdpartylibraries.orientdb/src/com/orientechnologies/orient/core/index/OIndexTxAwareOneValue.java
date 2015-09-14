@@ -17,8 +17,6 @@
  */
 package com.orientechnologies.orient.core.index;
 
-import java.util.*;
-
 import com.orientechnologies.common.comparator.ODefaultComparator;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
@@ -28,6 +26,8 @@ import com.orientechnologies.orient.core.tx.OTransactionIndexChanges;
 import com.orientechnologies.orient.core.tx.OTransactionIndexChanges.OPERATION;
 import com.orientechnologies.orient.core.tx.OTransactionIndexChangesPerKey;
 import com.orientechnologies.orient.core.tx.OTransactionIndexChangesPerKey.OTransactionIndexEntry;
+
+import java.util.*;
 
 /**
  * Transactional wrapper for indexes. Stores changes locally to the transaction until tx.commit(). All the other operations are
@@ -193,12 +193,15 @@ public class OIndexTxAwareOneValue extends OIndexTxAware<OIdentifiable> {
 	public ODocument checkEntry(final OIdentifiable iRecord, final Object iKey) {
 
 		// CHECK IF ALREADY EXISTS IN TX
-		String storageType = database.getStorage().getType();
 		if(!database.getTransaction().isActive()) {
 			final OIdentifiable previousRecord = get(iKey);
 			if(previousRecord != null && !previousRecord.equals(iRecord)) {
 				final ODocument metadata = getMetadata();
-				final boolean mergeSameKey = metadata != null && (Boolean)metadata.field(OIndex.MERGE_KEYS);
+				Boolean mergeKeys = false;
+				if(metadata != null) {
+					mergeKeys = metadata.field(OIndex.MERGE_KEYS);
+				}
+				final boolean mergeSameKey = mergeKeys != null && mergeKeys;
 				if(mergeSameKey) {
 					return (ODocument)previousRecord.getRecord();
 				} else

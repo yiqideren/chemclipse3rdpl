@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javassist.util.proxy.MethodHandler;
-import javassist.util.proxy.Proxy;
 import javassist.util.proxy.ProxyFactory;
 import javassist.util.proxy.ProxyObject;
 
@@ -81,7 +80,7 @@ public class OObjectEntityEnhancer {
 		}
 		final Class<T> c;
 		boolean isInnerClass = iClass.getEnclosingClass() != null;
-		if(Proxy.class.isAssignableFrom(iClass)) {
+		if(ProxyObject.class.isAssignableFrom(iClass)) {
 			c = iClass;
 		} else {
 			ProxyFactory f = new ProxyFactory();
@@ -148,7 +147,7 @@ public class OObjectEntityEnhancer {
 				else
 					newEntity = createInstanceNoParameters(c, iClass);
 			}
-			((Proxy)newEntity).setHandler(mi);
+			((ProxyObject)newEntity).setHandler(mi);
 			if(OObjectEntitySerializer.hasBoundedDocumentField(iClass))
 				OObjectEntitySerializer.setFieldValue(OObjectEntitySerializer.getBoundedDocumentField(iClass), newEntity, doc);
 			return newEntity;
@@ -170,7 +169,7 @@ public class OObjectEntityEnhancer {
 
 	public OObjectMethodFilter getMethodFilter(Class<?> iClass) {
 
-		if(Proxy.class.isAssignableFrom(iClass))
+		if(ProxyObject.class.isAssignableFrom(iClass))
 			iClass = iClass.getSuperclass();
 		OObjectMethodFilter filter = customMethodFilters.get(iClass);
 		if(filter == null)

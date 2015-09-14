@@ -22,6 +22,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.orientechnologies.common.serialization.types.OIntegerSerializer;
+import com.orientechnologies.orient.core.OOrientShutdownListener;
+import com.orientechnologies.orient.core.OOrientStartupListener;
+import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
@@ -30,32 +33,43 @@ import com.orientechnologies.orient.core.index.sbtreebonsai.local.OSBTreeBonsai;
 import com.orientechnologies.orient.core.index.sbtreebonsai.local.OSBTreeBonsaiLocal;
 import com.orientechnologies.orient.core.serialization.serializer.binary.impl.OLinkSerializer;
 import com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage;
+import com.orientechnologies.orient.core.storage.impl.local.paginated.atomicoperations.OAtomicOperation;
 
 /**
  * @author Artem Orobets (enisher-at-gmail.com)
  */
-public class OSBTreeCollectionManagerShared extends OSBTreeCollectionManagerAbstract {
+public class OSBTreeCollectionManagerShared extends OSBTreeCollectionManagerAbstract implements OOrientStartupListener, OOrientShutdownListener {
 
 	private final OAbstractPaginatedStorage storage;
-	private final ThreadLocal<Map<UUID, OBonsaiCollectionPointer>> collectionPointerChanges = new ThreadLocal<Map<UUID, OBonsaiCollectionPointer>>() {
-
-		@Override
-		protected Map<UUID, OBonsaiCollectionPointer> initialValue() {
-
-			return new HashMap<UUID, OBonsaiCollectionPointer>();
-		}
-	};
+	private volatile ThreadLocal<Map<UUID, OBonsaiCollectionPointer>> collectionPointerChanges = new CollectionPointerChangesThreadLocal();
 
 	public OSBTreeCollectionManagerShared() {
 
 		ODatabaseDocumentInternal db = ODatabaseRecordThreadLocal.INSTANCE.get();
 		this.storage = (OAbstractPaginatedStorage)db.getStorage().getUnderlying();
+		Orient.instance().registerWeakOrientStartupListener(this);
+		Orient.instance().registerWeakOrientShutdownListener(this);
 	}
 
 	public OSBTreeCollectionManagerShared(int evictionThreshold, int cacheMaxSize, OAbstractPaginatedStorage storage) {
 
 		super(evictionThreshold, cacheMaxSize);
 		this.storage = storage;
+		Orient.instance().registerWeakOrientStartupListener(this);
+		Orient.instance().registerWeakOrientShutdownListener(this);
+	}
+
+	@Override
+	public void onShutdown() {
+
+		collectionPointerChanges = null;
+	}
+
+	@Override
+	public void onStartup() {
+
+		if(collectionPointerChanges == null)
+			collectionPointerChanges = new CollectionPointerChangesThreadLocal();
 	}
 
 	@Override
@@ -72,16 +86,23 @@ public class OSBTreeCollectionManagerShared extends OSBTreeCollectionManagerAbst
 	@Override
 	protected OSBTreeBonsaiLocal<OIdentifiable, Integer> createTree(int clusterId) {
 
-		OSBTreeBonsaiLocal<OIdentifiable, Integer> tree = new OSBTreeBonsaiLocal<OIdentifiable, Integer>(DEFAULT_EXTENSION, true, storage);
-		tree.create(FILE_NAME_PREFIX + clusterId, OLinkSerializer.INSTANCE, OIntegerSerializer.INSTANCE);
+		OSBTreeBonsaiLocal<OIdentifiable, Integer> tree = new OSBTreeBonsaiLocal<OIdentifiable, Integer>(FILE_NAME_PREFIX + clusterId, DEFAULT_EXTENSION, true, storage);
+		tree.create(OLinkSerializer.INSTANCE, OIntegerSerializer.INSTANCE);
 		return tree;
 	}
 
 	@Override
 	protected OSBTreeBonsai<OIdentifiable, Integer> loadTree(OBonsaiCollectionPointer collectionPointer) {
 
-		OSBTreeBonsaiLocal<OIdentifiable, Integer> tree = new OSBTreeBonsaiLocal<OIdentifiable, Integer>(DEFAULT_EXTENSION, true, storage);
-		tree.load(collectionPointer.getFileId(), collectionPointer.getRootPointer());
+		String fileName;
+		OAtomicOperation atomicOperation = storage.getAtomicOperationsManager().getCurrentOperation();
+		if(atomicOperation == null) {
+			fileName = storage.getWriteCache().fileNameById(collectionPointer.getFileId());
+		} else {
+			fileName = atomicOperation.fileNameById(collectionPointer.getFileId());
+		}
+		OSBTreeBonsaiLocal<OIdentifiable, Integer> tree = new OSBTreeBonsaiLocal<OIdentifiable, Integer>(fileName.substring(0, fileName.length() - DEFAULT_EXTENSION.length()), DEFAULT_EXTENSION, true, storage);
+		tree.load(collectionPointer.getRootPointer());
 		return tree;
 	}
 
@@ -121,5 +142,14 @@ public class OSBTreeCollectionManagerShared extends OSBTreeCollectionManagerAbst
 	public void clearChangedIds() {
 
 		collectionPointerChanges.get().clear();
+	}
+
+	private static class CollectionPointerChangesThreadLocal extends ThreadLocal<Map<UUID, OBonsaiCollectionPointer>> {
+
+		@Override
+		protected Map<UUID, OBonsaiCollectionPointer> initialValue() {
+
+			return new HashMap<UUID, OBonsaiCollectionPointer>();
+		}
 	}
 }

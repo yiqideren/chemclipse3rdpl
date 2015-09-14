@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import com.orientechnologies.common.listener.OProgressListener;
+import com.orientechnologies.common.util.OApi;
 import com.orientechnologies.orient.core.dictionary.ODictionary;
 import com.orientechnologies.orient.core.id.ORID;
 import com.orientechnologies.orient.core.record.ORecord;
@@ -141,6 +142,7 @@ public interface OIndexManager {
 	 *            the name of index to drop
 	 * @return this
 	 */
+	@OApi(maturity = OApi.MATURITY.STABLE)
 	public OIndexManager dropIndex(final String iIndexName);
 
 	/**

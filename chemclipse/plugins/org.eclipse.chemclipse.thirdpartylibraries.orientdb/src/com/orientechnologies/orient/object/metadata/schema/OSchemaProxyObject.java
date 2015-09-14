@@ -13,20 +13,25 @@
 package com.orientechnologies.orient.object.metadata.schema;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import com.orientechnologies.orient.core.entity.OEntityManager;
-import javassist.util.proxy.Proxy;
+import javassist.util.proxy.ProxyObject;
 
 import com.orientechnologies.common.exception.OException;
 import com.orientechnologies.common.log.OLogManager;
 import com.orientechnologies.common.reflection.OReflectionHelper;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
+import com.orientechnologies.orient.core.entity.OEntityManager;
 import com.orientechnologies.orient.core.id.ORID;
-import com.orientechnologies.orient.core.metadata.schema.*;
+import com.orientechnologies.orient.core.metadata.schema.OClass;
+import com.orientechnologies.orient.core.metadata.schema.OGlobalProperty;
+import com.orientechnologies.orient.core.metadata.schema.OImmutableSchema;
+import com.orientechnologies.orient.core.metadata.schema.OSchema;
+import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.metadata.schema.clusterselection.OClusterSelectionFactory;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.record.impl.ORecordBytes;
@@ -84,6 +89,12 @@ public class OSchemaProxyObject implements OSchema {
 	}
 
 	@Override
+	public OClass createClass(String iClassName, OClass... superClasses) {
+
+		return underlying.createClass(iClassName, superClasses);
+	}
+
+	@Override
 	public OClass createClass(String iClassName, int iDefaultClusterId) {
 
 		return underlying.createClass(iClassName, iDefaultClusterId);
@@ -102,6 +113,12 @@ public class OSchemaProxyObject implements OSchema {
 	}
 
 	@Override
+	public OClass createClass(String className, int[] clusterIds, OClass... superClasses) {
+
+		return underlying.createClass(className, clusterIds, superClasses);
+	}
+
+	@Override
 	public OClass createAbstractClass(Class<?> iClass) {
 
 		return underlying.createAbstractClass(iClass);
@@ -117,6 +134,12 @@ public class OSchemaProxyObject implements OSchema {
 	public OClass createAbstractClass(String iClassName, OClass iSuperClass) {
 
 		return underlying.createAbstractClass(iClassName, iSuperClass);
+	}
+
+	@Override
+	public OClass createAbstractClass(String iClassName, OClass... superClasses) {
+
+		return underlying.createAbstractClass(iClassName, superClasses);
 	}
 
 	@Override
@@ -159,6 +182,12 @@ public class OSchemaProxyObject implements OSchema {
 	public OClass getOrCreateClass(String iClassName, OClass iSuperClass) {
 
 		return underlying.getOrCreateClass(iClassName, iSuperClass);
+	}
+
+	@Override
+	public OClass getOrCreateClass(String iClassName, OClass... superClasses) {
+
+		return underlying.getOrCreateClass(iClassName, superClasses);
 	}
 
 	@Override
@@ -373,7 +402,7 @@ public class OSchemaProxyObject implements OSchema {
 		boolean automaticSchemaGeneration = database.isAutomaticSchemaGeneration();
 		boolean reloadSchema = false;
 		for(Class<?> iClass : registeredEntities) {
-			if(Proxy.class.isAssignableFrom(iClass) || iClass.isEnum() || OReflectionHelper.isJavaType(iClass) || iClass.isAnonymousClass())
+			if(ProxyObject.class.isAssignableFrom(iClass) || iClass.isEnum() || OReflectionHelper.isJavaType(iClass) || iClass.isAnonymousClass())
 				return;
 			if(!database.getMetadata().getSchema().existsClass(iClass.getSimpleName())) {
 				database.getMetadata().getSchema().createClass(iClass.getSimpleName());
@@ -399,8 +428,8 @@ public class OSchemaProxyObject implements OSchema {
 						oSuperClass = database.getMetadata().getSchema().getClass(currentClass.getSimpleName());
 						reloadSchema = true;
 					}
-					if(currentOClass.getSuperClass() == null || !currentOClass.getSuperClass().equals(oSuperClass)) {
-						currentOClass.setSuperClass(oSuperClass);
+					if(!currentOClass.getSuperClasses().contains(oSuperClass)) {
+						currentOClass.setSuperClasses(Arrays.asList(oSuperClass));
 						reloadSchema = true;
 					}
 				}
@@ -432,8 +461,8 @@ public class OSchemaProxyObject implements OSchema {
 					oSuperClass = database.getMetadata().getSchema().getClass(currentClass.getSimpleName());
 					reloadSchema = true;
 				}
-				if(currentOClass.getSuperClass() == null || !currentOClass.getSuperClass().equals(oSuperClass)) {
-					currentOClass.setSuperClass(oSuperClass);
+				if(!currentOClass.getSuperClasses().contains(oSuperClass)) {
+					currentOClass.setSuperClasses(Arrays.asList(oSuperClass));
 					reloadSchema = true;
 				}
 			}

@@ -55,6 +55,8 @@ public class OSQLFunctionDate extends OSQLFunctionAbstract {
 
 		if(iParams.length == 0)
 			return date;
+		if(iParams[0] == null)
+			return null;
 		if(iParams[0] instanceof Number)
 			return new Date(((Number)iParams[0]).longValue());
 		if(format == null) {

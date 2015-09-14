@@ -20,9 +20,11 @@ package com.orientechnologies.orient.core.engine.local;
 import java.util.Map;
 
 import com.orientechnologies.common.log.OLogManager;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.engine.OEngineAbstract;
 import com.orientechnologies.orient.core.exception.ODatabaseException;
 import com.orientechnologies.orient.core.storage.OStorage;
+import com.orientechnologies.orient.core.storage.cache.local.O2QCache;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.OLocalPaginatedStorage;
 
 /**
@@ -32,12 +34,23 @@ import com.orientechnologies.orient.core.storage.impl.local.paginated.OLocalPagi
 public class OEngineLocalPaginated extends OEngineAbstract {
 
 	public static final String NAME = "plocal";
+	private final O2QCache readCache;
+
+	public OEngineLocalPaginated() {
+
+		readCache = new O2QCache((long)(OGlobalConfiguration.DISK_CACHE_SIZE.getValueAsLong() * 1024 * 1024 * ((100 - OGlobalConfiguration.DISK_WRITE_CACHE_PART.getValueAsInteger()) / 100.0)), OGlobalConfiguration.DISK_CACHE_PAGE_SIZE.getValueAsInteger() * 1024, true);
+		try {
+			readCache.registerMBean();
+		} catch(Exception e) {
+			OLogManager.instance().error(this, "MBean for read cache cannot be registered", e);
+		}
+	}
 
 	public OStorage createStorage(final String dbName, final Map<String, String> configuration) {
 
 		try {
 			// GET THE STORAGE
-			return new OLocalPaginatedStorage(dbName, dbName, getMode(configuration));
+			return new OLocalPaginatedStorage(dbName, dbName, getMode(configuration), generateStorageId(), readCache);
 		} catch(Throwable t) {
 			OLogManager.instance().error(this, "Error on opening database: " + dbName + ". Current location is: " + new java.io.File(".").getAbsolutePath(), t, ODatabaseException.class);
 		}
@@ -52,5 +65,17 @@ public class OEngineLocalPaginated extends OEngineAbstract {
 	public boolean isShared() {
 
 		return true;
+	}
+
+	@Override
+	public void shutdown() {
+
+		super.shutdown();
+		readCache.clear();
+		try {
+			readCache.unregisterMBean();
+		} catch(Exception e) {
+			OLogManager.instance().error(this, "MBean for read cache cannot be unregistered", e);
+		}
 	}
 }

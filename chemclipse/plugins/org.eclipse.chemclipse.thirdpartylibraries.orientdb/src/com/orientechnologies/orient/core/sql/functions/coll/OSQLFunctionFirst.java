@@ -32,7 +32,6 @@ import com.orientechnologies.orient.core.sql.functions.OSQLFunctionConfigurableA
 public class OSQLFunctionFirst extends OSQLFunctionConfigurableAbstract {
 
 	public static final String NAME = "first";
-	private Object first = this;
 
 	public OSQLFunctionFirst() {
 
@@ -46,27 +45,7 @@ public class OSQLFunctionFirst extends OSQLFunctionConfigurableAbstract {
 			value = ((OSQLFilterItem)value).getValue(iCurrentRecord, iCurrentResult, iContext);
 		if(OMultiValue.isMultiValue(value))
 			value = OMultiValue.getFirstValue(value);
-		if(first == this)
-			// ONLY THE FIRST TIME
-			first = value;
 		return value;
-	}
-
-	public boolean aggregateResults() {
-
-		return false;
-	}
-
-	@Override
-	public Object getResult() {
-
-		return first;
-	}
-
-	@Override
-	public boolean filterResult() {
-
-		return false;
 	}
 
 	public String getSyntax() {

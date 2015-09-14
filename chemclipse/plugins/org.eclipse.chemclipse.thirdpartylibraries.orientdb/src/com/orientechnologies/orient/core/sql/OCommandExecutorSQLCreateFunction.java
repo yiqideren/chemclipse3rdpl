@@ -17,16 +17,17 @@
  */
 package com.orientechnologies.orient.core.sql;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.OCommandRequestText;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
 import com.orientechnologies.orient.core.exception.OCommandExecutionException;
 import com.orientechnologies.orient.core.metadata.function.OFunction;
 import com.orientechnologies.orient.core.serialization.serializer.OStringSerializerHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * SQL CREATE FUNCTION command.
@@ -49,10 +50,8 @@ public class OCommandExecutorSQLCreateFunction extends OCommandExecutorSQLAbstra
 		init((OCommandRequestText)iRequest);
 		parserRequiredKeyword("CREATE");
 		parserRequiredKeyword("FUNCTION");
-		parserNextWord(false);
-		name = parserGetLastWord();
-		parserNextWord(false);
-		code = OStringSerializerHelper.getStringContent(parserGetLastWord());
+		name = parserNextWord(false);
+		code = OStringSerializerHelper.getStringContent(parserNextWord(false));
 		String temp = parseOptionalWord(true);
 		while(temp != null) {
 			if(temp.equals("IDEMPOTENT")) {
@@ -73,6 +72,12 @@ public class OCommandExecutorSQLCreateFunction extends OCommandExecutorSQLAbstra
 				break;
 		}
 		return this;
+	}
+
+	@Override
+	public long getDistributedTimeout() {
+
+		return OGlobalConfiguration.DISTRIBUTED_COMMAND_TASK_SYNCH_TIMEOUT.getValueAsLong();
 	}
 
 	/**

@@ -20,6 +20,8 @@ package com.orientechnologies.orient.core.sql;
 import com.orientechnologies.orient.core.command.OCommandContext.TIMEOUT_STRATEGY;
 import com.orientechnologies.orient.core.command.OCommandDistributedReplicateRequest;
 import com.orientechnologies.orient.core.command.OCommandExecutorAbstract;
+import com.orientechnologies.orient.core.command.OCommandRequest;
+import com.orientechnologies.orient.core.command.OCommandRequestAbstract;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocument;
@@ -27,9 +29,15 @@ import com.orientechnologies.orient.core.index.OIndex;
 import com.orientechnologies.orient.core.metadata.OMetadataInternal;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.security.ORule;
+import com.orientechnologies.orient.core.sql.parser.OStatement;
+import com.orientechnologies.orient.core.sql.parser.OrientSql;
+import com.orientechnologies.orient.core.sql.parser.ParseException;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -65,10 +73,11 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 	public static final String DEFAULT_PARAM_USER = "$user";
 	protected long timeoutMs = OGlobalConfiguration.COMMAND_TIMEOUT.getValueAsLong();
 	protected TIMEOUT_STRATEGY timeoutStrategy = TIMEOUT_STRATEGY.EXCEPTION;
+	protected OStatement preParsedStatement;
 
 	/**
 	 * The command is replicated
-	 * 
+	 *
 	 * @return
 	 */
 	public OCommandDistributedReplicateRequest.DISTRIBUTED_EXECUTION_MODE getDistributedExecutionMode() {
@@ -98,23 +107,22 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 
 		if(!w.equals(KEYWORD_TIMEOUT))
 			return false;
-		parserNextWord(true);
-		String word = parserGetLastWord();
+		String word = parserNextWord(true);
 		try {
 			timeoutMs = Long.parseLong(word);
 		} catch(Exception e) {
 			throwParsingException("Invalid " + KEYWORD_TIMEOUT + " value set to '" + word + "' but it should be a valid long. Example: " + KEYWORD_TIMEOUT + " 3000");
 		}
 		if(timeoutMs < 0)
-			throwParsingException("Invalid " + KEYWORD_TIMEOUT + ": value set minor than ZERO. Example: " + timeoutMs + " 10000");
-		parserNextWord(true);
-		word = parserGetLastWord();
-		if(word.equals(TIMEOUT_STRATEGY.EXCEPTION.toString()))
-			timeoutStrategy = TIMEOUT_STRATEGY.EXCEPTION;
-		else if(word.equals(TIMEOUT_STRATEGY.RETURN.toString()))
-			timeoutStrategy = TIMEOUT_STRATEGY.RETURN;
-		else
-			parserGoBack();
+			throwParsingException("Invalid " + KEYWORD_TIMEOUT + ": value set minor than ZERO. Example: " + KEYWORD_TIMEOUT + " 10000");
+		word = parserNextWord(true);
+		if(word != null)
+			if(word.equals(TIMEOUT_STRATEGY.EXCEPTION.toString()))
+				timeoutStrategy = TIMEOUT_STRATEGY.EXCEPTION;
+			else if(word.equals(TIMEOUT_STRATEGY.RETURN.toString()))
+				timeoutStrategy = TIMEOUT_STRATEGY.RETURN;
+			else
+				parserGoBack();
 		return true;
 	}
 
@@ -123,8 +131,7 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 	 */
 	protected String parseLock() throws OCommandSQLParsingException {
 
-		parserNextWord(true);
-		final String lockStrategy = parserGetLastWord();
+		final String lockStrategy = parserNextWord(true);
 		if(!lockStrategy.equalsIgnoreCase("DEFAULT") && !lockStrategy.equalsIgnoreCase("NONE") && !lockStrategy.equalsIgnoreCase("RECORD"))
 			throwParsingException("Invalid " + KEYWORD_LOCK + " value set to '" + lockStrategy + "' but it should be NONE (default) or RECORD. Example: " + KEYWORD_LOCK + " RECORD");
 		return lockStrategy;
@@ -137,7 +144,7 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 		for(String clazz : iClassNames) {
 			final OClass cls = ((OMetadataInternal)db.getMetadata()).getImmutableSchemaSnapshot().getClass(clazz);
 			if(cls != null)
-				for(int clId : cls.getClusterIds()) {
+				for(int clId : cls.getPolymorphicClusterIds()) {
 					// FILTER THE CLUSTER WHERE THE USER HAS THE RIGHT ACCESS
 					if(clId > -1 && checkClusterAccess(db, db.getClusterNameById(clId)))
 						clusters.add(db.getClusterNameById(clId).toLowerCase());
@@ -182,7 +189,7 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 
 	protected boolean checkClusterAccess(final ODatabaseDocument db, final String iClusterName) {
 
-		return db.getUser() != null && db.getUser().checkIfAllowed(ORule.ResourceGeneric.CLUSTER, iClusterName, getSecurityOperationType()) != null;
+		return db.getUser() == null || db.getUser().checkIfAllowed(ORule.ResourceGeneric.CLUSTER, iClusterName, getSecurityOperationType()) != null;
 	}
 
 	protected void bindDefaultContextVariables() {
@@ -192,5 +199,27 @@ public abstract class OCommandExecutorSQLAbstract extends OCommandExecutorAbstra
 				context.setVariable(DEFAULT_PARAM_USER, getDatabase().getUser().getIdentity());
 			}
 		}
+	}
+
+	protected String preParse(final String queryText, final OCommandRequest iRequest) {
+
+		final boolean strict = getDatabase().getStorage().getConfiguration().isStrictSql();
+		if(strict) {
+			final InputStream is = new ByteArrayInputStream(queryText.getBytes());
+			final OrientSql osql = new OrientSql(is);
+			try {
+				final OStatement result = osql.parse();
+				preParsedStatement = result;
+				if(iRequest instanceof OCommandRequestAbstract) {
+					final Map<Object, Object> params = ((OCommandRequestAbstract)iRequest).getParameters();
+					result.replaceParameters(params);
+				}
+				return result.toString();
+			} catch(ParseException e) {
+				throwParsingException(e.getMessage());
+			}
+			return "ERROR!";
+		}
+		return queryText;
 	}
 }

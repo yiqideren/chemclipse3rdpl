@@ -17,6 +17,8 @@
  */
 package com.orientechnologies.orient.core.serialization.serializer.stream;
 
+import java.io.IOException;
+
 import com.orientechnologies.common.directmemory.ODirectMemoryPointer;
 import com.orientechnologies.common.serialization.types.OBinarySerializer;
 import com.orientechnologies.common.serialization.types.OBinaryTypeSerializer;
@@ -33,8 +35,6 @@ import com.orientechnologies.orient.core.serialization.serializer.record.ORecord
 import com.orientechnologies.orient.core.serialization.serializer.record.string.ORecordSerializerSchemaAware2CSV;
 import com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage;
 import com.orientechnologies.orient.core.storage.impl.local.paginated.wal.OWALChangesTree;
-
-import java.io.IOException;
 
 /**
  * Serializer of OIndexRIDContainer for back-compatibility with v1.6.1.
@@ -209,6 +209,6 @@ public class OStreamSerializerOldRIDContainer implements OStreamSerializer, OBin
 		final OBonsaiBucketPointer rootPointer = new OBonsaiBucketPointer((Long)doc.field("rootIndex"), (Integer)doc.field("rootOffset"));
 		final String fileName = doc.field("file");
 		final ODatabaseDocumentInternal db = ODatabaseRecordThreadLocal.INSTANCE.get();
-		return new OIndexRIDContainer(fileName, new OIndexRIDContainerSBTree(fileName, rootPointer, false, (OAbstractPaginatedStorage)db.getStorage()), false, false);
+		return new OIndexRIDContainer(fileName, new OIndexRIDContainerSBTree(fileName, rootPointer, false, (OAbstractPaginatedStorage)db.getStorage().getUnderlying()), false, false);
 	}
 }
