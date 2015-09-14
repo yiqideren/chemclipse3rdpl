@@ -381,7 +381,7 @@ public class OBase64Utils {
 						return -1; // Must be end of stream
 					} // end else
 				} // end if: encoding
-				// Else decoding
+					// Else decoding
 				else {
 					byte[] b4 = new byte[4];
 					int i = 0;
@@ -409,7 +409,7 @@ public class OBase64Utils {
 					} // end
 				} // end else: decode
 			} // end else: get data
-			// Got data?
+				// Got data?
 			if(position >= 0) {
 				// End of relevant data?
 				if( /* !encode && */position >= numSigBytes) {
@@ -431,7 +431,7 @@ public class OBase64Utils {
 										// intended to be unsigned.
 				} // end else
 			} // end if: position >= 0
-			// Else error
+				// Else error
 			else {
 				throw new java.io.IOException("Error in Base64 code reading stream.");
 			} // end else
@@ -554,7 +554,7 @@ public class OBase64Utils {
 				this.out.write(theByte);
 				return;
 			} // end if: supsended
-			// Encode?
+				// Encode?
 			if(encode) {
 				buffer[position++] = (byte)theByte;
 				if(position >= bufferLength) { // Enough to encode.
@@ -567,7 +567,7 @@ public class OBase64Utils {
 					position = 0;
 				} // end if: enough to output
 			} // end if: encoding
-			// Else, Decoding
+				// Else, Decoding
 			else {
 				// Meaningful Base64 character?
 				if(decodabet[theByte & 0x7f] > WHITE_SPACE_ENC) {
@@ -890,7 +890,7 @@ public class OBase64Utils {
 		if(serializableObject == null) {
 			throw new NullPointerException("Cannot serialize a null object.");
 		} // end if: null
-		// Streams
+			// Streams
 		java.io.ByteArrayOutputStream baos = null;
 		java.io.OutputStream b64os = null;
 		java.util.zip.GZIPOutputStream gzos = null;
@@ -932,7 +932,7 @@ public class OBase64Utils {
 			} catch(Exception e) {
 			}
 		} // end finally
-		// Return value according to relevant encoding.
+			// Return value according to relevant encoding.
 		try {
 			return new String(baos.toByteArray(), PREFERRED_ENCODING);
 		} // end try
@@ -1183,7 +1183,7 @@ public class OBase64Utils {
 		if(off + len > source.length) {
 			throw new IllegalArgumentException(String.format("Cannot have offset of %d and length of %d with array of length %d", off, len, source.length));
 		} // end if: off < 0
-		// Compress?
+			// Compress?
 		if((options & GZIP) != 0) {
 			java.io.ByteArrayOutputStream baos = null;
 			java.util.zip.GZIPOutputStream gzos = null;
@@ -1217,7 +1217,7 @@ public class OBase64Utils {
 			} // end finally
 			return baos.toByteArray();
 		} // end if: compress
-		// Else, don't compress. Better not to use streams at all then.
+			// Else, don't compress. Better not to use streams at all then.
 		else {
 			boolean breakLines = (options & DO_BREAK_LINES) != 0;
 			// int len43 = len * 4 / 3;
@@ -1249,7 +1249,7 @@ public class OBase64Utils {
 				encode3to4(source, d + off, len - d, outBuff, e, options);
 				e += 4;
 			} // end if: some padding needed
-			// Only resize array if we didn't guess it right.
+				// Only resize array if we didn't guess it right.
 			if(e <= outBuff.length - 1) {
 				// If breaking lines and the last byte falls right at
 				// the line length (76 bytes per line), there will be
@@ -1492,7 +1492,7 @@ public class OBase64Utils {
 					while((length = gzis.read(buffer)) >= 0) {
 						baos.write(buffer, 0, length);
 					} // end while: reading input
-					// No error? Get new bytes.
+						// No error? Get new bytes.
 					bytes = baos.toByteArray();
 				} // end try
 				catch(java.io.IOException e) {
@@ -1568,8 +1568,8 @@ public class OBase64Utils {
 			if(loader == null) {
 				ois = new java.io.ObjectInputStream(bais);
 			} // end if: no loader provided
-			// Else make a customized object input stream that uses
-			// the provided class loader.
+				// Else make a customized object input stream that uses
+				// the provided class loader.
 			else {
 				ois = new java.io.ObjectInputStream(bais) {
 
@@ -1712,7 +1712,7 @@ public class OBase64Utils {
 			while((numBytes = bis.read(buffer, length, 4096)) >= 0) {
 				length += numBytes;
 			} // end while
-			// Save in a variable to return
+				// Save in a variable to return
 			decodedData = new byte[length];
 			System.arraycopy(buffer, 0, decodedData, 0, length);
 		} // end try
@@ -1759,7 +1759,7 @@ public class OBase64Utils {
 			while((numBytes = bis.read(buffer, length, 4096)) >= 0) {
 				length += numBytes;
 			} // end while
-			// Save in a variable to return
+				// Save in a variable to return
 			encodedData = new String(buffer, 0, length, OBase64Utils.PREFERRED_ENCODING);
 		} // end try
 		catch(java.io.IOException e) {

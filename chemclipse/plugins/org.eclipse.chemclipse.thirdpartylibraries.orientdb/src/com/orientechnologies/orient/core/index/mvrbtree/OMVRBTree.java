@@ -2576,7 +2576,7 @@ public abstract class OMVRBTree<K, V> extends AbstractMap<K, V> implements ONavi
 			p.copyFrom(s);
 			p = s;
 		} // p has 2 children
-		// Start fixup at replacement node, if it exists.
+			// Start fixup at replacement node, if it exists.
 		final OMVRBTreeEntry<K, V> replacement = (p.getLeft() != null ? p.getLeft() : p.getRight());
 		if(replacement != null) {
 			// Link replacement to parent
